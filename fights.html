@@ -12,8 +12,6 @@ background:#111;
 color:white;
 margin:0;
 text-align:center;
-
-/* FIX FOOTER */
 min-height:100vh;
 display:flex;
 flex-direction:column;
@@ -59,15 +57,23 @@ margin-top:10px;
 text-shadow:2px 2px 6px black;
 }
 
-/* PPV */
+/* REPLAY SECTION */
 
-.ppv-title{
+.replay{
+display:none;
 margin-top:40px;
-color:#ff2a2a;
-text-shadow:2px 2px 6px black;
 }
 
-.ppv-button{
+.replay iframe{
+width:90%;
+max-width:800px;
+height:400px;
+border-radius:10px;
+}
+
+/* BUTTON */
+
+.cta-button{
 display:inline-block;
 margin-top:20px;
 padding:15px 30px;
@@ -95,7 +101,6 @@ background:black;
 <header>
 
 <h1>Ashanti Maurice</h1>
-
 <p>Amateur Fighter | Strength Coach</p>
 
 <nav>
@@ -122,23 +127,31 @@ background:black;
 
 <img src="IMG_1168.jpeg">
 
-<!-- PPV SECTION -->
-<h2 class="ppv-title">Limited Access Live Stream</h2>
+<!-- REPLAY SECTION -->
+<div id="replaySection" class="replay">
 
-<p>Missed out on tickets? Watch the fight live here.</p>
+<h2>🔥 Fight Replay</h2>
 
-<a class="ppv-button" 
-href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" 
-target="_blank">
-Watch Live Stream
+<p>Watch highlights from fight night.</p>
+
+<iframe 
+src="https://www.youtube.com/embed/n5M3N8kGu3A"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+<br>
+
+<a href="coaching.html" class="cta-button">
+Train Like Me
 </a>
+
+</div>
 
 </section>
 
 <footer>
-
 <p>© 2026 Ashanti Maurice</p>
-
 </footer>
 
 <script>
@@ -152,15 +165,16 @@ var countdownInterval = setInterval(function(){
 var now = new Date().getTime();
 var distance = fightDate - now;
 
-/* ✅ STOP AT ZERO */
+/* ✅ STOP TIMER + SHOW REPLAY */
 if(distance <= 0){
 
 clearInterval(countdownInterval);
 
-document.getElementById("countdown").innerHTML = "WATCH LIVE NOW 🔥";
+document.getElementById("countdown").innerHTML =
+"🔥 Fight Night Has Ended";
 
-/* 🔥 AUTO REDIRECT TO PPV */
-window.location.href = "https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026";
+/* SHOW REPLAY SECTION */
+document.getElementById("replaySection").style.display = "block";
 
 return;
 
