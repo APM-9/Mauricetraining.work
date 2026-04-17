@@ -57,23 +57,28 @@ margin-top:10px;
 text-shadow:2px 2px 6px black;
 }
 
-/* REPLAY SECTION */
-
-.replay{
-display:none;
-margin-top:40px;
-}
-
-.replay iframe{
-width:90%;
-max-width:800px;
-height:400px;
-border-radius:10px;
-}
-
-/* BUTTON */
+/* CTA */
 
 .cta-button{
+display:inline-block;
+margin-top:30px;
+padding:15px 30px;
+background:#ff2a2a;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+
+/* PPV */
+
+.ppv-title{
+margin-top:40px;
+color:#ff2a2a;
+text-shadow:2px 2px 6px black;
+}
+
+.ppv-button{
 display:inline-block;
 margin-top:20px;
 padding:15px 30px;
@@ -127,18 +132,20 @@ background:black;
 
 <img src="IMG_1168.jpeg">
 
-<!-- REPLAY SECTION -->
-<div id="replaySection" class="replay">
+<!-- POST FIGHT CTA -->
+<div id="postFight" style="display:none;">
 
-<h2>🔥 Fight Replay</h2>
+<h2 style="margin-top:40px;color:#ff2a2a;">
+🔥 Fight Night Has Ended
+</h2>
 
-<p>Watch highlights from fight night.</p>
+<p>Missed the fight? Full replay available below.</p>
 
-<iframe 
-src="https://www.youtube.com/embed/n5M3N8kGu3A"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<a class="ppv-button" 
+href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" 
+target="_blank">
+Watch Replay
+</a>
 
 <br>
 
@@ -151,12 +158,14 @@ Train Like Me
 </section>
 
 <footer>
+
 <p>© 2026 Ashanti Maurice</p>
+
 </footer>
 
 <script>
 
-/* COUNTDOWN */
+/* COUNTDOWN FIX */
 
 var fightDate = new Date("March 28, 2026 19:00:00").getTime();
 
@@ -165,7 +174,7 @@ var countdownInterval = setInterval(function(){
 var now = new Date().getTime();
 var distance = fightDate - now;
 
-/* ✅ STOP TIMER + SHOW REPLAY */
+/* STOP AT ZERO + SHOW CTA */
 if(distance <= 0){
 
 clearInterval(countdownInterval);
@@ -173,8 +182,8 @@ clearInterval(countdownInterval);
 document.getElementById("countdown").innerHTML =
 "🔥 Fight Night Has Ended";
 
-/* SHOW REPLAY SECTION */
-document.getElementById("replaySection").style.display = "block";
+/* SHOW POST FIGHT SECTION */
+document.getElementById("postFight").style.display = "block";
 
 return;
 
