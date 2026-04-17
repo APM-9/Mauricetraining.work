@@ -180,7 +180,7 @@ background:black;
 
 <div class="fight-section">
 
-<p class="fight-date">🥊 Next Fight: March 28</p>
+<p class="fight-date">🥊 Fight Night: March 28</p>
 
 <p id="countdown" class="countdown"></p>
 
@@ -193,6 +193,11 @@ allowfullscreen>
 </iframe>
 
 </div>
+
+<!-- 🔥 CTA AFTER VIDEO -->
+<a href="coaching.html" class="button">
+Train Like Me
+</a>
 
 </div>
 
@@ -243,7 +248,7 @@ Sponsor slots available — $500 per placement
 
 </footer>
 
-<!-- ✅ FIXED COUNTDOWN SCRIPT -->
+<!-- ✅ FIXED COUNTDOWN (NO REDIRECT) -->
 
 <script>
 
@@ -254,15 +259,13 @@ const countdownInterval = setInterval(function(){
 let now = new Date().getTime();
 let distance = fightDate - now;
 
-/* STOP AT ZERO + REDIRECT */
+/* ✅ STOP AT ZERO */
 if(distance <= 0){
 
 clearInterval(countdownInterval);
 
-document.getElementById("countdown").innerHTML = "WATCH LIVE NOW 🔥";
-
-/* redirect to PPV */
-window.location.href = "https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026";
+document.getElementById("countdown").innerHTML =
+"🔥 Fight Night Has Ended — Watch Highlights Above";
 
 return;
 
