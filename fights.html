@@ -147,10 +147,24 @@ Watch Live Stream
 
 var fightDate = new Date("March 28, 2026 19:00:00").getTime();
 
-setInterval(function(){
+var countdownInterval = setInterval(function(){
 
 var now = new Date().getTime();
 var distance = fightDate - now;
+
+/* ✅ STOP AT ZERO */
+if(distance <= 0){
+
+clearInterval(countdownInterval);
+
+document.getElementById("countdown").innerHTML = "WATCH LIVE NOW 🔥";
+
+/* 🔥 AUTO REDIRECT TO PPV */
+window.location.href = "https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026";
+
+return;
+
+}
 
 var days = Math.floor(distance / (1000 * 60 * 60 * 24));
 var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
