@@ -243,16 +243,30 @@ Sponsor slots available — $500 per placement
 
 </footer>
 
-<!-- COUNTDOWN SCRIPT -->
+<!-- ✅ FIXED COUNTDOWN SCRIPT -->
 
 <script>
 
 const fightDate = new Date("March 28, 2026 00:00:00").getTime();
 
-setInterval(function(){
+const countdownInterval = setInterval(function(){
 
 let now = new Date().getTime();
 let distance = fightDate - now;
+
+/* STOP AT ZERO + REDIRECT */
+if(distance <= 0){
+
+clearInterval(countdownInterval);
+
+document.getElementById("countdown").innerHTML = "WATCH LIVE NOW 🔥";
+
+/* redirect to PPV */
+window.location.href = "https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026";
+
+return;
+
+}
 
 let days = Math.floor(distance / (1000 * 60 * 60 * 24));
 let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
