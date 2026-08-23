@@ -1,161 +1,362 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ashanti Maurice | Merch</title>
 
 <style>
 
-body{
-font-family:Arial;
-background-image:url('D178DF15-FB95-433E-B864-7DB15005FE14.png');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
-color:white;
-margin:0;
-text-align:center;
-min-height:100vh;
-display:flex;
-flex-direction:column;
+:root{
+  --red:#ff2a2a;
+  --black:#111;
+  --panel:#1a1a1a;
 }
 
+*{
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Helvetica Neue', Arial, sans-serif;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+    url('D178DF15-FB95-433E-B864-7DB15005FE14.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  color:#f2f2f2;
+  margin:0;
+  text-align:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* HEADER */
+
 header{
-background:black;
-padding:40px;
+  background:#000;
+  padding:40px 20px;
+  border-bottom:2px solid var(--red);
+}
+
+header h1{
+  margin:0;
+  font-size:2.2rem;
+  letter-spacing:1px;
+}
+
+header p{
+  color:#bbb;
+  margin-top:8px;
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+nav{
+  margin-top:20px;
 }
 
 nav a{
-color:#ff2a2a;
-margin:15px;
-text-decoration:none;
-font-size:18px;
+  color:var(--red) !important;
+  margin:0 15px;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  transition:opacity 0.2s ease;
 }
+
+nav a:visited{
+  color:var(--red);
+}
+
+nav a:hover{
+  opacity:0.7;
+}
+
+/* CONTENT */
 
 section{
-padding:60px 20px;
+  padding:50px 20px;
+  max-width:600px;
+  margin:0 auto;
+  width:100%;
 }
 
+.merch-title{
+  font-size:1.8rem;
+  margin-bottom:10px;
+  text-shadow:2px 2px 6px black;
+}
+
+.countdown-title{
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:0.85rem;
+  color:#999;
+  margin-top:25px;
+  margin-bottom:5px;
+  text-shadow:2px 2px 6px black;
+}
+
+.countdown-timer{
+  color:var(--red);
+  font-size:1.6rem;
+  font-weight:bold;
+  text-shadow:2px 2px 6px black;
+  margin:0;
+}
+
+.sale-ended-note{
+  color:#ccc;
+  font-size:0.95rem;
+  margin-top:8px;
+}
+
+/* PRODUCT CARD */
+
 .product{
-background:rgba(0,0,0,0.85);
-max-width:450px;
-margin:40px auto;
-padding:30px;
-border-radius:10px;
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+  max-width:450px;
+  margin:40px auto 0;
+  padding:30px 20px;
+  border-radius:12px;
 }
 
 .product img{
-width:100%;
-border-radius:8px;
+  width:100%;
+  border-radius:8px;
+}
+
+.product h2{
+  margin:20px 0 5px;
 }
 
 .price{
-font-size:22px;
-color:#ff2a2a;
-margin-top:10px;
+  font-size:1.2rem;
+  color:var(--red);
+  margin:5px 0;
+  font-weight:600;
 }
 
 .counter{
-background:#ff2a2a;
-padding:10px;
-border-radius:6px;
-font-weight:bold;
-margin-top:15px;
+  background:var(--red);
+  padding:10px;
+  border-radius:6px;
+  font-weight:bold;
+  margin-top:20px;
+  font-size:0.9rem;
 }
 
 /* COLOR GRID */
 
 .color-grid{
-display:grid;
-grid-template-columns:repeat(2, 1fr);
-gap:15px;
-margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:15px;
+  margin-top:20px;
 }
 
 .color-card{
-background:rgba(0,0,0,0.9);
-padding:20px;
-border-radius:10px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-border:2px solid transparent;
-transition:0.3s;
+  background:#000;
+  padding:20px 10px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  border:2px solid #2a2a2a;
+  transition:0.2s ease;
+  display:block;
 }
 
 .color-card:hover{
-border:2px solid #ff2a2a;
-transform:scale(1.05);
-background:black;
+  border-color:var(--red);
+  transform:scale(1.03);
 }
 
-/* 🔥 BEST SELLER STYLE */
+.color-card small{
+  display:block;
+  margin-top:6px;
+  font-weight:normal;
+  font-size:0.75rem;
+  color:#ccc;
+}
 
 .best-seller{
-border:2px solid #ff2a2a;
-box-shadow:0 0 15px rgba(255,42,42,0.6);
+  border-color:var(--red);
+  box-shadow:0 0 15px rgba(255,42,42,0.5);
 }
 
-/* TITLE + COUNTDOWN */
-
-.merch-title{
-text-shadow:2px 2px 6px black;
+.color-note{
+  margin-top:20px;
+  color:var(--red);
+  font-weight:bold;
+  font-size:0.9rem;
 }
 
-.countdown-title{
-text-shadow:2px 2px 6px black;
+/* CAROUSEL */
+
+.carousel-wrap{
+  max-width:450px;
+  margin:40px auto 0;
 }
 
-.countdown-timer{
-color:#ff2a2a;
-font-size:28px;
-font-weight:bold;
-text-shadow:2px 2px 6px black;
+.carousel-heading{
+  margin-bottom:5px;
+  text-shadow:2px 2px 6px black;
+}
+
+.carousel-subtext{
+  color:#ccc;
+  font-size:0.9rem;
+  margin-top:0;
+  margin-bottom:20px;
+}
+
+.carousel{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+}
+
+.carousel-track{
+  display:flex;
+  transition:transform 0.4s ease;
+}
+
+.carousel-slide{
+  min-width:100%;
+  box-sizing:border-box;
+}
+
+.carousel-slide img{
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  display:block;
+}
+
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.55);
+  color:white;
+  border:none;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:1.3rem;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background 0.2s ease;
+}
+
+.carousel-arrow:hover{
+  background:var(--red);
+}
+
+.carousel-arrow.prev{
+  left:12px;
+}
+
+.carousel-arrow.next{
+  right:12px;
+}
+
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:15px;
+}
+
+.carousel-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#444;
+  border:none;
+  cursor:pointer;
+  padding:0;
+  transition:background 0.2s ease;
+}
+
+.carousel-dot.active{
+  background:var(--red);
 }
 
 /* SUPPORT */
 
 .support{
-background:rgba(0,0,0,0.85);
-max-width:450px;
-margin:40px auto;
-padding:30px;
-border-radius:10px;
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+  max-width:450px;
+  margin:40px auto 0;
+  padding:30px 20px;
+  border-radius:12px;
+}
+
+.support h2{
+  margin-top:0;
+}
+
+.support p{
+  color:#ccc;
 }
 
 .support-button{
-display:block;
-margin:12px auto;
-padding:15px;
-width:80%;
-background:#ff2a2a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-font-size:18px;
+  display:block;
+  margin:12px auto 0;
+  padding:15px;
+  width:100%;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:bold;
+  font-size:1rem;
+  transition:transform 0.15s ease, background 0.15s ease;
+}
+
+.support-button:hover{
+  background:#e01f1f;
+  transform:translateY(-2px);
 }
 
 /* FOOTER */
 
 footer{
-margin-top:auto;
-padding:30px;
-background:black;
+  margin-top:auto;
+  padding:30px;
+  background:black;
+  color:#777;
+  font-size:0.85rem;
 }
 
 /* POPUP */
 
 #buyer-popup{
-position:fixed;
-bottom:20px;
-left:20px;
-background:black;
-padding:15px 20px;
-border-radius:8px;
-display:none;
-font-size:14px;
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:var(--panel);
+  border:1px solid var(--red);
+  padding:15px 20px;
+  border-radius:8px;
+  display:none;
+  font-size:14px;
+  max-width:280px;
+  text-align:left;
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
 }
 
 </style>
@@ -165,138 +366,216 @@ font-size:14px;
 <body>
 
 <header>
+  <h1>Ashanti Maurice</h1>
+  <p>Amateur Fighter | Strength Coach</p>
 
-<h1>Ashanti Maurice</h1>
-<p>Amateur Fighter | Strength Coach</p>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="coaching.html">Coaching</a>
-<a href="fights.html">Fights</a>
-<a href="merch.html">Merch</a>
-<a href="contact.html">Contact</a>
-</nav>
-
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="fights.html">Fights</a>
+    <a href="merch.html">Merch</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
 <section>
 
-<h1 class="merch-title">Official Fight Merch</h1>
+  <h1 class="merch-title">Official Fight Merch</h1>
 
-<h2 class="countdown-title">Fight Countdown</h2>
+  <p id="countdownLabel" class="countdown-title">Fight Countdown</p>
+  <h3 id="countdown" class="countdown-timer"></h3>
+  <p id="endedNote" class="sale-ended-note" style="display:none;">
+    Fight night has passed — merch is still available while supplies last.
+  </p>
 
-<h3 id="countdown" class="countdown-timer"></h3>
+  <div class="product">
 
-<div class="product">
+    <img src="IMG_1042.jpeg" alt="Fight Camp Shirt">
 
-<img src="IMG_1042.jpeg">
+    <h2>Fight Camp Shirts</h2>
 
-<h2>Fight Camp Shirts</h2>
+    <p class="price">Short Sleeve - $40</p>
+    <p class="price">Long Sleeve - $50</p>
 
-<p class="price">Short Sleeve - $40</p>
-<p class="price">Long Sleeve - $50</p>
+    <div class="counter">
+      Limited Fight Camp Release — While Supplies Last
+    </div>
 
-<div class="counter">
-Limited Fight Camp Release — While Supplies Last
-</div>
+    <h3>Choose Color</h3>
 
-<h3>Choose Color</h3>
+    <div class="color-grid">
+      <a href="black-shirt.html" class="color-card best-seller">
+        Black<br><small>🔥 Best Seller — Sold Out Fast</small>
+      </a>
 
-<div class="color-grid">
+      <a href="mocha-shirt.html" class="color-card">
+        Mocha
+      </a>
 
-<a href="black-shirt.html" class="color-card best-seller">
-Black<br><small>🔥 Best Seller — Sold Out Fast</small>
-</a>
+      <a href="cream-shirt.html" class="color-card">
+        Cream
+      </a>
 
-<a href="mocha-shirt.html" class="color-card">
-Mocha
-</a>
+      <a href="oatmeal-shirt.html" class="color-card">
+        Oatmeal
+      </a>
 
-<a href="cream-shirt.html" class="color-card">
-Cream
-</a>
+      <a href="smoke-shirt.html" class="color-card">
+        Smoke
+      </a>
+    </div>
 
-<a href="oatmeal-shirt.html" class="color-card">
-Oatmeal
-</a>
+    <p class="color-note">
+      ⚠️ Select your color to view sizes — limited stock per drop
+    </p>
 
-<a href="smoke-shirt.html" class="color-card">
-Smoke
-</a>
+  </div>
 
-</div>
+  <div class="carousel-wrap">
+    <h2 class="carousel-heading">Repping the Gear</h2>
+    <p class="carousel-subtext">Fresh off the trail in Fight Camp merch</p>
 
-<p style="margin-top:15px;color:#ff2a2a;font-weight:bold;">
-⚠️ Select your color to view sizes — limited stock per drop
-</p>
+    <div class="carousel" id="merchCarousel">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide"><img src="merch-photo-1.jpeg" alt="Ashanti Maurice wearing Chef Whippems merch in the woods"></div>
+        <div class="carousel-slide"><img src="merch-photo-2.jpeg" alt="Ashanti Maurice wearing Chef Whippems merch on a trail"></div>
+        <div class="carousel-slide"><img src="merch-photo-3.jpeg" alt="Ashanti Maurice wearing Chef Whippems merch holding discs"></div>
+      </div>
 
-</div>
+      <button class="carousel-arrow prev" onclick="moveCarousel(-1); resetAutoplay();" aria-label="Previous photo">&#10094;</button>
+      <button class="carousel-arrow next" onclick="moveCarousel(1); resetAutoplay();" aria-label="Next photo">&#10095;</button>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
 
 </section>
 
 <section>
 
-<div class="support">
+  <div class="support">
+    <h2>Support My Fight Camp</h2>
 
-<h2>Support My Fight Camp</h2>
+    <p>Help support my training, travel, and fight preparation.</p>
 
-<p>Help support my training, travel, and fight preparation.</p>
-
-<a class="support-button" href="https://cash.app/$AshantiMaurice">Support via Cash App</a>
-
-<a class="support-button" href="https://venmo.com/u/Ashanti-Maurice">Support via Venmo</a>
-
-<a class="support-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">Support via Zelle</a>
-
-</div>
+    <a class="support-button" href="https://cash.app/$AshantiMaurice">Support via Cash App</a>
+    <a class="support-button" href="https://venmo.com/u/Ashanti-Maurice">Support via Venmo</a>
+    <a class="support-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">Support via Zelle</a>
+  </div>
 
 </section>
 
 <footer>
-
-<p>© 2026 Ashanti Maurice</p>
-
+  <p>© 2026 Ashanti Maurice</p>
 </footer>
 
 <div id="buyer-popup"></div>
 
 <script>
 
-/* countdown */
+/* COUNTDOWN — now stops at zero instead of counting into negative numbers */
 
 var fightDate = new Date("March 28, 2026 19:00:00").getTime();
 
-setInterval(function() {
+function updateCountdown(){
 
-var now = new Date().getTime();
-var distance = fightDate - now;
+  var now = new Date().getTime();
+  var distance = fightDate - now;
 
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  if(distance <= 0){
+    document.getElementById("countdownLabel").style.display = "none";
+    document.getElementById("countdown").style.display = "none";
+    document.getElementById("endedNote").style.display = "block";
+    return true; // signal to stop the interval
+  }
 
-document.getElementById("countdown").innerHTML =
-days + " days " + hours + " hours " + minutes + " minutes";
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-},1000);
+  document.getElementById("countdown").innerHTML =
+    days + " days " + hours + " hours " + minutes + " minutes";
 
-/* popup */
+  return false;
+}
+
+if(!updateCountdown()){
+  var countdownInterval = setInterval(function(){
+    if(updateCountdown()){
+      clearInterval(countdownInterval);
+    }
+  }, 1000);
+}
+
+/* CAROUSEL */
+
+var carouselIndex = 0;
+var track = document.getElementById("carouselTrack");
+var slideCount = track.children.length;
+var dotsWrap = document.getElementById("carouselDots");
+var carouselEl = document.getElementById("merchCarousel");
+var autoplayTimer;
+
+for(var i = 0; i < slideCount; i++){
+  var dot = document.createElement("button");
+  dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+  dot.setAttribute("aria-label", "Go to photo " + (i+1));
+  (function(index){
+    dot.onclick = function(){ goToSlide(index); resetAutoplay(); };
+  })(i);
+  dotsWrap.appendChild(dot);
+}
+
+function updateCarousel(){
+  track.style.transform = "translateX(-" + (carouselIndex * 100) + "%)";
+  var dots = dotsWrap.children;
+  for(var i = 0; i < dots.length; i++){
+    dots[i].className = "carousel-dot" + (i === carouselIndex ? " active" : "");
+  }
+}
+
+function moveCarousel(direction){
+  carouselIndex = (carouselIndex + direction + slideCount) % slideCount;
+  updateCarousel();
+}
+
+function goToSlide(index){
+  carouselIndex = index;
+  updateCarousel();
+}
+
+function startAutoplay(){
+  autoplayTimer = setInterval(function(){ moveCarousel(1); }, 5000);
+}
+
+function resetAutoplay(){
+  clearInterval(autoplayTimer);
+  startAutoplay();
+}
+
+startAutoplay();
+
+/* pause while the user is looking at / interacting with it */
+carouselEl.addEventListener("mouseenter", function(){ clearInterval(autoplayTimer); });
+carouselEl.addEventListener("mouseleave", function(){ startAutoplay(); });
+
+/* POPUP */
 
 var buyers = [
-"Mike from New Jersey bought a Fight Camp Shirt",
-"Chris from New York bought a Black Shirt",
-"Alex from Pennsylvania bought a Cream Shirt",
-"Jordan from Florida supported the fight camp"
+  "Mike from New Jersey bought a Fight Camp Shirt",
+  "Chris from New York bought a Black Shirt",
+  "Alex from Pennsylvania bought a Cream Shirt",
+  "Jordan from Florida supported the fight camp"
 ];
 
 function showPopup(){
-var popup=document.getElementById("buyer-popup");
-popup.innerHTML=buyers[Math.floor(Math.random()*buyers.length)];
-popup.style.display="block";
-setTimeout(function(){popup.style.display="none";},4000);
+  var popup = document.getElementById("buyer-popup");
+  popup.innerHTML = buyers[Math.floor(Math.random()*buyers.length)];
+  popup.style.display = "block";
+  setTimeout(function(){ popup.style.display = "none"; }, 4000);
 }
 
-setInterval(showPopup,12000);
+setInterval(showPopup, 12000);
 
 </script>
 
