@@ -1,100 +1,218 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ashanti Maurice | Fights</title>
 
 <style>
 
+:root{
+  --red:#ff2a2a;
+  --black:#111;
+  --panel:#1a1a1a;
+}
+
+*{
+  box-sizing:border-box;
+}
+
 body{
-font-family:Arial;
-background:#111;
-color:white;
-margin:0;
-text-align:center;
-min-height:100vh;
-display:flex;
-flex-direction:column;
+  font-family:'Helvetica Neue', Arial, sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.88)),
+    url('IMG_0644.jpeg');
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  color:#f2f2f2;
+  margin:0;
+  text-align:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
 
 /* HEADER */
 
 header{
-background:black;
-padding:40px;
+  background:#000;
+  padding:40px 20px;
+  border-bottom:2px solid var(--red);
+}
+
+header h1{
+  margin:0;
+  font-size:2.2rem;
+  letter-spacing:1px;
+}
+
+header p{
+  color:#bbb;
+  margin-top:8px;
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+nav{
+  margin-top:20px;
 }
 
 nav a{
-color:#ff2a2a !important;
-margin:15px;
-text-decoration:none;
-font-size:18px;
+  color:var(--red) !important;
+  margin:0 15px;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  transition:opacity 0.2s ease;
 }
 
 nav a:visited{
-color:#ff2a2a;
+  color:var(--red);
+}
+
+nav a:hover{
+  opacity:0.7;
 }
 
 /* CONTENT */
 
 section{
-padding:50px 20px;
+  padding:50px 20px;
+  max-width:700px;
+  margin:0 auto;
+  width:100%;
+}
+
+h1.page-title{
+  font-size:1.8rem;
+  margin-bottom:30px;
+}
+
+/* FIGHT CARD */
+
+.fight-card{
+  background:var(--panel);
+  border-radius:12px;
+  padding:30px 20px;
+  border:1px solid #2a2a2a;
+}
+
+.fight-card h2{
+  margin:0 0 5px;
+  font-size:1.4rem;
+}
+
+.fight-card .fight-type{
+  color:#999;
+  font-size:0.95rem;
+  margin-bottom:20px;
 }
 
 img{
-width:90%;
-border-radius:10px;
-margin-top:20px;
+  width:100%;
+  max-width:500px;
+  border-radius:10px;
+  margin-top:20px;
 }
 
 /* COUNTDOWN */
 
+.countdown-label{
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:0.85rem;
+  color:#999;
+  margin-top:25px;
+}
+
 .countdown{
-font-size:28px;
-font-weight:bold;
-color:#ff2a2a;
-margin-top:10px;
-text-shadow:2px 2px 6px black;
+  font-size:1.8rem;
+  font-weight:bold;
+  color:var(--red);
+  margin-top:8px;
+  text-shadow:2px 2px 6px black;
+}
+
+/* RECORD */
+
+.records{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.record-box{
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+  border-radius:10px;
+  padding:20px 30px;
+  min-width:150px;
+}
+
+.record-box h3{
+  margin:0 0 8px;
+  color:var(--red);
+  font-size:0.9rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.record-box .record-value{
+  font-size:1.8rem;
+  font-weight:bold;
+}
+
+.record-box .record-note{
+  color:#888;
+  font-size:0.75rem;
+  margin-top:5px;
 }
 
 /* CTA */
 
-.cta-button{
-display:inline-block;
-margin-top:30px;
-padding:15px 30px;
-background:#ff2a2a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
+.cta-button, .ppv-button{
+  display:inline-block;
+  margin-top:15px;
+  padding:15px 30px;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:bold;
+  transition:transform 0.15s ease, background 0.15s ease;
 }
 
-/* PPV */
-
-.ppv-title{
-margin-top:40px;
-color:#ff2a2a;
-text-shadow:2px 2px 6px black;
+.cta-button:hover, .ppv-button:hover{
+  background:#e01f1f;
+  transform:translateY(-2px);
 }
 
-.ppv-button{
-display:inline-block;
-margin-top:20px;
-padding:15px 30px;
-background:#ff2a2a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
+/* POST FIGHT */
+
+#postFight h2{
+  margin-top:40px;
+  color:var(--red);
+  text-shadow:2px 2px 6px black;
+  font-size:1.4rem;
+}
+
+#postFight p{
+  color:#ccc;
 }
 
 /* FOOTER */
 
 footer{
-margin-top:auto;
-padding:30px;
-background:black;
+  margin-top:auto;
+  padding:30px;
+  background:black;
+  color:#777;
+  font-size:0.85rem;
 }
 
 </style>
@@ -104,99 +222,110 @@ background:black;
 <body>
 
 <header>
+  <h1>Ashanti Maurice</h1>
+  <p>Amateur Fighter | Strength Coach</p>
 
-<h1>Ashanti Maurice</h1>
-<p>Amateur Fighter | Strength Coach</p>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="coaching.html">Coaching</a>
-<a href="fights.html">Fights</a>
-<a href="merch.html">Merch</a>
-<a href="contact.html">Contact</a>
-</nav>
-
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="fights.html">Fights</a>
+    <a href="merch.html">Merch</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
 <section>
 
-<h1>Fight Schedule</h1>
+  <h1 class="page-title">Fight Schedule</h1>
 
-<h2>March 28</h2>
+  <div class="fight-card">
+    <h2>March 28</h2>
+    <p class="fight-type">Amateur Fight</p>
 
-<p>Amateur Fight</p>
+    <img src="IMG_1168.jpeg" alt="Ashanti Maurice fight photo">
 
-<!-- COUNTDOWN -->
-<h2>Fight Countdown</h2>
-<div id="countdown" class="countdown"></div>
+    <!-- COUNTDOWN -->
+    <p class="countdown-label">Fight Countdown</p>
+    <div id="countdown" class="countdown"></div>
 
-<img src="IMG_1168.jpeg">
+    <!-- POST FIGHT CTA -->
+    <div id="postFight" style="display:none;">
+      <h2>🔥 Fight Night Has Ended</h2>
+      <p>Missed the fight? Full replay available below.</p>
 
-<!-- POST FIGHT CTA -->
-<div id="postFight" style="display:none;">
+      <a class="ppv-button"
+         href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026"
+         target="_blank" rel="noopener">
+        Watch Replay
+      </a>
 
-<h2 style="margin-top:40px;color:#ff2a2a;">
-🔥 Fight Night Has Ended
-</h2>
+      <br>
 
-<p>Missed the fight? Full replay available below.</p>
+      <a href="coaching.html" class="cta-button">
+        Train Like Me
+      </a>
+    </div>
+  </div>
 
-<a class="ppv-button" 
-href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" 
-target="_blank">
-Watch Replay
-</a>
-
-<br>
-
-<a href="coaching.html" class="cta-button">
-Train Like Me
-</a>
-
-</div>
+  <!-- RECORDS -->
+  <div class="records">
+    <div class="record-box">
+      <h3>Amateur MMA</h3>
+      <div class="record-value">0-1-0</div>
+      <div class="record-note">W-L-D</div>
+    </div>
+    <div class="record-box">
+      <h3>Amateur BJJ</h3>
+      <div class="record-value">2-1-0</div>
+      <div class="record-note">W-L-D</div>
+    </div>
+  </div>
 
 </section>
 
 <footer>
-
-<p>© 2026 Ashanti Maurice</p>
-
+  <p>© 2026 Ashanti Maurice</p>
 </footer>
 
 <script>
 
-/* COUNTDOWN FIX */
+/* COUNTDOWN */
 
 var fightDate = new Date("March 28, 2026 19:00:00").getTime();
 
 var countdownInterval = setInterval(function(){
 
-var now = new Date().getTime();
-var distance = fightDate - now;
+  var now = new Date().getTime();
+  var distance = fightDate - now;
 
-/* STOP AT ZERO + SHOW CTA */
-if(distance <= 0){
+  /* STOP AT ZERO + SHOW POST-FIGHT CONTENT */
+  if(distance <= 0){
 
-clearInterval(countdownInterval);
+    clearInterval(countdownInterval);
 
-document.getElementById("countdown").innerHTML =
-"🔥 Fight Night Has Ended";
+    document.getElementById("countdown").innerHTML = "🔥 Fight Night Has Ended";
+    document.getElementById("postFight").style.display = "block";
 
-/* SHOW POST FIGHT SECTION */
-document.getElementById("postFight").style.display = "block";
+    return;
+  }
 
-return;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-}
-
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-document.getElementById("countdown").innerHTML =
-days + " days " + hours + " hours " + minutes + " minutes";
+  document.getElementById("countdown").innerHTML =
+    days + " days " + hours + " hours " + minutes + " minutes";
 
 },1000);
+
+/* Run once immediately so it doesn't show blank for the first second */
+(function(){
+  var now = new Date().getTime();
+  if(fightDate - now <= 0){
+    document.getElementById("countdown").innerHTML = "🔥 Fight Night Has Ended";
+    document.getElementById("postFight").style.display = "block";
+  }
+})();
 
 </script>
 
