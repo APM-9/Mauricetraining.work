@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Ashanti Maurice | Training, Coaching, Video, Web</title>
+<meta name="description" content="Personal training, nutrition coaching, fight camps, wrestling coaching, filming and video editing, and web design from Ashanti Maurice, ISSA certified trainer based in Perth Amboy, NJ.">
+
+<style>
+
+:root{
+  --red:#ff2a2a;
+  --black:#111;
+  --panel:#1a1a1a;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  font-family:'Helvetica Neue', Arial, sans-serif;
+  background:#000;
+  color:#f2f2f2;
+  margin:0;
+  text-align:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:hidden;
+}
+
+/* fixed background layer (works on iPhone, unlike background-attachment:fixed) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+    url('IMG_3956.jpeg');
+  background-size:cover;
+  background-position:center;
+}
+
+/* HEADER */
+
+header{
+  background:#000;
+  padding:40px 20px;
+  border-bottom:2px solid var(--red);
+}
+
+header h1{
+  margin:0;
+  font-size:2.2rem;
+  letter-spacing:1px;
+}
+
+header p{
+  color:#bbb;
+  margin-top:8px;
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+nav{
+  margin-top:20px;
+  line-height:2.2;
+}
+
+nav a{
+  color:var(--red) !important;
+  margin:0 12px;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  white-space:nowrap;
+  transition:opacity 0.2s ease;
+}
+
+nav a:hover{
+  opacity:0.7;
+}
+
+/* CONTENT */
+
+section{
+  padding:50px 20px;
+  max-width:600px;
+  margin:0 auto;
+  width:100%;
+}
+
+.page-title{
+  font-size:1.8rem;
+  margin:0 0 10px;
+  text-shadow:2px 2px 6px black;
+}
+
+.tagline{
+  color:#ccc;
+  margin:0 0 10px;
+  font-size:1rem;
+  text-shadow:2px 2px 6px black;
+}
+
+.service{
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+  border-radius:12px;
+  padding:26px 20px;
+  margin-top:30px;
+  text-align:left;
+}
+
+.service h2{
+  margin:0 0 6px;
+  font-size:1.35rem;
+  text-align:center;
+}
+
+.service .sub{
+  color:#aaa;
+  font-size:0.9rem;
+  margin:0 0 14px;
+  text-align:center;
+  line-height:1.45;
+}
+
+.item{
+  border-top:1px solid #2a2a2a;
+  padding:14px 0;
+}
+
+.item:last-child{
+  padding-bottom:0;
+}
+
+.item h3{
+  margin:0 0 4px;
+  font-size:1.02rem;
+}
+
+.item p{
+  margin:0;
+  color:#ccc;
+  font-size:0.92rem;
+  line-height:1.45;
+}
+
+.item .price{
+  color:var(--red);
+  font-weight:700;
+  font-size:1rem;
+  margin-top:6px;
+}
+
+/* CONTACT */
+
+.contact{
+  background:var(--panel);
+  border:1px solid var(--red);
+  border-radius:12px;
+  padding:30px 20px;
+  margin-top:40px;
+}
+
+.contact h2{
+  margin-top:0;
+}
+
+.contact p{
+  color:#ccc;
+  margin:6px 0;
+  overflow-wrap:anywhere;
+}
+
+.contact-button{
+  display:block;
+  margin:14px auto 0;
+  padding:18px 15px;
+  width:100%;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:1.1rem;
+  transition:transform 0.15s ease, background 0.15s ease;
+}
+
+.contact-button.outline{
+  background:#000;
+  border:2px solid var(--red);
+}
+
+.contact-button:hover{
+  background:#e01f1f;
+  transform:translateY(-2px);
+}
+
+.location{
+  margin-top:18px !important;
+  font-weight:600;
+  color:#f2f2f2 !important;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:auto;
+  padding:30px;
+  background:black;
+  color:#777;
+  font-size:0.85rem;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>Ashanti Maurice</h1>
+  <p>Amateur Fighter | Strength Coach</p>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="fights.html">Fights</a>
+    <a href="merch.html">Merch</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section>
+
+  <h1 class="page-title">Services with Ashanti Maurice</h1>
+  <p class="tagline">Training, coaching, content, and web work from one person.</p>
+
+  <!-- PERSONAL TRAINING AND NUTRITION -->
+
+  <div class="service">
+    <h2>Personal Training and Nutrition</h2>
+    <p class="sub">ISSA certified personal trainer and nutritionist, nearly five years of experience in nutrition and strength and conditioning</p>
+
+    <div class="item">
+      <h3>Private Sessions</h3>
+      <p>One-on-one strength and conditioning sessions built around your goals.</p>
+      <p class="price">$75 to $100 per hour<br>Four-session packs: $280 to $360</p>
+    </div>
+
+    <div class="item">
+      <h3>Fight Camp Package</h3>
+      <p>For wrestlers and MMA fighters. Includes training, nutrition, and wrestling training partner work.</p>
+      <p class="price">$600 to $1,000 per fighter per camp</p>
+    </div>
+
+    <div class="item">
+      <h3>Nutrition Coaching Only</h3>
+      <p>A personalized meal plan and weekly check-ins.</p>
+      <p class="price">$125 to $200 per month</p>
+    </div>
+
+    <div class="item">
+      <h3>Fight Camp Meal Prep</h3>
+      <p>Meal prep available for fight camps.</p>
+      <p class="price">Priced per week</p>
+    </div>
+  </div>
+
+  <!-- WRESTLING COACHING -->
+
+  <div class="service">
+    <h2>Wrestling Coaching</h2>
+
+    <div class="item">
+      <h3>Classes and Private Sessions</h3>
+      <p>Wrestling instruction for groups or one-on-one.</p>
+      <p class="price">$40 to $75 per hour</p>
+    </div>
+
+    <div class="item">
+      <h3>Training Partner for Fighters</h3>
+      <p>Training partner and cage and wall work, wrestling only.</p>
+      <p class="price">$250 to $500 per fighter per camp</p>
+    </div>
+  </div>
+
+  <!-- FILMING AND VIDEO EDITING -->
+
+  <div class="service">
+    <h2>Filming and Video Editing</h2>
+
+    <div class="item">
+      <h3>Social Media Content</h3>
+      <p>Short-form video for gyms and brands.</p>
+      <p class="price">$75 to $150 per finished short video<br>or $40 per hour filming and $60 per hour editing</p>
+    </div>
+  </div>
+
+  <!-- WEB DESIGN AND DEVELOPMENT -->
+
+  <div class="service">
+    <h2>Web Design and Development</h2>
+
+    <div class="item">
+      <h3>Websites and Apps</h3>
+      <p>Custom websites and apps for small businesses and gyms.</p>
+      <p class="price">From $3,000<br>Updates and maintenance from $75 per month</p>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+
+  <div class="contact" id="contact">
+    <h2>Book or Ask a Question</h2>
+    <p>Phone: 732-300-0675</p>
+    <p>Email: AMaurice_94@yahoo.com</p>
+
+    <a class="contact-button" href="tel:+17323000675">Tap to Call</a>
+    <a class="contact-button outline" href="mailto:AMaurice_94@yahoo.com?subject=Services%20Inquiry">Tap to Email</a>
+
+    <p class="location">Based in Perth Amboy, NJ.</p>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Ashanti Maurice</p>
+</footer>
+
+</body>
+</html>
