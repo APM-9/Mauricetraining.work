@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Ashanti Maurice | Trainer, Wrestling Coach, Fighter</title>
+<meta name="description" content="About Ashanti Maurice: ISSA certified personal trainer and nutritionist, assistant wrestling coach at Raritan High School, and video creator based in Perth Amboy, NJ.">
+
+<style>
+
+:root{
+  --red:#ff2a2a;
+  --black:#111;
+  --panel:#1a1a1a;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  font-family:'Helvetica Neue', Arial, sans-serif;
+  background:#000;
+  color:#f2f2f2;
+  margin:0;
+  text-align:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:hidden;
+}
+
+/* fixed background layer (works on iPhone, unlike background-attachment:fixed) */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+    url('IMG_1166.jpeg');
+  background-size:cover;
+  background-position:center;
+}
+
+/* HEADER */
+
+header{
+  background:#000;
+  padding:40px 20px;
+  border-bottom:2px solid var(--red);
+}
+
+header h1{
+  margin:0;
+  font-size:2.2rem;
+  letter-spacing:1px;
+}
+
+header p{
+  color:#bbb;
+  margin-top:8px;
+  font-size:0.95rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+nav{
+  margin-top:20px;
+  line-height:2.2;
+}
+
+nav a{
+  color:var(--red) !important;
+  margin:0 12px;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  white-space:nowrap;
+  transition:opacity 0.2s ease;
+}
+
+nav a:hover{
+  opacity:0.7;
+}
+
+/* CONTENT */
+
+section{
+  padding:50px 20px;
+  max-width:600px;
+  margin:0 auto;
+  width:100%;
+}
+
+.page-title{
+  font-size:1.8rem;
+  margin:0 0 10px;
+  text-shadow:2px 2px 6px black;
+}
+
+.tagline{
+  color:#ccc;
+  margin:0 0 10px;
+  font-size:1rem;
+  text-shadow:2px 2px 6px black;
+}
+
+.intro{
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+  border-radius:12px;
+  padding:26px 20px;
+  margin-top:30px;
+  text-align:left;
+}
+
+.intro p{
+  margin:0 0 12px;
+  color:#ddd;
+  line-height:1.6;
+  font-size:1rem;
+}
+
+.intro p:last-child{
+  margin-bottom:0;
+}
+
+.credentials{
+  background:var(--panel);
+  border:1px solid #2a2a2a;
+  border-radius:12px;
+  padding:26px 20px;
+  margin-top:30px;
+  text-align:left;
+}
+
+.credentials h2{
+  margin:0 0 10px;
+  text-align:center;
+}
+
+.credentials ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.credentials li{
+  border-top:1px solid #2a2a2a;
+  padding:14px 0 14px 24px;
+  position:relative;
+  color:#ddd;
+  line-height:1.5;
+  font-size:0.95rem;
+}
+
+.credentials li:last-child{
+  padding-bottom:0;
+}
+
+.credentials li::before{
+  content:"";
+  position:absolute;
+  left:4px;
+  top:21px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--red);
+}
+
+.video-link{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 18px;
+  background:#000;
+  border:2px solid var(--red);
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:bold;
+  font-size:0.92rem;
+}
+
+.cta{
+  margin-top:40px;
+}
+
+.button{
+  display:block;
+  margin:12px auto 0;
+  padding:16px 15px;
+  width:100%;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:1.05rem;
+}
+
+.button.outline{
+  background:#000;
+  border:2px solid var(--red);
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:auto;
+  padding:30px;
+  background:black;
+  color:#777;
+  font-size:0.85rem;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>Ashanti Maurice</h1>
+  <p>Amateur Fighter | Strength Coach</p>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="fights.html">Fights</a>
+    <a href="merch.html">Merch</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section>
+
+  <h1 class="page-title">About Ashanti Maurice</h1>
+
+  <div class="intro">
+    <p>I'm Ashanti Maurice, a trainer, wrestling coach, and amateur fighter based in Perth Amboy, NJ.</p>
+    <p>I help people get stronger, eat better, and show up ready, whether that's a fighter heading into camp or someone starting their first program. I also film, edit, and build websites, so gyms and small businesses can work with one person for training and content.</p>
+  </div>
+
+  <div class="credentials">
+    <h2>Credentials</h2>
+    <ul>
+      <li>ISSA certified personal trainer and nutritionist</li>
+      <li>Nearly five years of experience in nutrition and strength and conditioning</li>
+      <li>Assistant wrestling coach at Raritan High School (the Rockets) since 2023</li>
+      <li>Has wrestled since sixth grade: folkstyle through high school, plus freestyle and Greco-Roman experience, and trains live with college-level wrestlers</li>
+      <li>Howell High School: 7th at the 2013 NJSIAA State Championships (145 lbs), two-time District 21 champion, and Region VI 3rd place</li>
+      <li>Trained in film and video production through the performing arts program at Howell High School</li>
+      <li>Contributed to the Spotify RISE campaign featuring Joji through Yours Truly Studios, as paid contract work<br>
+        <a class="video-link" href="https://youtu.be/yOPZO1P-a4U?t=404" target="_blank" rel="noopener">Watch my behind-the-scenes B-roll (6:44 to 8:15)</a>
+      </li>
+      <li>Chef for gym fight camps, preparing meal plans and meal prep</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <a class="button" href="services.html">See Services and Pricing</a>
+    <a class="button outline" href="tel:+17323000675">Tap to Call 732-300-0675</a>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Ashanti Maurice</p>
+</footer>
+
+</body>
+</html>
