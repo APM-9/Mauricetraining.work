@@ -26,10 +26,12 @@
   --body:"Archivo", "Helvetica Neue", Arial, sans-serif;
   --gut-l:max(16px, env(safe-area-inset-left, 0px));
   --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --hdr:72px;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 12px)}
+@media (max-height:500px) and (orientation:landscape){:root{--hdr:56px}}
 body{margin:0;background:var(--room);color:var(--chalk);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--room)}
 img{max-width:100%;display:block}
@@ -52,17 +54,34 @@ section{padding-block:clamp(64px,9vw,120px)}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--room) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:20px;height:72px}
-.brand img{height:44px;width:auto}
-.nav{display:flex;gap:4px;margin-left:auto}
-.nav a{font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--dust);padding:8px 10px}
+.top .bar{display:flex;align-items:center;gap:20px;height:var(--hdr)}
+.brand{display:block;flex:none}
+.brand img{height:calc(var(--hdr) - 28px);width:auto}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{font-weight:600;font-size:.8rem;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;color:var(--dust);padding:8px 9px;border-bottom:2px solid transparent}
 .nav a:hover{color:var(--chalk)}
-.top .btn{padding:.7em 1.1em;font-size:.82rem}
-.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--chalk);font:600 .8rem var(--body);letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;border-radius:2px;cursor:pointer}
-.drawer{border-top:1px solid var(--line);background:var(--room)}
-.drawer .wrap{display:grid;padding-block:12px 20px}
-.drawer a{display:block;padding:12px 0;font-family:var(--display);font-weight:800;font-size:1.7rem;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line)}
-@media (max-width:980px){.nav{display:none}.menu-btn{display:block}.top .btn{display:none}}
+.nav a[aria-current="true"]{color:var(--chalk);border-bottom-color:var(--red)}
+.top .btn{padding:.7em 1.1em;font-size:.82rem;flex:none}
+.menu-btn{display:none;margin-left:auto;align-items:center;gap:10px;background:none;border:1px solid var(--line);color:var(--chalk);font:600 .8rem var(--body);letter-spacing:.12em;text-transform:uppercase;padding:0 14px;height:44px;border-radius:2px;cursor:pointer}
+.menu-btn .ico{position:relative;width:18px;height:12px}
+.menu-btn .ico::before,.menu-btn .ico::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .2s,top .2s}
+.menu-btn .ico::before{top:0}.menu-btn .ico::after{top:10px}
+.menu-btn[aria-expanded="true"] .ico::before{top:5px;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] .ico::after{top:5px;transform:rotate(-45deg)}
+/* full-screen mobile menu: a fixed, solid panel under the header */
+.drawer{position:fixed;z-index:55;left:0;right:0;bottom:0;top:calc(env(safe-area-inset-top,0px) + var(--hdr));background:var(--room);border-top:1px solid var(--line);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.drawer-in{max-width:1200px;margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r);padding-block:8px calc(24px + env(safe-area-inset-bottom,0px));display:grid;gap:0 32px}
+.drawer a{display:block;padding:14px 0;font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.1;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line);color:var(--chalk)}
+.drawer a:hover,.drawer a[aria-current="true"]{color:var(--red)}
+.drawer .btn{display:flex;padding:1em 1.5em;margin-top:20px;justify-content:center;font-family:var(--body);font-size:1rem;color:#fff;border-bottom:2px solid var(--red)}
+@media (max-height:500px) and (orientation:landscape){
+  .drawer-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .drawer a{font-size:1.5rem;padding:10px 0}
+  .drawer .btn{grid-column:1/-1;margin-top:14px}
+}
+body.menu-open{overflow:hidden}
+@media (max-width:1120px){.nav{display:none}.menu-btn{display:inline-flex}.top .btn{display:none}}
+@media (min-width:1121px){.drawer{display:none!important}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,110px) clamp(48px,7vw,90px);isolation:isolate}
@@ -73,7 +92,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 .hero-inner{display:grid;gap:28px;max-width:760px}
 .moved-tag{display:inline-flex;align-items:center;gap:10px;align-self:start;justify-self:start;background:var(--chalk);color:var(--room);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px 7px 8px;border-radius:2px;text-decoration:none}
 .moved-tag b{background:var(--red);color:#fff;padding:3px 7px;border-radius:2px}
-.hero h1{font-size:clamp(4rem,14vw,10.5rem);font-weight:900;line-height:.82}
+.hero h1{font-size:clamp(3.4rem,min(14vw,26vh),10.5rem);font-weight:900;line-height:.82}
 .hero h1 span{display:block;color:var(--red)}
 .hero .lede{color:#d9d0ce;font-size:clamp(1.05rem,1.6vw,1.25rem)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
@@ -275,33 +294,33 @@ footer small{color:var(--dust);font-size:.8rem}
 <body>
 
 <header class="top">
-  <div class="wrap">
+  <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Elite Wrestling NJ home"><img src="assets/logo.png" alt="Elite Wrestling" width="640" height="284"></a>
     <nav class="nav" aria-label="Main">
       <a href="#programs">Programs</a>
       <a href="#membership">Membership</a>
       <a href="#coaches">Coaches</a>
       <a href="#champions">Champions</a>
-      <a href="#camp">Freestyle &amp; Camp</a>
+      <a href="#freestyle">Freestyle &amp; Camp</a>
       <a href="#tournaments">Tournaments</a>
       <a href="#visit">Visit</a>
     </nav>
     <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Free Trial</a>
-    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="drawer">Menu</button>
-  </div>
-  <div class="drawer" id="drawer" hidden>
-    <div class="wrap">
-      <a href="#programs">Programs</a>
-      <a href="#membership">Membership</a>
-      <a href="#coaches">Coaches</a>
-      <a href="#champions">Champions</a>
-      <a href="#camp">Freestyle &amp; Camp</a>
-      <a href="#tournaments">Tournaments</a>
-      <a href="#visit">Visit</a>
-      <a href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener" style="color:var(--red)">Book a Free Trial</a>
-    </div>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="drawer"><span class="ico" aria-hidden="true"></span><span id="menu-label">Menu</span></button>
   </div>
 </header>
+<nav class="drawer" id="drawer" aria-label="Mobile" hidden>
+  <div class="drawer-in">
+    <a href="#programs">Programs</a>
+    <a href="#membership">Membership</a>
+    <a href="#coaches">Coaches</a>
+    <a href="#champions">Champions</a>
+    <a href="#freestyle">Freestyle &amp; Camp</a>
+    <a href="#tournaments">Tournaments</a>
+    <a href="#visit">Visit</a>
+    <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Book a free trial</a>
+  </div>
+</nav>
 
 <main id="top">
 
@@ -700,9 +719,34 @@ footer small{color:var(--dust);font-size:.8rem}
   }).join(""):'<p class="events-empty">New tournament listings are coming soon. Follow @elitewrestlingnj for updates.</p>';
 
   // ---- mobile menu ----
-  var mb=document.getElementById("menu-btn"),dr=document.getElementById("drawer");
-  mb.addEventListener("click",function(){var open=dr.hidden;dr.hidden=!open;mb.setAttribute("aria-expanded",String(open));mb.textContent=open?"Close":"Menu"});
-  dr.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){dr.hidden=true;mb.setAttribute("aria-expanded","false");mb.textContent="Menu"})});
+  var mb=document.getElementById("menu-btn"),dr=document.getElementById("drawer"),ml=document.getElementById("menu-label");
+  function setMenu(open){
+    dr.hidden=!open;mb.setAttribute("aria-expanded",String(open));ml.textContent=open?"Close":"Menu";
+    document.body.classList.toggle("menu-open",open);
+    if(open){var f=dr.querySelector("a");if(f)f.focus({preventScroll:true})}
+  }
+  mb.addEventListener("click",function(){setMenu(dr.hidden)});
+  dr.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(e){
+    var h=a.getAttribute("href");setMenu(false);
+    if(h&&h.charAt(0)==="#"){var t=document.getElementById(h.slice(1));if(t){e.preventDefault();requestAnimationFrame(function(){t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})})}}
+  })});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!dr.hidden){setMenu(false);mb.focus()}});
+  var mq=window.matchMedia("(min-width:1121px)");
+  function onMq(){if(mq.matches&&!dr.hidden)setMenu(false)}
+  if(mq.addEventListener)mq.addEventListener("change",onMq);else if(mq.addListener)mq.addListener(onMq);
+
+  // ---- highlight the section in view ----
+  var links=[].slice.call(document.querySelectorAll('.nav a, .drawer a[href^="#"]'));
+  var ids=["programs","membership","coaches","champions","freestyle","tournaments","visit"];
+  var secs=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
+  function spy(){
+    var y=window.scrollY+window.innerHeight*0.35,cur="";
+    secs.forEach(function(sec){if(sec.getBoundingClientRect().top+window.scrollY<=y)cur=sec.id});
+    if(cur==="camp")cur="freestyle";
+    links.forEach(function(a){a.setAttribute("aria-current",a.getAttribute("href")==="#"+cur?"true":"false")});
+  }
+  var tick=false;window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(function(){spy();tick=false})}},{passive:true});
+  spy();
 
   // ---- copy buttons ----
   document.querySelectorAll(".copy[data-copy]").forEach(function(b){
