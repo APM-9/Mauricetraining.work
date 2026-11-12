@@ -282,6 +282,11 @@ body.menu-open{overflow:hidden}
 .uniform p{color:var(--dust);font-size:.92rem;max-width:70ch}
 @media (max-width:900px){.visit-grid{grid-template-columns:1fr}.uniform{grid-template-columns:1fr}}
 
+/* links that open another site in a new tab get a small arrow */
+a[target="_blank"]::after{content:"\2197";display:inline-block;margin-left:.35em;font-family:var(--body);font-weight:600;font-size:.9em;line-height:1;text-decoration:none;opacity:.85}
+.drawer a[target="_blank"]::after{font-size:.7em;vertical-align:.2em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ext-note{margin-top:14px;font-size:.84rem;color:var(--ink-soft)}
 footer{padding-block:36px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
 footer img{height:38px;width:auto}
@@ -319,7 +324,7 @@ footer small{color:var(--dust);font-size:.8rem}
     <a href="#freestyle">Freestyle &amp; Camp</a>
     <a href="#tournaments">Tournaments</a>
     <a href="#visit">Visit</a>
-    <a href="https://shorttime.net/collection/elite-wrestling/elite-wrestling-store/" target="_blank" rel="noopener">Shop &#8599;</a>
+    <a href="https://shorttime.net/collection/elite-wrestling/elite-wrestling-store/" target="_blank" rel="noopener">Shop</a>
     <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Book a free trial</a>
   </div>
 </nav>
@@ -429,6 +434,7 @@ footer small{color:var(--dust);font-size:.8rem}
       <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Register now</a>
       <a class="btn btn-ghost" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">View weekly schedule</a>
     </div>
+    <p class="ext-note">Sign-up and payment are handled securely by WrestlingIQ and open in a new tab. This page stays open behind it.</p>
     <p class="fine">If a member ends their membership before finishing the selected commitment period, the membership is recalculated at the rate for the time actually attended, and the member pays the difference.</p>
   </div>
 </section>
@@ -563,11 +569,10 @@ footer small{color:var(--dust);font-size:.8rem}
       <div class="when">
         <div><small>Season</small><b>Mar &ndash; May</b></div>
         <div><small>When</small><b>Wed &middot; 6:30pm</b></div>
-        <div><small>Full session</small><b>$350</b></div>
+        <div><small>Full session (2026)</small><b>$350</b></div>
       </div>
       <div class="btns">
-        <a class="btn btn-red" href="https://www.wrestlingiq.com/elitewrestlingnj/register/2026-freestyle-all-sessions" target="_blank" rel="noopener">All-session registration</a>
-        <a class="btn btn-ghost" href="https://www.wrestlingiq.com/elitewrestlingnj/register/2026-freestyle-drop-in" target="_blank" rel="noopener">Drop-in</a>
+        <a class="btn btn-red" href="https://www.wrestlingiq.com/elitewrestlingnj/register" target="_blank" rel="noopener">Register for freestyle</a>
       </div>
     </div>
   </div>
@@ -625,7 +630,7 @@ footer small{color:var(--dust);font-size:.8rem}
       <p class="eyebrow">Elite partner</p>
       <h3>Eat Clean Bro</h3>
       <p>Chef-prepared meals delivered to your door since 2013. Eat Clean Bro sponsors our tournament listings and stocks camp lunches.</p>
-      <a href="http://www.eatcleanbro.com" target="_blank" rel="noopener">eatcleanbro.com &rarr;</a>
+      <a href="http://www.eatcleanbro.com" target="_blank" rel="noopener">eatcleanbro.com</a>
     </div>
   </div>
 </section>
@@ -642,13 +647,13 @@ footer small{color:var(--dust);font-size:.8rem}
       <div class="vblock">
         <h3>Where</h3>
         <address>Superdome Sports, 2nd floor<br>780 NJ-70<br>Brick Township, NJ 08723</address>
-        <a class="textlink" href="https://www.google.com/maps/search/?api=1&amp;query=Superdome+Sports+780+NJ-70+Brick+Township+NJ+08723" target="_blank" rel="noopener">Open in Maps &rarr;</a>
+        <a class="textlink" href="https://www.google.com/maps/search/?api=1&amp;query=Superdome+Sports+780+NJ-70+Brick+Township+NJ+08723" target="_blank" rel="noopener">Open in Maps</a>
       </div>
       <div class="vblock">
         <h3>Contact</h3>
         <div class="copyrow"><span class="val" id="v-phone">732-433-5890</span><button class="copy" id="copy-phone" data-copy="732-433-5890">Copy</button></div>
         <div class="copyrow"><span class="val" id="v-email">SteveRivera@EliteWrestlingNJ.com</span><button class="copy" id="copy-email" data-copy="SteveRivera@EliteWrestlingNJ.com">Copy</button></div>
-        <a class="textlink" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">Weekly schedule &rarr;</a>
+        <a class="textlink" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">Weekly schedule</a>
       </div>
     </div>
     <div class="uniform">
@@ -758,6 +763,7 @@ footer small{color:var(--dust);font-size:.8rem}
       try{navigator.clipboard.writeText(v).then(done,sel)}catch(e){sel()}
     });
   });
+  document.querySelectorAll('a[target="_blank"]').forEach(function(a){var s=document.createElement("span");s.className="sr-only";s.textContent=" (opens in a new tab)";a.appendChild(s)});
   document.getElementById("yr").textContent=new Date().getFullYear();
 })();
 </script>
