@@ -27,6 +27,7 @@
   --gut-l:max(16px, env(safe-area-inset-left, 0px));
   --gut-r:max(16px, env(safe-area-inset-right, 0px));
   --hdr:72px;
+  --g-hs:#e0242c; --g-girls:#f0708f; --g-youth:#e8b84a; --g-new:#4fb39c; --g-group:#8f8582; --g-all:#f3eeec;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -54,11 +55,11 @@ section{padding-block:clamp(64px,9vw,120px)}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--room);border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.top .bar{display:flex;align-items:center;gap:20px;height:var(--hdr)}
+.top .bar{display:flex;align-items:center;gap:16px;height:var(--hdr)}
 .brand{display:block;flex:none}
 .brand img{height:calc(var(--hdr) - 28px);width:auto}
-.nav{display:flex;gap:2px;margin-left:auto}
-.nav a{font-weight:600;font-size:.8rem;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;white-space:nowrap;color:var(--dust);padding:8px 9px;border-bottom:2px solid transparent}
+.nav{display:flex;gap:0;margin-left:auto}
+.nav a{font-weight:600;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;color:var(--dust);padding:8px 7px;border-bottom:2px solid transparent}
 .nav a:hover{color:var(--chalk)}
 .nav a[aria-current="true"]{color:var(--chalk);border-bottom-color:var(--red)}
 .top .btn{padding:.7em 1.1em;font-size:.82rem;flex:none}
@@ -144,6 +145,38 @@ body.menu-open{overflow:hidden}
 .extra h3{font-size:1.5rem}
 .extra p{color:var(--dust);font-size:.93rem}
 @media (max-width:700px){.extras{grid-template-columns:1fr}.key{margin-left:0}}
+
+/* ---------- weekly schedule ---------- */
+.sched{border-top:1px solid var(--line)}
+.notice{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;border:1px solid var(--red);background:color-mix(in srgb,var(--red) 12%,var(--room));padding:12px 16px;margin-bottom:20px;font-size:.92rem}
+.notice b{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.notice span+span::before{content:"\00b7";margin-right:14px;color:var(--dust)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:18px;font-size:.8rem;color:var(--dust)}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:7px;transform:skewX(-20deg);vertical-align:0}
+.daytabs{display:none;gap:4px;margin-bottom:14px}
+.daytabs button{flex:1 1 0;min-width:0;min-height:44px;font:700 .78rem var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--dust);background:transparent;border:1px solid var(--line);padding:10px 0;border-radius:2px;cursor:pointer}
+.daytabs button[aria-selected="true"]{background:var(--chalk);color:var(--room);border-color:var(--chalk)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.sday{background:var(--room);display:grid;grid-template-rows:auto 1fr;min-width:0}
+.sday h3{font-size:1.35rem;padding:12px 12px 10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.sday h3 small{font-family:var(--body);font-size:.66rem;font-weight:700;letter-spacing:.12em;color:var(--red)}
+.sday.today h3{background:var(--red);color:#fff;border-bottom-color:var(--red)}
+.sday.today h3 small{color:#fff}
+.slots{list-style:none;margin:0;padding:10px;display:grid;gap:8px;align-content:start}
+.slot{border-left:4px solid var(--g);background:var(--mat);padding:9px 10px;display:grid;gap:2px;min-width:0}
+.slot time{font-size:.76rem;font-weight:700;letter-spacing:.04em;color:var(--dust);font-variant-numeric:tabular-nums}
+.slot b{font-weight:700;font-size:.9rem;line-height:1.25;overflow-wrap:anywhere}
+.slot span{font-size:.76rem;color:var(--dust)}
+.empty{color:var(--dust);font-size:.85rem;padding:4px 2px}
+.sched-foot{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;margin-top:18px;font-size:.84rem;color:var(--dust)}
+@media (max-width:980px){
+  .daytabs{display:flex}
+  .week{grid-template-columns:minmax(0,1fr)}
+  .sday{display:none}
+  .sday.shown{display:grid}
+  .sday h3{font-size:1.6rem}
+  .slot b{font-size:1rem}
+}
 
 /* ---------- membership (light band) ---------- */
 .member{background:var(--paper);color:var(--ink)}
@@ -329,6 +362,7 @@ footer small{color:var(--dust);font-size:.8rem}
     <a class="brand" href="#top" aria-label="Elite Wrestling NJ home"><img src="assets/logo.png" alt="Elite Wrestling" width="640" height="284"></a>
     <nav class="nav" aria-label="Main">
       <a href="#programs">Programs</a>
+      <a href="#schedule">Schedule</a>
       <a href="#membership">Membership</a>
       <a href="#coaches">Coaches</a>
       <a href="#champions">Champions</a>
@@ -344,6 +378,7 @@ footer small{color:var(--dust);font-size:.8rem}
 <nav class="drawer" id="drawer" aria-label="Mobile" hidden>
   <div class="drawer-in">
     <a href="#programs">Programs</a>
+    <a href="#schedule">Schedule</a>
     <a href="#membership">Membership</a>
     <a href="#coaches">Coaches</a>
     <a href="#champions">Champions</a>
@@ -428,6 +463,32 @@ footer small{color:var(--dust);font-size:.8rem}
   </div>
 </section>
 
+<!-- WEEKLY SCHEDULE -->
+<section class="sched" id="schedule" aria-labelledby="sched-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Superdome Sports &middot; Brick</p>
+      <h2 id="sched-h">Weekly schedule</h2>
+      <p class="lede">Mat time every day of the week. Find your wrestler's class below, or come to any of them for your free trial.</p>
+    </div>
+    <div class="notice" id="sched-notice" hidden></div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:var(--g-youth)"></i>Elementary &amp; middle school</span>
+      <span><i style="background:var(--g-hs)"></i>High school</span>
+      <span><i style="background:var(--g-girls)"></i>#EliteGirls</span>
+      <span><i style="background:var(--g-new)"></i>Beginners</span>
+      <span><i style="background:var(--g-group)"></i>Small groups</span>
+      <span><i style="background:var(--g-all)"></i>All levels</span>
+    </div>
+    <div class="daytabs" id="daytabs" role="tablist" aria-label="Day of the week"></div>
+    <div class="week" id="week"></div>
+    <div class="sched-foot">
+      <span id="sched-source">Schedule can change around holidays and tournaments.</span>
+      <a class="textlink" href="https://www.wrestlingiq.com/elitewrestlingnj/schedule" target="_blank" rel="noopener">Full calendar on WrestlingIQ</a>
+    </div>
+  </div>
+</section>
+
 <!-- MEMBERSHIP -->
 <section class="member" id="membership" aria-labelledby="mem-h">
   <div class="wrap">
@@ -458,7 +519,7 @@ footer small{color:var(--dust);font-size:.8rem}
     </div>
     <div class="row-cta">
       <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Register now</a>
-      <a class="btn btn-ghost" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">View weekly schedule</a>
+      <a class="btn btn-ghost" href="#schedule">View weekly schedule</a>
     </div>
     <p class="ext-note">Sign-up and payment are handled securely by WrestlingIQ and open in a new tab. This page stays open behind it.</p>
     <p class="fine">If a member ends their membership before finishing the selected commitment period, the membership is recalculated at the rate for the time actually attended, and the member pays the difference.</p>
@@ -694,7 +755,7 @@ footer small{color:var(--dust);font-size:.8rem}
         <h3>Contact</h3>
         <div class="copyrow"><span class="val" id="v-phone">732-433-5890</span><button class="copy" id="copy-phone" data-copy="732-433-5890">Copy</button></div>
         <div class="copyrow"><span class="val" id="v-email">SteveRivera@EliteWrestlingNJ.com</span><button class="copy" id="copy-email" data-copy="SteveRivera@EliteWrestlingNJ.com">Copy</button></div>
-        <a class="textlink" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">Weekly schedule</a>
+        <a class="textlink" href="#schedule">Weekly schedule</a>
       </div>
     </div>
     <div class="uniform">
@@ -748,6 +809,72 @@ footer small{color:var(--dust);font-size:.8rem}
     grid.querySelectorAll(".prog").forEach(function(a){a.hidden=!(f==="all"||a.dataset.t.split(" ").indexOf(f)>-1)});
   }
   chips.forEach(function(c){c.addEventListener("click",function(){applyFilter(c.dataset.f)})});
+
+  // ---- weekly schedule ----
+  // TO UPDATE THE SCHEDULE: paste the Google Sheet "Publish to web" CSV link between the quotes.
+  // Leave it empty to use the built-in schedule below. See SCHEDULE.md for step-by-step help.
+  var SCHEDULE_SHEET_CSV = "";
+  var DEFAULT_SCHEDULE = `Day,Start,End,Class,Group,Note
+Mon,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Mon,5:30 PM,6:45 PM,Elementary & Middle School,youth,
+Mon,7:00 PM,8:15 PM,High School,hs,
+Mon,7:00 PM,8:30 PM,#EliteGirls,girls,
+Tue,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Tue,5:30 PM,6:45 PM,Elementary & Middle School,youth,
+Tue,7:00 PM,8:15 PM,High School,hs,
+Tue,7:00 PM,8:30 PM,#EliteGirls,girls,
+Wed,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Wed,5:30 PM,6:45 PM,Future Champs (Beginners),new,Pre-K to 4th grade
+Wed,7:00 PM,8:30 PM,Advanced High School & Middle School,hs,Coach approval
+Thu,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Thu,5:30 PM,6:45 PM,Elementary & Middle School,youth,
+Thu,7:00 PM,8:15 PM,High School,hs,
+Thu,7:00 PM,8:30 PM,#EliteGirls,girls,
+Fri,5:30 PM,6:45 PM,Future Champs (Beginners),new,Pre-K to 4th grade
+Fri,6:30 PM,8:00 PM,Friday Night Live,all,
+Sat,9:30 AM,11:00 AM,Elementary / Middle / High School,all,
+Sat,9:30 AM,11:00 AM,#EliteGirls,girls,
+Sun,9:30 AM,11:00 AM,Elementary / Middle / High School,all,
+Sun,9:30 AM,11:00 AM,#EliteGirls,girls,
+2026-11-26,,,No practice: Thanksgiving,closed,`;
+  var DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],DAYFULL=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  function parseCSV(t){var rows=[],row=[],f="",q=false;t=t.replace(/\r/g,"");for(var i=0;i<t.length;i++){var c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else if(c==='"')q=true;else if(c===","){row.push(f);f=""}else if(c==="\n"){row.push(f);rows.push(row);row=[];f=""}else f+=c}row.push(f);rows.push(row);return rows.filter(function(r){return r.some(function(x){return x.trim()})})}
+  function toMin(v){v=(v||"").trim().toLowerCase();var m=v.match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm|a|p)?$/);if(!m)return null;var h=+m[1],mi=+(m[2]||0),ap=m[3];if(ap){ap=ap[0];if(ap==="p"&&h<12)h+=12;if(ap==="a"&&h===12)h=0}return h*60+mi}
+  function fmt(mn){var h=Math.floor(mn/60),m=mn%60,ap=h>=12?"pm":"am",hh=h%12||12;return hh+(m?":"+String(m).padStart(2,"0"):"")+ap}
+  function dayIdx(v){v=(v||"").trim().slice(0,3).toLowerCase();for(var i=0;i<7;i++)if(DAYS[i].toLowerCase()===v)return i;return -1}
+  function guessGroup(n){n=n.toLowerCase();if(/girl/.test(n))return"girls";if(/champ|beginner|develop/.test(n))return"new";if(/small group|private/.test(n))return"group";if(/high/.test(n)&&!/elem|middle|ms\b/.test(n))return"hs";if(/elem|middle|youth|\bms\b/.test(n))return"youth";return"all"}
+  var GROUPS={hs:"var(--g-hs)",girls:"var(--g-girls)",youth:"var(--g-youth)",new:"var(--g-new)",group:"var(--g-group)",all:"var(--g-all)"};
+  function buildSchedule(text,fromSheet){
+    var rows=parseCSV(text),head=rows.shift().map(function(h){return h.trim().toLowerCase()});
+    function col(r,name){var i=head.indexOf(name);return i>-1?(r[i]||"").trim():""}
+    var week=[[],[],[],[],[],[],[]],notes=[],today=new Date();today.setHours(0,0,0,0);
+    rows.forEach(function(r){
+      var day=col(r,"day"),name=col(r,"class"),note=col(r,"note");if(!day||!name)return;
+      var dm=day.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)||day.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+      if(dm){var d=day.indexOf("-")>-1?new Date(+dm[1],dm[2]-1,+dm[3]):new Date(+dm[3],dm[1]-1,+dm[2]);var diff=(d-today)/864e5;if(diff>=0&&diff<=45)notes.push({d:d,t:name+(note?" ("+note+")":"")});return}
+      var di=dayIdx(day),st=toMin(col(r,"start")),en=toMin(col(r,"end"));if(di<0||st===null)return;
+      var g=(col(r,"group")||guessGroup(name)).toLowerCase();if(!GROUPS[g])g=guessGroup(name);
+      week[di].push({s:st,e:en,n:name,g:g,note:note});
+    });
+    week.forEach(function(d){d.sort(function(a,b){return a.s-b.s||a.n.localeCompare(b.n)})});
+    var ti=(new Date().getDay()+6)%7;
+    document.getElementById("week").innerHTML=week.map(function(list,i){
+      var items=list.length?list.map(function(x){return '<li class="slot" style="--g:'+GROUPS[x.g]+'"><time>'+fmt(x.s)+(x.e!==null?" – "+fmt(x.e):"")+'</time><b>'+esc(x.n)+'</b>'+(x.note?'<span>'+esc(x.note)+'</span>':'')+'</li>'}).join(""):'<li class="empty">No classes</li>';
+      return '<div class="sday'+(i===ti?" today shown":"")+'" id="day-'+i+'" role="tabpanel" aria-label="'+DAYFULL[i]+'"><h3>'+DAYFULL[i]+(i===ti?'<small>Today</small>':'')+'</h3><ul class="slots">'+items+'</ul></div>';
+    }).join("");
+    document.getElementById("daytabs").innerHTML=DAYS.map(function(d,i){return '<button type="button" role="tab" id="tab-'+i+'" aria-controls="day-'+i+'" aria-selected="'+(i===ti)+'">'+d+'</button>'}).join("");
+    document.querySelectorAll("#daytabs button").forEach(function(b,i){b.addEventListener("click",function(){
+      document.querySelectorAll("#daytabs button").forEach(function(x,j){x.setAttribute("aria-selected",String(j===i))});
+      document.querySelectorAll("#week .sday").forEach(function(x,j){x.classList.toggle("shown",j===i)});
+    })});
+    var nb=document.getElementById("sched-notice");notes.sort(function(a,b){return a.d-b.d});
+    if(notes.length){nb.innerHTML='<b>Heads up</b>'+notes.map(function(n){return'<span>'+n.d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})+": "+esc(n.t)+'</span>'}).join("");nb.hidden=false}else nb.hidden=true;
+    if(fromSheet)document.getElementById("sched-source").textContent="Live from the Elite schedule sheet. Times can change around holidays and tournaments.";
+  }
+  buildSchedule(DEFAULT_SCHEDULE,false);
+  if(SCHEDULE_SHEET_CSV){
+    fetch(SCHEDULE_SHEET_CSV,{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(/^\s*day\s*,/i.test(t))buildSchedule(t,true)}).catch(function(){});
+  }
 
   // ---- upcoming tournaments (past dates drop off automatically) ----
   var events=[
@@ -820,7 +947,7 @@ footer small{color:var(--dust);font-size:.8rem}
 
   // ---- highlight the section in view ----
   var links=[].slice.call(document.querySelectorAll('.nav a, .drawer a[href^="#"]'));
-  var ids=["programs","membership","coaches","champions","freestyle","tournaments","shop","visit"];
+  var ids=["programs","schedule","membership","coaches","champions","freestyle","tournaments","shop","visit"];
   var secs=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
   function spy(){
     var y=window.scrollY+window.innerHeight*0.35,cur="";
