@@ -58,7 +58,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 .brand{display:block;flex:none}
 .brand img{height:calc(var(--hdr) - 28px);width:auto}
 .nav{display:flex;gap:2px;margin-left:auto}
-.nav a{font-weight:600;font-size:.8rem;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;color:var(--dust);padding:8px 9px;border-bottom:2px solid transparent}
+.nav a{font-weight:600;font-size:.8rem;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;white-space:nowrap;color:var(--dust);padding:8px 9px;border-bottom:2px solid transparent}
 .nav a:hover{color:var(--chalk)}
 .nav a[aria-current="true"]{color:var(--chalk);border-bottom-color:var(--red)}
 .top .btn{padding:.7em 1.1em;font-size:.82rem;flex:none}
@@ -80,8 +80,8 @@ section{padding-block:clamp(64px,9vw,120px)}
   .drawer .btn{grid-column:1/-1;margin-top:14px}
 }
 body.menu-open{overflow:hidden}
-@media (max-width:1120px){.nav{display:none}.menu-btn{display:inline-flex}.top .btn{display:none}}
-@media (min-width:1121px){.drawer{display:none!important}}
+@media (max-width:1200px){.nav{display:none}.menu-btn{display:inline-flex}.top .btn{display:none}}
+@media (min-width:1201px){.drawer{display:none!important}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,110px) clamp(48px,7vw,90px);isolation:isolate}
@@ -304,6 +304,7 @@ footer small{color:var(--dust);font-size:.8rem}
       <a href="#freestyle">Freestyle &amp; Camp</a>
       <a href="#tournaments">Tournaments</a>
       <a href="#visit">Visit</a>
+      <a href="https://shorttime.net/collection/elite-wrestling/elite-wrestling-store/" target="_blank" rel="noopener">Shop</a>
     </nav>
     <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Free Trial</a>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="drawer"><span class="ico" aria-hidden="true"></span><span id="menu-label">Menu</span></button>
@@ -318,6 +319,7 @@ footer small{color:var(--dust);font-size:.8rem}
     <a href="#freestyle">Freestyle &amp; Camp</a>
     <a href="#tournaments">Tournaments</a>
     <a href="#visit">Visit</a>
+    <a href="https://shorttime.net/collection/elite-wrestling/elite-wrestling-store/" target="_blank" rel="noopener">Shop &#8599;</a>
     <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Book a free trial</a>
   </div>
 </nav>
@@ -731,7 +733,7 @@ footer small{color:var(--dust);font-size:.8rem}
     if(h&&h.charAt(0)==="#"){var t=document.getElementById(h.slice(1));if(t){e.preventDefault();requestAnimationFrame(function(){t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})})}}
   })});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!dr.hidden){setMenu(false);mb.focus()}});
-  var mq=window.matchMedia("(min-width:1121px)");
+  var mq=window.matchMedia("(min-width:1201px)");
   function onMq(){if(mq.matches&&!dr.hidden)setMenu(false)}
   if(mq.addEventListener)mq.addEventListener("change",onMq);else if(mq.addListener)mq.addListener(onMq);
 
