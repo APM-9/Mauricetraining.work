@@ -30,7 +30,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 12px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + env(safe-area-inset-top,0px) + 20px)}
 @media (max-height:500px) and (orientation:landscape){:root{--hdr:56px}}
 body{margin:0;background:var(--room);color:var(--chalk);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--room)}
@@ -53,7 +53,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 .sec-head h2{font-size:clamp(2.6rem,6.5vw,4.6rem)}
 
 /* ---------- header ---------- */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--room) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--room);border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .top .bar{display:flex;align-items:center;gap:20px;height:var(--hdr)}
 .brand{display:block;flex:none}
 .brand img{height:calc(var(--hdr) - 28px);width:auto}
@@ -782,6 +782,25 @@ footer small{color:var(--dust);font-size:.8rem}
     return '<a class="item" href="'+g.url+'" target="_blank" rel="noopener"><div class="pic"><img src="assets/store/'+g.img+'.jpg" alt="Elite Wrestling '+esc(g.n)+'" width="400" height="457" loading="lazy">'+(g.soldOut?'<span class="status">Sold out</span>':'')+'</div><div class="info"><h3>'+esc(g.n)+'</h3><span class="cost">$'+g.p+'</span></div></a>';
   }).join("")+'<a class="item all" href="'+STORE+'" target="_blank" rel="noopener"><h3>See the full Elite store</h3><p>'+(allOut?'Everything is sold out right now. Check the store for restocks.':'All sizes, youth and adult.')+'</p><span class="go">Open store &#8599;</span></a>';
 
+  // ---- in-page links: land each section just below the header, whatever its real height ----
+  var header=document.querySelector(".top");
+  function goTo(id,push){
+    var t=document.getElementById(id);if(!t)return;
+    var hb=header.getBoundingClientRect().bottom;
+    var y=t.getBoundingClientRect().top+window.scrollY-hb-16;
+    if(t.id==="top")y=0;
+    var smooth=!matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({top:Math.max(0,y),behavior:smooth?"smooth":"auto"});
+    if(push){try{history.replaceState(null,"","#"+id)}catch(err){}}
+  }
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a||a.closest(".drawer"))return;
+    var id=a.getAttribute("href").slice(1);
+    if(id&&document.getElementById(id)){e.preventDefault();goTo(id,true)}
+  });
+  if(location.hash.length>1){window.addEventListener("load",function(){goTo(location.hash.slice(1),false)})}
+
   // ---- mobile menu ----
   var mb=document.getElementById("menu-btn"),dr=document.getElementById("drawer"),ml=document.getElementById("menu-label");
   function setMenu(open){
@@ -792,7 +811,7 @@ footer small{color:var(--dust);font-size:.8rem}
   mb.addEventListener("click",function(){setMenu(dr.hidden)});
   dr.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(e){
     var h=a.getAttribute("href");setMenu(false);
-    if(h&&h.charAt(0)==="#"){var t=document.getElementById(h.slice(1));if(t){e.preventDefault();requestAnimationFrame(function(){t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})})}}
+    if(h&&h.length>1&&h.charAt(0)==="#"&&document.getElementById(h.slice(1))){e.preventDefault();e.stopPropagation();requestAnimationFrame(function(){goTo(h.slice(1),true)})}
   })});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!dr.hidden){setMenu(false);mb.focus()}});
   var mq=window.matchMedia("(min-width:1201px)");
