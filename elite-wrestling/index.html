@@ -27,6 +27,7 @@
   --gut-l:max(16px, env(safe-area-inset-left, 0px));
   --gut-r:max(16px, env(safe-area-inset-right, 0px));
   --hdr:72px;
+  --g-hs:#e0242c; --g-girls:#f0708f; --g-youth:#e8b84a; --g-new:#4fb39c; --g-group:#8f8582; --g-all:#f3eeec;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -54,11 +55,11 @@ section{padding-block:clamp(64px,9vw,120px)}
 
 /* ---------- header ---------- */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--room);border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.top .bar{display:flex;align-items:center;gap:20px;height:var(--hdr)}
+.top .bar{display:flex;align-items:center;gap:16px;height:var(--hdr)}
 .brand{display:block;flex:none}
 .brand img{height:calc(var(--hdr) - 28px);width:auto}
-.nav{display:flex;gap:2px;margin-left:auto}
-.nav a{font-weight:600;font-size:.8rem;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;white-space:nowrap;color:var(--dust);padding:8px 9px;border-bottom:2px solid transparent}
+.nav{display:flex;gap:0;margin-left:auto}
+.nav a{font-weight:600;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;color:var(--dust);padding:8px 7px;border-bottom:2px solid transparent}
 .nav a:hover{color:var(--chalk)}
 .nav a[aria-current="true"]{color:var(--chalk);border-bottom-color:var(--red)}
 .top .btn{padding:.7em 1.1em;font-size:.82rem;flex:none}
@@ -145,16 +146,49 @@ body.menu-open{overflow:hidden}
 .extra p{color:var(--dust);font-size:.93rem}
 @media (max-width:700px){.extras{grid-template-columns:1fr}.key{margin-left:0}}
 
+/* ---------- weekly schedule ---------- */
+.sched{border-top:1px solid var(--line)}
+.notice{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;border:1px solid var(--red);background:color-mix(in srgb,var(--red) 12%,var(--room));padding:12px 16px;margin-bottom:20px;font-size:.92rem}
+.notice b{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.notice span+span::before{content:"\00b7";margin-right:14px;color:var(--dust)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:18px;font-size:.8rem;color:var(--dust)}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:7px;transform:skewX(-20deg);vertical-align:0}
+.daytabs{display:none;gap:4px;margin-bottom:14px}
+.daytabs button{flex:1 1 0;min-width:0;min-height:44px;font:700 .78rem var(--body);letter-spacing:.04em;text-transform:uppercase;color:var(--dust);background:transparent;border:1px solid var(--line);padding:10px 0;border-radius:2px;cursor:pointer}
+.daytabs button[aria-selected="true"]{background:var(--chalk);color:var(--room);border-color:var(--chalk)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.sday{background:var(--room);display:grid;grid-template-rows:auto 1fr;min-width:0}
+.sday h3{font-size:1.35rem;padding:12px 12px 10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.sday h3 small{font-family:var(--body);font-size:.66rem;font-weight:700;letter-spacing:.12em;color:var(--red)}
+.sday.today h3{background:var(--red);color:#fff;border-bottom-color:var(--red)}
+.sday.today h3 small{color:#fff}
+.slots{list-style:none;margin:0;padding:10px;display:grid;gap:8px;align-content:start}
+.slot{border-left:4px solid var(--g);background:var(--mat);padding:9px 10px;display:grid;gap:2px;min-width:0}
+.slot time{font-size:.76rem;font-weight:700;letter-spacing:.04em;color:var(--dust);font-variant-numeric:tabular-nums}
+.slot b{font-weight:700;font-size:.9rem;line-height:1.25;overflow-wrap:anywhere}
+.slot span{font-size:.76rem;color:var(--dust)}
+.empty{color:var(--dust);font-size:.85rem;padding:4px 2px}
+.sched-foot{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;margin-top:18px;font-size:.84rem;color:var(--dust)}
+@media (max-width:980px){
+  .daytabs{display:flex}
+  .week{grid-template-columns:minmax(0,1fr)}
+  .sday{display:none}
+  .sday.shown{display:grid}
+  .sday h3{font-size:1.6rem}
+  .slot b{font-size:1rem}
+}
+
 /* ---------- membership (light band) ---------- */
 .member{background:var(--paper);color:var(--ink)}
 .member .lede{color:var(--ink-soft)}
 .trial{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:var(--ink);color:var(--chalk);padding:clamp(24px,4vw,40px);margin-bottom:28px;position:relative;overflow:hidden}
-.trial::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:16px solid var(--red);opacity:.9;pointer-events:none}
+.trial::after{content:"";position:absolute;z-index:0;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:16px solid var(--red);opacity:.9;pointer-events:none}
+.trial > *{position:relative;z-index:1}
 .trial h3{font-size:clamp(2rem,4.5vw,3.2rem)}
 .trial h3 em{font-style:normal;color:var(--red)}
 .trial p{color:var(--dust);margin-top:8px;max-width:52ch}
 .trial .btn{position:relative;z-index:1}
-@media (max-width:700px){.trial{grid-template-columns:1fr}}
+@media (max-width:700px){.trial{grid-template-columns:1fr}.trial::after{display:none}}
 .plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .plan{background:#fff;border:1px solid #e1dad8;padding:22px;display:grid;gap:10px;align-content:start;position:relative;min-width:0}
 .plan.best{border:2px solid var(--red)}
@@ -279,7 +313,7 @@ body.menu-open{overflow:hidden}
 .item h3{font-size:1.45rem;min-width:0}
 .item .cost{font-family:var(--display);font-weight:800;font-size:1.45rem;font-variant-numeric:tabular-nums;color:var(--red);white-space:nowrap}
 .item[target="_blank"]::after{display:none}
-.item .info h3::after{content:"\2197";font-family:var(--body);font-size:.6em;margin-left:.35em;color:var(--dust);vertical-align:.25em}
+.item .info h3::after{content:"";display:inline-block;width:.42em;height:.42em;margin-left:.35em;vertical-align:.2em;background:var(--dust);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat}
 .item.all{background:var(--red);border-color:var(--red);display:flex;flex-direction:column;justify-content:space-between;padding:22px;gap:16px}
 .item.all h3{font-size:clamp(1.8rem,3vw,2.4rem)}
 .item.all h3::after{content:none}
@@ -289,6 +323,28 @@ body.menu-open{overflow:hidden}
 .shop-note{margin-top:20px;color:var(--dust);font-size:.88rem;max-width:72ch}
 @media (max-width:980px){.gear{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:700px){.gear{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.item .info{flex-direction:column;gap:2px;padding:12px}.item h3,.item .cost{font-size:1.25rem}}
+
+/* ---------- donate box ---------- */
+.donate{width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;background:var(--room);color:var(--chalk);border:1px solid var(--line);border-top:6px solid var(--red);padding:28px 26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.donate::backdrop{background:rgba(8,6,6,.78)}
+.donate[open]{display:grid;gap:14px}
+.donate h2{font-size:2.4rem}
+.donate-lede{color:var(--dust);font-size:.95rem}
+.donate-x{position:absolute;top:8px;right:8px;margin:0}
+.donate-x button{width:44px;height:44px;background:none;border:0;color:var(--dust);font-size:1.8rem;line-height:1;cursor:pointer}
+.donate-x button:hover{color:var(--chalk)}
+.pp-btn{display:flex;align-items:center;justify-content:center;gap:.4em;min-height:52px;border-radius:4px;background:#ffc439;color:#111;text-decoration:none;font-weight:700;font-size:1.05rem}
+.pp-btn:hover{background:#f2b52e}
+.pp-btn b{font-style:italic;font-weight:800;color:#003087}
+.pp-btn[target="_blank"]::after{display:none}
+.donate-note,.donate-thanks{font-size:.84rem;color:var(--dust);margin-top:10px}
+.donate-thanks{color:var(--chalk);border-left:3px solid var(--red);padding-left:10px}
+.pp-buttons{min-height:52px}
+.donate-check{border-top:1px solid var(--line);padding-top:12px;font-size:.88rem;color:var(--dust)}
+.donate-check summary{cursor:pointer;color:var(--chalk);font-weight:600}
+.donate-check p{margin-top:8px}
+body.dlg-open{overflow:hidden}
+@media (prefers-reduced-motion:no-preference){.donate[open]{animation:rise .25s ease-out both}}
 
 /* ---------- visit ---------- */
 .visit{background:var(--mat);border-top:1px solid var(--line)}
@@ -309,8 +365,8 @@ body.menu-open{overflow:hidden}
 @media (max-width:900px){.visit-grid{grid-template-columns:1fr}.uniform{grid-template-columns:1fr}}
 
 /* links that open another site in a new tab get a small arrow */
-a[target="_blank"]::after{content:"\2197";display:inline-block;margin-left:.35em;font-family:var(--body);font-weight:600;font-size:.9em;line-height:1;text-decoration:none;opacity:.85}
-.drawer a[target="_blank"]::after{font-size:.7em;vertical-align:.2em}
+a[target="_blank"]::after,.ext-ico{content:"";display:inline-block;width:.62em;height:.62em;margin-left:.4em;vertical-align:.05em;background:currentColor;opacity:.85;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat}
+.drawer a[target="_blank"]::after{width:.45em;height:.45em;vertical-align:.25em}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .ext-note{margin-top:14px;font-size:.84rem;color:var(--ink-soft)}
 footer{padding-block:36px;border-top:1px solid var(--line)}
@@ -329,6 +385,7 @@ footer small{color:var(--dust);font-size:.8rem}
     <a class="brand" href="#top" aria-label="Elite Wrestling NJ home"><img src="assets/logo.png" alt="Elite Wrestling" width="640" height="284"></a>
     <nav class="nav" aria-label="Main">
       <a href="#programs">Programs</a>
+      <a href="#schedule">Schedule</a>
       <a href="#membership">Membership</a>
       <a href="#coaches">Coaches</a>
       <a href="#champions">Champions</a>
@@ -344,6 +401,7 @@ footer small{color:var(--dust);font-size:.8rem}
 <nav class="drawer" id="drawer" aria-label="Mobile" hidden>
   <div class="drawer-in">
     <a href="#programs">Programs</a>
+    <a href="#schedule">Schedule</a>
     <a href="#membership">Membership</a>
     <a href="#coaches">Coaches</a>
     <a href="#champions">Champions</a>
@@ -428,6 +486,32 @@ footer small{color:var(--dust);font-size:.8rem}
   </div>
 </section>
 
+<!-- WEEKLY SCHEDULE -->
+<section class="sched" id="schedule" aria-labelledby="sched-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Superdome Sports &middot; Brick</p>
+      <h2 id="sched-h">Weekly schedule</h2>
+      <p class="lede">Mat time every day of the week. Find your wrestler's class below, or come to any of them for your free trial.</p>
+    </div>
+    <div class="notice" id="sched-notice" hidden></div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:var(--g-youth)"></i>Elementary &amp; middle school</span>
+      <span><i style="background:var(--g-hs)"></i>High school</span>
+      <span><i style="background:var(--g-girls)"></i>#EliteGirls</span>
+      <span><i style="background:var(--g-new)"></i>Beginners</span>
+      <span><i style="background:var(--g-group)"></i>Small groups</span>
+      <span><i style="background:var(--g-all)"></i>All levels</span>
+    </div>
+    <div class="daytabs" id="daytabs" role="tablist" aria-label="Day of the week"></div>
+    <div class="week" id="week"></div>
+    <div class="sched-foot">
+      <span id="sched-source">Schedule can change around holidays and tournaments.</span>
+      <a class="textlink" href="https://www.wrestlingiq.com/elitewrestlingnj/schedule" target="_blank" rel="noopener">Full calendar on WrestlingIQ</a>
+    </div>
+  </div>
+</section>
+
 <!-- MEMBERSHIP -->
 <section class="member" id="membership" aria-labelledby="mem-h">
   <div class="wrap">
@@ -458,7 +542,7 @@ footer small{color:var(--dust);font-size:.8rem}
     </div>
     <div class="row-cta">
       <a class="btn btn-red" href="https://www.wrestlingiq.com/register/elitewrestlingnj/membership" target="_blank" rel="noopener">Register now</a>
-      <a class="btn btn-ghost" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">View weekly schedule</a>
+      <a class="btn btn-ghost" href="#schedule">View weekly schedule</a>
     </div>
     <p class="ext-note">Sign-up and payment are handled securely by WrestlingIQ and open in a new tab. This page stays open behind it.</p>
     <p class="fine">If a member ends their membership before finishing the selected commitment period, the membership is recalculated at the rate for the time actually attended, and the member pays the difference.</p>
@@ -650,7 +734,7 @@ footer small{color:var(--dust);font-size:.8rem}
       <p class="eyebrow" style="color:#fff;opacity:.85">501(c)(3) non-profit</p>
       <h3>Elite for Life Trust</h3>
       <p>&ldquo;For the wrestling cause and the great men &amp; women it creates.&rdquo; The trust gives college scholarships to graduating Elite seniors. It also covers the cost of the program for low-income families, so no kid misses out. All donations are 100% tax deductible.</p>
-      <a class="btn" href="https://www.paypal.com/ncp/payment/ZDRNNV7Y3HSBC" target="_blank" rel="noopener">Donate</a>
+      <button class="btn" type="button" id="donate-open" aria-haspopup="dialog">Donate</button>
     </div>
     <div class="partner">
       <p class="eyebrow">Elite partner</p>
@@ -694,7 +778,7 @@ footer small{color:var(--dust);font-size:.8rem}
         <h3>Contact</h3>
         <div class="copyrow"><span class="val" id="v-phone">732-433-5890</span><button class="copy" id="copy-phone" data-copy="732-433-5890">Copy</button></div>
         <div class="copyrow"><span class="val" id="v-email">SteveRivera@EliteWrestlingNJ.com</span><button class="copy" id="copy-email" data-copy="SteveRivera@EliteWrestlingNJ.com">Copy</button></div>
-        <a class="textlink" href="https://www.elitewrestlingnj.com/schedule" target="_blank" rel="noopener">Weekly schedule</a>
+        <a class="textlink" href="#schedule">Weekly schedule</a>
       </div>
     </div>
     <div class="uniform">
@@ -704,6 +788,23 @@ footer small{color:var(--dust);font-size:.8rem}
     </div>
   </div>
 </section>
+
+<dialog class="donate" id="donate-dlg" aria-labelledby="donate-h">
+  <form method="dialog" class="donate-x"><button type="submit" aria-label="Close">&times;</button></form>
+  <p class="eyebrow">501(c)(3) non-profit</p>
+  <h2 id="donate-h">Support Elite for Life</h2>
+  <p class="donate-lede">Your gift funds college scholarships for Elite seniors and free training for families who can't afford it. Donations are 100% tax deductible.</p>
+  <div id="pp-buttons" class="pp-buttons" hidden></div>
+  <div id="pp-fallback">
+    <a class="pp-btn" id="pp-open" href="https://www.paypal.com/ncp/payment/ZDRNNV7Y3HSBC" target="_blank" rel="noopener"><span>Donate with</span> <b>PayPal</b></a>
+    <p class="donate-note" id="pp-note">PayPal opens in a secure window on top of this page. Pay with PayPal, Venmo or a card. You choose the amount.</p>
+  </div>
+  <p class="donate-thanks" id="pp-thanks" hidden>Thank you for supporting Elite for Life! If you finished your donation, PayPal will email your receipt.</p>
+  <details class="donate-check">
+    <summary>Prefer to mail a check?</summary>
+    <p>Make it payable to <b>Elite for Life Trust</b> and mail it to 263 Jackson Pines Rd, Jackson, NJ 08527.</p>
+  </details>
+</dialog>
 
 </main>
 
@@ -749,6 +850,72 @@ footer small{color:var(--dust);font-size:.8rem}
   }
   chips.forEach(function(c){c.addEventListener("click",function(){applyFilter(c.dataset.f)})});
 
+  // ---- weekly schedule ----
+  // TO UPDATE THE SCHEDULE: paste the Google Sheet "Publish to web" CSV link between the quotes.
+  // Leave it empty to use the built-in schedule below. See SCHEDULE.md for step-by-step help.
+  var SCHEDULE_SHEET_CSV = "";
+  var DEFAULT_SCHEDULE = `Day,Start,End,Class,Group,Note
+Mon,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Mon,5:30 PM,6:45 PM,Elementary & Middle School,youth,
+Mon,7:00 PM,8:15 PM,High School,hs,
+Mon,7:00 PM,8:30 PM,#EliteGirls,girls,
+Tue,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Tue,5:30 PM,6:45 PM,Elementary & Middle School,youth,
+Tue,7:00 PM,8:15 PM,High School,hs,
+Tue,7:00 PM,8:30 PM,#EliteGirls,girls,
+Wed,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Wed,5:30 PM,6:45 PM,Future Champs (Beginners),new,Pre-K to 4th grade
+Wed,7:00 PM,8:30 PM,Advanced High School & Middle School,hs,Coach approval
+Thu,4:30 PM,5:30 PM,Small Group Sessions,group,Members & non-members
+Thu,5:30 PM,6:45 PM,Elementary & Middle School,youth,
+Thu,7:00 PM,8:15 PM,High School,hs,
+Thu,7:00 PM,8:30 PM,#EliteGirls,girls,
+Fri,5:30 PM,6:45 PM,Future Champs (Beginners),new,Pre-K to 4th grade
+Fri,6:30 PM,8:00 PM,Friday Night Live,all,
+Sat,9:30 AM,11:00 AM,Elementary / Middle / High School,all,
+Sat,9:30 AM,11:00 AM,#EliteGirls,girls,
+Sun,9:30 AM,11:00 AM,Elementary / Middle / High School,all,
+Sun,9:30 AM,11:00 AM,#EliteGirls,girls,
+2026-11-26,,,No practice: Thanksgiving,closed,`;
+  var DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],DAYFULL=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  function parseCSV(t){var rows=[],row=[],f="",q=false;t=t.replace(/\r/g,"");for(var i=0;i<t.length;i++){var c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else if(c==='"')q=true;else if(c===","){row.push(f);f=""}else if(c==="\n"){row.push(f);rows.push(row);row=[];f=""}else f+=c}row.push(f);rows.push(row);return rows.filter(function(r){return r.some(function(x){return x.trim()})})}
+  function toMin(v){v=(v||"").trim().toLowerCase();var m=v.match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm|a|p)?$/);if(!m)return null;var h=+m[1],mi=+(m[2]||0),ap=m[3];if(ap){ap=ap[0];if(ap==="p"&&h<12)h+=12;if(ap==="a"&&h===12)h=0}return h*60+mi}
+  function fmt(mn){var h=Math.floor(mn/60),m=mn%60,ap=h>=12?"pm":"am",hh=h%12||12;return hh+(m?":"+String(m).padStart(2,"0"):"")+ap}
+  function dayIdx(v){v=(v||"").trim().slice(0,3).toLowerCase();for(var i=0;i<7;i++)if(DAYS[i].toLowerCase()===v)return i;return -1}
+  function guessGroup(n){n=n.toLowerCase();if(/girl/.test(n))return"girls";if(/champ|beginner|develop/.test(n))return"new";if(/small group|private/.test(n))return"group";if(/high/.test(n)&&!/elem|middle|ms\b/.test(n))return"hs";if(/elem|middle|youth|\bms\b/.test(n))return"youth";return"all"}
+  var GROUPS={hs:"var(--g-hs)",girls:"var(--g-girls)",youth:"var(--g-youth)",new:"var(--g-new)",group:"var(--g-group)",all:"var(--g-all)"};
+  function buildSchedule(text,fromSheet){
+    var rows=parseCSV(text),head=rows.shift().map(function(h){return h.trim().toLowerCase()});
+    function col(r,name){var i=head.indexOf(name);return i>-1?(r[i]||"").trim():""}
+    var week=[[],[],[],[],[],[],[]],notes=[],today=new Date();today.setHours(0,0,0,0);
+    rows.forEach(function(r){
+      var day=col(r,"day"),name=col(r,"class"),note=col(r,"note");if(!day||!name)return;
+      var dm=day.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)||day.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+      if(dm){var d=day.indexOf("-")>-1?new Date(+dm[1],dm[2]-1,+dm[3]):new Date(+dm[3],dm[1]-1,+dm[2]);var diff=(d-today)/864e5;if(diff>=0&&diff<=45)notes.push({d:d,t:name+(note?" ("+note+")":"")});return}
+      var di=dayIdx(day),st=toMin(col(r,"start")),en=toMin(col(r,"end"));if(di<0||st===null)return;
+      var g=(col(r,"group")||guessGroup(name)).toLowerCase();if(!GROUPS[g])g=guessGroup(name);
+      week[di].push({s:st,e:en,n:name,g:g,note:note});
+    });
+    week.forEach(function(d){d.sort(function(a,b){return a.s-b.s||a.n.localeCompare(b.n)})});
+    var ti=(new Date().getDay()+6)%7;
+    document.getElementById("week").innerHTML=week.map(function(list,i){
+      var items=list.length?list.map(function(x){return '<li class="slot" style="--g:'+GROUPS[x.g]+'"><time>'+fmt(x.s)+(x.e!==null?" – "+fmt(x.e):"")+'</time><b>'+esc(x.n)+'</b>'+(x.note?'<span>'+esc(x.note)+'</span>':'')+'</li>'}).join(""):'<li class="empty">No classes</li>';
+      return '<div class="sday'+(i===ti?" today shown":"")+'" id="day-'+i+'" role="tabpanel" aria-label="'+DAYFULL[i]+'"><h3>'+DAYFULL[i]+(i===ti?'<small>Today</small>':'')+'</h3><ul class="slots">'+items+'</ul></div>';
+    }).join("");
+    document.getElementById("daytabs").innerHTML=DAYS.map(function(d,i){return '<button type="button" role="tab" id="tab-'+i+'" aria-controls="day-'+i+'" aria-selected="'+(i===ti)+'">'+d+'</button>'}).join("");
+    document.querySelectorAll("#daytabs button").forEach(function(b,i){b.addEventListener("click",function(){
+      document.querySelectorAll("#daytabs button").forEach(function(x,j){x.setAttribute("aria-selected",String(j===i))});
+      document.querySelectorAll("#week .sday").forEach(function(x,j){x.classList.toggle("shown",j===i)});
+    })});
+    var nb=document.getElementById("sched-notice");notes.sort(function(a,b){return a.d-b.d});
+    if(notes.length){nb.innerHTML='<b>Heads up</b>'+notes.map(function(n){return'<span>'+n.d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})+": "+esc(n.t)+'</span>'}).join("");nb.hidden=false}else nb.hidden=true;
+    if(fromSheet)document.getElementById("sched-source").textContent="Live from the Elite schedule sheet. Times can change around holidays and tournaments.";
+  }
+  buildSchedule(DEFAULT_SCHEDULE,false);
+  if(SCHEDULE_SHEET_CSV){
+    fetch(SCHEDULE_SHEET_CSV,{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){if(/^\s*day\s*,/i.test(t))buildSchedule(t,true)}).catch(function(){});
+  }
+
   // ---- upcoming tournaments (past dates drop off automatically) ----
   var events=[
     ["2026-11-15","GTE Group Turkey Classic","Elizabeth, NJ"],
@@ -780,7 +947,7 @@ footer small{color:var(--dust);font-size:.8rem}
   var allOut=gear.every(function(g){return g.soldOut});
   document.getElementById("gear").innerHTML=gear.map(function(g){
     return '<a class="item" href="'+g.url+'" target="_blank" rel="noopener"><div class="pic"><img src="assets/store/'+g.img+'.jpg" alt="Elite Wrestling '+esc(g.n)+'" width="400" height="457" loading="lazy">'+(g.soldOut?'<span class="status">Sold out</span>':'')+'</div><div class="info"><h3>'+esc(g.n)+'</h3><span class="cost">$'+g.p+'</span></div></a>';
-  }).join("")+'<a class="item all" href="'+STORE+'" target="_blank" rel="noopener"><h3>See the full Elite store</h3><p>'+(allOut?'Everything is sold out right now. Check the store for restocks.':'All sizes, youth and adult.')+'</p><span class="go">Open store &#8599;</span></a>';
+  }).join("")+'<a class="item all" href="'+STORE+'" target="_blank" rel="noopener"><h3>See the full Elite store</h3><p>'+(allOut?'Everything is sold out right now. Check the store for restocks.':'All sizes, youth and adult.')+'</p><span class="go">Open store<i class="ext-ico" aria-hidden="true"></i></span></a>';
 
   // ---- in-page links: land each section just below the header, whatever its real height ----
   var header=document.querySelector(".top");
@@ -820,7 +987,7 @@ footer small{color:var(--dust);font-size:.8rem}
 
   // ---- highlight the section in view ----
   var links=[].slice.call(document.querySelectorAll('.nav a, .drawer a[href^="#"]'));
-  var ids=["programs","membership","coaches","champions","freestyle","tournaments","shop","visit"];
+  var ids=["programs","schedule","membership","coaches","champions","freestyle","tournaments","shop","visit"];
   var secs=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
   function spy(){
     var y=window.scrollY+window.innerHeight*0.35,cur="";
@@ -830,6 +997,36 @@ footer small{color:var(--dust);font-size:.8rem}
   }
   var tick=false;window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(function(){spy();tick=false})}},{passive:true});
   spy();
+
+  // ---- donate box (Elite for Life, PayPal) ----
+  // OPTIONAL: paste Elite's PayPal client ID here to show PayPal's own buttons inside the box.
+  // PayPal > Pay Links & Buttons > the Elite for Life button > Embed code > the "client-id=..." value. See DONATE.md.
+  var PAYPAL_CLIENT_ID = "";
+  var PAYPAL_BUTTON_ID = "ZDRNNV7Y3HSBC";
+  var PAYPAL_LINK = "https://www.paypal.com/ncp/payment/ZDRNNV7Y3HSBC";
+  var dlg=document.getElementById("donate-dlg"),ppLoaded=false;
+  function openDonate(){
+    document.getElementById("pp-thanks").hidden=true;
+    if(dlg.showModal){dlg.showModal()}else{dlg.setAttribute("open","")}
+    document.body.classList.add("dlg-open");
+    if(PAYPAL_CLIENT_ID&&!ppLoaded){ppLoaded=true;
+      var sc=document.createElement("script");
+      sc.src="https://www.paypal.com/sdk/js?client-id="+encodeURIComponent(PAYPAL_CLIENT_ID)+"&components=hosted-buttons&enable-funding=venmo&currency=USD";
+      sc.onload=function(){try{window.paypal.HostedButtons({hostedButtonId:PAYPAL_BUTTON_ID}).render("#pp-buttons").then(function(){document.getElementById("pp-buttons").hidden=false;document.getElementById("pp-fallback").hidden=true})}catch(e){}};
+      document.head.appendChild(sc);
+    }
+  }
+  dlg.addEventListener("close",function(){document.body.classList.remove("dlg-open")});
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+  document.getElementById("donate-open").addEventListener("click",openDonate);
+  document.getElementById("pp-open").addEventListener("click",function(e){
+    var w=Math.min(480,screen.availWidth),h=Math.min(760,screen.availHeight-40);
+    var left=Math.round((screen.availWidth-w)/2+(screen.availLeft||0)),top=Math.round((screen.availHeight-h)/2+(screen.availTop||0));
+    var pop=null;try{pop=window.open(PAYPAL_LINK,"elite_paypal","popup=yes,width="+w+",height="+h+",left="+left+",top="+top)}catch(err){}
+    if(!pop)return; /* pop-ups blocked: the link opens PayPal in a new tab instead */
+    e.preventDefault();try{pop.focus()}catch(err){}
+    var t=setInterval(function(){try{if(pop.closed){clearInterval(t);document.getElementById("pp-thanks").hidden=false}}catch(err){clearInterval(t)}},700);
+  });
 
   // ---- copy buttons ----
   document.querySelectorAll(".copy[data-copy]").forEach(function(b){
