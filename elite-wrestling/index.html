@@ -182,12 +182,13 @@ body.menu-open{overflow:hidden}
 .member{background:var(--paper);color:var(--ink)}
 .member .lede{color:var(--ink-soft)}
 .trial{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:var(--ink);color:var(--chalk);padding:clamp(24px,4vw,40px);margin-bottom:28px;position:relative;overflow:hidden}
-.trial::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:16px solid var(--red);opacity:.9;pointer-events:none}
+.trial::after{content:"";position:absolute;z-index:0;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:16px solid var(--red);opacity:.9;pointer-events:none}
+.trial > *{position:relative;z-index:1}
 .trial h3{font-size:clamp(2rem,4.5vw,3.2rem)}
 .trial h3 em{font-style:normal;color:var(--red)}
 .trial p{color:var(--dust);margin-top:8px;max-width:52ch}
 .trial .btn{position:relative;z-index:1}
-@media (max-width:700px){.trial{grid-template-columns:1fr}}
+@media (max-width:700px){.trial{grid-template-columns:1fr}.trial::after{display:none}}
 .plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .plan{background:#fff;border:1px solid #e1dad8;padding:22px;display:grid;gap:10px;align-content:start;position:relative;min-width:0}
 .plan.best{border:2px solid var(--red)}
@@ -312,7 +313,7 @@ body.menu-open{overflow:hidden}
 .item h3{font-size:1.45rem;min-width:0}
 .item .cost{font-family:var(--display);font-weight:800;font-size:1.45rem;font-variant-numeric:tabular-nums;color:var(--red);white-space:nowrap}
 .item[target="_blank"]::after{display:none}
-.item .info h3::after{content:"\2197";font-family:var(--body);font-size:.6em;margin-left:.35em;color:var(--dust);vertical-align:.25em}
+.item .info h3::after{content:"";display:inline-block;width:.42em;height:.42em;margin-left:.35em;vertical-align:.2em;background:var(--dust);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat}
 .item.all{background:var(--red);border-color:var(--red);display:flex;flex-direction:column;justify-content:space-between;padding:22px;gap:16px}
 .item.all h3{font-size:clamp(1.8rem,3vw,2.4rem)}
 .item.all h3::after{content:none}
@@ -342,8 +343,8 @@ body.menu-open{overflow:hidden}
 @media (max-width:900px){.visit-grid{grid-template-columns:1fr}.uniform{grid-template-columns:1fr}}
 
 /* links that open another site in a new tab get a small arrow */
-a[target="_blank"]::after{content:"\2197";display:inline-block;margin-left:.35em;font-family:var(--body);font-weight:600;font-size:.9em;line-height:1;text-decoration:none;opacity:.85}
-.drawer a[target="_blank"]::after{font-size:.7em;vertical-align:.2em}
+a[target="_blank"]::after,.ext-ico{content:"";display:inline-block;width:.62em;height:.62em;margin-left:.4em;vertical-align:.05em;background:currentColor;opacity:.85;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 9 9 3M4.5 3H9v4.5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center/contain no-repeat}
+.drawer a[target="_blank"]::after{width:.45em;height:.45em;vertical-align:.25em}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .ext-note{margin-top:14px;font-size:.84rem;color:var(--ink-soft)}
 footer{padding-block:36px;border-top:1px solid var(--line)}
@@ -907,7 +908,7 @@ Sun,9:30 AM,11:00 AM,#EliteGirls,girls,
   var allOut=gear.every(function(g){return g.soldOut});
   document.getElementById("gear").innerHTML=gear.map(function(g){
     return '<a class="item" href="'+g.url+'" target="_blank" rel="noopener"><div class="pic"><img src="assets/store/'+g.img+'.jpg" alt="Elite Wrestling '+esc(g.n)+'" width="400" height="457" loading="lazy">'+(g.soldOut?'<span class="status">Sold out</span>':'')+'</div><div class="info"><h3>'+esc(g.n)+'</h3><span class="cost">$'+g.p+'</span></div></a>';
-  }).join("")+'<a class="item all" href="'+STORE+'" target="_blank" rel="noopener"><h3>See the full Elite store</h3><p>'+(allOut?'Everything is sold out right now. Check the store for restocks.':'All sizes, youth and adult.')+'</p><span class="go">Open store &#8599;</span></a>';
+  }).join("")+'<a class="item all" href="'+STORE+'" target="_blank" rel="noopener"><h3>See the full Elite store</h3><p>'+(allOut?'Everything is sold out right now. Check the store for restocks.':'All sizes, youth and adult.')+'</p><span class="go">Open store<i class="ext-ico" aria-hidden="true"></i></span></a>';
 
   // ---- in-page links: land each section just below the header, whatever its real height ----
   var header=document.querySelector(".top");
