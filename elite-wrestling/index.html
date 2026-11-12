@@ -324,6 +324,28 @@ body.menu-open{overflow:hidden}
 @media (max-width:980px){.gear{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:700px){.gear{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.item .info{flex-direction:column;gap:2px;padding:12px}.item h3,.item .cost{font-size:1.25rem}}
 
+/* ---------- donate box ---------- */
+.donate{width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;background:var(--room);color:var(--chalk);border:1px solid var(--line);border-top:6px solid var(--red);padding:28px 26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.donate::backdrop{background:rgba(8,6,6,.78)}
+.donate[open]{display:grid;gap:14px}
+.donate h2{font-size:2.4rem}
+.donate-lede{color:var(--dust);font-size:.95rem}
+.donate-x{position:absolute;top:8px;right:8px;margin:0}
+.donate-x button{width:44px;height:44px;background:none;border:0;color:var(--dust);font-size:1.8rem;line-height:1;cursor:pointer}
+.donate-x button:hover{color:var(--chalk)}
+.pp-btn{display:flex;align-items:center;justify-content:center;gap:.4em;min-height:52px;border-radius:4px;background:#ffc439;color:#111;text-decoration:none;font-weight:700;font-size:1.05rem}
+.pp-btn:hover{background:#f2b52e}
+.pp-btn b{font-style:italic;font-weight:800;color:#003087}
+.pp-btn[target="_blank"]::after{display:none}
+.donate-note,.donate-thanks{font-size:.84rem;color:var(--dust);margin-top:10px}
+.donate-thanks{color:var(--chalk);border-left:3px solid var(--red);padding-left:10px}
+.pp-buttons{min-height:52px}
+.donate-check{border-top:1px solid var(--line);padding-top:12px;font-size:.88rem;color:var(--dust)}
+.donate-check summary{cursor:pointer;color:var(--chalk);font-weight:600}
+.donate-check p{margin-top:8px}
+body.dlg-open{overflow:hidden}
+@media (prefers-reduced-motion:no-preference){.donate[open]{animation:rise .25s ease-out both}}
+
 /* ---------- visit ---------- */
 .visit{background:var(--mat);border-top:1px solid var(--line)}
 .visit-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:clamp(24px,4vw,48px)}
@@ -712,7 +734,7 @@ footer small{color:var(--dust);font-size:.8rem}
       <p class="eyebrow" style="color:#fff;opacity:.85">501(c)(3) non-profit</p>
       <h3>Elite for Life Trust</h3>
       <p>&ldquo;For the wrestling cause and the great men &amp; women it creates.&rdquo; The trust gives college scholarships to graduating Elite seniors. It also covers the cost of the program for low-income families, so no kid misses out. All donations are 100% tax deductible.</p>
-      <a class="btn" href="https://www.paypal.com/ncp/payment/ZDRNNV7Y3HSBC" target="_blank" rel="noopener">Donate</a>
+      <button class="btn" type="button" id="donate-open" aria-haspopup="dialog">Donate</button>
     </div>
     <div class="partner">
       <p class="eyebrow">Elite partner</p>
@@ -766,6 +788,23 @@ footer small{color:var(--dust);font-size:.8rem}
     </div>
   </div>
 </section>
+
+<dialog class="donate" id="donate-dlg" aria-labelledby="donate-h">
+  <form method="dialog" class="donate-x"><button type="submit" aria-label="Close">&times;</button></form>
+  <p class="eyebrow">501(c)(3) non-profit</p>
+  <h2 id="donate-h">Support Elite for Life</h2>
+  <p class="donate-lede">Your gift funds college scholarships for Elite seniors and free training for families who can't afford it. Donations are 100% tax deductible.</p>
+  <div id="pp-buttons" class="pp-buttons" hidden></div>
+  <div id="pp-fallback">
+    <a class="pp-btn" id="pp-open" href="https://www.paypal.com/ncp/payment/ZDRNNV7Y3HSBC" target="_blank" rel="noopener"><span>Donate with</span> <b>PayPal</b></a>
+    <p class="donate-note" id="pp-note">PayPal opens in a secure window on top of this page. Pay with PayPal, Venmo or a card. You choose the amount.</p>
+  </div>
+  <p class="donate-thanks" id="pp-thanks" hidden>Thank you for supporting Elite for Life! If you finished your donation, PayPal will email your receipt.</p>
+  <details class="donate-check">
+    <summary>Prefer to mail a check?</summary>
+    <p>Make it payable to <b>Elite for Life Trust</b> and mail it to 263 Jackson Pines Rd, Jackson, NJ 08527.</p>
+  </details>
+</dialog>
 
 </main>
 
@@ -958,6 +997,36 @@ Sun,9:30 AM,11:00 AM,#EliteGirls,girls,
   }
   var tick=false;window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(function(){spy();tick=false})}},{passive:true});
   spy();
+
+  // ---- donate box (Elite for Life, PayPal) ----
+  // OPTIONAL: paste Elite's PayPal client ID here to show PayPal's own buttons inside the box.
+  // PayPal > Pay Links & Buttons > the Elite for Life button > Embed code > the "client-id=..." value. See DONATE.md.
+  var PAYPAL_CLIENT_ID = "";
+  var PAYPAL_BUTTON_ID = "ZDRNNV7Y3HSBC";
+  var PAYPAL_LINK = "https://www.paypal.com/ncp/payment/ZDRNNV7Y3HSBC";
+  var dlg=document.getElementById("donate-dlg"),ppLoaded=false;
+  function openDonate(){
+    document.getElementById("pp-thanks").hidden=true;
+    if(dlg.showModal){dlg.showModal()}else{dlg.setAttribute("open","")}
+    document.body.classList.add("dlg-open");
+    if(PAYPAL_CLIENT_ID&&!ppLoaded){ppLoaded=true;
+      var sc=document.createElement("script");
+      sc.src="https://www.paypal.com/sdk/js?client-id="+encodeURIComponent(PAYPAL_CLIENT_ID)+"&components=hosted-buttons&enable-funding=venmo&currency=USD";
+      sc.onload=function(){try{window.paypal.HostedButtons({hostedButtonId:PAYPAL_BUTTON_ID}).render("#pp-buttons").then(function(){document.getElementById("pp-buttons").hidden=false;document.getElementById("pp-fallback").hidden=true})}catch(e){}};
+      document.head.appendChild(sc);
+    }
+  }
+  dlg.addEventListener("close",function(){document.body.classList.remove("dlg-open")});
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+  document.getElementById("donate-open").addEventListener("click",openDonate);
+  document.getElementById("pp-open").addEventListener("click",function(e){
+    var w=Math.min(480,screen.availWidth),h=Math.min(760,screen.availHeight-40);
+    var left=Math.round((screen.availWidth-w)/2+(screen.availLeft||0)),top=Math.round((screen.availHeight-h)/2+(screen.availTop||0));
+    var pop=null;try{pop=window.open(PAYPAL_LINK,"elite_paypal","popup=yes,width="+w+",height="+h+",left="+left+",top="+top)}catch(err){}
+    if(!pop)return; /* pop-ups blocked: the link opens PayPal in a new tab instead */
+    e.preventDefault();try{pop.focus()}catch(err){}
+    var t=setInterval(function(){try{if(pop.closed){clearInterval(t);document.getElementById("pp-thanks").hidden=false}}catch(err){clearInterval(t)}},700);
+  });
 
   // ---- copy buttons ----
   document.querySelectorAll(".copy[data-copy]").forEach(function(b){
