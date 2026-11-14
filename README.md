@@ -12,6 +12,15 @@ Live at https://apm-9.github.io/Mauricetraining.work/ (GitHub Pages, served from
 | Shirt stock / prices | `merch.html` → `SHIRTS` and `PRICES` near the bottom (0 = sold out) |
 | Past fights | `fights.html` → "Past fights" section (copy the `<article class="card bout">` block) |
 | Coaching prices / features | `coaching.html` |
+| Business name, certifications, experience numbers | `assets/site.js` → `business`, `certifications`, `experience` |
+| Client testimonials | `assets/site.js` → `testimonials` (only quotes clients agreed to share) |
+| Coaching policies / FAQ | `assets/site.js` → `policies` |
+| Web design prices and what each tier includes | `assets/site.js` → `webPricing` (empty price shows "Custom quote") |
+| Web add-ons (care plan, extra pages…) | `assets/site.js` → `webAddons` |
+| Portfolio projects | `assets/site.js` → `projects` (screenshots go in `img/work/`) |
+
+**Placeholders:** any empty item above is hidden on the live site. Add `?draft` to a page address
+(for example `coaching.html?draft` or `web-design.html?draft`) to see dashed yellow boxes where each one will go.
 
 The header and footer on every page come from `assets/site.js`; styles are in `assets/site.css`.
 Web-sized photos live in `img/`. The full-size originals in the repo root are no longer used by the pages.

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Design | Ashanti Maurice</title>
+<meta name="description" content="Custom websites for restaurants, gyms and training facilities, and insurance adjusters. Fast, phone-friendly sites with clear tiered pricing.">
+<meta name="theme-color" content="#0c0b0b">
+<meta property="og:title" content="Web Design | Ashanti Maurice">
+<meta property="og:description" content="Custom websites for restaurants, gyms and insurance adjusters.">
+<meta property="og:image" content="https://apm-9.github.io/Mauricetraining.work/img/work/elite-wrestling-desktop.jpg">
+<link rel="icon" href="img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .steps-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;counter-reset:s}
+  .steps-row .card{counter-increment:s}
+  .steps-row .card::before{content:"0" counter(s);display:block;font-family:var(--display);font-size:2.2rem;color:var(--red-hot);line-height:1;margin-bottom:14px}
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+  .why .card h3{font-size:1.3rem}
+  .why .card p{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+
+  <section class="page-hero">
+    <div class="bg"><img src="img/work/elite-wrestling-desktop.jpg" alt="" style="opacity:.12;filter:blur(2px)"></div>
+    <div class="wrap">
+      <span class="eyebrow">Web design &amp; development</span>
+      <h1>Websites that bring in business</h1>
+      <p class="lede">Custom, fast, phone-friendly sites for restaurants, gyms and training facilities, and insurance adjusters. Built by hand — no cookie-cutter templates.</p>
+      <div class="btn-row" style="margin-top:28px">
+        <a class="btn" href="contact.html?topic=web">Get a quote</a>
+        <a class="btn ghost" href="#work">See my work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Recent work</span>
+        <h2>Projects</h2>
+        <p class="lede">Sites I've built from scratch or rebuilt from an older platform.</p>
+      </div>
+      <div class="projects" data-block="projects"></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section band-panel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What you get</span>
+        <h2>Built to work, not just look good</h2>
+      </div>
+      <div class="why reveal">
+        <div class="card"><h3>Made for phones</h3><p>Most of your customers find you on a phone. Every page is designed for small screens first.</p></div>
+        <div class="card"><h3>Fast</h3><p>Hand-built pages with right-sized images load quickly, which keeps visitors from leaving.</p></div>
+        <div class="card"><h3>Easy to update</h3><p>Things that change often, like schedules, menus or prices, can be set up so you edit them yourself.</p></div>
+        <div class="card"><h3>Built around you</h3><p>Programs, menus or services — the site is shaped around what your customers need to find.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Packages by industry</h2>
+        <p class="lede">Pick your industry to see what each tier includes.</p>
+      </div>
+      <div class="reveal" data-block="pricing"></div>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section class="section tight" style="padding-top:0" data-section>
+    <div class="wrap">
+      <h3 style="margin-bottom:18px">Add-ons &amp; ongoing care</h3>
+      <div class="addons" data-block="addons"></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section band-panel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Process</span>
+        <h2>How it works</h2>
+      </div>
+      <div class="steps-row reveal">
+        <div class="card"><h3>Talk</h3><p class="muted">A quick call about your business, your customers and what the site needs to do.</p></div>
+        <div class="card"><h3>Design</h3><p class="muted">I build a first version you can click through on your own phone.</p></div>
+        <div class="card"><h3>Refine</h3><p class="muted">You give feedback and I make changes until it's right.</p></div>
+        <div class="card"><h3>Launch</h3><p class="muted">Your site goes live on your domain, with ongoing care if you want it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section band-cream">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Let's build it</span>
+        <h2>Ready for a better website?</h2>
+        <p class="lede" style="margin:18px 0 26px">Tell me about your business and I'll send you a quote.</p>
+        <a class="btn" href="contact.html?topic=web">Get a quote</a>
+      </div>
+      <div class="photo" style="background:transparent"><img src="img/work/elite-wrestling-phone.jpg" alt="Elite Wrestling NJ website on a phone" loading="lazy" style="max-width:260px;margin:auto;border-radius:22px;border:4px solid #1b1715"></div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

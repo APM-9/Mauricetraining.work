@@ -24,7 +24,75 @@ window.SITE = {
     venue: "",
     weight: "",
     tickets: ""
-  }
+  },
+
+  /* ================= FITNESS COACHING: TRUST DETAILS =================
+     Anything left empty is hidden on the live site.
+     Add ?draft to any page address to see where each item goes. */
+
+  /* Registered business name, e.g. "Fighter Physique LLC" */
+  business: "",
+
+  /* e.g. ["NASM Certified Personal Trainer", "CPR / AED Certified"] */
+  certifications: [],
+
+  /* e.g. [{ value: "5+", label: "Years coaching" }, { value: "60+", label: "Clients coached" }] */
+  experience: [],
+
+  /* Only use quotes clients agreed to share.
+     e.g. { quote: "Down 22 lb and stronger than ever.", name: "Mike R.", result: "-22 lb in 12 weeks", photo: "" } */
+  testimonials: [],
+
+  /* Policies / FAQ, e.g. { q: "Is there a payment plan?", a: "Yes — ..." } */
+  policies: [],
+
+  /* ================= WEB DEVELOPMENT =================
+     price: "" shows "Get a quote". Set it like "$1,500" or "From $900".
+     The features are a starting draft. Edit them to match what you offer. */
+  webPricing: [
+    {
+      id: "restaurants",
+      name: "Restaurants",
+      blurb: "Menus, hours and directions that look right on a phone.",
+      tiers: [
+        { name: "Starter", price: "", features: ["One-page site", "Menu, hours and map", "Click-to-call and directions", "Phone-friendly design"] },
+        { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Multi-page site", "Photo gallery", "Online ordering or reservation link", "Google search basics"] },
+        { name: "Premium", price: "", features: ["Everything in Pro", "Menu you can edit yourself", "Specials and events section", "Monthly care plan included"] }
+      ]
+    },
+    {
+      id: "gyms",
+      name: "Gyms & facilities",
+      blurb: "Programs, schedules and sign-ups that bring in members.",
+      tiers: [
+        { name: "Starter", price: "", features: ["One-page site", "Programs and coaches", "Free-trial or contact form", "Phone-friendly design"] },
+        { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Weekly schedule you edit from a spreadsheet", "Membership and pricing section", "Events and tournaments list"] },
+        { name: "Premium", price: "", features: ["Everything in Pro", "Merch shop section", "Donations or payments box", "Monthly care plan included"] }
+      ]
+    },
+    {
+      id: "insurance",
+      name: "Adjusters & insurance",
+      blurb: "A professional presence that earns trust and brings in leads.",
+      tiers: [
+        { name: "Starter", price: "", features: ["One-page site", "Services and service area", "Contact form", "Phone-friendly design"] },
+        { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Multi-page site", "Claim or quote request form", "Licenses and credentials section", "Google search basics"] },
+        { name: "Premium", price: "", features: ["Everything in Pro", "Client reviews section", "FAQ and resources pages", "Monthly care plan included"] }
+      ]
+    }
+  ],
+
+  /* e.g. { name: "Care plan", price: "$50/mo", note: "Up to 3 small changes a month" } */
+  webAddons: [],
+
+  /* Portfolio. image = screenshot in img/work/. link = "" for no link. */
+  projects: [
+    { name: "Ashanti Maurice", type: "Personal brand · Redesign", image: "img/work/ashanti-maurice-desktop.jpg", phone: "img/work/ashanti-maurice-phone.jpg",
+      text: "Fighter and coaching site with an online shop, coaching applications and fight updates.", link: "https://apm-9.github.io/Mauricetraining.work/" },
+    { name: "Elite Wrestling NJ", type: "Wrestling gym · Redesign", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
+      text: "Rebuilt a gym's Wix site as a fast custom site: programs, a schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "" }
+    /* Add more: { name: "", type: "", image: "img/work/....jpg", phone: "", text: "", link: "" } */
+  ]
 };
 
 (function () {
@@ -35,6 +103,7 @@ window.SITE = {
     ["coaching.html", "Coaching"],
     ["fights.html", "Fights"],
     ["merch.html", "Merch"],
+    ["web-design.html", "Web Design"],
     ["contact.html", "Contact"]
   ];
   function navLinks() {
@@ -76,7 +145,7 @@ window.SITE = {
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && drawer.classList.contains("open")) setOpen(false);
     });
-    matchMedia("(min-width:861px)").addEventListener("change", function (m) { if (m.matches && drawer.classList.contains("open")) setOpen(false); });
+    matchMedia("(min-width:1021px)").addEventListener("change", function (m) { if (m.matches && drawer.classList.contains("open")) setOpen(false); });
   }
 
   var footer = document.getElementById("site-footer");
@@ -85,7 +154,7 @@ window.SITE = {
       '<footer class="site-footer"><div class="wrap">' +
         '<div class="footer-grid">' +
           '<div class="footer-brand"><img src="img/logo-badge.png" alt="Chef Whippems logo" width="72" height="67">' +
-            "<div><strong>Ashanti Maurice</strong><p>Amateur fighter and strength coach. New Jersey.</p></div></div>" +
+            "<div><strong>Ashanti Maurice</strong><p>Fighter, strength coach and web developer. New Jersey.</p></div></div>" +
           "<div><h4>Site</h4><ul>" + links.map(function (l) { return '<li><a href="' + l[0] + '">' + l[1] + "</a></li>"; }).join("") + "</ul></div>" +
           "<div><h4>Connect</h4><ul>" +
             '<li><a href="https://instagram.com/' + S.instagram + '" target="_blank" rel="noopener">Instagram @' + S.instagram + "</a></li>" +
@@ -130,6 +199,113 @@ window.SITE = {
       cd.innerHTML = "<span><b>" + days + "</b>days</span><span><b>" + h + "</b>hrs</span><span><b>" + m + "</b>min</span>";
     }
     tick(); setInterval(tick, 30000);
+  });
+
+  /* ---------- Data-driven blocks (coaching trust + web design) ---------- */
+  var DRAFT = /[?&]draft\b/.test(location.search);
+  if (DRAFT) document.documentElement.classList.add("draft");
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function ph(label) { return '<div class="placeholder">' + esc(label) + "</div>"; }
+  /* Hide a [data-section] wrapper when it has nothing to show (unless ?draft). */
+  function settle(el, has) {
+    var sec = el.closest("[data-section]") || el;
+    if (!has && !DRAFT) sec.hidden = true;
+  }
+
+  document.querySelectorAll("[data-block]").forEach(function (el) {
+    var kind = el.dataset.block, html = "", has = false;
+
+    if (kind === "trust") {
+      var items = [];
+      if (S.business) items.push('<div class="trust-item"><b>' + esc(S.business) + "</b><span>Registered business</span></div>");
+      S.certifications.forEach(function (c) { items.push('<div class="trust-item"><b>' + esc(c) + "</b><span>Certified</span></div>"); });
+      S.experience.forEach(function (x) { items.push('<div class="trust-item"><b>' + esc(x.value) + "</b><span>" + esc(x.label) + "</span></div>"); });
+      has = items.length > 0;
+      if (!has) items = ['<div class="trust-item">' + ph("Business name / LLC") + "</div>", '<div class="trust-item">' + ph("Certification, e.g. NASM CPT") + "</div>",
+        '<div class="trust-item">' + ph("Years coaching") + "</div>", '<div class="trust-item">' + ph("Clients coached") + "</div>"];
+      html = items.join("");
+    }
+
+    if (kind === "testimonials") {
+      has = S.testimonials.length > 0;
+      var list = has ? S.testimonials : [{}, {}, {}];
+      html = list.map(function (t) {
+        if (!t.quote) return '<figure class="quote">' + ph("Client quote") + '<figcaption>' + ph("Name · result") + "</figcaption></figure>";
+        return '<figure class="quote">' + (t.photo ? '<img src="' + esc(t.photo) + '" alt="" loading="lazy">' : "") +
+          "<blockquote>“" + esc(t.quote) + "”</blockquote><figcaption><b>" + esc(t.name) + "</b>" +
+          (t.result ? '<span class="result">' + esc(t.result) + "</span>" : "") + "</figcaption></figure>";
+      }).join("");
+    }
+
+    if (kind === "policies") {
+      has = S.policies.length > 0;
+      var pol = has ? S.policies : [{ q: "Payment plans?" }, { q: "Refund policy?" }, { q: "Is there a contract?" }];
+      html = pol.map(function (p) {
+        return "<details><summary>" + esc(p.q) + "</summary>" + (p.a ? "<p>" + esc(p.a) + "</p>" : ph("Your answer")) + "</details>";
+      }).join("");
+    }
+
+    if (kind === "projects") {
+      has = S.projects.length > 0;
+      html = S.projects.map(function (p) {
+        return '<article class="project">' +
+          '<div class="shots"><img class="desk" src="' + esc(p.image) + '" alt="' + esc(p.name) + ' website on a computer" loading="lazy">' +
+          (p.phone ? '<img class="phone" src="' + esc(p.phone) + '" alt="' + esc(p.name) + ' website on a phone" loading="lazy">' : "") + "</div>" +
+          '<div class="info"><span class="eyebrow">' + esc(p.type) + "</span><h3>" + esc(p.name) + "</h3><p>" + esc(p.text) + "</p>" +
+          (p.link ? '<a class="btn small ghost ext" href="' + esc(p.link) + '" target="_blank" rel="noopener">Visit site</a>' : '<span class="muted small-note">Launching soon</span>') +
+          "</div></article>";
+      }).join("") + (DRAFT ? '<article class="project">' + ph("Another project: screenshot, name, one line, link") + "</article>" : "");
+    }
+
+    if (kind === "pricing") {
+      has = true;
+      var cats = S.webPricing;
+      html = '<div class="tabs" role="tablist">' + cats.map(function (c, i) {
+        return '<button type="button" role="tab" id="tab-' + c.id + '" aria-controls="panel-' + c.id + '" aria-selected="' + (i === 0) + '">' + esc(c.name) + "</button>";
+      }).join("") + "</div>" + cats.map(function (c, i) {
+        return '<div class="tab-panel" role="tabpanel" id="panel-' + c.id + '" aria-labelledby="tab-' + c.id + '"' + (i ? " hidden" : "") + ">" +
+          '<p class="lede" style="margin-bottom:24px">' + esc(c.blurb) + '</p><div class="grid grid-3">' +
+          c.tiers.map(function (t) {
+            return '<div class="card tier' + (t.featured ? " featured" : "") + '">' + (t.featured ? '<span class="tag">Most popular</span>' : "") +
+              "<h3>" + esc(t.name) + '</h3><div class="amount">' + (t.price ? esc(t.price) : "Custom quote") + "</div>" +
+              '<ul class="ticks">' + t.features.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
+              '<a class="btn' + (t.featured ? "" : " ghost") + '" href="contact.html?topic=web">' + (t.price ? "Get started" : "Get a quote") + "</a></div>";
+          }).join("") + "</div></div>";
+      }).join("");
+    }
+
+    if (kind === "addons") {
+      has = S.webAddons.length > 0;
+      var ad = has ? S.webAddons : [{}, {}, {}];
+      html = ad.map(function (a) {
+        return a.name ? '<div class="addon"><div><b>' + esc(a.name) + "</b>" + (a.note ? "<span>" + esc(a.note) + "</span>" : "") + '</div><strong>' + esc(a.price) + "</strong></div>"
+                      : '<div class="addon">' + ph("Add-on · price (e.g. care plan, extra page)") + "</div>";
+      }).join("");
+    }
+
+    el.innerHTML = html;
+    settle(el, has);
+  });
+
+  /* Tabs */
+  document.querySelectorAll('[role="tablist"]').forEach(function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    function select(t) {
+      tabs.forEach(function (x) {
+        var on = x === t; x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.tabIndex = i ? -1 : 0;
+      t.addEventListener("click", function () { select(t); });
+      t.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (d) { var n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus(); }
+      });
+    });
+    var want = location.hash.replace("#", "");
+    tabs.forEach(function (t) { if (t.id === "tab-" + want) select(t); });
   });
 
   /* Gallery lightbox */
