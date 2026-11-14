@@ -214,6 +214,19 @@
       : '<tr><td class="muted">' + esc(L("noHours")) + "</td></tr>";
   }
 
+  // ---- Call buttons inside another app's viewer -----------------------------
+  // On a normal web page a tel: link opens the phone's dialer by itself. When the
+  // page is shown inside another app (an in-app preview), that app may block it,
+  // so try opening the dialer outside the preview instead.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!a || window.top === window) return;
+    e.preventDefault();
+    var opened = null;
+    try { opened = window.open(a.href, "_blank"); } catch (err) {}
+    if (!opened) { try { window.top.location.href = a.href; } catch (err) { location.href = a.href; } }
+  });
+
   // ---- EN / ES switch ------------------------------------------------------
   $$(".lang-toggle button").forEach(function (b) {
     b.addEventListener("click", function () {
