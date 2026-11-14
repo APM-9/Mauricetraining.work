@@ -66,7 +66,8 @@
         (sec.note ? '<p class="muted note">' + esc(sec.note) + "</p>" : "") +
         '<ul class="menu-list">' + sec.items.map(function (it) {
           return '<li><div class="row"><span class="item">' + esc(it.name) +
-            (it.popular ? ' <span class="badge">Best Seller</span>' : "") + '</span><span class="dots"></span>' +
+            (it.popular ? ' <span class="badge">Best Seller</span>' : "") +
+            (it.spicy ? ' <span class="badge spicy">Spicy</span>' : "") + '</span><span class="dots"></span>' +
             (it.price ? '<span class="price">$' + esc(String(it.price).replace(/^\$/, "")) + "</span>" : "") +
             "</div>" + (it.desc ? '<p class="desc">' + esc(it.desc) + "</p>" : "") + "</li>";
         }).join("") + "</ul></div>";

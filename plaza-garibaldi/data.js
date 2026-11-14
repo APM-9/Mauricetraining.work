@@ -74,7 +74,8 @@ window.SITE = {
   },
 
   // Menu: sections in the same order as Grubhub. Sections with no items are hidden.
-  // Item: { name: "...", desc: "...", price: "12.00", popular: true }  (popular = "Best Seller" badge)
+  // Item: { name: "...", desc: "...", price: "12.00", popular: true, spicy: true }
+  // popular = "Best Seller" badge, spicy = "Spicy" badge, "12.00+" = starting price
   menu: [
     { section: "Desayuno", subtitle: "Breakfast", note: "Comes with rice & beans.", items: [
       { name: "Huevos a la Mexicana", desc: "Scrambled eggs Mexican style.", price: "12.00" },
@@ -97,10 +98,51 @@ window.SITE = {
       { name: "Tripa Taco", desc: "Intestine.", price: "4.50" },
       { name: "Lengua Taco", desc: "Tongue.", price: "5.50" }
     ]},
-    { section: "Burritos", items: [] },
-    { section: "Ensaladas", subtitle: "Salads", items: [] },
-    { section: "Tostadas", items: [] },
-    { section: "Specialties", items: [] },
+    { section: "Burritos", note: "Comes with lettuce, tomato, cheese & cream. Add extras for an additional charge.", items: [
+      { name: "Burrito Bowl", desc: "", price: "10.00" },
+      { name: "Wraps", desc: "", price: "12.00+" },
+      { name: "Burrito al Pastor", desc: "Marinated pork burrito.", price: "11.00" },
+      { name: "Burrito de Pollo", desc: "Chicken burrito. Chicken or chicken breast.", price: "11.00" },
+      { name: "Burrito de Lengua", desc: "Tongue burrito.", price: "12.00" },
+      { name: "Burrito de Chorizo", desc: "Chorizo burrito.", price: "11.00" },
+      { name: "Burrito de Carne Asada", desc: "Carne asada burrito.", price: "11.00" },
+      { name: "Burrito Vegetariano", desc: "Vegetarian burrito.", price: "11.00" },
+      { name: "Burrito de Enchilada", desc: "Enchilada burrito.", price: "11.00" },
+      { name: "Burrito Ahogado en Salsa", desc: "Drowned burrito in green or red sauce, with 2 eggs, cheese & sour cream.", price: "14.00" }
+    ]},
+    { section: "Ensaladas", subtitle: "Salads", note: "Come with lettuce, tomato, onions and avocado, with your choice of cheese or cream. Add extras for an additional charge.", items: [
+      { name: "Ensalada de Pechuga", desc: "Grilled chicken salad.", price: "15.00" },
+      { name: "Ensalada de Filete al Grill", desc: "Grilled fish fillet salad.", price: "16.00" },
+      { name: "Ensalada de Bistec", desc: "Grilled steak salad.", price: "15.00" },
+      { name: "Ensalada de Camarones", desc: "Grilled shrimp salad.", price: "16.00" },
+      { name: "Ensalada Mixta", desc: "Mixed salad with grilled chicken, steak and shrimp.", price: "20.00" }
+    ]},
+    { section: "Tostadas", note: "Come with beans, lettuce, tomato, cheese & cream. Add extras for an additional charge.", items: [
+      { name: "Tostada de Bistec", desc: "Grilled steak tostada.", price: "3.50" },
+      { name: "Tostada de Pollo", desc: "Grilled chicken tostada.", price: "3.50" },
+      { name: "Tostada al Pastor", desc: "Marinated pork tostada.", price: "3.50" },
+      { name: "Tostada de Lengua", desc: "Beef tongue tostada.", price: "5.50" },
+      { name: "Tostada de Barbacoa", desc: "", price: "4.50" },
+      { name: "Tostada de Tripa", desc: "Beef intestine tostada.", price: "4.50" },
+      { name: "Tostada de Carnitas", desc: "Pork tostada.", price: "3.50" },
+      { name: "Tostada de Chorizo", desc: "Mexican sausage tostada.", price: "3.50" },
+      { name: "Tostada de Carne Enchilada", desc: "Spicy pork tostada.", price: "3.50" },
+      { name: "Tostada de Cabeza", desc: "Beef head tostada.", price: "4.50" }
+    ]},
+    { section: "Specialties", note: "Some dishes come with rice, beans & salad. Add extras for an additional charge.", items: [
+      { name: "Alitas Party", desc: "Chicken wings: barbecue, buffalo, cheese and plain.", price: "33.00" },
+      { name: "Bistec Plaza", desc: "Grilled steak, rice and beans, 1 green enchilada, fried eggs, 1 fried jalapeño and a cactus salad.", price: "21.00" },
+      { name: "Mariscada", desc: "Different kinds of seafood with guacamole.", price: "37.00" },
+      { name: "Tlayudas", desc: "", price: "15.00" },
+      { name: "Alitas de Pollo con Papas y Ensalada", desc: "Wings, fries & salad.", price: "16.00" },
+      { name: "Mojarra Fina", desc: "", price: "28.00" },
+      { name: "Molcajete", desc: "", price: "30.00" },
+      { name: "Mexican Fries", desc: "", price: "12.00" },
+      { name: "La Especialidad de la Casa \u201cFiesta Garibaldi\u201d", desc: "House specialty with fried shrimp, steak fajitas, grilled chicken breast, 1 red enchilada and salad.", price: "28.00" },
+      { name: "Alambre", desc: "Chicken, steak and ham.", price: "17.00" },
+      { name: "Orden de Barbacoa", desc: "Spicy barbecue with rice & beans.", price: "18.00", spicy: true },
+      { name: "Nachos con Carne Estilo Garibaldi", desc: "Nachos with meat.", price: "15.00+" }
+    ]},
     { section: "Fajitas", items: [] },
     { section: "Huarache", items: [] },
     { section: "Carnes Estilo Garibaldi", items: [] },
