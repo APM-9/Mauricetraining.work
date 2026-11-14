@@ -50,7 +50,7 @@ window.SITE = {
      price: "" shows "Get a quote". Set it like "$1,500" or "From $900".
      The features are a starting draft. Edit them to match what you offer.
      examples = screenshots shown on that industry's tab, real projects first.
-       label: "Real project" or "Sample design".
+       label: "Concept redesign", "Concept design" or "Sample design".
        image = desktop screenshot; phone = phone screenshot; or phones: [two phone shots] for apps.
        link = live page, or "" and a note like "Launching soon". */
   webPricing: [
@@ -59,15 +59,15 @@ window.SITE = {
       name: "Restaurants",
       blurb: "Menus, hours and directions that look right on every screen.",
       examples: [
-        { label: "Real project", name: "Torres Cafe & Catering", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
-          text: "Bilingual English/Spanish site for a Puerto Rican cafe in Perth Amboy: menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Launching soon" },
+        { label: "Concept redesign", name: "Torres Cafe & Catering", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
+          text: "Bilingual English/Spanish site for a Puerto Rican cafe in Perth Amboy: menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Concept" },
         { label: "Sample design", name: "Harbor & Hearth", image: "img/work/sample-restaurant-desktop.jpg", phone: "img/work/sample-restaurant-phone.jpg",
           text: "Tabbed menu, today's hours, weekly specials, map and one-tap reservations.", link: "examples/restaurant/" }
       ],
       tiers: [
-        { name: "Starter", price: "", features: ["One-page site", "Menu, hours and map", "Click-to-call and directions", "Works on phones, tablets & desktops"] },
-        { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Multi-page site", "Photo gallery", "Online ordering or reservation link", "Google search basics"] },
-        { name: "Premium", price: "", features: ["Everything in Pro", "Menu you can edit yourself", "Specials and events section", "Monthly care plan included"] }
+        { name: "Starter", price: "$1,200", features: ["One-page site", "Menu, hours and map", "Click-to-call and directions", "Works on phones, tablets & desktops"] },
+        { name: "Pro", price: "$2,500", featured: true, features: ["Everything in Starter", "Multi-page site", "Photo gallery", "Online ordering or reservation link", "Google search basics"] },
+        { name: "Premium", price: "$4,000", features: ["Everything in Pro", "Menu you can edit yourself", "Specials and events section", "3 months of care plan included"] }
       ]
     },
     {
@@ -75,15 +75,15 @@ window.SITE = {
       name: "Gyms & facilities",
       blurb: "Programs, schedules and sign-ups that bring in members.",
       examples: [
-        { label: "Real project", name: "Elite Wrestling NJ", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
-          text: "Programs, a weekly schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Launching soon" },
-        { label: "Real project", name: "GTG", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
-          text: "A scroll-through tour of a new combat facility (mats, cage, ring, rooftop track) with classes, a weekly schedule and member sign-up with coach referral codes.", link: "", note: "Launching soon" }
+        { label: "Concept redesign", name: "Elite Wrestling NJ", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
+          text: "Programs, a weekly schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Concept" },
+        { label: "Concept design", name: "GTG", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
+          text: "A scroll-through tour of a new combat facility (mats, cage, ring, rooftop track) with classes, a weekly schedule and member sign-up with coach referral codes.", link: "", note: "Concept" }
       ],
       tiers: [
-        { name: "Starter", price: "", features: ["One-page site", "Programs and coaches", "Free-trial or contact form", "Works on phones, tablets & desktops"] },
-        { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Weekly schedule you edit from a spreadsheet", "Membership and pricing section", "Events and tournaments list"] },
-        { name: "Premium", price: "", features: ["Everything in Pro", "Merch shop section", "Donations or payments box", "Monthly care plan included"] }
+        { name: "Starter", price: "$1,200", features: ["One-page site", "Programs and coaches", "Free-trial or contact form", "Works on phones, tablets & desktops"] },
+        { name: "Pro", price: "$2,800", featured: true, features: ["Everything in Starter", "Weekly schedule you edit from a spreadsheet", "Membership and pricing section", "Events and tournaments list"] },
+        { name: "Premium", price: "$4,500", features: ["Everything in Pro", "Merch shop section", "Donations or payments box", "3 months of care plan included"] }
       ]
     },
     {
@@ -91,38 +91,45 @@ window.SITE = {
       name: "Adjusters & insurance",
       blurb: "A professional presence that earns trust and brings in leads.",
       examples: [
-        { label: "Real project", name: "Field Photos", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
-          text: "A phone app for flood adjusters: document damage room by room with photos and voice notes, work offline on site, then export a room-by-room list for the estimate.", link: "", note: "Private app" },
+        { label: "Concept app", name: "Field Photos", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
+          text: "A phone app for flood adjusters: document damage room by room with photos and voice notes, work offline on site, then export a room-by-room list for the estimate.", link: "", note: "Concept" },
         { label: "Sample design", name: "Northpoint Claims", image: "img/work/sample-insurance-desktop.jpg", phone: "img/work/sample-insurance-phone.jpg",
           text: "Free claim review form up front, claim types, a clear process and FAQ.", link: "examples/insurance/" }
       ],
       tiers: [
-        { name: "Starter", price: "", features: ["One-page site", "Services and service area", "Contact form", "Works on phones, tablets & desktops"] },
-        { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Multi-page site", "Claim or quote request form", "Licenses and credentials section", "Google search basics"] },
-        { name: "Premium", price: "", features: ["Everything in Pro", "Client reviews section", "FAQ and resources pages", "Monthly care plan included"] }
+        { name: "Starter", price: "$1,200", features: ["One-page site", "Services and service area", "Contact form", "Works on phones, tablets & desktops"] },
+        { name: "Pro", price: "$2,500", featured: true, features: ["Everything in Starter", "Multi-page site", "Claim or quote request form", "Licenses and credentials section", "Google search basics"] },
+        { name: "Premium", price: "$4,000", features: ["Everything in Pro", "Client reviews section", "FAQ and resources pages", "3 months of care plan included"] }
       ]
     }
   ],
 
   /* e.g. { name: "Care plan", price: "$50/mo", note: "Up to 3 small changes a month" } */
-  webAddons: [],
+  webAddons: [
+    { name: "Care plan", price: "$75/mo", note: "Hosting check-ins, backups and up to 3 small changes a month" },
+    { name: "One-off update", price: "$50", note: "A single text, photo or price change" },
+    { name: "Extra page", price: "$250", note: "Any additional page in the same style" },
+    { name: "English / Spanish", price: "$500", note: "Full bilingual site with a language switch" },
+    { name: "Online ordering or booking setup", price: "$300", note: "Connect your ordering, reservation or class-booking system" },
+    { name: "Google Business Profile setup", price: "$150", note: "Get found on Google Maps and search" }
+  ],
 
   /* Portfolio. image = screenshot in img/work/. link = "" for no link. */
   projects: [
     { name: "Ashanti Maurice", type: "Personal brand · Redesign", image: "img/work/ashanti-maurice-desktop.jpg", phone: "img/work/ashanti-maurice-phone.jpg",
       text: "Fighter and coaching site with an online shop, coaching applications and fight updates.", link: "https://apm-9.github.io/Mauricetraining.work/" },
     { name: "Elite Wrestling NJ", type: "Wrestling gym · Redesign", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
-      text: "Rebuilt a gym's Wix site as a fast custom site: programs, a schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Launching soon" },
+      text: "A redesign of a gym's Wix site as a fast custom site: programs, a schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Concept" },
     { name: "Torres Cafe & Catering", type: "Restaurant · Redesign", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
-      text: "Bilingual English/Spanish cafe site with menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Launching soon" },
+      text: "Bilingual English/Spanish cafe site with menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Concept" },
     { name: "GTG", type: "Combat gym · New site", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
-      text: "Scroll-through facility tour, classes, weekly schedule, and member accounts with coach referral tracking.", link: "", note: "Launching soon" },
+      text: "Scroll-through facility tour, classes, weekly schedule, and member accounts with coach referral tracking.", link: "", note: "Concept" },
     { name: "Field Photos", type: "Insurance adjusters · Web app", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
-      text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Private app" },
+      text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Concept" },
     { name: "Spots", type: "Skateboarding · Web app", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
       text: "IRL gaming for skaters: a 3D globe of real skate spots pinned from photo GPS, trick claims backed by video, head-to-head S.K.A.T.E. games, crews and direct messages.", link: "", note: "In development" },
     { name: "Sew Honey", type: "Handmade swimwear · Shop concept", image: "img/work/sew-honey-desktop.jpg", phone: "img/work/sew-honey-phone.jpg",
-      text: "A walk-through storefront: scroll down a 3D aisle of racks, tap any piece to try it on, mix top and bottom sizes, and fill a bag with a free-shipping meter. Includes a plain list view and a wholesale inquiry wall.", link: "examples/sew-honey/" }
+      text: "A walk-through storefront: scroll down a 3D aisle of racks, tap any piece to try it on, mix top and bottom sizes, and fill a bag with a free-shipping meter. Includes a plain list view and a wholesale inquiry wall.", link: "", note: "Concept" }
     /* Add more: { name: "", type: "", image: "img/work/....jpg", phone: "", text: "", link: "" } */
   ]
 };
