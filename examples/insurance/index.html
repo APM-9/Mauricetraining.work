@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Northpoint Claims — Sample adjuster site</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Sample insurance adjuster website design by Ashanti Maurice. Fictional business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0e2240;--navy-2:#16315a;--sky:#eaf1fa;--amber:#f0a92e;--amber-2:#d99316;--ink:#14213a;--muted:#5b6880;--line:#dbe3ee;color-scheme:light}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+  h1,h2,h3{margin:0;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+  .demo-bar{background:#111;color:#eee;font-size:13px;text-align:center;padding:8px 16px}
+  .demo-bar a{color:#ff6b5e}
+  header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;text-decoration:none}
+  .logo svg{width:34px;height:34px}
+  nav{display:flex;gap:26px;font-weight:500;color:var(--muted)}
+  nav a{text-decoration:none}
+  nav a:hover{color:var(--navy)}
+  .tel{font-weight:800;text-decoration:none;color:var(--navy)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:10px;background:var(--amber);color:var(--navy);font-weight:800;text-decoration:none;border:0;cursor:pointer;font-size:15px;font-family:inherit}
+  .btn:hover{background:var(--amber-2)}
+  .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
+  @media (max-width:880px){nav{display:none}}
+
+  .hero{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;padding:clamp(48px,8vw,96px) 0;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-120px;top:-120px;width:480px;height:480px;border-radius:50%;border:60px solid rgba(240,169,46,.08)}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative}
+  @media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);margin:18px 0}
+  .hero h1 span{color:var(--amber)}
+  .hero p{color:#c8d3e6;font-size:1.12rem;max-width:50ch;margin:0 0 28px}
+  .row{display:flex;flex-wrap:wrap;gap:12px}
+  .proof{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15)}
+  .proof b{display:block;font-size:1.8rem;color:#fff}
+  .proof span{font-size:13px;color:#9fb0cc}
+  .formcard{background:#fff;color:var(--ink);border-radius:18px;padding:28px;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+  .formcard h2{font-size:1.4rem}
+  .formcard p{color:var(--muted);margin:6px 0 18px;font-size:15px}
+  form{display:grid;gap:12px}
+  label{display:grid;gap:5px;font-size:13px;font-weight:700}
+  input,select{font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fbfcfe;width:100%}
+  .fine{font-size:12px;color:var(--muted);text-align:center;margin:4px 0 0}
+
+  section{padding:clamp(56px,8vw,96px) 0}
+  .head{max-width:640px;margin-bottom:36px}
+  .kicker{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-2)}
+  .head h2{font-size:clamp(2rem,4.5vw,3rem);margin-top:10px}
+  .head p{color:var(--muted);margin:12px 0 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+  .svc{border:1px solid var(--line);border-radius:16px;padding:26px;background:#fff;transition:transform .2s,box-shadow .2s}
+  .svc:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(14,34,64,.08)}
+  .icon{width:48px;height:48px;border-radius:12px;background:var(--sky);display:grid;place-items:center;margin-bottom:16px}
+  .icon svg{width:26px;height:26px}
+  .svc h3{font-size:1.2rem;margin-bottom:6px}
+  .svc p{color:var(--muted);margin:0;font-size:15px}
+  .steps{background:var(--sky)}
+  .steps ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px;counter-reset:s}
+  .steps li{background:#fff;border-radius:16px;padding:26px;counter-increment:s}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;margin-bottom:14px}
+  .steps li b{display:block;font-size:1.1rem;margin-bottom:4px}
+  .steps li span{color:var(--muted);font-size:15px}
+  .faq{max-width:780px}
+  details{border-bottom:1px solid var(--line);padding:4px 0}
+  summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;display:flex;justify-content:space-between}
+  summary::after{content:"+";color:var(--amber-2);font-size:1.4rem;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin:0 0 16px}
+  .cta{background:var(--navy);color:#fff;text-align:center}
+  .cta h2{font-size:clamp(2rem,4.5vw,3rem)}
+  .cta p{color:#c8d3e6;margin:12px 0 26px}
+  footer{background:#0a1a31;color:#9fb0cc;font-size:14px;padding:32px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Sample design by <a href="../../web-design.html">Ashanti Maurice</a> · fictional business, for demonstration only</div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#0e2240"/><path d="M17 7l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10v-6z" fill="#f0a92e"/><path d="M13 17l3 3 5-6" stroke="#0e2240" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Northpoint Claims</a>
+    <nav><a href="#services">Claims we handle</a><a href="#process">How it works</a><a href="#faq">FAQ</a></nav>
+    <a class="tel" href="#">(555) 010-0199</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">⚡ 24/7 emergency claim response</span>
+      <h1>Your claim, handled by people <span>on your side.</span></h1>
+      <p>Public adjusters for homeowners and businesses. We document the damage, deal with the insurance company and fight for the full settlement — so you don't have to.</p>
+      <div class="row">
+        <a class="btn" href="#review">Start a free claim review</a>
+        <a class="btn ghost" href="#services">Claims we handle</a>
+      </div>
+      <div class="proof">
+        <div><b>24/7</b><span>Emergency response</span></div>
+        <div><b>$0</b><span>Upfront cost</span></div>
+        <div><b>48 hr</b><span>Inspection scheduled</span></div>
+      </div>
+    </div>
+    <div class="formcard" id="review">
+      <h2>Free claim review</h2>
+      <p>Tell us what happened. We'll call you back within one business day.</p>
+      <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;text-align:center;font-weight:700&quot;>Sample form — nothing was sent.</p>'">
+        <label>Name<input type="text" required></label>
+        <label>Phone<input type="tel" required></label>
+        <label>Type of damage
+          <select><option>Water</option><option>Fire / smoke</option><option>Storm / wind</option><option>Commercial property</option><option>Other</option></select>
+        </label>
+        <label>Zip code<input type="text" inputmode="numeric"></label>
+        <button class="btn" type="submit">Request my review</button>
+        <p class="fine">No cost and no obligation.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><span class="kicker">Claims we handle</span><h2>Residential and commercial property claims</h2></div>
+    <div class="grid">
+      <div class="svc"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e2240" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div><h3>Water damage</h3><p>Burst pipes, leaks, flooding and mold from water.</p></div>
+      <div class="svc"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e2240" stroke-width="2" stroke-linecap="round"><path d="M12 3c2 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-6 0 2 1 3 2 3 0-3 0-6 1-8z"/></svg></div><h3>Fire &amp; smoke</h3><p>Structure, contents and smoke damage claims.</p></div>
+      <div class="svc"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e2240" stroke-width="2" stroke-linecap="round"><path d="M4 14h12a3 3 0 1 0-3-3M4 10h8a3 3 0 1 0-3-3M4 18h9"/></svg></div><h3>Storm &amp; wind</h3><p>Roof, siding and tree damage after severe weather.</p></div>
+      <div class="svc"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0e2240" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h3>Commercial</h3><p>Business property and business interruption claims.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="process">
+  <div class="wrap">
+    <div class="head"><span class="kicker">How it works</span><h2>From damage to settlement</h2></div>
+    <ol>
+      <li><b>Free review</b><span>We look at your policy and the damage, at no cost.</span></li>
+      <li><b>Inspection</b><span>We document everything with photos, measurements and estimates.</span></li>
+      <li><b>Negotiation</b><span>We handle every call and letter with the insurance company.</span></li>
+      <li><b>Settlement</b><span>You get paid, and you only pay us when you do.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="head"><span class="kicker">FAQ</span><h2>Common questions</h2></div>
+    <details open><summary>What does a public adjuster do?</summary><p>We work for you — not the insurance company — to document your loss and negotiate your settlement.</p></details>
+    <details><summary>How much does it cost?</summary><p>Nothing upfront. Our fee is a percentage of the settlement, agreed in writing before we start.</p></details>
+    <details><summary>Is it too late if my claim was already filed?</summary><p>Often not. We can review open, denied or underpaid claims.</p></details>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Had damage? Talk to us today.</h2>
+    <p>Free claim review, 24 hours a day.</p>
+    <a class="btn" href="#review">Start a free claim review</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© Northpoint Claims · Sample business</span><span>Sample site — website by Ashanti Maurice</span></div></footer>
+
+</body>
+</html>
