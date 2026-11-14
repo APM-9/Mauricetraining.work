@@ -306,3 +306,7 @@ body.locked{overflow:hidden}
 .shots.phones img{width:42%;max-width:240px;border-radius:18px;border:3px solid #2a2523;box-shadow:0 16px 40px rgba(0,0,0,.55)}
 .shots.phones img:nth-child(2){transform:translateY(8%)}
 .pill.sample{background:rgba(246,234,210,.1);color:var(--cream)}
+.gallery.g5{grid-template-columns:repeat(5,1fr)}
+.gallery.g3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.gallery.g5{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.gallery.g5,.gallery.g3{grid-template-columns:repeat(2,1fr);gap:8px}.gallery.g5 figure:first-child{grid-column:span 2;aspect-ratio:4/3}}
