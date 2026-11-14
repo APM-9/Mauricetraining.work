@@ -17,7 +17,7 @@ Live at https://apm-9.github.io/Mauricetraining.work/ (GitHub Pages, served from
 | Coaching policies / FAQ | `assets/site.js` → `policies` |
 | Web design prices and what each tier includes | `assets/site.js` → `webPricing` (empty price shows "Custom quote") |
 | Example work shown on each industry tab | `assets/site.js` → `webPricing[].examples` |
-| Sample sites (restaurant, insurance) | `examples/restaurant/`, `examples/insurance/` — fictional businesses, marked as samples |
+| Sample site (insurance) | `examples/insurance/` — a fictional business, marked as a sample |
 | Web add-ons (care plan, extra pages…) | `assets/site.js` → `webAddons` |
 | Portfolio projects | `assets/site.js` → `projects` (screenshots go in `img/work/`) |
 
