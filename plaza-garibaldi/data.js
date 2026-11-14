@@ -51,12 +51,21 @@ window.SITE = {
   photos: {
     hero: "images/hero.jpg",
     about: "images/about.jpg",
-    // Gallery tiles only appear for photos that exist.
+    // "From Our Kitchen" photos. Tiles only appear for photos that exist.
+    // Each one: { src: "images/file.jpg", caption: "Name shown on the photo" }
     gallery: [
-      "images/gallery-1.jpg",
-      "images/gallery-2.jpg",
-      "images/gallery-3.jpg",
-      "images/gallery-4.jpg"
+      { src: "images/food-birria.jpg", caption: "Birria Tacos & Consomé" },
+      { src: "images/food-mole-enchiladas.jpg", caption: "Enchiladas de Mole" },
+      { src: "images/food-steak.jpg", caption: "Bistec Encebollado" },
+      { src: "images/food-shrimp-cocktail.jpg", caption: "Coctel de Camarón" },
+      { src: "images/food-caldo-de-res.jpg", caption: "Caldo de Res" },
+      { src: "images/food-pozole.jpg", caption: "Pozole" },
+      { src: "images/food-mojarra.jpg", caption: "Mojarra Frita" },
+      { src: "images/food-camarones.jpg", caption: "Camarones a la Diabla" },
+      { src: "images/food-sopes.jpg", caption: "Sopes" },
+      { src: "images/food-mariscos.jpg", caption: "Seafood Platters" },
+      { src: "images/food-tamales.jpg", caption: "Tamales" },
+      { src: "images/food-pan-dulce.jpg", caption: "Pan Dulce" }
     ]
   },
 

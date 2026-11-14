@@ -34,16 +34,19 @@
   usePhoto($("#hero"), P.hero);
   $$('[data-photo="about"]').forEach(function (el) { usePhoto(el, P.about); });
   var gallery = $("#gallery");
-  (P.gallery || []).forEach(function (src) {
-    var img = new Image();
-    img.onload = function () {
-      var tile = document.createElement("div");
-      tile.className = "photo tile has-photo";
-      tile.style.backgroundImage = "url('" + src + "')";
-      gallery.appendChild(tile);
-      gallery.hidden = false;
-    };
-    img.src = src;
+  var grid = $("#gallery-grid");
+  (P.gallery || []).forEach(function (g) {
+    if (typeof g === "string") g = { src: g };
+    var fig = document.createElement("figure");
+    fig.className = "tile";
+    fig.hidden = true;
+    fig.innerHTML = '<img alt="' + esc(g.caption || "Dish from Plaza Garibaldi") + '">' +
+      (g.caption ? "<figcaption>" + esc(g.caption) + "</figcaption>" : "");
+    grid.appendChild(fig);
+    var img = fig.querySelector("img");
+    img.onload = function () { fig.hidden = false; gallery.hidden = false; };
+    img.onerror = function () { fig.remove(); };
+    img.src = g.src;
   });
 
   // Highlights + catering
