@@ -109,7 +109,12 @@
   });
 
   var q = encodeURIComponent([S.name, S.address, S.city].join(", "));
+  // Live Google map on top; if the page can't reach Google (some in-app previews),
+  // the card underneath still shows the address with Google and Apple Maps links.
   $("#map").src = "https://www.google.com/maps?q=" + q + "&output=embed";
+  $("#map-google").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+  $("#map-apple").href = "https://maps.apple.com/?q=" + encodeURIComponent(S.name) + "&address=" + encodeURIComponent(S.address + ", " + S.city);
+  $(".map-card").removeAttribute("aria-hidden");
   $("#directions").href = "https://www.google.com/maps/dir/?api=1&destination=" + q;
 
   var soc = S.social || {};

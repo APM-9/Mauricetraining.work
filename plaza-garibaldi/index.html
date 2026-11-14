@@ -102,7 +102,18 @@
           <table class="hours" id="hours"></table>
           <p class="muted small-print" data-i18n="holidays">Hours may change on holidays. Call ahead to confirm.</p>
         </div>
-        <iframe class="map" id="map" title="Map to Plaza Garibaldi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-wrap">
+          <div class="map-card" aria-hidden="true">
+            <svg class="map-pin" viewBox="0 0 24 24" width="44" height="44"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <strong data-name>Plaza Garibaldi</strong>
+            <span><span data-address></span>, <span data-city></span></span>
+            <span class="map-links">
+              <a id="map-google" target="_blank" rel="noopener">Google Maps</a>
+              <a id="map-apple" target="_blank" rel="noopener">Apple Maps</a>
+            </span>
+          </div>
+          <iframe class="map" id="map" title="Map to Plaza Garibaldi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
     </section>
   </main>

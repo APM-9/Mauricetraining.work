@@ -157,7 +157,14 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 12px; }
 .hours td { text-align: right; }
 .hours td.muted { text-align: left; }
 .hours tr.today { color: var(--red); font-weight: 700; }
-.map { width: 100%; height: 420px; border: 0; border-radius: 14px; background: var(--line); }
+.map-wrap { position: relative; height: 420px; border-radius: 14px; overflow: hidden; background: var(--cream); border: 1px solid var(--line); }
+.map-card { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 24px; text-align: center;
+  background: repeating-linear-gradient(45deg, rgba(18,89,79,.05) 0 14px, transparent 14px 28px), var(--cream); }
+.map-pin { color: var(--red); margin-bottom: 4px; }
+.map-card strong { font-family: var(--display); font-weight: 400; font-size: 1.4rem; color: var(--red-dark); }
+.map-links { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
+.map-links a { padding: 8px 16px; border-radius: 999px; background: var(--green); color: #fff; text-decoration: none; font-weight: 700; font-size: .9rem; }
+.map { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; }
 
 /* Footer */
 .footer { background: var(--ink); color: var(--sand); text-align: center; padding: 0 16px 32px; }
@@ -176,7 +183,7 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 12px; }
   .gallery figcaption { font-size: .82rem; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 60px 0; }
-  .map { height: 300px; }
+  .map-wrap { height: 300px; }
 }
 
 /* Phones turned sideways (short, wide screens): compact header and hero, one-row menu tabs */
@@ -194,7 +201,7 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 12px; }
   .menu-tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: 0 -16px 20px; padding: 4px 16px; scrollbar-width: none; position: sticky; top: 46px; z-index: 5; background: var(--cream); }
   .menu-tabs a { flex: 0 0 auto; }
   .about-photo { aspect-ratio: 16 / 9; }
-  .map { height: 260px; }
+  .map-wrap { height: 260px; }
 }
 
 .btn-call .btn-phone { display: block; font-size: .85rem; font-weight: 600; opacity: .8; margin-top: 2px; }
