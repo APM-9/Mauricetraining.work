@@ -302,3 +302,7 @@ body.locked{overflow:hidden}
 .showcase p{color:var(--muted);margin:0 0 18px}
 .pill{display:inline-block;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(232,50,43,.14);color:var(--red-hot)}
 .tiers-title{margin:8px 0 18px}
+.shots.phones{display:flex;justify-content:center;gap:5%;padding:0}
+.shots.phones img{width:42%;max-width:240px;border-radius:18px;border:3px solid #2a2523;box-shadow:0 16px 40px rgba(0,0,0,.55)}
+.shots.phones img:nth-child(2){transform:translateY(8%)}
+.pill.sample{background:rgba(246,234,210,.1);color:var(--cream)}

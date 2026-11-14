@@ -49,14 +49,18 @@ window.SITE = {
   /* ================= WEB DEVELOPMENT =================
      price: "" shows "Get a quote". Set it like "$1,500" or "From $900".
      The features are a starting draft. Edit them to match what you offer.
-     examples = screenshots shown on that industry's tab (label says if it's a
-     real client project or a sample design). link = live page, or "" for none. */
+     examples = screenshots shown on that industry's tab, real projects first.
+       label: "Real project" or "Sample design".
+       image = desktop screenshot; phone = phone screenshot; or phones: [two phone shots] for apps.
+       link = live page, or "" and a note like "Launching soon". */
   webPricing: [
     {
       id: "restaurants",
       name: "Restaurants",
       blurb: "Menus, hours and directions that look right on every screen.",
       examples: [
+        { label: "Real project", name: "Torres Cafe & Catering", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
+          text: "Bilingual English/Spanish site for a Puerto Rican cafe in Perth Amboy: menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Launching soon" },
         { label: "Sample design", name: "Harbor & Hearth", image: "img/work/sample-restaurant-desktop.jpg", phone: "img/work/sample-restaurant-phone.jpg",
           text: "Tabbed menu, today's hours, weekly specials, map and one-tap reservations.", link: "examples/restaurant/" }
       ],
@@ -71,8 +75,10 @@ window.SITE = {
       name: "Gyms & facilities",
       blurb: "Programs, schedules and sign-ups that bring in members.",
       examples: [
-        { label: "Client project", name: "Elite Wrestling NJ", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
-          text: "Programs, a weekly schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "" }
+        { label: "Real project", name: "Elite Wrestling NJ", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
+          text: "Programs, a weekly schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Launching soon" },
+        { label: "Real project", name: "GTG", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
+          text: "A scroll-through tour of a new combat facility (mats, cage, ring, rooftop track) with classes, a weekly schedule and member sign-up with coach referral codes.", link: "", note: "Launching soon" }
       ],
       tiers: [
         { name: "Starter", price: "", features: ["One-page site", "Programs and coaches", "Free-trial or contact form", "Works on phones, tablets & desktops"] },
@@ -85,6 +91,8 @@ window.SITE = {
       name: "Adjusters & insurance",
       blurb: "A professional presence that earns trust and brings in leads.",
       examples: [
+        { label: "Real project", name: "Field Photos", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
+          text: "A phone app for flood adjusters: document damage room by room with photos and voice notes, work offline on site, then export a room-by-room list for the estimate.", link: "", note: "Private app" },
         { label: "Sample design", name: "Northpoint Claims", image: "img/work/sample-insurance-desktop.jpg", phone: "img/work/sample-insurance-phone.jpg",
           text: "Free claim review form up front, claim types, a clear process and FAQ.", link: "examples/insurance/" }
       ],
@@ -104,7 +112,13 @@ window.SITE = {
     { name: "Ashanti Maurice", type: "Personal brand · Redesign", image: "img/work/ashanti-maurice-desktop.jpg", phone: "img/work/ashanti-maurice-phone.jpg",
       text: "Fighter and coaching site with an online shop, coaching applications and fight updates.", link: "https://apm-9.github.io/Mauricetraining.work/" },
     { name: "Elite Wrestling NJ", type: "Wrestling gym · Redesign", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
-      text: "Rebuilt a gym's Wix site as a fast custom site: programs, a schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "" }
+      text: "Rebuilt a gym's Wix site as a fast custom site: programs, a schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Launching soon" },
+    { name: "Torres Cafe & Catering", type: "Restaurant · Redesign", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
+      text: "Bilingual English/Spanish cafe site with menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Launching soon" },
+    { name: "GTG", type: "Combat gym · New site", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
+      text: "Scroll-through facility tour, classes, weekly schedule, and member accounts with coach referral tracking.", link: "", note: "Launching soon" },
+    { name: "Field Photos", type: "Insurance adjusters · Web app", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
+      text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Private app" }
     /* Add more: { name: "", type: "", image: "img/work/....jpg", phone: "", text: "", link: "" } */
   ]
 };
@@ -220,6 +234,19 @@ window.SITE = {
   if (DRAFT) document.documentElement.classList.add("draft");
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function ph(label) { return '<div class="placeholder">' + esc(label) + "</div>"; }
+  function shots(x) {
+    if (x.phones && x.phones.length) {
+      return '<div class="shots phones">' + x.phones.map(function (src, i) {
+        return '<img src="' + esc(src) + '" alt="' + esc(x.name) + " app on a phone, screen " + (i + 1) + '" loading="lazy">';
+      }).join("") + "</div>";
+    }
+    return '<div class="shots"><img class="desk" src="' + esc(x.image) + '" alt="' + esc(x.name) + ' website on a desktop" loading="lazy">' +
+      (x.phone ? '<img class="phone" src="' + esc(x.phone) + '" alt="' + esc(x.name) + ' website on a phone" loading="lazy">' : "") + "</div>";
+  }
+  function linkOrNote(x, label) {
+    return x.link ? '<a class="btn small ghost ext" href="' + esc(x.link) + '" target="_blank" rel="noopener">' + label + "</a>"
+                  : '<span class="muted small-note">' + esc(x.note || "Launching soon") + "</span>";
+  }
   /* Hide a [data-section] wrapper when it has nothing to show (unless ?draft). */
   function settle(el, has) {
     var sec = el.closest("[data-section]") || el;
@@ -263,10 +290,9 @@ window.SITE = {
       has = S.projects.length > 0;
       html = S.projects.map(function (p) {
         return '<article class="project">' +
-          '<div class="shots"><img class="desk" src="' + esc(p.image) + '" alt="' + esc(p.name) + ' website on a computer" loading="lazy">' +
-          (p.phone ? '<img class="phone" src="' + esc(p.phone) + '" alt="' + esc(p.name) + ' website on a phone" loading="lazy">' : "") + "</div>" +
+          shots(p) +
           '<div class="info"><span class="eyebrow">' + esc(p.type) + "</span><h3>" + esc(p.name) + "</h3><p>" + esc(p.text) + "</p>" +
-          (p.link ? '<a class="btn small ghost ext" href="' + esc(p.link) + '" target="_blank" rel="noopener">Visit site</a>' : '<span class="muted small-note">Launching soon</span>') +
+          linkOrNote(p, "Visit site") +
           "</div></article>";
       }).join("") + (DRAFT ? '<article class="project">' + ph("Another project: screenshot, name, one line, link") + "</article>" : "");
     }
@@ -280,10 +306,9 @@ window.SITE = {
         return '<div class="tab-panel" role="tabpanel" id="panel-' + c.id + '" aria-labelledby="tab-' + c.id + '"' + (i ? " hidden" : "") + ">" +
           '<p class="lede" style="margin-bottom:24px">' + esc(c.blurb) + "</p>" +
           (c.examples || []).map(function (x) {
-            return '<div class="showcase"><div class="shots"><img class="desk" src="' + esc(x.image) + '" alt="' + esc(x.name) + ' website on a desktop" loading="lazy">' +
-              (x.phone ? '<img class="phone" src="' + esc(x.phone) + '" alt="' + esc(x.name) + ' website on a phone" loading="lazy">' : "") + "</div>" +
-              '<div><span class="pill">' + esc(x.label) + "</span><h3>" + esc(x.name) + "</h3><p>" + esc(x.text) + "</p>" +
-              (x.link ? '<a class="btn small ghost ext" href="' + esc(x.link) + '" target="_blank" rel="noopener">View ' + (/sample/i.test(x.label) ? "sample site" : "site") + "</a>" : '<span class="muted small-note">Launching soon</span>') +
+            return '<div class="showcase">' + shots(x) +
+              '<div><span class="pill' + (/sample/i.test(x.label) ? " sample" : "") + '">' + esc(x.label) + "</span><h3>" + esc(x.name) + "</h3><p>" + esc(x.text) + "</p>" +
+              linkOrNote(x, /sample/i.test(x.label) ? "View sample site" : "View site") +
               "</div></div>";
           }).join("") +
           (DRAFT && !(c.examples || []).length ? ph("Example screenshots for " + c.name) : "") +
