@@ -64,7 +64,7 @@ h3 { font-size: 1.4rem; color: var(--green); }
     repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 14px, transparent 14px 28px);
   background-size: cover; background-position: center;
 }
-.hero.has-photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(8,20,18,.55), rgba(8,20,18,.85)); }
+.hero.has-photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(8,20,18,.45), rgba(8,20,18,.80)); }
 .hero-inner { position: relative; padding: 60px 16px; max-width: 760px; }
 .hero .papel { width: min(420px, 80vw); margin: 0 auto 28px; border-radius: 2px; }
 .hero .eyebrow { letter-spacing: .25em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin: 0 0 8px; }
