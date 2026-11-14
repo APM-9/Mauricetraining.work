@@ -40,9 +40,15 @@ window.SITE = {
   ],
 
   // Rating shown in the Order section. Empty score = hidden.
-  rating: { score: "4.4", count: "208", source: "Grubhub",
-    quote: "Tasty and fast! Will order again. Had the steak tacos, chicken and birria. All delicious!",
-    quoteBy: "Grubhub customer, Dec 2025" },
+  rating: { score: "4.4", count: "208", source: "Grubhub" },
+
+  // Customer quotes (from Grubhub reviews). Empty list = hidden.
+  reviews: [
+    { quote: "Tasty and fast! Will order again. Had the steak tacos, chicken and birria. All delicious!", by: "Grubhub review, Dec 2025" },
+    { quote: "Best value for the money, Hispanic food wise.", by: "Grubhub review, Jun 2024" },
+    { quote: "The food was delicious, a lot of meat and flavor.", by: "Grubhub review, Nov 2023" },
+    { quote: "¡La comida es excelente! Y tienen buenos precios.", by: "Grubhub review, Dec 2024" }
+  ],
 
   menuNote: "Prices are from our online menu and may differ slightly in store.",
 

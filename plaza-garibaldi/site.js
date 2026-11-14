@@ -97,13 +97,15 @@
   // About
   $("#about-body").innerHTML = (S.about || []).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
 
-  // Rating
-  var Rt = S.rating || {};
-  if (Rt.score) {
+  // Rating + reviews
+  var Rt = S.rating || {}, Rv = S.reviews || [];
+  if (Rt.score || Rv.length) {
     var el = $("#rating");
-    el.innerHTML = '<p class="stars"><span aria-hidden="true">★★★★★</span> <strong>' + esc(Rt.score) + "</strong> on " + esc(Rt.source) +
-      (Rt.count ? ' <span class="muted">· ' + esc(Rt.count) + " ratings</span>" : "") + "</p>" +
-      (Rt.quote ? "<blockquote>\u201c" + esc(Rt.quote) + "\u201d" + (Rt.quoteBy ? "<cite>" + esc(Rt.quoteBy) + "</cite>" : "") + "</blockquote>" : "");
+    el.innerHTML = (Rt.score ? '<p class="stars"><span class="star" aria-hidden="true">★</span> <strong>' + esc(Rt.score) + "</strong> on " + esc(Rt.source) +
+      (Rt.count ? ' <span class="muted">· ' + esc(Rt.count) + " ratings</span>" : "") + "</p>" : "") +
+      (Rv.length ? '<div class="reviews">' + Rv.map(function (r) {
+        return "<blockquote>\u201c" + esc(r.quote) + "\u201d" + (r.by ? "<cite>" + esc(r.by) + "</cite>" : "") + "</blockquote>";
+      }).join("") + "</div>" : "");
     el.hidden = false;
   }
 
