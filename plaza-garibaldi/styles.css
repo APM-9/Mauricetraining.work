@@ -178,3 +178,21 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 12px; }
   .section { padding: 60px 0; }
   .map { height: 300px; }
 }
+
+/* Phones turned sideways (short, wide screens): compact header and hero, one-row menu tabs */
+@media (orientation: landscape) and (max-height: 520px) {
+  .nav { padding: 6px 16px; }
+  .hero { min-height: 0; }
+  .hero-inner { padding: 28px 16px 32px; }
+  .hero .papel { height: 22px; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(2.2rem, 7vw, 3rem); }
+  .hero .tagline { margin: 2px 0 10px; font-size: 1.1rem; }
+  .hero .intro { font-size: 1rem; margin-bottom: 14px; }
+  .highlights { margin-bottom: 16px; }
+  .btn { padding: 10px 20px; }
+  .section { padding: 44px 0; }
+  .menu-tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: 0 -16px 20px; padding: 4px 16px; scrollbar-width: none; position: sticky; top: 46px; z-index: 5; background: var(--cream); }
+  .menu-tabs a { flex: 0 0 auto; }
+  .about-photo { aspect-ratio: 16 / 9; }
+  .map { height: 260px; }
+}
