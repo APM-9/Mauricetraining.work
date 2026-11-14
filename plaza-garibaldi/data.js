@@ -23,7 +23,7 @@ window.SITE = {
   // Order-online links. Empty = button hidden.
   order: {
     grubhub: "https://www.grubhub.com/restaurant/plaza-garibaldi-mexican-restaurant-638-state-st-perth-amboy/3141221",
-    doordash: "",
+    doordash: "https://www.doordash.com/store/plaza-garibaldi-restaurant-perth-amboy-27884423/",
     ubereats: ""
   },
 
