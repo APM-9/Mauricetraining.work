@@ -120,7 +120,9 @@ window.SITE = {
     { name: "Field Photos", type: "Insurance adjusters · Web app", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
       text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Private app" },
     { name: "Spots", type: "Skateboarding · Web app", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
-      text: "IRL gaming for skaters: a 3D globe of real skate spots pinned from photo GPS, trick claims backed by video, head-to-head S.K.A.T.E. games, crews and direct messages.", link: "", note: "In development" }
+      text: "IRL gaming for skaters: a 3D globe of real skate spots pinned from photo GPS, trick claims backed by video, head-to-head S.K.A.T.E. games, crews and direct messages.", link: "", note: "In development" },
+    { name: "Sew Honey", type: "Handmade swimwear · Shop concept", image: "img/work/sew-honey-desktop.jpg", phone: "img/work/sew-honey-phone.jpg",
+      text: "A walk-through storefront: scroll down a 3D aisle of racks, tap any piece to try it on, mix top and bottom sizes, and fill a bag with a free-shipping meter. Includes a plain list view and a wholesale inquiry wall.", link: "examples/sew-honey/" }
     /* Add more: { name: "", type: "", image: "img/work/....jpg", phone: "", text: "", link: "" } */
   ]
 };
