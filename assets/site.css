@@ -296,3 +296,9 @@ body.locked{overflow:hidden}
 .service:hover img{transform:scale(1.04)}
 .service div{padding:28px}
 .service p{color:#cfc6ba;margin:10px 0 18px}
+.showcase{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,4vw,44px);align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,3vw,30px);margin-bottom:28px}
+@media (max-width:820px){.showcase{grid-template-columns:1fr}}
+.showcase h3{margin:10px 0 8px}
+.showcase p{color:var(--muted);margin:0 0 18px}
+.pill{display:inline-block;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(232,50,43,.14);color:var(--red-hot)}
+.tiers-title{margin:8px 0 18px}

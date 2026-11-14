@@ -48,14 +48,20 @@ window.SITE = {
 
   /* ================= WEB DEVELOPMENT =================
      price: "" shows "Get a quote". Set it like "$1,500" or "From $900".
-     The features are a starting draft. Edit them to match what you offer. */
+     The features are a starting draft. Edit them to match what you offer.
+     examples = screenshots shown on that industry's tab (label says if it's a
+     real client project or a sample design). link = live page, or "" for none. */
   webPricing: [
     {
       id: "restaurants",
       name: "Restaurants",
-      blurb: "Menus, hours and directions that look right on a phone.",
+      blurb: "Menus, hours and directions that look right on every screen.",
+      examples: [
+        { label: "Sample design", name: "Harbor & Hearth", image: "img/work/sample-restaurant-desktop.jpg", phone: "img/work/sample-restaurant-phone.jpg",
+          text: "Tabbed menu, today's hours, weekly specials, map and one-tap reservations.", link: "examples/restaurant/" }
+      ],
       tiers: [
-        { name: "Starter", price: "", features: ["One-page site", "Menu, hours and map", "Click-to-call and directions", "Phone-friendly design"] },
+        { name: "Starter", price: "", features: ["One-page site", "Menu, hours and map", "Click-to-call and directions", "Works on phones, tablets & desktops"] },
         { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Multi-page site", "Photo gallery", "Online ordering or reservation link", "Google search basics"] },
         { name: "Premium", price: "", features: ["Everything in Pro", "Menu you can edit yourself", "Specials and events section", "Monthly care plan included"] }
       ]
@@ -64,8 +70,12 @@ window.SITE = {
       id: "gyms",
       name: "Gyms & facilities",
       blurb: "Programs, schedules and sign-ups that bring in members.",
+      examples: [
+        { label: "Client project", name: "Elite Wrestling NJ", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
+          text: "Programs, a weekly schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "" }
+      ],
       tiers: [
-        { name: "Starter", price: "", features: ["One-page site", "Programs and coaches", "Free-trial or contact form", "Phone-friendly design"] },
+        { name: "Starter", price: "", features: ["One-page site", "Programs and coaches", "Free-trial or contact form", "Works on phones, tablets & desktops"] },
         { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Weekly schedule you edit from a spreadsheet", "Membership and pricing section", "Events and tournaments list"] },
         { name: "Premium", price: "", features: ["Everything in Pro", "Merch shop section", "Donations or payments box", "Monthly care plan included"] }
       ]
@@ -74,8 +84,12 @@ window.SITE = {
       id: "insurance",
       name: "Adjusters & insurance",
       blurb: "A professional presence that earns trust and brings in leads.",
+      examples: [
+        { label: "Sample design", name: "Northpoint Claims", image: "img/work/sample-insurance-desktop.jpg", phone: "img/work/sample-insurance-phone.jpg",
+          text: "Free claim review form up front, claim types, a clear process and FAQ.", link: "examples/insurance/" }
+      ],
       tiers: [
-        { name: "Starter", price: "", features: ["One-page site", "Services and service area", "Contact form", "Phone-friendly design"] },
+        { name: "Starter", price: "", features: ["One-page site", "Services and service area", "Contact form", "Works on phones, tablets & desktops"] },
         { name: "Pro", price: "", featured: true, features: ["Everything in Starter", "Multi-page site", "Claim or quote request form", "Licenses and credentials section", "Google search basics"] },
         { name: "Premium", price: "", features: ["Everything in Pro", "Client reviews section", "FAQ and resources pages", "Monthly care plan included"] }
       ]
@@ -264,7 +278,16 @@ window.SITE = {
         return '<button type="button" role="tab" id="tab-' + c.id + '" aria-controls="panel-' + c.id + '" aria-selected="' + (i === 0) + '">' + esc(c.name) + "</button>";
       }).join("") + "</div>" + cats.map(function (c, i) {
         return '<div class="tab-panel" role="tabpanel" id="panel-' + c.id + '" aria-labelledby="tab-' + c.id + '"' + (i ? " hidden" : "") + ">" +
-          '<p class="lede" style="margin-bottom:24px">' + esc(c.blurb) + '</p><div class="grid grid-3">' +
+          '<p class="lede" style="margin-bottom:24px">' + esc(c.blurb) + "</p>" +
+          (c.examples || []).map(function (x) {
+            return '<div class="showcase"><div class="shots"><img class="desk" src="' + esc(x.image) + '" alt="' + esc(x.name) + ' website on a desktop" loading="lazy">' +
+              (x.phone ? '<img class="phone" src="' + esc(x.phone) + '" alt="' + esc(x.name) + ' website on a phone" loading="lazy">' : "") + "</div>" +
+              '<div><span class="pill">' + esc(x.label) + "</span><h3>" + esc(x.name) + "</h3><p>" + esc(x.text) + "</p>" +
+              (x.link ? '<a class="btn small ghost ext" href="' + esc(x.link) + '" target="_blank" rel="noopener">View ' + (/sample/i.test(x.label) ? "sample site" : "site") + "</a>" : '<span class="muted small-note">Launching soon</span>') +
+              "</div></div>";
+          }).join("") +
+          (DRAFT && !(c.examples || []).length ? ph("Example screenshots for " + c.name) : "") +
+          '<h3 class="tiers-title">' + esc(c.name) + ' packages</h3><div class="grid grid-3">' +
           c.tiers.map(function (t) {
             return '<div class="card tier' + (t.featured ? " featured" : "") + '">' + (t.featured ? '<span class="tag">Most popular</span>' : "") +
               "<h3>" + esc(t.name) + '</h3><div class="amount">' + (t.price ? esc(t.price) : "Custom quote") + "</div>" +
