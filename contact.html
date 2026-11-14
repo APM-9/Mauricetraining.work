@@ -1,117 +1,82 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-<title>Ashanti Maurice | Contact</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact | Ashanti Maurice</title>
+<meta name="description" content="Contact Ashanti Maurice about coaching, sponsorships or business.">
+<meta name="theme-color" content="#0c0b0b">
+<link rel="icon" href="img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-
-body{
-font-family:Arial;
-background:#111;
-color:white;
-margin:0;
-text-align:center;
-}
-
-/* HEADER */
-
-header{
-background:black;
-padding:40px;
-}
-
-nav a{
-color:#ff2a2a !important;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-nav a:visited{
-color:#ff2a2a;
-}
-
-/* CONTENT */
-
-section{
-padding:60px 20px;
-}
-
-.contact-box{
-background:rgba(0,0,0,0.8);
-max-width:400px;
-margin:20px auto;
-padding:30px;
-border-radius:10px;
-}
-
-.contact-link{
-display:block;
-margin:15px 0;
-color:#ff2a2a;
-font-weight:bold;
-text-decoration:none;
-font-size:18px;
-}
-
-/* FOOTER */
-
-footer{
-padding:30px;
-background:black;
-margin-top:40px;
-}
-
+  .channels{display:grid;gap:12px;margin-top:28px}
+  .channel{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 22px;border:1px solid var(--line);border-radius:12px;background:var(--panel);text-decoration:none}
+  .channel:hover{border-color:var(--red)}
+  .channel small{display:block;color:var(--muted);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+  .channel strong{font-size:1.1rem;word-break:break-all}
 </style>
-
 </head>
-
 <body>
 
-<header>
+<div id="site-header"></div>
 
-<h1>Ashanti Maurice</h1>
+<main>
+  <section class="page-hero">
+    <div class="bg"><img src="img/asbury-2.jpg" alt=""></div>
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1>Let's talk</h1>
+      <p class="lede">Serious inquiries only — coaching, sponsorships or business.</p>
+    </div>
+  </section>
 
-<p>Amateur Fighter | Strength Coach</p>
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <h2>Reach me directly</h2>
+        <div class="channels">
+          <a class="channel" data-email href="mailto:AMaurice_94@yahoo.com"><span><small>Email</small><strong data-email-text>AMaurice_94@yahoo.com</strong></span><span aria-hidden="true">→</span></a>
+          <a class="channel" data-ig href="https://instagram.com/Rx_Dolo" target="_blank" rel="noopener"><span><small>Instagram</small><strong data-ig-text>@Rx_Dolo</strong></span><span aria-hidden="true">↗</span></a>
+          <a class="channel" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener"><span><small>Coaching consultation</small><strong>Book a call</strong></span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
 
-<nav>
+      <div class="card">
+        <h3 style="margin-bottom:18px">Send a message</h3>
+        <form class="form" action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="New message from your website">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://apm-9.github.io/Mauricetraining.work/thanks.html?from=contact">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <label>Name<input type="text" name="name" autocomplete="name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Topic
+            <select name="topic" id="topic" required>
+              <option value="">Choose one</option>
+              <option value="coaching">Coaching</option>
+              <option value="sponsorship">Sponsorship</option>
+              <option value="merch">Merch order</option>
+              <option value="business">Business / other</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" required></textarea></label>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
 
-<a href="index.html">Home</a>
-<a href="coaching.html">Coaching</a>
-<a href="fights.html">Fights</a>
-<a href="merch.html">Merch</a>
-<a href="contact.html">Contact</a>
+<div id="site-footer"></div>
 
-</nav>
-
-</header>
-
-<section>
-
-<h1>Contact</h1>
-
-<div class="contact-box">
-
-<p>Serious inquiries only — coaching, sponsorships, or business.</p>
-
-<a class="contact-link" href="mailto:AMaurice_94@yahoo.com">
-📧 AMaurice_94@yahoo.com
-</a>
-
-<a class="contact-link" href="https://instagram.com/Rx_Dolo">
-📱 @Rx_Dolo
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 Ashanti Maurice</p>
-
-</footer>
-
+<script src="assets/site.js"></script>
+<script>
+  var t = new URLSearchParams(location.search).get("topic");
+  if (t && document.querySelector('#topic option[value="' + t.replace(/[^a-z]/g, "") + '"]')) document.getElementById("topic").value = t;
+</script>
 </body>
 </html>

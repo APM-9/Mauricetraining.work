@@ -1,288 +1,179 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-<title>Ashanti Maurice | Coaching</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coaching | Ashanti Maurice</title>
+<meta name="description" content="The Fighter Physique System: online strength, conditioning and nutrition coaching from amateur MMA fighter Ashanti Maurice.">
+<meta name="theme-color" content="#0c0b0b">
+<link rel="icon" href="img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-
-body{
-font-family:Arial;
-background-image:url('IMG_1166.jpeg');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
-color:white;
-margin:0;
-text-align:center;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-}
-
-header{
-background:black;
-padding:40px;
-}
-
-nav a{
-color:#ff2a2a;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-section{
-padding:60px 20px;
-}
-
-/* PROGRAM */
-
-.program-box{
-background:rgba(0,0,0,0.85);
-max-width:500px;
-margin:30px auto;
-padding:30px;
-border-radius:10px;
-}
-
-/* PRICING */
-
-.price-box{
-background:rgba(0,0,0,0.9);
-max-width:400px;
-margin:20px auto;
-padding:25px;
-border-radius:10px;
-}
-
-.price-box h3{
-color:#ff2a2a;
-}
-
-/* FORM */
-
-.form-box{
-background:rgba(0,0,0,0.9);
-max-width:450px;
-margin:40px auto;
-padding:30px;
-border-radius:10px;
-}
-
-input, textarea, select{
-width:90%;
-padding:12px;
-margin:10px 0;
-border-radius:6px;
-border:none;
-}
-
-button{
-padding:15px 30px;
-background:#ff2a2a;
-color:white;
-border:none;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* BUTTON */
-
-.book-button{
-display:inline-block;
-margin-top:15px;
-padding:12px 25px;
-background:black;
-border:2px solid #ff2a2a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-}
-
-/* FOOTER */
-
-footer{
-margin-top:auto;
-padding:30px;
-background:black;
-}
-
-/* CHAT BUTTON */
-
-.chat-button{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#ff2a2a;
-color:white;
-padding:15px 20px;
-border-radius:50px;
-font-weight:bold;
-cursor:pointer;
-}
-
+  .price{display:flex;flex-direction:column;gap:6px}
+  .price .amount{font-family:var(--display);font-size:3.2rem;line-height:1;color:var(--cream)}
+  .price .per{color:var(--muted);font-size:.9rem;letter-spacing:.1em;text-transform:uppercase}
+  .price.featured{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+  .tag{align-self:flex-start;background:var(--red);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+  .stack{display:grid;gap:14px}
+  .stack .item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;background:var(--ink);border:1px solid var(--line);border-radius:12px}
+  .stack .item h3{font-size:1.25rem;margin-bottom:4px}
+  .stack .item p{margin:0;color:var(--muted);font-size:.95rem}
+  .code{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-weight:700;letter-spacing:.08em;background:var(--ink);border:1px dashed var(--red);padding:6px 12px;border-radius:8px;color:var(--cream)}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:18px}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
+  .steps li::before{content:counter(s);font-family:var(--display);font-size:1.6rem;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff}
+  .steps strong{display:block;color:var(--cream)}
+  @media (max-width:520px){.stack .item{flex-direction:column;align-items:flex-start}}
 </style>
-
 </head>
-
 <body>
 
-<header>
+<div id="site-header"></div>
 
-<h1>Ashanti Maurice</h1>
-<p>Amateur Fighter | Strength Coach</p>
+<main>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="coaching.html">Coaching</a>
-<a href="fights.html">Fights</a>
-<a href="merch.html">Merch</a>
-<a href="contact.html">Contact</a>
-</nav>
+  <section class="page-hero">
+    <div class="bg"><img src="img/red-room-1.jpg" alt=""></div>
+    <div class="wrap">
+      <span class="eyebrow">Online coaching</span>
+      <h1>Fighter Physique System</h1>
+      <p class="lede">The exact system I use to prepare for fights — adapted for clients who want elite-level results. Built for serious people only.</p>
+      <div class="btn-row" style="margin-top:28px">
+        <a class="btn" href="#apply">Apply now</a>
+        <a class="btn ghost ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book a consultation</a>
+      </div>
+    </div>
+  </section>
 
-</header>
+  <!-- WHAT YOU GET -->
+  <section class="section">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">What you get</span>
+        <h2>Everything I do, built for you</h2>
+        <ul class="ticks" style="margin-top:28px">
+          <li>Custom strength &amp; conditioning program</li>
+          <li>Fighter-level conditioning system</li>
+          <li>Personalized nutrition plan</li>
+          <li>Weekly check-ins &amp; adjustments</li>
+          <li>Direct access to me</li>
+          <li>Accountability &amp; discipline coaching</li>
+          <li>Full supplement protocol — what I personally use</li>
+        </ul>
+      </div>
+      <div class="photo reveal" style="aspect-ratio:4/5"><img src="img/gym-class-1.jpg" alt="Group training session on the mats" loading="lazy"></div>
+    </div>
+  </section>
 
-<section>
+  <!-- HOW IT WORKS -->
+  <section class="section band-panel">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps in</h2>
+      </div>
+      <ol class="steps reveal">
+        <li><div><strong>Apply</strong>Tell me your goals and where you're starting from. Takes two minutes.</div></li>
+        <li><div><strong>Consultation call</strong>We talk through your training, schedule and what it'll take. If it's a fit, you're in.</div></li>
+        <li><div><strong>Get to work</strong>Your program, nutrition plan and check-in schedule land, and we start.</div></li>
+      </ol>
+    </div>
+  </section>
 
-<h1>Online Coaching</h1>
+  <!-- PRICING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Packages</span>
+        <h2>Coaching packages</h2>
+        <p class="lede">Application required. Only serious clients will be accepted.</p>
+      </div>
+      <div class="grid grid-2 reveal">
+        <div class="card price">
+          <h3>6-month commitment</h3>
+          <span class="amount">$2,400</span>
+          <span class="per">Paid upfront</span>
+          <p style="margin-top:10px">Built for serious individuals ready to transform.</p>
+          <a class="btn ghost" href="#apply" style="margin-top:auto">Apply for 6 months</a>
+        </div>
+        <div class="card price featured">
+          <span class="tag">Best value</span>
+          <h3>12-month commitment</h3>
+          <span class="amount">$4,200</span>
+          <span class="per">Paid upfront</span>
+          <p style="margin-top:10px">For those committed to long-term elite results.</p>
+          <a class="btn" href="#apply" style="margin-top:auto">Apply for 12 months</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p>Elite level training for serious individuals only.</p>
+  <!-- SUPPLEMENTS -->
+  <section class="section band-panel">
+    <div class="wrap split flip">
+      <div class="reveal">
+        <span class="eyebrow">My fighter stack</span>
+        <h2>What I take</h2>
+        <p class="lede" style="margin:18px 0 26px">Exactly what I use to stay ready for training, recovery and fight performance.</p>
+        <div class="stack">
+          <div class="item"><div><h3>Pre-workout</h3><p>Energy, focus and intensity for training.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
+          <div class="item"><div><h3>Creatine</h3><p>Strength, power and performance output.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
+          <div class="item"><div><h3>BCAAs</h3><p>Recovery and less muscle fatigue.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
+        </div>
+        <p style="margin-top:20px">Use code <span class="code">DOLOBUCK94</span> for a discount.</p>
+      </div>
+      <div class="photo reveal" style="aspect-ratio:4/5"><img src="img/kitchen.jpg" alt="Ashanti Maurice in the kitchen" loading="lazy"></div>
+    </div>
+  </section>
 
-<div class="program-box">
+  <!-- APPLY -->
+  <section class="section" id="apply">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Apply</span>
+        <h2>Apply for coaching</h2>
+        <p class="lede" style="margin:18px 0 22px">Fill this out and I'll review it personally. You'll get an email with a link to book your consultation.</p>
+        <p class="muted">Rather talk first?</p>
+        <a class="btn ghost ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book a call directly</a>
+      </div>
+      <div class="card reveal">
+        <form class="form" action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST">
+          <input type="hidden" name="_subject" value="New Coaching Application">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_autoresponse" value="Your application has been received. If you're serious about working with me, book your consultation now — spots are limited: https://calendly.com/fpconsultation/fighter-physique-consultation">
+          <input type="hidden" name="_next" value="https://apm-9.github.io/Mauricetraining.work/thanks.html">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
-<h2>Fighter Physique System</h2>
+          <label>Full name<input type="text" name="name" autocomplete="name" required></label>
+          <div class="row">
+            <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+          <label>Package
+            <select name="package" required>
+              <option value="">Choose one</option>
+              <option>6-month commitment ($2,400)</option>
+              <option>12-month commitment ($4,200)</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </label>
+          <label>What are your goals?<textarea name="goals" required></textarea></label>
+          <button class="btn" type="submit">Submit application</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-<p>
-This is the exact system I use to prepare for fights — adapted for clients who want elite-level results.
-</p>
+</main>
 
-<p>
-✔ Custom Strength & Conditioning Program<br>
-✔ Fighter-Level Conditioning System<br>
-✔ Personalized Nutrition Plan<br>
-✔ Weekly Check-Ins & Adjustments<br>
-✔ Direct Access To Me<br>
-✔ Accountability & Discipline Coaching<br>
-✔ Full Supplement Protocol (what I personally use)
-</p>
+<div id="site-footer"></div>
 
-</div>
+<a class="dm-fab" data-ig href="https://instagram.com/Rx_Dolo" target="_blank" rel="noopener">DM me</a>
 
-<!-- 🔥 FIGHTER STACK -->
-
-<div class="program-box">
-
-<h2>My Fighter Supplement Stack</h2>
-
-<p>
-This is exactly what I use to stay ready for training, recovery, and fight performance.
-</p>
-
-<div style="margin-top:20px;">
-<h3>⚡ Pre-Workout</h3>
-<p>Explosive energy, focus, and intensity for training.</p>
-<a class="book-button" href="https://bckd.co/qeoStY3" target="_blank">Get Pre-Workout</a>
-</div>
-
-<div style="margin-top:25px;">
-<h3>💪 Creatine</h3>
-<p>Increase strength, power, and performance output.</p>
-<a class="book-button" href="https://bckd.co/qeoStY3" target="_blank">Get Creatine</a>
-</div>
-
-<div style="margin-top:25px;">
-<h3>🔥 BCAAs</h3>
-<p>Improve recovery and reduce muscle fatigue.</p>
-<a class="book-button" href="https://bckd.co/qeoStY3" target="_blank">Get BCAAs</a>
-</div>
-
-<p style="margin-top:20px;color:#ff2a2a;font-weight:bold;">
-Use Code: DOLOBUCK94 for a discount
-</p>
-
-</div>
-
-<!-- PRICING -->
-
-<h2>Coaching Packages</h2>
-
-<div class="price-box">
-<h3>🥊 6 Month Commitment</h3>
-<p>$2,400 Paid Upfront</p>
-<p>Built for serious individuals ready to transform.</p>
-</div>
-
-<div class="price-box">
-<h3>🥇 12 Month Commitment</h3>
-<p>$4,200 Paid Upfront</p>
-<p>For those committed to long-term elite results.</p>
-</div>
-
-<p style="color:#ff2a2a;font-weight:bold;">
-Application Required — Only serious clients will be accepted.
-</p>
-
-<!-- APPLICATION -->
-
-<div class="form-box">
-
-<h2>Apply For Coaching</h2>
-
-<form action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST">
-
-<input type="hidden" name="_subject" value="🔥 New Coaching Application">
-<input type="hidden" name="_captcha" value="false">
-
-<!-- 🔥 AUTO FOLLOW-UP -->
-<input type="hidden" name="_autoresponse" value="Your application has been received. If you're serious about working with me, book your consultation now — spots are limited: https://calendly.com/fpconsultation/fighter-physique-consultation">
-
-<!-- 🔥 REDIRECT AFTER SUBMIT -->
-<input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
-
-<input type="text" name="name" placeholder="Full Name" required>
-
-<input type="email" name="email" placeholder="Email Address" required>
-
-<input type="tel" name="phone" placeholder="Phone Number" required>
-
-<textarea name="goals" placeholder="What are your goals?" required></textarea>
-
-<select name="budget" required>
-<option value="">Select Your Investment Level</option>
-<option>$1,000+</option>
-<option>$2,500+</option>
-<option>$5,000+</option>
-</select>
-
-<button type="submit">Submit Application</button>
-
-</form>
-
-<h3>Or Book A Call Directly</h3>
-
-<a class="book-button" href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank">
-Book Consultation Call
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 Ashanti Maurice</p>
-
-</footer>
-
-<!-- CHAT BUTTON -->
-
-<div class="chat-button" onclick="window.location.href='https://instagram.com/Rx_Dolo'">
-Chat Now
-</div>
-
+<script src="assets/site.js"></script>
 </body>
 </html>

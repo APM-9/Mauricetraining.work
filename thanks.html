@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thank You | Ashanti Maurice</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0c0b0b">
+<link rel="icon" href="img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+  <section class="section">
+    <div class="wrap" style="max-width:760px;text-align:center">
+      <img src="img/logo-badge.png" alt="" width="140" height="131" style="margin:0 auto 28px">
+      <span class="eyebrow">Received</span>
+      <h1 id="title" style="font-size:clamp(2.6rem,8vw,4.6rem)">Application received</h1>
+      <p class="lede" id="msg" style="margin:20px auto 32px">Check your email. If you're serious about working with me, book your consultation now — spots are limited.</p>
+      <div class="btn-row" style="justify-content:center" id="actions">
+        <a class="btn ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book your consultation</a>
+        <a class="btn ghost" href="index.html">Back home</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>
+  if (new URLSearchParams(location.search).get("from") === "contact") {
+    document.getElementById("title").textContent = "Message sent";
+    document.getElementById("msg").textContent = "Thanks for reaching out. I'll get back to you soon.";
+    document.getElementById("actions").innerHTML = '<a class="btn" href="index.html">Back home</a>';
+  }
+</script>
+</body>
+</html>
