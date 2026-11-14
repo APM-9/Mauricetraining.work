@@ -91,8 +91,6 @@ window.SITE = {
       name: "Adjusters & insurance",
       blurb: "A professional presence that earns trust and brings in leads.",
       examples: [
-        { label: "Concept app", name: "Field Photos", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
-          text: "A phone app for flood adjusters: document damage room by room with photos and voice notes, work offline on site, then export a room-by-room list for the estimate.", link: "", note: "Concept" },
         { label: "Sample design", name: "Northpoint Claims", image: "img/work/sample-insurance-desktop.jpg", phone: "img/work/sample-insurance-phone.jpg",
           text: "Free claim review form up front, claim types, a clear process and FAQ.", link: "examples/insurance/" }
       ],
@@ -114,6 +112,22 @@ window.SITE = {
         { name: "Starter", price: "$1,500", features: ["Brand homepage and lookbook", "Up to 15 products", "Buy buttons or order form", "Works on phones, tablets & desktops"] },
         { name: "Pro", price: "$3,000", featured: true, features: ["Everything in Starter", "Full shop with up to 50 products", "Sizes, colors and stock levels", "Cart and secure checkout (Shopify or Stripe)", "Google search basics"] },
         { name: "Premium", price: "$5,000", features: ["Everything in Pro", "Custom interactive shopping experience", "Wholesale inquiry page", "3 months of care plan included"] }
+      ]
+    },
+    {
+      id: "apps",
+      name: "Apps",
+      blurb: "Custom web apps that install on a phone's home screen, no app store needed.",
+      examples: [
+        { label: "Concept app", name: "Field Photos", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
+          text: "A phone app for flood claim adjusters: document damage room by room with photos and voice notes, work offline on site, sync to the cloud, then export a room-by-room list for the estimate.", link: "", note: "Concept" },
+        { label: "Concept app", name: "Spots", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
+          text: "IRL gaming for skaters: a 3D globe of real skate spots pinned from photo GPS, video-backed trick claims, head-to-head S.K.A.T.E. games, crews and direct messages.", link: "", note: "In development" }
+      ],
+      tiers: [
+        { name: "Starter", price: "$5,000", features: ["Phone-first web app for one job", "Installs to the home screen", "Saves data on the device and works offline", "Export to PDF or spreadsheet"] },
+        { name: "Pro", price: "$8,000", featured: true, features: ["Everything in Starter", "User accounts and sign-in", "Cloud backup and sync across devices", "Photos, voice notes and file uploads"] },
+        { name: "Premium", price: "From $12,000", features: ["Everything in Pro", "Admin or team dashboard", "Payments, messaging or maps", "3 months of care plan included"] }
       ]
     }
   ],
