@@ -144,11 +144,50 @@ window.SITE = {
       { name: "Nachos con Carne Estilo Garibaldi", desc: "Nachos with meat.", price: "15.00+" }
     ]},
     { section: "Fajitas", items: [] },
-    { section: "Huarache", items: [] },
-    { section: "Carnes Estilo Garibaldi", items: [] },
-    { section: "Platillos Mexicanos", items: [] },
-      // Flautas ($15.00, Best Seller): "De pollo o pechuga. Chicken or chicken breast flautas. Tomate, queso y crema..." (full text pending)
-    { section: "Tortas", items: [] },
+    { section: "Huarache", note: "Comes with green or red sauce, cheese, cream & avocado. Add extras for an additional charge.", items: [
+      { name: "Al Pastor Huarache", desc: "Marinated pork.", price: "7.50" },
+      { name: "Chorizo Huarache", desc: "Mexican sausage.", price: "7.50" },
+      { name: "Carne Asada Huarache", desc: "Grilled steak.", price: "7.50" },
+      { name: "Carnitas Huarache", desc: "Pulled pork.", price: "7.50" },
+      { name: "Carne Enchilada Huarache", desc: "Chili pork.", price: "7.50" },
+      { name: "Pollo Huarache", desc: "Chicken.", price: "7.50" },
+      { name: "Lengua Huarache", desc: "Tongue.", price: "8.00" }
+    ]},
+    { section: "Carnes Estilo Garibaldi", subtitle: "Meats Garibaldi Style", note: "Served with rice, beans, cactus salad, a green enchilada, roasted chiles, fried egg and avocado. Add extras for an additional charge.", items: [
+      { name: "Bistec Asado Estilo Garibaldi", desc: "Grilled steak.", price: "21.00" },
+      { name: "Pechuga Asada Estilo Garibaldi", desc: "Grilled chicken breast.", price: "21.00" },
+      { name: "Chuleta Frita Estilo Garibaldi", desc: "Fried pork chop.", price: "21.00" },
+      { name: "Carne Enchilada Estilo Garibaldi", desc: "Chili-marinated meat.", price: "21.00" },
+      { name: "Cecina Estilo Garibaldi", desc: "Salted steak.", price: "21.00" }
+    ]},
+    { section: "Platillos Mexicanos", subtitle: "Mexican Dishes", note: "Come with rice, beans & salad. Add extras for an additional charge.", items: [
+      { name: "Bistec Encebollado", desc: "Steak with grilled onions.", price: "16.00" },
+      { name: "Bistec Oaxaqueño", desc: "", price: "21.00" },
+      { name: "Chuletas a la Mexicana", desc: "Mexican-style pork chops.", price: "16.00" },
+      { name: "Chuletas Rancheras", desc: "Ranch-style pork chops.", price: "16.00" },
+      { name: "Chuletas en Mole", desc: "Pork chops in mole.", price: "16.00" },
+      { name: "Chuletas en Salsa Verde", desc: "Pork chops in green salsa.", price: "16.00" },
+      { name: "Chuletas Fritas, Papas y Ensalada", desc: "Fried pork chops, fries and salad.", price: "16.00" },
+      { name: "Enchiladas", desc: "Red or green, with lettuce, avocado, cheese and sour cream.", price: "15.00" },
+      { name: "Enchiladas Suizas", desc: "Swiss enchiladas.", price: "15.00+" },
+      { name: "Entomatadas", desc: "In tomato sauce.", price: "16.00+" },
+      { name: "Chilaquiles", desc: "Red or green, with steak or grilled chicken breast.", price: "16.00" },
+      { name: "Cecina Ranchera", desc: "Salted ranch beef with tender cactus.", price: "17.00" },
+      { name: "Flautas", desc: "Chicken or chicken breast flautas with tomato, cheese and sour cream.", price: "15.00", popular: true },
+      { name: "Mole de Pollo", desc: "Tender chicken in mole.", price: "17.00" },
+      { name: "Cielo, Mar y Tierra", desc: "Sky, surf and turf: paloma (pigeon), steak & shrimp.", price: "21.00" }
+    ]},
+    { section: "Tortas", subtitle: "Sandwiches & Burgers", note: "Come with beans, lettuce, tomato, onion, avocado & jalapeño. Add extras for an additional charge.", items: [
+      { name: "Bacon Burger", desc: "", price: "12.00" },
+      { name: "Mexican Burger", desc: "", price: "14.00" },
+      { name: "Sub Pastor Torta", desc: "", price: "10.95" },
+      { name: "Chipotle Burger", desc: "", price: "11.00" },
+      { name: "Al Pastor Torta", desc: "Seasoned pork.", price: "9.00" },
+      { name: "Jamón Torta", desc: "Ham.", price: "9.00" },
+      { name: "Pechuga Asada Torta", desc: "Grilled chicken.", price: "9.00" },
+      { name: "Carne Enchilada Torta", desc: "Chili pork.", price: "9.00" },
+      { name: "Bistec Asado Torta", desc: "Grilled steak.", price: "9.00" }
+    ]},
     { section: "Paloma", items: [] },
     { section: "Coctel", items: [] },
     { section: "Niños", subtitle: "Kids", items: [] },
