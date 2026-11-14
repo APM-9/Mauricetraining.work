@@ -55,16 +55,18 @@
 
   // Menu
   var menuBody = $("#menu-body");
-  var menu = S.menu || [];
+  var menu = (S.menu || []).filter(function (sec) { return sec.items && sec.items.length; });
   if (menu.length) {
     var nav = '<div class="menu-tabs">' + menu.map(function (sec, i) {
       return '<a href="#m-' + i + '">' + esc(sec.section) + "</a>";
     }).join("") + "</div>";
     var html = menu.map(function (sec, i) {
-      return '<div class="menu-section" id="m-' + i + '"><h3>' + esc(sec.section) + "</h3>" +
-        (sec.note ? '<p class="muted">' + esc(sec.note) + "</p>" : "") +
-        '<ul class="menu-list">' + (sec.items || []).map(function (it) {
-          return '<li><div class="row"><span class="item">' + esc(it.name) + '</span><span class="dots"></span>' +
+      return '<div class="menu-section" id="m-' + i + '"><h3>' + esc(sec.section) +
+        (sec.subtitle ? ' <span class="sub">' + esc(sec.subtitle) + "</span>" : "") + "</h3>" +
+        (sec.note ? '<p class="muted note">' + esc(sec.note) + "</p>" : "") +
+        '<ul class="menu-list">' + sec.items.map(function (it) {
+          return '<li><div class="row"><span class="item">' + esc(it.name) +
+            (it.popular ? ' <span class="badge">Best Seller</span>' : "") + '</span><span class="dots"></span>' +
             (it.price ? '<span class="price">$' + esc(String(it.price).replace(/^\$/, "")) + "</span>" : "") +
             "</div>" + (it.desc ? '<p class="desc">' + esc(it.desc) + "</p>" : "") + "</li>";
         }).join("") + "</ul></div>";

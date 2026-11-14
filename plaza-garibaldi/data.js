@@ -73,9 +73,49 @@ window.SITE = {
     ]
   },
 
-  // Menu: add sections and items. Empty = menu shows "order online" note.
-  // Example item: { name: "Tacos al Pastor", desc: "Marinated pork, pineapple, onion, cilantro", price: "12.99" }
+  // Menu: sections in the same order as Grubhub. Sections with no items are hidden.
+  // Item: { name: "...", desc: "...", price: "12.00", popular: true }  (popular = "Best Seller" badge)
   menu: [
-    // { section: "Tacos", items: [ ... ] },
+    { section: "Desayuno", subtitle: "Breakfast", note: "Comes with rice & beans.", items: [
+      { name: "Huevos a la Mexicana", desc: "Scrambled eggs Mexican style.", price: "12.00" },
+      { name: "Huevos Rancheros", desc: "Scrambled eggs ranch style.", price: "12.00" },
+      { name: "Huevos con Jamón", desc: "Scrambled eggs with ham.", price: "12.00" },
+      { name: "Huevos con Nopales", desc: "Scrambled eggs with tender cactus.", price: "12.00" },
+      { name: "Huevos en Salsa Verde", desc: "Scrambled eggs in green sauce.", price: "12.00" },
+      { name: "Huevos con Chorizo", desc: "Scrambled eggs with Mexican sausage.", price: "12.00" }
+    ]},
+    { section: "Tacos", note: "Most tacos come with choice of style. Add extras for an additional charge.", items: [
+      { name: "Birria Taco", desc: "", price: "12.95", popular: true },
+      { name: "Al Pastor Taco", desc: "Marinated pork with pineapple.", price: "3.50" },
+      { name: "Cabeza Taco", desc: "Beef head.", price: "4.50" },
+      { name: "Carne Asada Taco", desc: "Grilled steak.", price: "3.50", popular: true },
+      { name: "Pollo Taco", desc: "Chicken stew and chicken breast.", price: "3.50" },
+      { name: "Chorizo Taco", desc: "Mexican sausage.", price: "3.50" },
+      { name: "Carne Enchilada Taco", desc: "Enchilada meat.", price: "3.50" },
+      { name: "Carnitas Taco", desc: "Pulled pork.", price: "3.50" },
+      { name: "Barbacoa Taco", desc: "Barbecue.", price: "4.50" },
+      { name: "Tripa Taco", desc: "Intestine.", price: "4.50" },
+      { name: "Lengua Taco", desc: "Tongue.", price: "5.50" }
+    ]},
+    { section: "Burritos", items: [] },
+    { section: "Ensaladas", subtitle: "Salads", items: [] },
+    { section: "Tostadas", items: [] },
+    { section: "Specialties", items: [] },
+    { section: "Fajitas", items: [] },
+    { section: "Huarache", items: [] },
+    { section: "Carnes Estilo Garibaldi", items: [] },
+    { section: "Platillos Mexicanos", items: [] },
+      // Flautas ($15.00, Best Seller): "De pollo o pechuga. Chicken or chicken breast flautas. Tomate, queso y crema..." (full text pending)
+    { section: "Tortas", items: [] },
+    { section: "Paloma", items: [] },
+    { section: "Coctel", items: [] },
+    { section: "Niños", subtitle: "Kids", items: [] },
+    { section: "Caldos", subtitle: "Soups", items: [] },
+    { section: "Postres", subtitle: "Desserts", items: [] },
+    { section: "Extras", items: [] },
+      // Papas Fritas ($3.50, Best Seller): "French fries." (category pending)
+    { section: "Bebidas", subtitle: "Drinks", items: [] },
+    { section: "Mojarra", subtitle: "Fish", items: [] },
+    { section: "Quesadillas", items: [] }
   ]
 };

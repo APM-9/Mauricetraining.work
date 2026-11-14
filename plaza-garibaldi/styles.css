@@ -98,6 +98,9 @@ h3 { font-size: 1.4rem; color: var(--green); }
 .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 56px; }
 .menu-section { scroll-margin-top: 70px; }
 .menu-section h3 { border-bottom: 3px solid var(--gold); padding-bottom: 6px; }
+.menu-section h3 .sub { font-family: var(--body); font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: .05em; }
+.menu-section .note { font-size: .9rem; margin: -4px 0 6px; }
+.menu-list .badge { display: inline-block; vertical-align: middle; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: var(--gold); color: var(--ink); font-size: .68rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
 .menu-list { list-style: none; margin: 0; padding: 0; }
 .menu-list li { padding: 10px 0; }
 .menu-list .row { display: flex; align-items: baseline; gap: 8px; }
