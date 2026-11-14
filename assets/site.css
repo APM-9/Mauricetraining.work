@@ -311,3 +311,4 @@ body.locked{overflow:hidden}
 @media (max-width:900px){.gallery.g5{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:640px){.gallery.g5,.gallery.g3{grid-template-columns:repeat(2,1fr);gap:8px}.gallery.g5 figure:first-child{grid-column:span 2;aspect-ratio:4/3}}
 @media (max-width:640px){.gallery.g3 figure.wide{grid-column:span 2;aspect-ratio:16/9}}
+@media (max-width:640px){.gallery.trio figure:first-child{grid-column:span 2;aspect-ratio:4/3}}
