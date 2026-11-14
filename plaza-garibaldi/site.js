@@ -72,7 +72,23 @@
             "</div>" + (it.desc ? '<p class="desc">' + esc(it.desc) + "</p>" : "") + "</li>";
         }).join("") + "</ul></div>";
     }).join("");
-    menuBody.innerHTML = nav + '<div class="menu-grid">' + html + "</div>";
+    menuBody.innerHTML = nav + '<div class="menu-grid">' + html + "</div>" +
+      (S.menuNote ? '<p class="muted center menu-note">' + esc(S.menuNote) + "</p>" : "");
+    // Show one category at a time; the tabs switch between them.
+    var tabs = $$(".menu-tabs a"), secs = $$(".menu-section");
+    var show = function (i) {
+      secs.forEach(function (el, j) { el.hidden = j !== i; });
+      tabs.forEach(function (a, j) { a.classList.toggle("active", j === i); a.setAttribute("aria-selected", j === i); });
+    };
+    tabs.forEach(function (a, i) {
+      a.setAttribute("role", "tab");
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        show(i);
+        a.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+      });
+    });
+    show(0);
   } else {
     menuBody.innerHTML = '<p class="muted center">Our full menu is coming to this page soon. In the meantime, see everything we serve on Grubhub.</p>' +
       '<p class="center"><a class="btn btn-primary" href="#order">View Menu &amp; Order</a></p>';
@@ -80,6 +96,16 @@
 
   // About
   $("#about-body").innerHTML = (S.about || []).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+
+  // Rating
+  var Rt = S.rating || {};
+  if (Rt.score) {
+    var el = $("#rating");
+    el.innerHTML = '<p class="stars"><span aria-hidden="true">★★★★★</span> <strong>' + esc(Rt.score) + "</strong> on " + esc(Rt.source) +
+      (Rt.count ? ' <span class="muted">· ' + esc(Rt.count) + " ratings</span>" : "") + "</p>" +
+      (Rt.quote ? "<blockquote>\u201c" + esc(Rt.quote) + "\u201d" + (Rt.quoteBy ? "<cite>" + esc(Rt.quoteBy) + "</cite>" : "") + "</blockquote>" : "");
+    el.hidden = false;
+  }
 
   // Order buttons
   var O = S.order || {};

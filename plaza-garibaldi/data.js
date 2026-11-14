@@ -28,16 +28,23 @@ window.SITE = {
   highlights: ["Breakfast", "Lunch", "Dinner", "Dine In", "Take Out", "We Deliver", "Catering"],
 
   // Hours: one line per day. Empty list = "Call for hours".
-  // Taken from a 2022 flyer: confirm with the restaurant.
+  // From their Grubhub listing (Nov 2026).
   hours: [
     ["Monday", "10:00 AM – 10:00 PM"],
     ["Tuesday", "10:00 AM – 10:00 PM"],
     ["Wednesday", "10:00 AM – 10:00 PM"],
     ["Thursday", "10:00 AM – 10:00 PM"],
-    ["Friday", "10:00 AM – 12:00 AM"],
-    ["Saturday", "8:00 AM – 12:00 AM"],
-    ["Sunday", "8:00 AM – 10:00 PM"]
+    ["Friday", "10:00 AM – 11:00 PM"],
+    ["Saturday", "10:00 AM – 11:00 PM"],
+    ["Sunday", "10:00 AM – 10:00 PM"]
   ],
+
+  // Rating shown in the Order section. Empty score = hidden.
+  rating: { score: "4.4", count: "208", source: "Grubhub",
+    quote: "Tasty and fast! Will order again. Had the steak tacos, chicken and birria. All delicious!",
+    quoteBy: "Grubhub customer, Dec 2025" },
+
+  menuNote: "Prices are from our online menu and may differ slightly in store.",
 
   about: [
     "Plaza Garibaldi is an authentic Mexican restaurant on State Street in Perth Amboy, serving breakfast, lunch and dinner every day.",
@@ -230,11 +237,39 @@ window.SITE = {
       { name: "Caldo de Camarón", desc: "Shrimp soup.", price: "17.00" },
       { name: "Caldo de Pescado", desc: "Fish soup.", price: "18.00" }
     ]},
-    { section: "Postres", subtitle: "Desserts", items: [] },
-    { section: "Extras", items: [] },
-      // Papas Fritas ($3.50, Best Seller): "French fries." (category pending)
-    { section: "Bebidas", subtitle: "Drinks", items: [] },
-    { section: "Mojarra", subtitle: "Fish", items: [] },
-    { section: "Quesadillas", items: [] }
+    { section: "Postres", subtitle: "Desserts", items: [
+      { name: "Chocolate Cake", desc: "", price: "4.00" },
+      { name: "Tiramisú", desc: "", price: "4.00" },
+      { name: "Tres Leches", desc: "", price: "4.00" }
+    ]},
+    { section: "Extras", subtitle: "Sides", items: [
+      { name: "Nopales", desc: "Cactus.", price: "3.50" },
+      { name: "Jalapeños", desc: "", price: "2.00" },
+      { name: "Guacamole", desc: "", price: "12.00" },
+      { name: "Cebollitas", desc: "Grilled green onions.", price: "4.00" },
+      { name: "Chile Asado", desc: "Roasted chile.", price: "2.00" },
+      { name: "Papas Fritas", desc: "French fries.", price: "3.50", popular: true },
+      { name: "Ensalada Regular", desc: "Side salad.", price: "3.50" },
+      { name: "Pico de Gallo", desc: "", price: "6.00" },
+      { name: "Arroz", desc: "Rice.", price: "2.50" },
+      { name: "Frijoles", desc: "Beans.", price: "2.50" },
+      { name: "Orden de Aguacate", desc: "Avocado.", price: "3.00" }
+    ]},
+    { section: "Bebidas", subtitle: "Drinks", items: [
+      { name: "Licuados", desc: "Milkshakes.", price: "6.00" },
+      { name: "Aguas Naturales", desc: "Flavored fresh waters.", price: "4.00" }
+    ]},
+    { section: "Mojarra", subtitle: "Fish", note: "Served with rice and beans, or salad and french fries.", items: [
+      { name: "Filete Ahogado", desc: "Fish fillet topped with green or red salsa.", price: "16.00" },
+      { name: "Mojarra a la Mexicana", desc: "Fried fish Mexican style.", price: "24.00" },
+      { name: "Mojarra al Mojo de Ajo", desc: "Fried fish in garlic sauce.", price: "22.00" },
+      { name: "Mojarra Frita", desc: "Fried fish.", price: "22.00" },
+      { name: "Filete Empanizado", desc: "Breaded fillet.", price: "16.00" }
+    ]},
+    { section: "Quesadillas", note: "Flour or corn tortilla.", items: [
+      { name: "Quesabirria de Harina", desc: "Quesabirria with flour tortilla.", price: "9.95" },
+      { name: "Quesabirria de Maíz", desc: "Quesabirria with corn tortilla.", price: "15.00" },
+      { name: "Quesadillas de Maíz", desc: "Quesadilla with corn tortilla.", price: "6.50+" }
+    ]}
   ]
 };

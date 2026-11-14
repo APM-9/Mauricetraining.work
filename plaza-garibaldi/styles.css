@@ -95,7 +95,10 @@ h3 { font-size: 1.4rem; color: var(--green); }
 .menu-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 36px; }
 .menu-tabs a { text-decoration: none; color: var(--ink); background: #fff; border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: .9rem; }
 .menu-tabs a:hover { border-color: var(--red); color: var(--red); }
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 56px; }
+.menu-grid { max-width: 900px; margin: 0 auto; min-height: 320px; }
+.menu-tabs a.active { background: var(--red); border-color: var(--red); color: #fff; }
+.menu-section .menu-list { columns: 2 340px; column-gap: 56px; }
+.menu-section .menu-list li { break-inside: avoid; }
 .menu-section { scroll-margin-top: 70px; }
 .menu-section h3 { border-bottom: 3px solid var(--gold); padding-bottom: 6px; }
 .menu-section h3 .sub { font-family: var(--body); font-size: .85rem; font-weight: 600; color: var(--muted); letter-spacing: .05em; }
@@ -128,6 +131,12 @@ h3 { font-size: 1.4rem; color: var(--green); }
 .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 12px 10px; color: #fff; font-weight: 700; font-size: .95rem; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
 
 /* Order */
+.rating { margin: 20px auto 8px; max-width: 560px; }
+.rating .stars { margin: 0 0 12px; font-size: 1.05rem; }
+.rating .stars span { color: var(--gold); letter-spacing: 2px; }
+.rating blockquote { margin: 0; font-style: italic; font-size: 1.05rem; }
+.rating cite { display: block; margin-top: 6px; font-style: normal; font-size: .85rem; color: var(--muted); }
+.menu-note { margin-top: 36px; font-size: .88rem; }
 .order-buttons { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 24px; }
 
 .catering { margin: 56px auto 0; max-width: 560px; background: var(--green); color: #fff; border-radius: 16px; padding: 32px 24px; }
@@ -158,6 +167,8 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 12px; }
   .nav nav a:not(.nav-cta) { display: none; }
   .about-grid, .visit-grid { grid-template-columns: 1fr; gap: 32px; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .menu-tabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: 0 -16px 28px; padding: 4px 16px; scrollbar-width: none; position: sticky; top: 52px; z-index: 5; background: var(--cream); }
+  .menu-tabs a { flex: 0 0 auto; }
   .gallery figcaption { font-size: .82rem; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 60px 0; }
