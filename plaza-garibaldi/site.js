@@ -35,11 +35,20 @@
   $$('[data-photo="about"]').forEach(function (el) { usePhoto(el, P.about); });
   var gallery = $("#gallery");
   (P.gallery || []).forEach(function (src) {
-    var tile = document.createElement("div");
-    tile.className = "photo tile";
-    gallery.appendChild(tile);
-    usePhoto(tile, src);
+    var img = new Image();
+    img.onload = function () {
+      var tile = document.createElement("div");
+      tile.className = "photo tile has-photo";
+      tile.style.backgroundImage = "url('" + src + "')";
+      gallery.appendChild(tile);
+      gallery.hidden = false;
+    };
+    img.src = src;
   });
+
+  // Highlights + catering
+  $("#highlights").innerHTML = (S.highlights || []).map(function (h) { return "<li>" + esc(h) + "</li>"; }).join("");
+  if (S.catering) { setText("data-catering", S.catering); $("#catering").hidden = false; }
 
   // Menu
   var menuBody = $("#menu-body");
@@ -86,6 +95,10 @@
   var q = encodeURIComponent([S.name, S.address, S.city].join(", "));
   $("#map").src = "https://www.google.com/maps?q=" + q + "&output=embed";
   $("#directions").href = "https://www.google.com/maps/dir/?api=1&destination=" + q;
+
+  if (S.phone) {
+    $$("[data-call]").forEach(function (a) { a.href = "tel:" + S.phone.replace(/[^\d+]/g, ""); a.hidden = false; });
+  }
 
   // Social
   var soc = S.social || {};

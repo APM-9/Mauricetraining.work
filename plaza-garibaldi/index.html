@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plaza Garibaldi | Mexican Restaurant in Perth Amboy, NJ</title>
-  <meta name="description" content="Plaza Garibaldi Mexican Restaurant, 638 State St, Perth Amboy, NJ. See the menu, hours and order online.">
+  <meta name="description" content="Plaza Garibaldi Mexican Restaurant, 638 State St, Perth Amboy, NJ 08861. Breakfast, lunch and dinner. Dine in, take out, delivery and catering. Call (732) 324-9898.">
   <meta property="og:title" content="Plaza Garibaldi Mexican Restaurant">
-  <meta property="og:description" content="Authentic Mexican food at 638 State St, Perth Amboy, NJ.">
+  <meta property="og:description" content="Authentic Mexican food at 638 State St, Perth Amboy, NJ. Breakfast, lunch and dinner. Call (732) 324-9898.">
   <meta property="og:image" content="images/hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,10 +28,11 @@
     <section class="hero" id="hero">
       <div class="hero-inner">
         <div class="papel" aria-hidden="true"></div>
-        <p class="eyebrow" data-city>Perth Amboy, NJ</p>
+        <p class="eyebrow">Perth Amboy, NJ</p>
         <h1 data-name>Plaza Garibaldi</h1>
         <p class="tagline" data-tagline>Mexican Restaurant</p>
         <p class="intro" data-intro></p>
+        <ul class="highlights" id="highlights"></ul>
         <div class="hero-actions">
           <a href="#order" class="btn btn-primary">Order Online</a>
           <a href="#menu" class="btn btn-ghost">See the Menu</a>
@@ -59,7 +60,7 @@
       </div>
     </section>
 
-    <section class="gallery" id="gallery" aria-label="Photos"></section>
+    <section class="gallery" id="gallery" aria-label="Photos" hidden></section>
 
     <section class="section" id="order">
       <div class="wrap center">
@@ -67,6 +68,11 @@
         <h2>Order Online</h2>
         <p class="muted">Pickup or delivery through your favorite app.</p>
         <div class="order-buttons" id="order-buttons"></div>
+        <div class="catering" id="catering" hidden>
+          <h3>Catering</h3>
+          <p data-catering></p>
+          <a class="btn btn-primary" data-call hidden>Call to Book</a>
+        </div>
       </div>
     </section>
 
@@ -83,6 +89,7 @@
           <p><a data-call-text hidden></a></p>
           <a class="btn btn-primary" id="directions" target="_blank" rel="noopener">Get Directions</a>
           <table class="hours" id="hours"></table>
+          <p class="muted small-print">Hours may change on holidays. Call ahead to confirm.</p>
         </div>
         <iframe class="map" id="map" title="Map to Plaza Garibaldi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
