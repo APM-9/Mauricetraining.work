@@ -59,10 +59,10 @@ window.SITE = {
       name: "Restaurants",
       blurb: "Menus, hours and directions that look right on every screen.",
       examples: [
+        { label: "Client preview", name: "Plaza Garibaldi", image: "img/work/plaza-garibaldi-phones.jpg",
+          text: "Bilingual Spanish/English site for an authentic Mexican restaurant on State Street in Perth Amboy: a full 147-dish menu, Grubhub and DoorDash ordering, hours and map, a food gallery, catering and customer reviews.", link: "", note: "Launching soon" },
         { label: "Concept redesign", name: "Torres Cafe & Catering", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
-          text: "Bilingual English/Spanish site for a Puerto Rican cafe in Perth Amboy: menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Concept" },
-        { label: "Concept design", name: "Plaza Garibaldi", image: "img/work/plaza-garibaldi-desktop.jpg", phone: "img/work/plaza-garibaldi-phone.jpg",
-          text: "A colorful site for a Mexican restaurant: English/Spanish switch, tabbed menu, Taco Tuesday and mariachi night specials, today's hours and a catering quote request.", link: "", note: "Concept" }
+          text: "Bilingual English/Spanish site for a Puerto Rican cafe in Perth Amboy: menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Concept" }
       ],
       tiers: [
         { name: "Starter", price: "$1,200", features: ["One-page site", "Menu, hours and map", "Click-to-call and directions", "Works on phones, tablets & desktops"] },
@@ -152,8 +152,8 @@ window.SITE = {
       text: "Bilingual English/Spanish cafe site with menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Concept" },
     { name: "GTG", type: "Combat gym · New site", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
       text: "Scroll-through facility tour, classes, weekly schedule, and member accounts with coach referral tracking.", link: "", note: "Concept" },
-    { name: "Plaza Garibaldi", type: "Restaurant · Concept", image: "img/work/plaza-garibaldi-desktop.jpg", phone: "img/work/plaza-garibaldi-phone.jpg",
-      text: "Mexican restaurant site with a bilingual menu, weekly specials, hours and catering requests.", link: "", note: "Concept" },
+    { name: "Plaza Garibaldi", type: "Mexican restaurant · New site", image: "img/work/plaza-garibaldi-phones.jpg",
+      text: "Bilingual site with a full 147-dish menu, online ordering, hours and map, catering and customer reviews.", link: "", note: "Launching soon" },
     { name: "Field Photos", type: "Insurance adjusters · Web app", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
       text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Concept" },
     { name: "Spots", type: "Skateboarding · Web app", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
