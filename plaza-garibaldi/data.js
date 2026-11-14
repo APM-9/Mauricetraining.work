@@ -191,12 +191,45 @@ window.SITE = {
       { name: "Jamón Torta", desc: "Ham.", price: "9.00" },
       { name: "Pechuga Asada Torta", desc: "Grilled chicken.", price: "9.00" },
       { name: "Carne Enchilada Torta", desc: "Chili pork.", price: "9.00" },
-      { name: "Bistec Asado Torta", desc: "Grilled steak.", price: "9.00" }
+      { name: "Bistec Asado Torta", desc: "Grilled steak.", price: "9.00" },
+      { name: "Huevo con Jamón Torta", desc: "Eggs & ham.", price: "9.00" },
+      { name: "Huevo con Chorizo Torta", desc: "Eggs & chorizo.", price: "9.00" },
+      { name: "Pechuga Empanizada Torta", desc: "Breaded chicken.", price: "9.00" },
+      { name: "Milanesa Torta", desc: "Breaded steak.", price: "9.00" },
+      { name: "Quesillo Torta", desc: "Cheese.", price: "9.00" },
+      { name: "Torta Cubana", desc: "", price: "10.00" },
+      { name: "Hamburguesa", desc: "Hamburger with french fries & salad.", price: "10.00" }
     ]},
-    { section: "Paloma", items: [] },
-    { section: "Coctel", items: [] },
-    { section: "Niños", subtitle: "Kids", items: [] },
-    { section: "Caldos", subtitle: "Soups", items: [] },
+    { section: "Paloma", subtitle: "Pigeon", note: "Add extras for an additional charge.", items: [
+      { name: "Paloma a la Mexicana", desc: "Mexican style.", price: "18.00" },
+      { name: "Paloma Ranchera", desc: "Ranch style.", price: "18.00" },
+      { name: "Paloma a la Diabla", desc: "In hot sauce.", price: "18.00", spicy: true },
+      { name: "Paloma en Mole", desc: "With mole sauce.", price: "18.00" },
+      { name: "Paloma en Salsa", desc: "In green or red sauce.", price: "18.00" },
+      { name: "Paloma al Mojo de Ajo", desc: "In garlic sauce.", price: "18.00" },
+      { name: "Palomas, Papas Fritas y Ensalada", desc: "Pigeon, french fries and salad.", price: "18.00" }
+    ]},
+    { section: "Coctel", subtitle: "Seafood Cocktails", note: "Add extras for an additional charge.", items: [
+      { name: "Coctel de Camarón", desc: "Shrimp cocktail.", price: "16.00" },
+      { name: "Camarón a la Campechana", desc: "Shrimp campechana style.", price: "18.00" },
+      { name: "Ceviche de Mariscos", desc: "Seafood ceviche.", price: "18.00" },
+      { name: "Aguachile", desc: "", price: "18.00" }
+    ]},
+    { section: "Niños", subtitle: "Kids", items: [
+      { name: "Pechuga Asada, Arroz y Frijoles", desc: "Grilled chicken, rice and beans.", price: "9.00" },
+      { name: "Pechuga Empanizada con Papas", desc: "Breaded chicken with fries.", price: "9.00" },
+      { name: "Bistec Empanizado con Papas", desc: "Breaded steak with fries.", price: "9.00" },
+      { name: "Bistec Asado, Arroz y Frijoles", desc: "Grilled steak with rice and beans.", price: "9.00" },
+      { name: "Dos Huevos, Arroz y Frijoles", desc: "2 eggs, rice and beans.", price: "9.00" },
+      { name: "Dedos de Pollo", desc: "Chicken fingers.", price: "9.00" }
+    ]},
+    { section: "Caldos", subtitle: "Soups", items: [
+      { name: "Caldo de Mariscos", desc: "Seafood soup.", price: "22.00" },
+      { name: "Caldo de Res", desc: "Beef soup.", price: "16.00" },
+      { name: "Menudo", desc: "", price: "15.00" },
+      { name: "Caldo de Camarón", desc: "Shrimp soup.", price: "17.00" },
+      { name: "Caldo de Pescado", desc: "Fish soup.", price: "18.00" }
+    ]},
     { section: "Postres", subtitle: "Desserts", items: [] },
     { section: "Extras", items: [] },
       // Papas Fritas ($3.50, Best Seller): "French fries." (category pending)
