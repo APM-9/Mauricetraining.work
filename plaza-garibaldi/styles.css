@@ -196,3 +196,6 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 12px; }
   .about-photo { aspect-ratio: 16 / 9; }
   .map { height: 260px; }
 }
+
+.btn-call .btn-phone { display: block; font-size: .85rem; font-weight: 600; opacity: .8; margin-top: 2px; }
+.btn-call { border-radius: 22px; }

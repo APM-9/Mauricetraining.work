@@ -68,7 +68,9 @@
   };
   var L = function (key) { return UI[lang][key]; };
   var setText = function (attr, val) { $$("[" + attr + "]").forEach(function (el) { el.textContent = val || ""; }); };
-  var tel = S.phone ? "tel:" + S.phone.replace(/[^\d+]/g, "") : "";
+  // Phone link in international form (+1 for US numbers), which every phone dialer accepts.
+  var digits = (S.phone || "").replace(/\D/g, "");
+  var tel = !digits ? "" : "tel:+" + (digits.length === 10 ? "1" + digits : digits);
 
   // ---- Things that don't change with language (set once) ------------------
   setText("data-name", S.name);
@@ -199,7 +201,8 @@
     var services = [["grubhub", "Grubhub"], ["doordash", "DoorDash"], ["ubereats", "Uber Eats"]];
     $("#order-buttons").innerHTML = services.filter(function (s) { return O[s[0]]; }).map(function (s) {
       return '<a class="btn btn-order ' + s[0] + '" href="' + esc(O[s[0]]) + '" target="_blank" rel="noopener">' + L("orderOn") + " " + s[1] + "</a>";
-    }).join("") + (S.phone ? '<a class="btn btn-ghost dark" href="' + tel + '">' + L("callPickup") + "</a>" : "");
+    }).join("") + (S.phone ? '<a class="btn btn-ghost dark btn-call" href="' + tel + '">' + L("callPickup") +
+      ' <span class="btn-phone">' + esc(S.phone) + "</span></a>" : "");
 
     // Hours (highlights today)
     var hours = S.hours || [], today = new Date().getDay(), days = L("days");
