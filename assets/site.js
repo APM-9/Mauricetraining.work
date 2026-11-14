@@ -101,6 +101,20 @@ window.SITE = {
         { name: "Pro", price: "$2,500", featured: true, features: ["Everything in Starter", "Multi-page site", "Claim or quote request form", "Licenses and credentials section", "Google search basics"] },
         { name: "Premium", price: "$4,000", features: ["Everything in Pro", "Client reviews section", "FAQ and resources pages", "3 months of care plan included"] }
       ]
+    },
+    {
+      id: "shops",
+      name: "Clothing brands & online shops",
+      blurb: "Show off your pieces and make buying easy, on any screen.",
+      examples: [
+        { label: "Concept design", name: "Sew Honey", image: "img/work/sew-honey-desktop.jpg", phone: "img/work/sew-honey-phone.jpg",
+          text: "A walk-through storefront for a handmade swimwear brand: scroll down a 3D aisle of racks, tap a piece to try it on, mix top and bottom sizes and add to a bag. Includes a list view and a wholesale inquiry form.", link: "", note: "Concept" }
+      ],
+      tiers: [
+        { name: "Starter", price: "$1,500", features: ["Brand homepage and lookbook", "Up to 15 products", "Buy buttons or order form", "Works on phones, tablets & desktops"] },
+        { name: "Pro", price: "$3,000", featured: true, features: ["Everything in Starter", "Full shop with up to 50 products", "Sizes, colors and stock levels", "Cart and secure checkout (Shopify or Stripe)", "Google search basics"] },
+        { name: "Premium", price: "$5,000", features: ["Everything in Pro", "Custom interactive shopping experience", "Wholesale inquiry page", "3 months of care plan included"] }
+      ]
     }
   ],
 
@@ -128,7 +142,7 @@ window.SITE = {
       text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Concept" },
     { name: "Spots", type: "Skateboarding · Web app", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
       text: "IRL gaming for skaters: a 3D globe of real skate spots pinned from photo GPS, trick claims backed by video, head-to-head S.K.A.T.E. games, crews and direct messages.", link: "", note: "In development" },
-    { name: "Sew Honey", type: "Handmade swimwear · Shop concept", image: "img/work/sew-honey-desktop.jpg", phone: "img/work/sew-honey-phone.jpg",
+    { name: "Sew Honey", type: "Clothing brand · Online shop concept", image: "img/work/sew-honey-desktop.jpg", phone: "img/work/sew-honey-phone.jpg",
       text: "A walk-through storefront: scroll down a 3D aisle of racks, tap any piece to try it on, mix top and bottom sizes, and fill a bag with a free-shipping meter. Includes a plain list view and a wholesale inquiry wall.", link: "", note: "Concept" }
     /* Add more: { name: "", type: "", image: "img/work/....jpg", phone: "", text: "", link: "" } */
   ]
