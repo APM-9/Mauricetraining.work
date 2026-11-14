@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plaza Garibaldi | Mexican Restaurant in Perth Amboy, NJ</title>
+  <meta name="description" content="Plaza Garibaldi Mexican Restaurant, 638 State St, Perth Amboy, NJ. See the menu, hours and order online.">
+  <meta property="og:title" content="Plaza Garibaldi Mexican Restaurant">
+  <meta property="og:description" content="Authentic Mexican food at 638 State St, Perth Amboy, NJ.">
+  <meta property="og:image" content="images/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a href="#top" class="brand" data-name>Plaza Garibaldi</a>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#visit">Visit</a>
+      <a href="#order" class="nav-cta">Order</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="papel" aria-hidden="true"></div>
+        <p class="eyebrow" data-city>Perth Amboy, NJ</p>
+        <h1 data-name>Plaza Garibaldi</h1>
+        <p class="tagline" data-tagline>Mexican Restaurant</p>
+        <p class="intro" data-intro></p>
+        <div class="hero-actions">
+          <a href="#order" class="btn btn-primary">Order Online</a>
+          <a href="#menu" class="btn btn-ghost">See the Menu</a>
+          <a class="btn btn-ghost" data-call hidden>Call Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="wrap">
+        <p class="kicker">La Carta</p>
+        <h2>Menu</h2>
+        <div id="menu-body"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo photo" data-photo="about" role="img" aria-label="Inside Plaza Garibaldi"></div>
+        <div>
+          <p class="kicker">Nuestra Casa</p>
+          <h2>About Us</h2>
+          <div id="about-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery" aria-label="Photos"></section>
+
+    <section class="section" id="order">
+      <div class="wrap center">
+        <p class="kicker">Para Llevar</p>
+        <h2>Order Online</h2>
+        <p class="muted">Pickup or delivery through your favorite app.</p>
+        <div class="order-buttons" id="order-buttons"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="visit">
+      <div class="wrap visit-grid">
+        <div>
+          <p class="kicker">Visítanos</p>
+          <h2>Hours &amp; Location</h2>
+          <address>
+            <strong data-name>Plaza Garibaldi</strong><br>
+            <span data-address></span><br>
+            <span data-city></span>
+          </address>
+          <p><a data-call-text hidden></a></p>
+          <a class="btn btn-primary" id="directions" target="_blank" rel="noopener">Get Directions</a>
+          <table class="hours" id="hours"></table>
+        </div>
+        <iframe class="map" id="map" title="Map to Plaza Garibaldi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="papel small" aria-hidden="true"></div>
+    <p><strong data-name>Plaza Garibaldi</strong> · <span data-address></span>, <span data-city></span></p>
+    <p class="social" id="social"></p>
+    <p class="muted small-print">© <span id="year"></span> Plaza Garibaldi Mexican Restaurant</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
