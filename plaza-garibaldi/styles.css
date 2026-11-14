@@ -49,6 +49,9 @@ h3 { font-size: 1.4rem; color: var(--green); }
 .nav nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: .92rem; padding: 6px 10px; border-radius: 6px; }
 .nav nav a:hover { background: rgba(255,255,255,.1); }
 .nav .nav-cta { background: var(--red); }
+.lang-toggle { display: inline-flex; margin: 0 4px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; overflow: hidden; }
+.lang-toggle button { font: 700 .78rem var(--body); letter-spacing: .04em; color: #fff; background: transparent; border: 0; padding: 6px 10px; cursor: pointer; }
+.lang-toggle button[aria-pressed="true"] { background: var(--gold); color: var(--ink); }
 .nav .nav-cta:hover { background: var(--red-dark); }
 
 /* Hero */
