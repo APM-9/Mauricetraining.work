@@ -143,7 +143,12 @@ window.SITE = {
       { name: "Orden de Barbacoa", desc: "Spicy barbecue with rice & beans.", price: "18.00", spicy: true },
       { name: "Nachos con Carne Estilo Garibaldi", desc: "Nachos with meat.", price: "15.00+" }
     ]},
-    { section: "Fajitas", items: [] },
+    { section: "Fajitas", note: "Orders come with rice and pico de gallo. Add extras for an additional charge.", items: [
+      { name: "Pechuga Fajita", desc: "Chicken fajita.", price: "16.00" },
+      { name: "Bistec Fajita", desc: "Steak fajita.", price: "16.00" },
+      { name: "Camarón Fajita", desc: "Shrimp fajita.", price: "17.00" },
+      { name: "Fajitas Mixtas", desc: "Mixed fajita with chicken, steak and shrimp.", price: "21.00" }
+    ]},
     { section: "Huarache", note: "Comes with green or red sauce, cheese, cream & avocado. Add extras for an additional charge.", items: [
       { name: "Al Pastor Huarache", desc: "Marinated pork.", price: "7.50" },
       { name: "Chorizo Huarache", desc: "Mexican sausage.", price: "7.50" },
