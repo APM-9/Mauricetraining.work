@@ -1,286 +1,163 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Ashanti Maurice | Fighter</title>
-
-<style>
-
-body{
-font-family:Arial;
-background-image:url('www21_1.10.1.jpeg');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
-color:white;
-margin:0;
-text-align:center;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-}
-
-/* HEADER */
-
-header{
-background:black;
-padding:40px;
-}
-
-nav a{
-color:#ff2a2a;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-/* HERO */
-
-.hero{
-padding:60px 20px;
-}
-
-.button{
-background:#ff2a2a;
-padding:15px 30px;
-border-radius:6px;
-color:white;
-text-decoration:none;
-display:inline-block;
-}
-
-.merch-button{
-background:black;
-border:2px solid #ff2a2a;
-}
-
-/* FIGHT SECTION */
-
-.fight-section{
-padding:40px 20px;
-}
-
-.fight-date{
-font-size:22px;
-font-weight:bold;
-color:#ff2a2a;
-margin-bottom:10px;
-}
-
-.countdown{
-font-size:24px;
-font-weight:bold;
-color:#ff2a2a;
-margin-bottom:20px;
-}
-
-/* VIDEO */
-
-.video-container{
-max-width:800px;
-margin:20px auto;
-}
-
-.video-container iframe{
-width:100%;
-height:400px;
-border-radius:10px;
-}
-
-/* CAROUSEL */
-
-section{
-padding:60px 20px;
-}
-
-.carousel{
-overflow:hidden;
-width:100%;
-}
-
-.carousel-track{
-display:flex;
-width:max-content;
-animation:scroll 20s linear infinite;
-}
-
-.carousel img{
-height:250px;
-margin-right:20px;
-border-radius:10px;
-}
-
-@keyframes scroll{
-0% {transform:translateX(100%);}
-100% {transform:translateX(-100%);}
-}
-
-/* SPONSORS */
-
-.sponsors{
-background:black;
-padding:40px 20px;
-}
-
-.sponsor-box{
-border:2px dashed #ff2a2a;
-margin:15px;
-padding:20px;
-display:inline-block;
-color:#ff2a2a;
-font-weight:bold;
-}
-
-/* FOOTER */
-
-footer{
-margin-top:auto;
-padding:30px;
-background:black;
-}
-
-</style>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ashanti Maurice | Amateur Fighter &amp; Strength Coach</title>
+<meta name="description" content="Ashanti Maurice — amateur MMA fighter and strength coach. Online fighter-style strength and conditioning coaching, fight updates and Chef Whippems merch.">
+<meta name="theme-color" content="#0c0b0b">
+<meta property="og:title" content="Ashanti Maurice | Train Like a Fighter">
+<meta property="og:description" content="Amateur MMA fighter and strength coach. Online coaching, fights and merch.">
+<meta property="og:image" content="https://apm-9.github.io/Mauricetraining.work/img/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
-
 <body>
 
-<header>
+<div id="site-header"></div>
 
-<h1>Ashanti Maurice</h1>
-<p>Amateur Fighter | Strength Coach</p>
+<main>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="coaching.html">Coaching</a>
-<a href="fights.html">Fights</a>
-<a href="merch.html">Merch</a>
-<a href="contact.html">Contact</a>
-</nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg"><img src="img/hero.jpg" alt="Ashanti Maurice standing in the gym" fetchpriority="high"></div>
+    <div class="wrap">
+      <span class="eyebrow">Amateur MMA fighter · Strength coach</span>
+      <h1>Train like a fighter.</h1>
+      <p class="lede">Online strength and conditioning built on the same system I use to get ready for fight night. Real programming, real accountability, direct access to me.</p>
+      <div class="btn-row">
+        <a class="btn" href="coaching.html#apply">Apply for coaching</a>
+        <a class="btn ghost" href="merch.html">Shop the merch</a>
+      </div>
+    </div>
+  </section>
 
-</header>
+  <!-- STATS -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat"><b data-record="mma">0-1-0</b><span>Amateur MMA</span></div>
+        <div class="stat"><b data-record="bjj">2-1-0</b><span>Amateur BJJ</span></div>
+        <div class="stat"><b>147–154</b><span>Fight weight (lb)</span></div>
+        <div class="stat"><b>Wrestling</b><span>Base</span></div>
+      </div>
+    </div>
+  </section>
 
-<!-- HERO -->
+  <!-- FIGHTS -->
+  <section class="section tight" style="padding-top:0">
+    <div class="wrap grid grid-2">
+      <div class="card reveal" data-next-fight>
+        <span class="eyebrow">Next fight</span>
+        <h3>To be announced</h3>
+      </div>
+      <div class="card reveal">
+        <div class="fight-card">
+          <img src="img/ds67-faceoff.jpg" alt="Dead Serious 67 fight poster: Ohene versus Maurice" loading="lazy">
+          <div>
+            <span class="eyebrow">Last fight</span>
+            <h3>Dead Serious 67</h3>
+            <p class="muted">March 28, 2026 · Showboat, Atlantic City NJ<br>Amateur MMA vs Ohene · 147–154 lb</p>
+            <a class="btn small ghost ext" href="https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026" target="_blank" rel="noopener">Watch the replay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="hero">
+  <!-- COACHING -->
+  <section class="section band-panel">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Online coaching</span>
+        <h2>The Fighter Physique System</h2>
+        <p class="lede" style="margin:18px 0 24px">The exact system I use to prepare for fights, adapted for people who want fighter-level results.</p>
+        <ul class="ticks" style="margin-bottom:30px">
+          <li>Custom strength &amp; conditioning program</li>
+          <li>Fighter-level conditioning system</li>
+          <li>Personalized nutrition plan</li>
+          <li>Weekly check-ins and adjustments</li>
+          <li>Direct access to me</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn" href="coaching.html">See the program</a>
+          <a class="btn ghost ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book a call</a>
+        </div>
+      </div>
+      <div class="photo reveal" style="aspect-ratio:4/5"><img src="img/red-room-2.jpg" alt="Ashanti Maurice in a red-lit room" loading="lazy"></div>
+    </div>
+  </section>
 
-<h2>Train Like A Fighter</h2>
+  <!-- VIDEO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Fight camp</span>
+        <h2>Inside the camp</h2>
+      </div>
+      <div class="video reveal">
+        <iframe src="https://www.youtube-nocookie.com/embed/n5M3N8kGu3A" title="Ashanti Maurice fight camp video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
 
-<p>Online strength and conditioning programs.</p>
+  <!-- GALLERY -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Training</span>
+        <h2>The work nobody sees</h2>
+      </div>
+      <div class="gallery reveal">
+        <figure class="wide"><img src="img/train-floor.jpg" alt="Training on the gym floor" loading="lazy"></figure>
+        <figure><img src="img/train-collage-1.jpg" alt="Gym training sequence" loading="lazy"></figure>
+        <figure><img src="img/red-room-1.jpg" alt="Recovery session" loading="lazy"></figure>
+        <figure><img src="img/asbury-2.jpg" alt="After practice at Asbury Park" loading="lazy"></figure>
+        <figure><img src="img/train-collage-2.jpg" alt="Gym training sequence" loading="lazy"></figure>
+        <figure class="wide"><img src="img/wrestle-4.jpg" alt="Wrestling match" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
 
-<a class="button" href="coaching.html">Apply For Coaching</a>
+  <!-- MERCH -->
+  <section class="section band-cream">
+    <div class="wrap split flip">
+      <div class="reveal">
+        <span class="eyebrow">Chef Whippems</span>
+        <h2>Fight camp shirts</h2>
+        <p class="lede" style="margin:18px 0 26px">Five colors, short and long sleeve. Limited run — once a size is gone, it's gone.</p>
+        <p style="font-weight:700;margin-bottom:26px">Short sleeve $40 · Long sleeve $50</p>
+        <a class="btn" href="merch.html">Shop now</a>
+      </div>
+      <div class="photo reveal" style="background:transparent"><img src="img/shirts-lineup.jpg" alt="Chef Whippems shirts in five colors" loading="lazy"></div>
+    </div>
+  </section>
 
-<br><br>
+  <!-- SPONSORS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sponsors</span>
+        <h2>Put your brand on fight night</h2>
+        <p class="lede">Sponsor slots are open for the next camp — $500 per placement.</p>
+      </div>
+      <div class="sponsor-slots reveal">
+        <div>Your brand here</div>
+        <div>Your brand here</div>
+        <div>Your brand here</div>
+      </div>
+      <a class="btn" href="contact.html?topic=sponsorship">Become a sponsor</a>
+    </div>
+  </section>
 
-<a class="button merch-button" href="merch.html">Buy Fight Merch</a>
+</main>
 
-</div>
+<div id="site-footer"></div>
 
-<!-- FIGHT PROMO + COUNTDOWN -->
-
-<div class="fight-section">
-
-<p class="fight-date">🥊 Fight Night: March 28</p>
-
-<p id="countdown" class="countdown"></p>
-
-<div class="video-container">
-
-<iframe 
-src="https://www.youtube.com/embed/n5M3N8kGu3A"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<!-- 🔥 CTA AFTER VIDEO -->
-<a href="coaching.html" class="button">
-Train Like Me
-</a>
-
-</div>
-
-<!-- TRAINING -->
-
-<section>
-
-<h2>Training</h2>
-
-<div class="carousel">
-<div class="carousel-track">
-
-<img src="ddwq1_1.28.1.jpeg">
-<img src="IMG_2008.jpeg">
-<img src="IMG_1166.jpeg">
-<img src="IMG_2007.jpeg">
-<img src="IMG_2075.jpeg">
-<img src="IMG_3956.jpeg">
-
-</div>
-</div>
-
-</section>
-
-<!-- SPONSORS -->
-
-<section class="sponsors">
-
-<h2>Fight Sponsors</h2>
-
-<div class="sponsor-box">Your Brand Here</div>
-<div class="sponsor-box">Your Brand Here</div>
-<div class="sponsor-box">Your Brand Here</div>
-
-<p style="margin-top:20px;">
-Sponsor slots available — $500 per placement
-</p>
-
-<a class="button" href="contact.html">Become A Sponsor</a>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<p>© 2026 Ashanti Maurice</p>
-
-</footer>
-
-<!-- ✅ FIXED COUNTDOWN (NO REDIRECT) -->
-
-<script>
-
-const fightDate = new Date("March 28, 2026 00:00:00").getTime();
-
-const countdownInterval = setInterval(function(){
-
-let now = new Date().getTime();
-let distance = fightDate - now;
-
-/* ✅ STOP AT ZERO */
-if(distance <= 0){
-
-clearInterval(countdownInterval);
-
-document.getElementById("countdown").innerHTML =
-"🔥 Fight Night Has Ended — Watch Highlights Above";
-
-return;
-
-}
-
-let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-document.getElementById("countdown").innerHTML =
-days + "d " + hours + "h " + minutes + "m";
-
-}, 1000);
-
-</script>
-
+<script src="assets/site.js"></script>
 </body>
 </html>

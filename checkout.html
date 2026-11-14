@@ -1,145 +1,123 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-<title>Checkout | Ashanti Maurice Merch</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout | Ashanti Maurice</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0c0b0b">
+<link rel="icon" href="img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-
-body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-margin:0;
-}
-
-header{
-background:black;
-padding:40px;
-}
-
-.checkout-box{
-max-width:600px;
-margin:auto;
-padding:40px;
-}
-
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input, select, textarea{
-padding:12px;
-border-radius:6px;
-border:none;
-background:#222;
-color:white;
-font-size:16px;
-}
-
-.submit-button{
-margin-top:20px;
-padding:18px;
-background:#ff2a2a;
-color:white;
-border:none;
-border-radius:6px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.payment{
-margin-top:30px;
-}
-
-.pay-button{
-display:block;
-margin:10px auto;
-padding:15px;
-width:80%;
-background:#ff2a2a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-size:18px;
-font-weight:bold;
-}
-
+  .checkout{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,48px);align-items:start}
+  @media (max-width:860px){.checkout{grid-template-columns:1fr}}
+  .summary dl{display:grid;grid-template-columns:1fr auto;gap:10px 0;margin:18px 0}
+  .summary dt{color:var(--muted)}
+  .summary dd{margin:0;font-weight:700;text-align:right}
+  .summary .grand{border-top:1px solid var(--line);padding-top:14px;margin-top:4px;font-family:var(--display);font-size:1.8rem;color:var(--cream)}
+  .pay{display:grid;gap:10px;margin-top:14px}
+  .step{font-family:var(--display);font-size:1.3rem;color:var(--cream);text-transform:uppercase;margin:0 0 14px}
+  .step span{color:var(--red-hot);margin-right:8px}
 </style>
-
 </head>
-
 <body>
 
-<header>
+<div id="site-header"></div>
 
-<h1>Ashanti Maurice</h1>
-<p>Fight Camp Merch Checkout</p>
+<main>
+  <section class="section">
+    <div class="wrap">
+      <a href="merch.html" class="muted" style="text-decoration:none">← Back to merch</a>
+      <h1 style="font-size:clamp(2.4rem,7vw,4rem);margin:14px 0 36px">Checkout</h1>
 
-</header>
+      <div class="checkout">
+        <div class="card">
+          <p class="step"><span>1</span>Shipping details</p>
+          <form class="form" id="orderForm" action="https://formspree.io/f/xpqyyend" method="POST">
+            <input type="hidden" name="_subject" value="New merch order">
+            <label>Full name<input type="text" name="name" autocomplete="name" required></label>
+            <label>Street address<input type="text" name="address" autocomplete="street-address" required></label>
+            <div class="row">
+              <label>City<input type="text" name="city" autocomplete="address-level2" required></label>
+              <label>State<input type="text" name="state" autocomplete="address-level1" required></label>
+              <label>ZIP<input type="text" name="zip" autocomplete="postal-code" inputmode="numeric" required></label>
+            </div>
+            <div class="row">
+              <label>Email<input type="email" name="email" autocomplete="email" required></label>
+              <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+            </div>
+            <div class="row">
+              <label>Shirt<input type="text" name="product" id="fProduct" required></label>
+              <label>Size<select name="size" id="fSize" required><option value="">Choose</option><option>M</option><option>L</option><option>XL</option></select></label>
+              <label>Quantity<input type="number" name="quantity" id="fQty" min="1" max="5" value="1" required></label>
+            </div>
+            <label>How will you pay?
+              <select name="payment_method" required>
+                <option value="">Choose one</option>
+                <option>Cash App</option>
+                <option>Venmo</option>
+                <option>Zelle</option>
+              </select>
+            </label>
+            <input type="hidden" name="order_total" id="fTotal">
+            <button class="btn" type="submit">Submit order</button>
+          </form>
+        </div>
 
-<div class="checkout-box">
+        <aside class="card summary">
+          <p class="step" style="margin-bottom:0">Your order</p>
+          <dl>
+            <dt>Shirt</dt><dd id="sProduct">—</dd>
+            <dt>Size</dt><dd id="sSize">—</dd>
+            <dt>Quantity</dt><dd id="sQty">1</dd>
+            <dt class="grand">Total</dt><dd class="grand" id="sTotal">—</dd>
+          </dl>
+          <p class="step" style="margin-top:24px"><span>2</span>Send payment</p>
+          <p class="muted" style="font-size:.95rem">After you submit, send the total with your name in the note. Your order ships once payment is confirmed.</p>
+          <div class="pay">
+            <a class="btn ghost ext" href="https://cash.app/$AshantiMaurice" target="_blank" rel="noopener">Pay with Cash App</a>
+            <a class="btn ghost ext" href="https://venmo.com/u/Ashanti-Maurice" target="_blank" rel="noopener">Pay with Venmo</a>
+            <a class="btn ghost ext" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==" target="_blank" rel="noopener">Pay with Zelle</a>
+          </div>
+          <p class="muted" style="font-size:.9rem;margin-top:18px">Questions? Email <a data-email href="mailto:AMaurice_94@yahoo.com"><span data-email-text>AMaurice_94@yahoo.com</span></a>.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
 
-<h2>Enter Shipping Details</h2>
+<div id="site-footer"></div>
 
-<form action="https://formspree.io/f/xpqyyend" method="POST">
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var PRICES = { short: 40, long: 50 };
+  var q = new URLSearchParams(location.search);
+  var shirt = (q.get("shirt") || "").replace(/[^A-Za-z ]/g, "");
+  var type = q.get("type") === "long" ? "long" : (q.get("type") === "short" ? "short" : "");
+  var size = (q.get("size") || "").toUpperCase();
+  var qty = Math.max(1, Math.min(5, parseInt(q.get("qty"), 10) || 1));
+  var $ = function (id) { return document.getElementById(id); };
 
-<input type="text" name="name" placeholder="Full Name" required>
+  if (shirt) $("fProduct").value = shirt + (type ? " — " + (type === "long" ? "Long" : "Short") + " sleeve" : "");
+  if (/^(M|L|XL)$/.test(size)) $("fSize").value = size;
+  $("fQty").value = qty;
 
-<input type="text" name="address" placeholder="Shipping Address" required>
-
-<input type="text" name="city" placeholder="City" required>
-
-<input type="text" name="state" placeholder="State" required>
-
-<input type="text" name="zip" placeholder="ZIP Code" required>
-
-<input type="email" name="email" placeholder="Email Address" required>
-
-<input type="tel" name="phone" placeholder="Phone Number" required>
-
-<input type="text" name="product" placeholder="Product Ordered" required>
-
-<input type="text" name="size" placeholder="Size" required>
-
-<input type="number" name="quantity" placeholder="Quantity" required>
-
-<select name="payment_method" required>
-<option value="">Select Payment Method</option>
-<option value="CashApp">CashApp</option>
-<option value="Venmo">Venmo</option>
-<option value="Zelle">Zelle</option>
-</select>
-
-<button class="submit-button" type="submit">
-Submit Order
-</button>
-
-</form>
-
-<div class="payment">
-
-<h2>Send Payment</h2>
-
-<a class="pay-button" href="https://cash.app/$AshantiMaurice">
-Pay with CashApp
-</a>
-
-<a class="pay-button" href="https://venmo.com/u/Ashanti-Maurice">
-Pay with Venmo
-</a>
-
-<a class="pay-button" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==">
-Pay with Zelle
-</a>
-
-</div>
-
-</div>
-
+  function update() {
+    var n = Math.max(1, parseInt($("fQty").value, 10) || 1);
+    $("sProduct").textContent = $("fProduct").value || "—";
+    $("sSize").textContent = $("fSize").value || "—";
+    $("sQty").textContent = n;
+    var total = type ? "$" + PRICES[type] * n : "—";
+    $("sTotal").textContent = total;
+    $("fTotal").value = total;
+  }
+  ["fProduct", "fSize", "fQty"].forEach(function (id) { $(id).addEventListener("input", update); });
+  update();
+})();
+</script>
 </body>
 </html>
