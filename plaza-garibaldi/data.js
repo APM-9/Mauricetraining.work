@@ -55,17 +55,21 @@ window.SITE = {
     // Each one: { src: "images/file.jpg", caption: "Name shown on the photo" }
     gallery: [
       { src: "images/food-birria.jpg", caption: "Birria Tacos & Consomé" },
+      { src: "images/food-street-tacos.jpg", caption: "Tacos" },
       { src: "images/food-mole-enchiladas.jpg", caption: "Enchiladas de Mole" },
+      { src: "images/food-enchiladas-verdes.jpg", caption: "Enchiladas Verdes" },
+      { src: "images/food-steak-eggs.jpg", caption: "Steak & Eggs Breakfast" },
       { src: "images/food-steak.jpg", caption: "Bistec Encebollado" },
+      { src: "images/food-gorditas.jpg", caption: "Gorditas" },
+      { src: "images/food-tamales.jpg", caption: "Tamales" },
       { src: "images/food-shrimp-cocktail.jpg", caption: "Coctel de Camarón" },
+      { src: "images/food-camarones.jpg", caption: "Camarones a la Diabla" },
+      { src: "images/food-mojarra.jpg", caption: "Mojarra Frita" },
       { src: "images/food-caldo-de-res.jpg", caption: "Caldo de Res" },
       { src: "images/food-pozole.jpg", caption: "Pozole" },
-      { src: "images/food-mojarra.jpg", caption: "Mojarra Frita" },
-      { src: "images/food-camarones.jpg", caption: "Camarones a la Diabla" },
-      { src: "images/food-sopes.jpg", caption: "Sopes" },
-      { src: "images/food-mariscos.jpg", caption: "Seafood Platters" },
-      { src: "images/food-tamales.jpg", caption: "Tamales" },
-      { src: "images/food-pan-dulce.jpg", caption: "Pan Dulce" }
+      { src: "images/food-flan.jpg", caption: "Flan" },
+      { src: "images/food-churros.jpg", caption: "Churros & Ice Cream" },
+      { src: "images/food-drinks.jpg", caption: "Frozen Drinks" }
     ]
   },
 
