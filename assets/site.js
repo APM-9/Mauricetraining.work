@@ -118,7 +118,9 @@ window.SITE = {
     { name: "GTG", type: "Combat gym · New site", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
       text: "Scroll-through facility tour, classes, weekly schedule, and member accounts with coach referral tracking.", link: "", note: "Launching soon" },
     { name: "Field Photos", type: "Insurance adjusters · Web app", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
-      text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Private app" }
+      text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Private app" },
+    { name: "Spots", type: "Skateboarding · Web app", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
+      text: "IRL gaming for skaters: a 3D globe of real skate spots pinned from photo GPS, trick claims backed by video, head-to-head S.K.A.T.E. games, crews and direct messages.", link: "", note: "In development" }
     /* Add more: { name: "", type: "", image: "img/work/....jpg", phone: "", text: "", link: "" } */
   ]
 };
