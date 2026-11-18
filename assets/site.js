@@ -145,7 +145,7 @@ window.SITE = {
   /* Portfolio. image = screenshot in img/work/. link = "" for no link. */
   projects: [
     { name: "Ashanti Maurice", type: "Personal brand · Redesign", image: "img/work/ashanti-maurice-desktop.jpg", phone: "img/work/ashanti-maurice-phone.jpg",
-      text: "Fighter and coaching site with an online shop, coaching applications and fight updates.", link: "https://apm-9.github.io/Mauricetraining.work/" },
+      text: "Fighter and coaching site with an online shop, coaching applications and fight updates.", link: "https://ashantimaurice.com/" },
     { name: "Elite Wrestling NJ", type: "Wrestling gym · Redesign", image: "img/work/elite-wrestling-desktop.jpg", phone: "img/work/elite-wrestling-phone.jpg",
       text: "A redesign of a gym's Wix site as a fast custom site: programs, a schedule the coach edits from a spreadsheet, a gear shop and donations.", link: "", note: "Concept" },
     { name: "Torres Cafe & Catering", type: "Restaurant · Redesign", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",

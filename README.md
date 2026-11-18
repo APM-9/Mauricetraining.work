@@ -1,6 +1,6 @@
 # Ashanti Maurice — website
 
-Live at https://apm-9.github.io/Mauricetraining.work/ (GitHub Pages, served from `main`).
+Live at https://ashantimaurice.com (GitHub Pages, served from `main`; custom domain set in `CNAME`).
 
 ## Quick edits
 
