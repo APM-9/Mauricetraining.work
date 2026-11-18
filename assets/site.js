@@ -115,6 +115,26 @@ window.SITE = {
       ]
     },
     {
+      id: "athletes",
+      name: "Athletes",
+      blurb: "A personal site for fighters, players and coaches: your story, your stats, your highlights and a way for fans, sponsors and clients to reach you.",
+      examples: [
+        { label: "Live site", name: "Ashanti Maurice", image: "img/work/ashanti-maurice-desktop.jpg", phone: "img/work/ashanti-maurice-phone.jpg",
+          text: "My own athlete site: fight record, next fight, coaching applications, a merch shop and sponsor slots.", link: "https://ashantimaurice.com/" }
+      ],
+      tiers: [
+        { name: "Starter", price: "$900", features: ["One-page athlete profile", "Bio, stats or record, photos", "Social links and contact", "Custom domain with SSL", "Works on phones, tablets & desktops"] },
+        { name: "Pro", price: "$1,700", featured: true, features: ["Everything in Starter", "Home, about, services, gallery and contact", "Highlight videos", "Schedule or next-event section", "Basic Google search setup"] },
+        { name: "Premium", price: "$3,000", features: ["Everything in Pro", "Merch shop or coaching sign-ups", "Sponsor page with your audience and stats", "Booking or inquiry form", "3 months of hosting & care included"] }
+      ],
+      terms: [
+        "Build is paid in full before work begins. It covers the domain, hosting setup and everything needed to launch.",
+        "Hosting & care: $50 a month, starting the month the site goes live. Covers hosting, domain and SSL, security checks, and up to 2 small updates a month. Cancel any time with 30 days' notice.",
+        "Extra quick edit (text, photo, link): $25 each. Larger work (new page, section or redesign): $75 an hour. Rush within 24 hours: add $50.",
+        "Build time: about 5 to 7 days after I receive your bio, services, photos, links and any colors or logos."
+      ]
+    },
+    {
       id: "apps",
       name: "Apps",
       blurb: "Custom web apps that install on a phone's home screen, no app store needed.",
@@ -359,7 +379,9 @@ window.SITE = {
               "<h3>" + esc(t.name) + '</h3><div class="amount">' + (t.price ? esc(t.price) : "Custom quote") + "</div>" +
               '<ul class="ticks">' + t.features.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
               '<a class="btn' + (t.featured ? "" : " ghost") + '" href="contact.html?topic=web">' + (t.price ? "Get started" : "Get a quote") + "</a></div>";
-          }).join("") + "</div></div>";
+          }).join("") + "</div>" +
+          (c.terms && c.terms.length ? '<div class="terms"><h3>How payment works</h3><ul>' + c.terms.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>" : "") +
+          "</div>";
       }).join("");
     }
 

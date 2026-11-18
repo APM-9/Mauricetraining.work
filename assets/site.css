@@ -313,3 +313,6 @@ body.locked{overflow:hidden}
 @media (max-width:640px){.gallery.g3 figure.wide{grid-column:span 2;aspect-ratio:16/9}}
 @media (max-width:640px){.gallery.trio figure:first-child{grid-column:span 2;aspect-ratio:4/3}}
 .shots:not(.phones):not(:has(.phone)){padding:0}
+.terms{margin-top:22px;padding:22px 24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+.terms h3{font-size:1.2rem;margin-bottom:10px}
+.terms ul{margin:0;padding-left:20px;color:var(--muted);display:grid;gap:8px}
