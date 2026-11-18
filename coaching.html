@@ -21,6 +21,10 @@
   .stack .item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;background:var(--ink);border:1px solid var(--line);border-radius:12px}
   .stack .item h3{font-size:1.25rem;margin-bottom:4px}
   .stack .item p{margin:0;color:var(--muted);font-size:.95rem}
+  .shop-box{margin-top:24px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--ink)}
+  .small-print{font-size:.85rem;margin:12px 0 0}
+  a.code{text-decoration:none;cursor:copy}
+  a.code:hover{border-style:solid;border-color:var(--red-hot)}
   .code{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-weight:700;letter-spacing:.08em;background:var(--ink);border:1px dashed var(--red);padding:6px 12px;border-radius:8px;color:var(--cream)}
   .steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:18px}
   .steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
@@ -141,7 +145,14 @@
           <div class="item"><div><h3>Creatine</h3><p>Strength, power and performance output.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
           <div class="item"><div><h3>BCAAs</h3><p>Recovery and less muscle fatigue.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
         </div>
-        <p style="margin-top:20px">Use code <span class="code">DOLOBUCK94</span> for a discount.</p>
+        <div class="shop-box">
+          <p style="margin:0 0 14px">Shop through my link and use code <a class="code" id="buckedCode" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener" title="Copy the code and open the store">DOLOBUCK94</a> at checkout for a discount.</p>
+          <div class="btn-row">
+            <a class="btn ext" id="buckedShop" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Shop Bucked Up</a>
+          </div>
+          <p class="muted small-print" id="codeNote" role="status">Tap the code to copy it and open the store.</p>
+          <p class="muted small-print">I'm a Bucked Up ambassador and earn a commission when you shop through my link or code.</p>
+        </div>
       </div>
       <div class="photo reveal" style="aspect-ratio:4/5"><img src="img/kitchen.jpg" alt="Ashanti Maurice in the kitchen" loading="lazy"></div>
     </div>
@@ -174,7 +185,7 @@
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_autoresponse" value="Your application has been received. If you're serious about working with me, book your consultation now — spots are limited: https://calendly.com/fpconsultation/fighter-physique-consultation">
-          <input type="hidden" name="_next" value="https://apm-9.github.io/Mauricetraining.work/thanks.html">
+          <input type="hidden" name="_next" value="https://ashantimaurice.com/thanks.html">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
           <label>Full name<input type="text" name="name" autocomplete="name" required></label>
@@ -204,5 +215,16 @@
 <a class="dm-fab" data-ig href="https://instagram.com/Rx_Dolo" target="_blank" rel="noopener">DM me</a>
 
 <script src="assets/site.js"></script>
+<script>
+  /* Bucked Up ambassador code: copy it, then open the store through the ambassador link */
+  (function () {
+    var code = document.getElementById("buckedCode"), note = document.getElementById("codeNote");
+    function copy() {
+      try { navigator.clipboard.writeText("DOLOBUCK94").then(function () { note.textContent = "Code DOLOBUCK94 copied. Paste it at checkout."; }, function () {}); } catch (e) {}
+    }
+    code.addEventListener("click", copy);
+    document.getElementById("buckedShop").addEventListener("click", copy);
+  })();
+</script>
 </body>
 </html>
