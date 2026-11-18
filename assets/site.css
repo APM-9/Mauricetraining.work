@@ -316,3 +316,4 @@ body.locked{overflow:hidden}
 .terms{margin-top:22px;padding:22px 24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
 .terms h3{font-size:1.2rem;margin-bottom:10px}
 .terms ul{margin:0;padding-left:20px;color:var(--muted);display:grid;gap:8px}
+@media (max-width:480px){.stat{padding:18px 16px}.stat b{font-size:2rem}}
