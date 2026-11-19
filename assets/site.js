@@ -60,7 +60,7 @@ window.SITE = {
       blurb: "Menus, hours and directions that look right on every screen.",
       examples: [
         { label: "Client preview", name: "Plaza Garibaldi", image: "img/work/plaza-garibaldi-desktop.jpg", phone: "img/work/plaza-garibaldi-phone.jpg",
-          text: "Bilingual Spanish/English site for an authentic Mexican restaurant on State Street in Perth Amboy: a full menu, Grubhub and DoorDash ordering, hours and map, a food gallery, catering and customer reviews.", link: "", note: "Launching soon" },
+          text: "Bilingual Spanish/English site for an authentic Mexican restaurant on State Street in Perth Amboy: a full menu, Grubhub and DoorDash ordering, hours and map, a food gallery, catering and customer reviews.", link: "plaza/", cta: "View preview", status: "Launching soon" },
         { label: "Concept redesign", name: "Torres Cafe & Catering", image: "img/work/torres-cafe-desktop.jpg", phone: "img/work/torres-cafe-phone.jpg",
           text: "Bilingual English/Spanish site for a Puerto Rican cafe in Perth Amboy: menu, catering quote requests, hours and commission-free online ordering.", link: "", note: "Concept" }
       ],
@@ -173,7 +173,7 @@ window.SITE = {
     { name: "GTG", type: "Combat gym · New site", image: "img/work/gtg-hq-desktop.jpg", phone: "img/work/gtg-hq-phone.jpg",
       text: "Scroll-through facility tour, classes, weekly schedule, and member accounts with coach referral tracking.", link: "", note: "Concept" },
     { name: "Plaza Garibaldi", type: "Mexican restaurant · New site", image: "img/work/plaza-garibaldi-desktop.jpg", phone: "img/work/plaza-garibaldi-phone.jpg",
-      text: "Bilingual site with a full menu, online ordering, hours and map, catering and customer reviews.", link: "", note: "Launching soon" },
+      text: "Bilingual site with a full menu, online ordering, hours and map, catering and customer reviews.", link: "plaza/", cta: "View preview", status: "Launching soon" },
     { name: "Field Photos", type: "Insurance adjusters · Web app", phones: ["img/work/field-photos-phone.jpg", "img/work/field-photos-phone-2.jpg"],
       text: "Offline phone app for flood adjusters to capture damage, photos and voice notes room by room and export them for the estimate.", link: "", note: "Concept" },
     { name: "Spots", type: "Skateboarding · Web app", image: "img/work/spots-desktop.jpg", phone: "img/work/spots-phone.jpg",
@@ -305,8 +305,11 @@ window.SITE = {
       (x.phone ? '<img class="phone" src="' + esc(x.phone) + '" alt="' + esc(x.name) + ' website on a phone" loading="lazy">' : "") + "</div>";
   }
   function linkOrNote(x, label) {
-    return x.link ? '<a class="btn small ghost ext" href="' + esc(x.link) + '" target="_blank" rel="noopener">' + label + "</a>"
-                  : '<span class="muted small-note">' + esc(x.note || "Launching soon") + "</span>";
+    var out = "";
+    if (x.link) out += '<a class="btn small ghost ext" href="' + esc(x.link) + '" target="_blank" rel="noopener">' + esc(x.cta || label) + "</a>";
+    if (x.status) out += '<span class="muted small-note">' + esc(x.status) + "</span>";
+    if (!x.link && !x.status) out += '<span class="muted small-note">' + esc(x.note || "Launching soon") + "</span>";
+    return out;
   }
   /* Hide a [data-section] wrapper when it has nothing to show (unless ?draft). */
   function settle(el, has) {
