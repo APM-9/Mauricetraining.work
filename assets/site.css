@@ -317,3 +317,7 @@ body.locked{overflow:hidden}
 .terms h3{font-size:1.2rem;margin-bottom:10px}
 .terms ul{margin:0;padding-left:20px;color:var(--muted);display:grid;gap:8px}
 @media (max-width:480px){.stat{padding:18px 16px}.stat b{font-size:2rem}}
+.next-fight.has-poster{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start}
+.next-fight img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.next-fight .fight-type{color:var(--red-hot);font-weight:700;margin:6px 0 4px}
+@media (max-width:520px){.next-fight.has-poster{grid-template-columns:1fr}.next-fight img{max-width:220px}}

@@ -18,11 +18,13 @@ window.SITE = {
                 opponent: "TBA", venue: "Showboat, Atlantic City NJ",
                 weight: "147–154 lbs", tickets: "https://..." } */
   nextFight: {
-    date: "",
-    event: "",
-    opponent: "",
-    venue: "",
+    date: "2026-12-20T00:00:00",
+    event: "Savage Invitational 001",
+    type: "Folkstyle wrestling match",
+    opponent: "BJ Clagon",
+    venue: "Invitation only · location undisclosed",
     weight: "",
+    poster: "img/fight/si001-poster.jpg",
     tickets: ""
   },
 
@@ -275,19 +277,23 @@ window.SITE = {
     }
     var dateText = when.toLocaleDateString(undefined, { weekday: "short", month: "long", day: "numeric", year: "numeric" });
     box.innerHTML =
-      '<span class="eyebrow">Next fight</span><h3>' + (f.event || "Fight night") + "</h3>" +
+      '<div class="next-fight' + (f.poster ? " has-poster" : "") + '">' +
+      (f.poster ? '<img src="' + f.poster + '" alt="' + (f.event || "Fight") + ' poster: ' + (f.opponent || "") + ' vs Ashanti Maurice">' : "") +
+      '<div><span class="eyebrow">Next fight</span><h3>' + (f.event || "Fight night") + "</h3>" +
+      (f.type ? '<p class="fight-type">' + f.type + "</p>" : "") +
       "<p>" + dateText + (f.venue ? " · " + f.venue : "") + "</p>" +
-      (f.opponent ? "<p>vs " + f.opponent + (f.weight ? " · " + f.weight : "") + "</p>" : "") +
+      (f.opponent ? "<p>vs <strong>" + f.opponent + "</strong>" + (f.weight ? " · " + f.weight : "") + "</p>" : "") +
       '<div class="countdown" aria-live="off"></div>' +
-      (f.tickets ? '<a class="btn small" href="' + f.tickets + '" target="_blank" rel="noopener">Tickets &amp; stream</a>' : "");
+      (f.tickets ? '<a class="btn small" href="' + f.tickets + '" target="_blank" rel="noopener">Tickets &amp; stream</a>' : "") +
+      "</div></div>";
     var cd = box.querySelector(".countdown");
     function tick() {
       var d = when - new Date();
       if (d <= 0) { cd.textContent = "Fight night is here."; return; }
-      var days = Math.floor(d / 864e5), h = Math.floor(d % 864e5 / 36e5), m = Math.floor(d % 36e5 / 6e4);
-      cd.innerHTML = "<span><b>" + days + "</b>days</span><span><b>" + h + "</b>hrs</span><span><b>" + m + "</b>min</span>";
+      var days = Math.floor(d / 864e5), h = Math.floor(d % 864e5 / 36e5), m = Math.floor(d % 36e5 / 6e4), sec = Math.floor(d % 6e4 / 1e3);
+      cd.innerHTML = "<span><b>" + days + "</b>days</span><span><b>" + h + "</b>hrs</span><span><b>" + m + "</b>min</span><span><b>" + sec + "</b>sec</span>";
     }
-    tick(); setInterval(tick, 30000);
+    tick(); setInterval(tick, 1000);
   });
 
   /* ---------- Data-driven blocks (coaching trust + web design) ---------- */
