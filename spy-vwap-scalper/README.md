@@ -1,5 +1,7 @@
 # SPY VWAP Reversion Scalper — Usage & Validation Guide
 
+> **Using Webull?** Webull can't run Pine Script. Backtest here in TradingView, then see [`webull-version/`](webull-version/README_WEBULL.md): a manual Webull playbook and a paper-only Python bot.
+
 `spy_vwap_scalper.pine` is a Pine Script v6 **strategy** that implements one rule set: on a SPY 5‑minute chart, 9:45–11:30 AM New York time, buy a VWAP reclaim in an uptrend (price above the 20 EMA) on a bullish bar with above-average volume. It uses a fixed-dollar stop, an R‑multiple target, a hard time stop, and a daily loss circuit breaker. Shorts are a mirror image and are **off** by default.
 
 It is a hypothesis to test, not a proven edge.
