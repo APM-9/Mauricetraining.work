@@ -1,0 +1,227 @@
+//@version=6
+// =============================================================================
+// SPY VWAP Reversion Scalper
+// -----------------------------------------------------------------------------
+// A hypothesis to be TESTED, not a proven edge. Implements ONLY the rule set in
+// the handoff document. Every rule is tagged "// RULE: <section>.<item>" so the
+// script can be audited line-by-line against the spec.
+//
+//   Section 2 "Long Entry"  -> RULE: L1..L6
+//   Section 2 "Short Entry" -> RULE: S0..S6   (toggle, default OFF)
+//   Section 2 "Exit Rules"  -> RULE: X1..X4
+//   Section 2 "Sizing"      -> RULE: P1..P2
+//
+// Chart: SPY (or QQQ), 5-minute, REGULAR trading hours (not extended).
+// =============================================================================
+strategy("SPY VWAP Reversion Scalper", shorttitle = "VWAP Scalp", overlay = true,
+     initial_capital        = 200,
+     currency               = currency.USD,
+     default_qty_type       = strategy.fixed,
+     default_qty_value      = 1,
+     // Commission & slippage MUST be compile-time constants in strategy(), so
+     // inputs cannot drive them. These are the defaults; the live values are set
+     // in Strategy Tester > Properties (see README). Webull stocks = $0.
+     commission_type        = strategy.commission.cash_per_contract,   // per share
+     commission_value       = 0.0,
+     slippage               = 1,                                        // ticks
+     calc_on_every_tick     = false,
+     process_orders_on_close = true,
+     pyramiding             = 0,
+     margin_long            = 100,    // cash-account behaviour: no leverage
+     margin_short           = 100,
+     max_labels_count       = 500)
+
+// -----------------------------------------------------------------------------
+// INPUTS (Section 3) — nothing in the rule set is hard-coded
+// -----------------------------------------------------------------------------
+grpRisk = "Risk"
+stopDistance   = input.float(0.20, "Stop distance ($ per share)", minval = 0.01, step = 0.01, group = grpRisk)
+rrRatio        = input.float(1.5,  "Reward : risk ratio",          minval = 0.1,  step = 0.1,  group = grpRisk)
+riskPerTrade   = input.float(5.0,  "Risk per trade ($)",           minval = 0.01, step = 0.5,  group = grpRisk)
+dailyLossLimit = input.float(10.0, "Daily loss limit ($)",         minval = 0.01, step = 0.5,  group = grpRisk)
+
+grpSess = "Session (America/New_York)"
+sessStartH = input.int(9,  "Session start hour",   minval = 0, maxval = 23, group = grpSess, inline = "s")
+sessStartM = input.int(45, "minute",               minval = 0, maxval = 59, group = grpSess, inline = "s")
+sessEndH   = input.int(11, "Session end hour",     minval = 0, maxval = 23, group = grpSess, inline = "e")
+sessEndM   = input.int(30, "minute",               minval = 0, maxval = 59, group = grpSess, inline = "e")
+
+grpSig = "Signal"
+enableShorts = input.bool(false, "Enable shorts",                     group = grpSig)
+volMult      = input.float(1.2,  "Volume multiplier (x avg)",        minval = 0.1, step = 0.1, group = grpSig)
+emaLength    = input.int(20,     "EMA length (trend filter)",        minval = 1,   group = grpSig)
+volAvgLength = input.int(20,     "Volume average length (bars)",     minval = 1,   group = grpSig)
+
+grpCost = "Costs (REFERENCE — must match Strategy Tester > Properties)"
+commissionPerShare = input.float(0.0, "Commission per share ($)", minval = 0.0, step = 0.001, group = grpCost,
+     tooltip = "Pine cannot feed an input into strategy(commission_value). Set the SAME value in Properties > Commission (USD per contract). Used here only for the affordability check and the on-chart reminder.")
+slippageTicks      = input.int(1,     "Slippage (ticks)",         minval = 0,   group = grpCost,
+     tooltip = "Set the SAME value in Properties > Slippage. SPY tick = $0.01. Used here only for the affordability check and the on-chart reminder.")
+
+grpView = "Display"
+showDailyLabels = input.bool(true, "Label each day's realized P&L after session end", group = grpView)
+
+// -----------------------------------------------------------------------------
+// INDICATORS (Section 2 "Indicators Required") — only these three
+// -----------------------------------------------------------------------------
+vwapValue = ta.vwap(hlc3)                         // session-anchored; resets each trading day
+emaValue  = ta.ema(close, emaLength)
+avgVolume = ta.sma(volume, volAvgLength)[1]       // average of the PRIOR N bars (current bar excluded)
+
+// -----------------------------------------------------------------------------
+// SESSION WINDOW — explicit America/New_York, never the chart timezone
+// -----------------------------------------------------------------------------
+pad2(int v) => v < 10 ? "0" + str.tostring(v) : str.tostring(v)
+sessionStr = pad2(sessStartH) + pad2(sessStartM) + "-" + pad2(sessEndH) + pad2(sessEndM)
+
+inSession = not na(time(timeframe.period, sessionStr, "America/New_York"))
+
+// Timestamp of today's session end (e.g. 11:30 NY) and whether this bar closes at/after it.
+sessEndTs = timestamp("America/New_York",
+     year(time, "America/New_York"), month(time, "America/New_York"), dayofmonth(time, "America/New_York"),
+     sessEndH, sessEndM, 0)
+isLastSessionBar = inSession and time_close >= sessEndTs     // 11:25 bar on 5m: closes at 11:30
+newTradingDay    = timeframe.change("D")                  // evaluated every bar (not inside a lazy `or`)
+sessionStarted   = inSession and (not inSession[1] or newTradingDay)
+
+// -----------------------------------------------------------------------------
+// RULE: X4 — Daily loss circuit breaker (realized P&L per day)
+// -----------------------------------------------------------------------------
+var float dayStartNetProfit = 0.0
+var bool  breakerTripped    = false
+// RULE: X4 — reset the day's counter at session start each day
+if sessionStarted
+    dayStartNetProfit := strategy.netprofit
+    breakerTripped    := false
+dailyRealizedPnl = strategy.netprofit - dayStartNetProfit
+// RULE: X4 — once realized day P&L <= -limit, block new entries for the rest of the day
+if dailyRealizedPnl <= -dailyLossLimit
+    breakerTripped := true
+
+// -----------------------------------------------------------------------------
+// POSITION SIZING
+// -----------------------------------------------------------------------------
+// RULE: P1 — shares = floor(risk_per_trade / stop_distance)  (epsilon guards float error, e.g. 5/0.1)
+riskShares = math.floor(riskPerTrade / stopDistance + 1e-9)
+// Feasibility guard: a $200 cash account cannot buy shares it cannot pay for.
+estFillPrice     = close + slippageTicks * syminfo.mintick + commissionPerShare
+affordableShares = math.floor(strategy.equity / estFillPrice)
+qty = math.min(riskShares, affordableShares)
+// RULE: P2 — minimum 1 share; if fewer, do not take the trade
+sizeOk = qty >= 1
+
+// -----------------------------------------------------------------------------
+// COMMON ENTRY GATES
+// -----------------------------------------------------------------------------
+// RULE: L5 / S5 — inside 9:45–11:30 NY; the final bar is excluded because the
+//                 time-stop closes everything at that bar's close
+timeOk = inSession and not isLastSessionBar
+// RULE: L6 / S6 — no open position already
+flat = strategy.position_size == 0
+// RULE: L4 / S4 — current bar volume >= multiplier x average volume
+volConfirm = volume >= volMult * avgVolume
+
+// -----------------------------------------------------------------------------
+// LONG ENTRY (all must be true on the same bar)
+// -----------------------------------------------------------------------------
+// RULE: L1 — price above the 20-EMA (trend filter)
+longTrend    = close > emaValue
+// RULE: L2a — pulled back to/below VWAP: this bar touched it, or the prior bar closed at/below it
+longPullback = low <= vwapValue or close[1] <= vwapValue[1]
+// RULE: L2b — and the current bar closes back ABOVE VWAP (reclaim)
+longReclaim  = close > vwapValue
+// RULE: L3 — bullish bar
+longBullBar  = close > open
+
+longSetup  = longTrend and longPullback and longReclaim and longBullBar and volConfirm and timeOk and flat
+longSignal = longSetup and not breakerTripped and sizeOk
+
+// -----------------------------------------------------------------------------
+// SHORT ENTRY (mirror, toggle, default OFF)
+// -----------------------------------------------------------------------------
+// RULE: S0 — shorts only when enabled
+// RULE: S1 — price below the 20-EMA
+shortTrend    = close < emaValue
+// RULE: S2a — pulled up to/above VWAP: this bar touched it, or prior bar closed at/above it
+shortPullback = high >= vwapValue or close[1] >= vwapValue[1]
+// RULE: S2b — and the current bar closes back BELOW VWAP
+shortReject   = close < vwapValue
+// RULE: S3 — bearish bar
+shortBearBar  = close < open
+
+shortSetup  = enableShorts and shortTrend and shortPullback and shortReject and shortBearBar and volConfirm and timeOk and flat
+shortSignal = shortSetup and not breakerTripped and sizeOk
+
+// Count setups that were skipped ONLY because size < 1 share (shows up on the label)
+var int skippedForSize = 0
+if (longSetup or shortSetup) and not breakerTripped and not sizeOk
+    skippedForSize += 1
+
+// -----------------------------------------------------------------------------
+// ORDERS
+// -----------------------------------------------------------------------------
+if longSignal
+    strategy.entry("Long", strategy.long, qty = qty)
+    // RULE: X1 + X2 — bracket placed on the signal bar so it is live on the very next bar.
+    // Reference = this bar's close (the expected fill under process_orders_on_close).
+    strategy.exit("Long Bracket", from_entry = "Long",
+         stop  = close - stopDistance,
+         limit = close + stopDistance * rrRatio)
+
+if shortSignal
+    strategy.entry("Short", strategy.short, qty = qty)
+    // RULE: X1 + X2 (mirrored)
+    strategy.exit("Short Bracket", from_entry = "Short",
+         stop  = close + stopDistance,
+         limit = close - stopDistance * rrRatio)
+
+// RULE: X1 + X2 — once filled, re-anchor the bracket to the ACTUAL fill price (includes slippage)
+if strategy.position_size > 0
+    strategy.exit("Long Bracket", from_entry = "Long",
+         stop  = strategy.position_avg_price - stopDistance,
+         limit = strategy.position_avg_price + stopDistance * rrRatio)
+if strategy.position_size < 0
+    strategy.exit("Short Bracket", from_entry = "Short",
+         stop  = strategy.position_avg_price + stopDistance,
+         limit = strategy.position_avg_price - stopDistance * rrRatio)
+
+// RULE: X3 — time-stop: flatten at the close of the last in-session bar (11:30 NY). No exceptions.
+if isLastSessionBar
+    strategy.close_all(comment = "Time stop")
+// RULE: X3 — safety net: never carry a position outside the window / overnight
+if not inSession and strategy.position_size != 0
+    strategy.close_all(comment = "Out-of-session close")
+
+// -----------------------------------------------------------------------------
+// PLOTS
+// -----------------------------------------------------------------------------
+plot(vwapValue, "VWAP",   color = color.blue,   linewidth = 2)
+plot(emaValue,  "20 EMA", color = color.orange, linewidth = 2)
+bgcolor(inSession ? color.new(color.gray, 92) : na, title = "Session window")
+
+plotshape(longSignal,  "Long entry",  shape.triangleup,   location.belowbar, color.green, size = size.small)
+plotshape(shortSignal, "Short entry", shape.triangledown, location.abovebar, color.green, size = size.small, text = "S")
+// Exit marker = a trade closed. Note: time-stop fills at bar close, so its marker appears one bar later.
+exitHappened = strategy.closedtrades > strategy.closedtrades[1]
+plotshape(exitHappened, "Exit", shape.triangledown, location.abovebar, color.red, size = size.small)
+
+// Per-day realized P&L stamp on the first bar after the window (includes the time-stop fill)
+if showDailyLabels and inSession[1] and not inSession
+    label.new(bar_index, high, "Day P&L $" + str.tostring(dailyRealizedPnl, "0.00"),
+         style = label.style_label_down, size = size.tiny,
+         color = dailyRealizedPnl >= 0 ? color.new(color.green, 20) : color.new(color.red, 20),
+         textcolor = color.white)
+
+// Current-day status label on the latest bar
+var label statusLbl = na
+if barstate.islast
+    label.delete(statusLbl)
+    txt = "Today's realized P&L: $" + str.tostring(dailyRealizedPnl, "0.00") +
+         (breakerTripped ? "\nCIRCUIT BREAKER: no new entries today" : "") +
+         "\nShares per trade (risk-based): " + str.tostring(riskShares) +
+         "\nSetups skipped (can't afford 1+ share): " + str.tostring(skippedForSize) +
+         "\nProperties must be: commission $" + str.tostring(commissionPerShare, "0.000") +
+         "/sh, slippage " + str.tostring(slippageTicks) + " tick(s)" +
+         (timeframe.period != "5" ? "\nWARNING: chart is not 5-minute" : "")
+    statusLbl := label.new(bar_index, high, txt, style = label.style_label_lower_left, size = size.small,
+         color = color.new(color.black, 15), textcolor = color.white)
