@@ -5,226 +5,320 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Coaching | Ashanti Maurice</title>
 <meta name="description" content="The Fighter Physique System: online strength, conditioning and nutrition coaching from amateur MMA fighter Ashanti Maurice.">
-<meta name="theme-color" content="#0c0b0b">
+<meta name="theme-color" content="#f7fafb">
 <link rel="icon" href="img/logo-badge.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/v2.css">
 <style>
-  .price{display:flex;flex-direction:column;gap:6px}
-  .price .amount{font-family:var(--display);font-size:3.2rem;line-height:1;color:var(--cream)}
-  .price .per{color:var(--muted);font-size:.9rem;letter-spacing:.1em;text-transform:uppercase}
-  .price.featured{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
-  .tag{align-self:flex-start;background:var(--red);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-  .stack{display:grid;gap:14px}
-  .stack .item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;background:var(--ink);border:1px solid var(--line);border-radius:12px}
-  .stack .item h3{font-size:1.25rem;margin-bottom:4px}
-  .stack .item p{margin:0;color:var(--muted);font-size:.95rem}
-  .shop-box{margin-top:24px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--ink)}
-  .small-print{font-size:.85rem;margin:12px 0 0}
-  a.code{text-decoration:none;cursor:copy}
-  a.code:hover{border-style:solid;border-color:var(--red-hot)}
-  .code{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-weight:700;letter-spacing:.08em;background:var(--ink);border:1px dashed var(--red);padding:6px 12px;border-radius:8px;color:var(--cream)}
-  .steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:18px}
-  .steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
-  .steps li::before{content:counter(s);font-family:var(--display);font-size:1.6rem;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:#fff}
-  .steps strong{display:block;color:var(--cream)}
-  @media (max-width:520px){.stack .item{flex-direction:column;align-items:flex-start}}
+/* hero */
+.c-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:max(4cqw,32px);align-items:center;padding-top:max(6cqw,56px)}
+@media (max-width:899px){.c-hero{grid-template-columns:1fr}}
+.c-hero h1{font-size:max(6.6667cqw,52px);margin:1rem 0 1.5rem}
+.c-hero .lede{max-width:34rem;margin-bottom:2rem}
+.c-side{display:flex;flex-direction:column;gap:1.5rem}
+.c-side .plate-img{aspect-ratio:710/463;width:100%}
+.c-side .bp dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:.6rem 1rem;align-items:baseline;text-transform:uppercase;font-size:var(--type-body)}
+.c-side .bp dd{margin:0;font-family:var(--font-display);font-weight:500;font-size:1.6rem;letter-spacing:-.04em;line-height:.8}
+
+/* what you get */
+.wyg{display:grid;grid-template-columns:1.1fr .9fr;gap:max(5cqw,32px);align-items:center}
+@media (max-width:899px){.wyg{grid-template-columns:1fr}}
+.h2{font-size:max(3.8194cqw,40px);color:var(--accent)}
+.list{list-style:none;margin:2.5rem 0 0;padding:0}
+.list li{position:relative;display:grid;grid-template-columns:3.2rem 1fr;align-items:baseline;padding:1.05rem 0;text-transform:uppercase;font-size:max(1.25cqw,16px);line-height:1.1}
+.list li::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--border-on-dark);transform-origin:left;transform:scaleX(var(--d,0))}
+.list li b{font-family:var(--font-display);font-weight:500;color:var(--accent);font-size:1.4em;letter-spacing:-.04em}
+.wyg .plate-img{aspect-ratio:4/5}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:max(3cqw,24px);margin-top:3rem;position:relative}
+@media (max-width:767px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding-top:2.6rem}
+.step .n{position:absolute;top:0;left:0;width:1.5rem;height:1.5rem;display:grid;place-items:center}
+.step .n svg{width:22px;height:22px;overflow:visible}
+.step .link{position:absolute;top:.72rem;left:2.4rem;right:-1.5rem;height:1px;background:repeating-linear-gradient(to right,var(--foreground-on-dark-muted) 0 7px,transparent 7px 11.45px);transform-origin:left;transform:scaleX(0)}
+.step:last-child .link{display:none}
+@media (max-width:767px){.step .link{display:none}}
+.step h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(2.2cqw,28px);line-height:.95;margin:0 0 .9rem}
+.step p{margin:0;color:var(--foreground-on-dark-muted);text-transform:uppercase;line-height:1.2;font-size:max(1.05cqw,15px)}
+.step .k{font-size:var(--type-eyebrow);color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.8rem}
+
+/* packages */
+.pk{display:grid;grid-template-columns:1fr 1fr;gap:max(2.5cqw,20px);margin-top:3rem}
+@media (max-width:767px){.pk{grid-template-columns:1fr}}
+.pk-card{position:relative;padding:max(2.8cqw,28px);display:flex;flex-direction:column;gap:1rem;min-height:22rem;isolation:isolate}
+.pk-card svg.f{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.pk-card svg.f path{fill:#fff;stroke:var(--foreground);vector-effect:non-scaling-stroke}
+.pk-card.hot svg.f path{fill:var(--surface-black);stroke:var(--accent)}
+.pk-card.hot{color:var(--foreground-on-dark)}
+.pk-card .term{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(1.8cqw,22px);line-height:.95}
+.pk-card .amt{font-family:var(--font-display);font-weight:500;font-size:max(6cqw,64px);line-height:.8;letter-spacing:-.06em}
+.pk-card .per{font-size:var(--type-eyebrow);text-transform:uppercase;letter-spacing:.14em;opacity:.6}
+.pk-card p{margin:0;text-transform:uppercase;line-height:1.15}
+.pk-card .cta{margin-top:auto;align-self:flex-start}
+.tag{position:absolute;top:max(2.8cqw,28px);right:max(2.8cqw,28px);background:var(--accent);color:#fff;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;padding:.45rem .7rem}
+.pk-card.hot .bp-frame{position:absolute;inset:-10px;color:var(--accent);pointer-events:none;transition:inset 700ms var(--ease-plate)}
+.pk-card.hot:hover .bp-frame{inset:-15px}
+.bp-frame svg{position:absolute;width:12px;height:12px;fill:none;stroke:currentColor}
+.note{margin-top:1.5rem;text-transform:uppercase;font-size:var(--type-body);color:var(--foreground-muted)}
+
+/* supplement stack */
+.stk{display:grid;grid-template-columns:1.1fr .9fr;gap:max(5cqw,32px);align-items:center}
+@media (max-width:899px){.stk{grid-template-columns:1fr}}
+.stk .plate-img{aspect-ratio:4/5}
+.sup{margin-top:2.5rem;display:grid}
+.sup-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 0;border-top:1px solid var(--border-on-dark)}
+.sup-row h3{margin:0 0 .35rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(1.8cqw,22px);line-height:.95}
+.sup-row p{margin:0;color:var(--foreground-on-dark-muted);text-transform:uppercase;font-size:var(--type-body)}
+.sup-row .cta{min-width:0;height:2.6rem;font-size:13px}
+.code-box{position:relative;margin-top:2rem;padding:1.5rem;color:var(--foreground-on-dark)}
+.code-box .bp-c{position:absolute;inset:0;color:var(--accent);pointer-events:none}
+.code-box .bp-c svg{position:absolute;width:12px;height:12px;fill:none;stroke:currentColor}
+.code-box p{margin:0 0 1rem;text-transform:uppercase;line-height:1.3}
+.code{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-weight:700;letter-spacing:.1em;border:1px dashed var(--accent);padding:.35rem .7rem;cursor:copy;color:#fff}
+.code:hover{border-style:solid}
+.fine{font-size:12px;text-transform:uppercase;color:var(--foreground-on-dark-faint);margin:1rem 0 0!important}
+
+/* apply */
+.apply{display:grid;grid-template-columns:.9fr 1.1fr;gap:max(5cqw,32px);align-items:start}
+@media (max-width:899px){.apply{grid-template-columns:1fr}}
+.apply .lede{margin:1.5rem 0 2rem;max-width:30rem}
+.form{position:relative;display:grid;gap:1.4rem;padding:max(2.5cqw,24px);background:#fff}
+.form .bp-c{position:absolute;inset:-1px;color:var(--foreground);pointer-events:none}
+.form .bp-c svg{position:absolute;width:12px;height:12px;fill:none;stroke:currentColor}
+.form label{display:grid;gap:.5rem;font-size:var(--type-eyebrow);text-transform:uppercase;letter-spacing:.14em;color:var(--foreground-muted)}
+.form .row2{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+@media (max-width:539px){.form .row2{grid-template-columns:1fr}}
+.form input,.form select,.form textarea{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--foreground);background:transparent;border:0;border-bottom:1px solid var(--foreground);padding:.6rem 0;border-radius:0;outline:none}
+.form textarea{min-height:7rem;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{border-bottom-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
+.form .cta{justify-self:start;margin-top:.5rem}
 </style>
 </head>
 <body>
 
-<div id="site-header"></div>
-
-<main>
-
-  <section class="page-hero">
-    <div class="bg"><img src="img/red-room-1.jpg" alt=""></div>
-    <div class="wrap">
-      <span class="eyebrow">Online coaching</span>
-      <h1>Fighter Physique System</h1>
-      <p class="lede">Personalized strength, conditioning and nutrition coaching built on the system I use to prepare for fights. Structured programming, weekly check-ins and direct access to your coach.</p>
-      <div class="btn-row" style="margin-top:28px">
-        <a class="btn" href="#apply">Apply now</a>
-        <a class="btn ghost ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book a consultation</a>
+<div class="stack">
+  <!-- HERO -->
+  <div class="layer"><div class="layer-inner">
+    <section class="block light" data-arm data-margin="0% 0% 0% 0%">
+      <canvas class="contours" data-contours="--surface-soft" aria-hidden="true"></canvas>
+      <div data-v2-header></div>
+      <div class="inner">
+        <div class="c-hero">
+          <div>
+            <span class="eyebrow" data-fade="0">Online coaching</span>
+            <h1 class="display split" data-split="words" data-delay="120">Fighter Physique System</h1>
+            <p class="lede" data-rise="520">Personalized strength, conditioning and nutrition coaching built on the system I use to prepare for fights.</p>
+            <div class="btn-row" data-rise="700" id="heroCtas"></div>
+          </div>
+          <div class="c-side" data-rise="420">
+            <div id="heroPlate"></div>
+            <div class="bp">
+              <svg class="c tl"><use href="#corner"/></svg><svg class="c tr"><use href="#corner"/></svg><svg class="c bl"><use href="#corner"/></svg><svg class="c br"><use href="#corner"/></svg>
+              <span class="eyebrow" style="margin-bottom:1rem">Packages</span>
+              <dl><dt>6-month commitment</dt><dd>$2,400</dd><dt>12-month commitment</dt><dd>$4,200</dd></dl>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CREDENTIALS -->
-  <section class="section tight" data-section>
-    <div class="wrap">
-      <div class="trust reveal" data-block="trust"></div>
-    </div>
-  </section>
+    </section>
+  </div><div class="shade"></div></div>
 
   <!-- WHAT YOU GET -->
-  <section class="section">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">What you get</span>
-        <h2>Everything I do, built for you</h2>
-        <ul class="ticks" style="margin-top:28px">
-          <li>Custom strength &amp; conditioning program</li>
-          <li>Fighter-level conditioning system</li>
-          <li>Personalized nutrition plan</li>
-          <li>Weekly check-ins &amp; adjustments</li>
-          <li>Direct access to me</li>
-          <li>Accountability &amp; discipline coaching</li>
-          <li>Full supplement protocol — what I personally use</li>
-        </ul>
+  <div class="layer"><div class="layer-inner">
+    <section class="block dark on-dark" data-arm>
+      <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+      <div class="inner">
+        <div class="wyg">
+          <div>
+            <span class="eyebrow" data-fade="0">What you get</span>
+            <h2 class="display h2" style="margin-top:1rem"><span class="split" data-split="words">Everything I do,</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">built for you</span><span class="stop" data-fade="240">.</span></span></h2>
+            <ol class="list" id="wyg">
+              <li><b>01</b>Custom strength &amp; conditioning program</li>
+              <li><b>02</b>Fighter-level conditioning system</li>
+              <li><b>03</b>Personalized nutrition plan</li>
+              <li><b>04</b>Weekly check-ins &amp; adjustments</li>
+              <li><b>05</b>Direct access to me</li>
+              <li><b>06</b>Accountability &amp; discipline coaching</li>
+              <li><b>07</b>Full supplement protocol — what I personally use</li>
+            </ol>
+          </div>
+          <div id="wygPlate" data-rise="300"></div>
+        </div>
       </div>
-      <div class="photo reveal" style="aspect-ratio:4/5"><img src="img/gym-class-1.jpg" alt="Group training session on the mats" loading="lazy"></div>
-    </div>
-  </section>
+    </section>
+  </div><div class="shade"></div></div>
 
   <!-- HOW IT WORKS -->
-  <section class="section band-panel">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">How it works</span>
-        <h2>Three steps in</h2>
-      </div>
-      <ol class="steps reveal">
-        <li><div><strong>Apply</strong>Tell me your goals and where you're starting from. Takes two minutes.</div></li>
-        <li><div><strong>Consultation call</strong>We talk through your training, schedule and what it'll take. If it's a fit, you're in.</div></li>
-        <li><div><strong>Get to work</strong>Your program, nutrition plan and check-in schedule land, and we start.</div></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- RESULTS -->
-  <section class="section" data-section>
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Client results</span>
-        <h2>What clients say</h2>
-      </div>
-      <div class="quotes reveal" data-block="testimonials"></div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Packages</span>
-        <h2>Coaching packages</h2>
-        <p class="lede">Application required, so every client gets real attention and a plan built for them.</p>
-      </div>
-      <div class="grid grid-2 reveal">
-        <div class="card price">
-          <h3>6-month commitment</h3>
-          <span class="amount">$2,400</span>
-          <span class="per">Paid upfront</span>
-          <p style="margin-top:10px">Built for serious individuals ready to transform.</p>
-          <a class="btn ghost" href="#apply" style="margin-top:auto">Apply for 6 months</a>
-        </div>
-        <div class="card price featured">
-          <span class="tag">Best value</span>
-          <h3>12-month commitment</h3>
-          <span class="amount">$4,200</span>
-          <span class="per">Paid upfront</span>
-          <p style="margin-top:10px">For those committed to long-term elite results.</p>
-          <a class="btn" href="#apply" style="margin-top:auto">Apply for 12 months</a>
+  <div class="layer last">
+    <section class="block dark on-dark auto" data-arm>
+      <div class="inner">
+        <span class="eyebrow" data-fade="0">How it works</span>
+        <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">Three steps in</span><span class="stop" data-fade="240">.</span></span></h2>
+        <div class="steps" id="steps">
+          <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle class="pulse" r="5.5" fill="none" stroke="var(--accent)" vector-effect="non-scaling-stroke"/><circle r="5.5" fill="var(--accent)"/></svg></span><span class="link"></span><span class="k">Step 01</span><h3>Apply</h3><p>Tell me your goals and where you're starting from. Takes two minutes.</p></div>
+          <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle r="5" fill="none" stroke="#fff"/></svg></span><span class="link"></span><span class="k">Step 02</span><h3>Consultation call</h3><p>We talk through your training, schedule and what it'll take. If it's a fit, you're in.</p></div>
+          <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle r="5" fill="none" stroke="#fff"/></svg></span><span class="k">Step 03</span><h3>Get to work</h3><p>Your program, nutrition plan and check-in schedule land, and we start.</p></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+</div>
 
-  <!-- SUPPLEMENTS -->
-  <section class="section band-panel">
-    <div class="wrap split flip">
-      <div class="reveal">
-        <span class="eyebrow">My fighter stack</span>
-        <h2>What I take</h2>
-        <p class="lede" style="margin:18px 0 26px">Exactly what I use to stay ready for training, recovery and fight performance.</p>
-        <div class="stack">
-          <div class="item"><div><h3>Pre-workout</h3><p>Energy, focus and intensity for training.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
-          <div class="item"><div><h3>Creatine</h3><p>Strength, power and performance output.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
-          <div class="item"><div><h3>BCAAs</h3><p>Recovery and less muscle fatigue.</p></div><a class="btn small ghost ext" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Get it</a></div>
+<!-- PACKAGES -->
+<section class="block light auto" data-arm>
+  <canvas class="contours" data-contours="--paddock-contour" aria-hidden="true"></canvas>
+  <canvas class="chequer" data-carry="dark" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <span class="eyebrow" data-fade="0">Packages</span>
+    <h2 class="display" style="font-size:max(6.6667cqw,44px);margin-top:1rem"><span class="split" data-split="words">Coaching</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">packages</span><span class="stop" data-fade="240">.</span></span></h2>
+    <p class="lede" data-rise="380" style="margin-top:1.5rem;max-width:34rem">Application required, so every client gets real attention and a plan built for them.</p>
+    <div class="pk">
+      <div class="pk-card" data-rise="500">
+        <svg class="f" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H399.5V285L385 299.5H0.5Z"/></svg>
+        <span class="term">6-month commitment</span>
+        <span class="amt split" data-split="letters" data-delay="600">$2,400</span>
+        <span class="per">Paid upfront</span>
+        <p>Built for serious individuals ready to transform.</p>
+        <span class="pk-cta" data-cta="Apply for 6 months" data-pkg="6-month commitment ($2,400)"></span>
+      </div>
+      <div class="pk-card hot" data-rise="620">
+        <svg class="f" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H399.5V285L385 299.5H0.5Z"/></svg>
+        <span class="bp-frame" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
+        <span class="tag">Best value</span>
+        <span class="term">12-month commitment</span>
+        <span class="amt split" data-split="letters" data-delay="720">$4,200</span>
+        <span class="per">Paid upfront</span>
+        <p>For those committed to long-term elite results.</p>
+        <span class="pk-cta" data-cta="Apply for 12 months" data-pkg="12-month commitment ($4,200)"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIGHTER STACK -->
+<section class="block dark on-dark auto" data-arm>
+  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <div class="stk">
+      <div>
+        <span class="eyebrow" data-fade="0">My fighter stack</span>
+        <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">What I take</span><span class="stop" data-fade="240">.</span></span></h2>
+        <p class="lede" data-rise="300" style="margin-top:1.5rem;color:var(--foreground-on-dark-muted)">Exactly what I use to stay ready for training, recovery and fight performance.</p>
+        <div class="sup" id="sup">
+          <div class="sup-row" data-rise="380"><div><h3>Pre-workout</h3><p>Energy, focus and intensity for training.</p></div><span data-get></span></div>
+          <div class="sup-row" data-rise="460"><div><h3>Creatine</h3><p>Strength, power and performance output.</p></div><span data-get></span></div>
+          <div class="sup-row" data-rise="540"><div><h3>BCAAs</h3><p>Recovery and less muscle fatigue.</p></div><span data-get></span></div>
         </div>
-        <div class="shop-box">
-          <p style="margin:0 0 14px">Shop through my link and use code <a class="code" id="buckedCode" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener" title="Copy the code and open the store">DOLOBUCK94</a> at checkout for a discount.</p>
-          <div class="btn-row">
-            <a class="btn ext" id="buckedShop" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener">Shop Bucked Up</a>
-          </div>
-          <p class="muted small-print" id="codeNote" role="status">Tap the code to copy it and open the store.</p>
-          <p class="muted small-print">I'm a Bucked Up ambassador and earn a commission when you shop through my link or code.</p>
+        <div class="code-box" data-rise="640">
+          <span class="bp-c" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
+          <p>Shop through my link and use code <a class="code" id="buckedCode" href="https://bckd.co/qeoStY3" target="_blank" rel="noopener" title="Copy the code and open the store">DOLOBUCK94</a> at checkout for a discount.</p>
+          <span id="shopCta"></span>
+          <p class="fine" id="codeNote" role="status">Tap the code to copy it and open the store.</p>
+          <p class="fine">I'm a Bucked Up ambassador and earn a commission when you shop through my link or code.</p>
         </div>
       </div>
-      <div class="photo reveal" style="aspect-ratio:4/5"><img src="img/kitchen.jpg" alt="Ashanti Maurice in the kitchen" loading="lazy"></div>
+      <div id="stkPlate" data-rise="300"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- POLICIES -->
-  <section class="section" data-section>
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Before you apply</span>
-        <h2>Policies &amp; FAQ</h2>
+<!-- APPLY -->
+<section class="block light auto" id="apply" data-arm>
+  <canvas class="chequer" data-carry="dark" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <div class="apply">
+      <div>
+        <span class="eyebrow" data-fade="0">Apply</span>
+        <h2 class="display" style="font-size:max(6.6667cqw,44px);margin-top:1rem"><span class="split" data-split="words">Apply for</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">coaching</span><span class="stop" data-fade="240">.</span></span></h2>
+        <p class="lede" data-rise="380">Fill this out and I'll review it personally. You'll get an email with a link to book your consultation.</p>
+        <p data-rise="460" style="text-transform:uppercase;font-size:var(--type-body);color:var(--foreground-muted);margin:0 0 1rem">Rather talk first?</p>
+        <span data-rise="520" id="callCta"></span>
       </div>
-      <div class="faq reveal" data-block="policies"></div>
+      <form class="form" action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST" data-rise="400">
+        <span class="bp-c" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
+        <input type="hidden" name="_subject" value="New Coaching Application">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_autoresponse" value="Your application has been received. If you're serious about working with me, book your consultation now — spots are limited: https://calendly.com/fpconsultation/fighter-physique-consultation">
+        <input type="hidden" name="_next" value="https://ashantimaurice.com/thanks.html">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label>Full name<input type="text" name="name" autocomplete="name" required></label>
+        <div class="row2">
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+        </div>
+        <label>Package
+          <select name="package" id="pkg" required>
+            <option value="">Choose one</option>
+            <option>6-month commitment ($2,400)</option>
+            <option>12-month commitment ($4,200)</option>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </label>
+        <label>What are your goals?<textarea name="goals" required></textarea></label>
+        <button class="cta" type="submit"><svg class="f" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true"><path class="body" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/><path class="flood" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/></svg><span>Submit application</span><svg class="a" viewBox="0 0 13.7071 10.7071" aria-hidden="true"><path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553"/></svg></button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- APPLY -->
-  <section class="section" id="apply">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">Apply</span>
-        <h2>Apply for coaching</h2>
-        <p class="lede" style="margin:18px 0 22px">Fill this out and I'll review it personally. You'll get an email with a link to book your consultation.</p>
-        <p class="muted">Rather talk first?</p>
-        <a class="btn ghost ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book a call directly</a>
-      </div>
-      <div class="card reveal">
-        <form class="form" action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST">
-          <input type="hidden" name="_subject" value="New Coaching Application">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_autoresponse" value="Your application has been received. If you're serious about working with me, book your consultation now — spots are limited: https://calendly.com/fpconsultation/fighter-physique-consultation">
-          <input type="hidden" name="_next" value="https://ashantimaurice.com/thanks.html">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<div data-v2-footer data-head="Stay ready|stay hungry"></div>
 
-          <label>Full name<input type="text" name="name" autocomplete="name" required></label>
-          <div class="row">
-            <label>Email<input type="email" name="email" autocomplete="email" required></label>
-            <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
-          </div>
-          <label>Package
-            <select name="package" required>
-              <option value="">Choose one</option>
-              <option>6-month commitment ($2,400)</option>
-              <option>12-month commitment ($4,200)</option>
-              <option>Not sure yet — let's talk</option>
-            </select>
-          </label>
-          <label>What are your goals?<textarea name="goals" required></textarea></label>
-          <button class="btn" type="submit">Submit application</button>
-        </form>
-      </div>
-    </div>
-  </section>
+<script type="module">
+import { boot, ctaHTML, plateHTML, subscribe, whileVisible, onView, Spring, REDUCED } from "./assets/v2.js";
+const CAL = "https://calendly.com/fpconsultation/fighter-physique-consultation";
+const STORE = "https://bckd.co/qeoStY3";
+const ext = ' target="_blank" rel="noopener"';
 
-</main>
+document.getElementById("heroCtas").innerHTML = ctaHTML("Apply now", "#apply") + ctaHTML("Book a consultation", CAL, { hollow: true, target: ext });
+document.getElementById("heroPlate").innerHTML = plateHTML("img/red-room-1.jpg", "Ashanti Maurice under red light", "aspect-ratio:710/463");
+document.getElementById("wygPlate").innerHTML = plateHTML("img/gym-class-1.jpg", "Group training session on the mats", "aspect-ratio:4/5");
+document.getElementById("stkPlate").innerHTML = plateHTML("img/kitchen.jpg", "Ashanti Maurice in the kitchen", "aspect-ratio:4/5");
+document.getElementById("callCta").innerHTML = ctaHTML("Book a call directly", CAL, { hollow: true, target: ext });
+document.getElementById("shopCta").innerHTML = ctaHTML("Shop Bucked Up", STORE, { target: ext + ' id="buckedShop"' });
+document.querySelectorAll("[data-get]").forEach((el) => (el.innerHTML = ctaHTML("Get it", STORE, { hollow: true, target: ext })));
+document.querySelectorAll(".pk-cta").forEach((el) => {
+  el.innerHTML = ctaHTML(el.dataset.cta, "#apply", { hollow: !el.closest(".hot") });
+  el.querySelector("a").addEventListener("click", () => (document.getElementById("pkg").value = el.dataset.pkg));
+});
 
-<div id="site-footer"></div>
+boot();
 
-<a class="dm-fab" data-ig href="https://instagram.com/Rx_Dolo" target="_blank" rel="noopener">DM me</a>
+/* what-you-get rows: rules draw in, rows rise */
+onView(document.getElementById("wyg"), () => {
+  document.querySelectorAll("#wyg li").forEach((li, i) => {
+    li.style.opacity = 0;
+    new Spring(0, { tension: 170, friction: 24 }, (v) => { li.style.setProperty("--d", v); li.style.opacity = v; li.style.transform = `translateY(${(1 - v) * 0.6}rem)`; }).to(1, 200 + i * 90);
+  });
+});
 
-<script src="assets/site.js"></script>
-<script>
-  /* Bucked Up ambassador code: copy it, then open the store through the ambassador link */
-  (function () {
-    var code = document.getElementById("buckedCode"), note = document.getElementById("codeNote");
-    function copy() {
-      try { navigator.clipboard.writeText("DOLOBUCK94").then(function () { note.textContent = "Code DOLOBUCK94 copied. Paste it at checkout."; }, function () {}); } catch (e) {}
-    }
-    code.addEventListener("click", copy);
-    document.getElementById("buckedShop").addEventListener("click", copy);
-  })();
+/* steps: connectors scale in and crawl, the first step pulses */
+{
+  const steps = document.getElementById("steps"), links = [...steps.querySelectorAll(".link")], pulse = steps.querySelector(".pulse");
+  steps.querySelectorAll(".step").forEach((s) => (s.style.opacity = 0));
+  onView(steps, () => {
+    steps.querySelectorAll(".step").forEach((s, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { s.style.opacity = v; s.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 300 + i * 120));
+    links.forEach((l, i) => new Spring(0, { tension: 90, friction: 26 }, (v) => (l.style.transform = `scaleX(${v})`)).to(1, 500 + i * 120));
+  });
+  const t0 = performance.now();
+  whileVisible(steps, (now) => {
+    const crawl = REDUCED ? 0 : ((now - t0) % 5200) / 5200;
+    links.forEach((l) => (l.style.backgroundPositionX = `${crawl * 11.45}px`));
+    const v = 1 - (1 - ((now - t0) % 3200) / 3200) ** 2;
+    pulse.setAttribute("r", 5.5 + v * 5.5 * 1.6); pulse.style.opacity = 0.6 * (1 - v) ** 2;
+  });
+}
+
+/* Bucked Up code: copy, then open the store */
+{
+  const note = document.getElementById("codeNote");
+  const copy = () => { try { navigator.clipboard.writeText("DOLOBUCK94").then(() => (note.textContent = "Code DOLOBUCK94 copied. Paste it at checkout."), () => {}); } catch (e) {} };
+  document.getElementById("buckedCode").addEventListener("click", copy);
+  document.getElementById("buckedShop")?.addEventListener("click", copy);
+}
 </script>
 </body>
 </html>
