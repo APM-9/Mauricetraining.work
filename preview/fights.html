@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fights | Ashanti Maurice — Preview</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f7fafb">
+<link rel="icon" href="../img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v2.css">
+<style>
+.h2{font-size:max(3.8194cqw,40px);color:var(--accent)}
+.big{font-size:max(6.6667cqw,44px)}
+/* hero: the record as a scoreboard */
+.f-hero{padding-top:max(5cqw,48px)}
+.f-hero h1{font-size:max(9cqw,64px);margin:1rem 0 2.5rem}
+.board{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--foreground);border-bottom:1px solid var(--foreground)}
+.board div{padding:1.6rem 1.2rem 1.4rem;border-left:1px solid var(--foreground)}
+.board div:first-child{border-left:0;padding-left:0}
+.board b{display:block;font-family:var(--font-display);font-weight:500;font-size:max(5.5cqw,46px);line-height:.8;letter-spacing:-.06em}
+.board span{display:block;margin-top:1rem;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-muted)}
+@media (max-width:767px){.board{grid-template-columns:1fr 1fr}.board div:nth-child(3){border-left:0;padding-left:0}.board div:nth-child(n+3){border-top:1px solid var(--foreground)}}
+/* next fight */
+.next{display:grid;grid-template-columns:.8fr 1.2fr;gap:max(4cqw,28px);align-items:center}
+@media (max-width:899px){.next{grid-template-columns:1fr}}
+.poster{position:relative}
+.poster img{width:100%;border-radius:4px}
+.poster .br{position:absolute;inset:-12px;color:var(--accent);pointer-events:none}
+.br svg{position:absolute;width:14px;height:14px;fill:none;stroke:currentColor}
+.next h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(3.2cqw,32px);line-height:.95;margin:1rem 0 .6rem}
+.next .type{color:var(--accent);font-weight:700;text-transform:uppercase;margin:0 0 1.4rem}
+.next dl{display:grid;grid-template-columns:auto 1fr;gap:.7rem 2rem;margin:0 0 2rem;text-transform:uppercase}
+.next dt{color:var(--foreground-on-dark-muted);font-size:var(--type-eyebrow);letter-spacing:.14em;padding-top:.2em}
+.next dd{margin:0}
+.cd{display:flex;gap:.6rem;margin-bottom:2rem}
+.cd span{flex:1;max-width:7rem;border:1px solid var(--border-on-dark);padding:1rem .5rem;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-on-dark-muted)}
+.cd b{display:block;font-family:var(--font-display);font-weight:500;font-size:max(3cqw,34px);line-height:1;color:#fff;letter-spacing:-.04em;margin-bottom:.4rem}
+/* past fight */
+.bout{display:grid;grid-template-columns:minmax(0,20rem) 1fr;gap:max(3cqw,24px);align-items:center;padding:2rem 0;border-top:1px solid var(--foreground);border-bottom:1px solid var(--foreground);margin-top:3rem}
+@media (max-width:767px){.bout{grid-template-columns:1fr}}
+.bout img{width:100%;border-radius:4px}
+.bout h3{margin:0 0 1rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(3cqw,32px);line-height:.95}
+.bout dl{display:grid;grid-template-columns:auto 1fr;gap:.6rem 2rem;margin:0 0 1.8rem;text-transform:uppercase}
+.bout dt{font-size:var(--type-eyebrow);letter-spacing:.14em;color:var(--foreground-muted);padding-top:.2em}
+.bout dd{margin:0}
+/* galleries */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:max(1.4cqw,12px);margin-top:3rem}
+.gal>div{grid-column:span 2;aspect-ratio:4/5}
+.gal>.w4{grid-column:span 4;aspect-ratio:auto}
+@media (max-width:767px){.gal{grid-template-columns:1fr}.gal>div,.gal>.w4{grid-column:auto;aspect-ratio:4/3}}
+/* sponsor */
+.spons{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem}
+.spons .lede{max-width:32rem;margin-top:1.5rem;color:var(--foreground-on-dark-muted)}
+</style>
+</head>
+<body>
+
+<div class="stack">
+  <div class="layer"><div class="layer-inner">
+    <section class="block light auto" data-arm data-margin="0% 0% 0% 0%" style="min-height:min(100lvh,640px)">
+      <canvas class="contours" data-contours="--surface-soft" aria-hidden="true"></canvas>
+      <div data-v2-header></div>
+      <div class="inner f-hero">
+        <span class="eyebrow" data-fade="0">Fights</span>
+        <h1 class="display split" data-split="words" data-delay="120">Fight record</h1>
+        <div class="board" data-rise="500">
+          <div><b data-rise="600" id="recMma">0-1-0</b><span>Amateur MMA · W-L-D</span></div>
+          <div><b data-rise="700" id="recBjj">2-1-0</b><span>Amateur BJJ · W-L-D</span></div>
+          <div><b data-rise="800">147</b><span>Fight weight (lb)</span></div>
+          <div><b data-rise="900">WRS</b><span>Wrestling base</span></div>
+        </div>
+      </div>
+    </section>
+  </div><div class="shade"></div></div>
+
+  <div class="layer last">
+    <section class="block dark on-dark auto" data-arm>
+      <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+      <div class="inner" style="padding-top:max(9cqw,110px)" id="nextBox"></div>
+    </section>
+  </div>
+</div>
+
+<section class="block light auto" data-arm>
+  <canvas class="chequer" data-carry="dark" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <span class="eyebrow" data-fade="0">History</span>
+    <h2 class="display big" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">Past fights</span><span class="stop" data-fade="240">.</span></span></h2>
+    <article class="bout" data-rise="300">
+      <img src="../img/ds67-faceoff.jpg" alt="Dead Serious 67 poster: Ohene versus Maurice, March 28th 2026" loading="lazy">
+      <div>
+        <h3>Dead Serious 67</h3>
+        <dl><dt>Date</dt><dd>March 28, 2026</dd><dt>Venue</dt><dd>Showboat, Atlantic City NJ</dd><dt>Bout</dt><dd>Amateur MMA vs Ohene</dd><dt>Weight</dt><dd>147–154 lb</dd><dt>Promotion</dt><dd>Dead Serious Promotions</dd></dl>
+        <span id="replayCta"></span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block dark on-dark auto" data-arm>
+  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <span class="eyebrow" data-fade="0">Dead Serious 67</span>
+    <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">Fight week</span><span class="stop" data-fade="240">.</span></span></h2>
+    <div class="gal" id="fightGal"></div>
+  </div>
+</section>
+
+<section class="block light auto" data-arm>
+  <canvas class="chequer" data-carry="dark" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <span class="eyebrow" data-fade="0">On the mats</span>
+    <h2 class="display big" style="margin-top:1rem"><span class="split" data-split="words">Wrestling &amp;</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">grappling</span><span class="stop" data-fade="240">.</span></span></h2>
+    <div class="gal" id="matGal"></div>
+  </div>
+</section>
+
+<section class="block dark on-dark auto" data-arm>
+  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <div class="spons">
+      <div>
+        <span class="eyebrow" data-fade="0">Want to be in my corner?</span>
+        <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">Sponsor the next camp</span><span class="stop" data-fade="240">.</span></span></h2>
+        <p class="lede" data-rise="300">Sponsor slots are $500 per placement. Support helps cover training, travel and fight prep.</p>
+      </div>
+      <div class="btn-row" data-rise="420" id="sponsCtas"></div>
+    </div>
+  </div>
+</section>
+
+<div data-v2-footer data-head="Stay ready|stay hungry"></div>
+
+<script src="../assets/site.js"></script>
+<script type="module">
+import { boot, ctaHTML, plateHTML, href, onView, rise } from "./v2.js";
+const S = window.SITE;
+const ext = ' target="_blank" rel="noopener"';
+document.getElementById("recMma").textContent = S.record.mma;
+document.getElementById("recBjj").textContent = S.record.bjj;
+document.getElementById("replayCta").innerHTML = ctaHTML("Watch the replay", "https://tickets.avp.live/events/dead-serious-mma-promotions-presents-dead-serious-67-showboat-march28-2026", { target: ext });
+document.getElementById("sponsCtas").innerHTML = ctaHTML("Sponsor", href("contact.html") + "?topic=sponsorship") + ctaHTML("Support the camp", href("merch.html") + "#support", { hollow: true });
+
+/* next fight, from the same settings as the live site */
+{
+  const f = S.nextFight, when = f.date ? new Date(f.date) : null;
+  const corners = `<span class="br" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>`;
+  const box = document.getElementById("nextBox");
+  if (!when || isNaN(when) || when < new Date(Date.now() - 6 * 3600e3)) {
+    box.innerHTML = `<span class="eyebrow">Next fight</span><h2 class="display h2" style="margin-top:1rem">To be announced.</h2><p class="lede" style="margin-top:1.5rem;color:var(--foreground-on-dark-muted)">Back in camp. Follow @${S.instagram} for the announcement.</p>`;
+  } else {
+    box.innerHTML = `<div class="next">
+      ${f.poster ? `<div class="poster" data-rise="300">${corners}<img src="../${f.poster}" alt="${f.event} poster"></div>` : ""}
+      <div>
+        <span class="eyebrow" data-fade="0">Next fight</span>
+        <h3 class="split" data-split="words" data-delay="120">${f.event}</h3>
+        ${f.type ? `<p class="type" data-fade="300">${f.type}</p>` : ""}
+        <dl data-rise="360"><dt>Date</dt><dd>${when.toLocaleDateString(undefined, { weekday: "short", month: "long", day: "numeric", year: "numeric" })}</dd>${f.opponent ? `<dt>Opponent</dt><dd>${f.opponent}</dd>` : ""}${f.venue ? `<dt>Venue</dt><dd>${f.venue}</dd>` : ""}</dl>
+        <div class="cd" id="cd" data-rise="460"></div>
+        ${f.tickets ? `<span data-rise="540">${ctaHTML("Tickets & stream", f.tickets, { target: ext })}</span>` : ""}
+      </div></div>`;
+    const cd = document.getElementById("cd");
+    const tick = () => {
+      const d = when - new Date();
+      if (d <= 0) { cd.textContent = "Match day."; return; }
+      cd.innerHTML = [[Math.floor(d / 864e5), "days"], [Math.floor((d % 864e5) / 36e5), "hrs"], [Math.floor((d % 36e5) / 6e4), "min"], [Math.floor((d % 6e4) / 1e3), "sec"]].map(([n, l]) => `<span><b>${n}</b>${l}</span>`).join("");
+    };
+    tick(); setInterval(tick, 1000);
+  }
+}
+
+/* galleries in notched plates */
+const gal = (id, items) => {
+  const el = document.getElementById(id);
+  el.innerHTML = items.map(([src, alt, cls]) => `<div class="${cls}">${plateHTML("../img/" + src, alt, "width:100%;height:100%")}</div>`).join("");
+  [...el.children].forEach((c) => (c.style.opacity = 0));
+  onView(el, () => [...el.children].forEach((c, i) => rise(c, 200 + i * 90, "1rem", { tension: 170, friction: 24 })));
+};
+gal("fightGal", [
+  ["fight/ds67-weighin-faceoff.jpg", "Weigh-in face-off at Dead Serious 67", "w2"],
+  ["fight/ds67-poster-signing.jpg", "Signing Dead Serious 67 fight posters", "w2"],
+  ["fight/ds67-walkout.jpg", "In the cage before the fight", "w2"],
+  ["fight/ds67-jab.jpg", "Throwing a jab in the cage", "w4"],
+  ["fight/ds67-corner-chef-whippems.jpg", "Between rounds with the corner", "w2"],
+]);
+gal("matGal", [
+  ["wrestle-3.jpg", "Wrestling match, working from top", "w2"],
+  ["asbury-3.jpg", "Training partners at Asbury Park", "w2"],
+  ["fight/gtg-training-partner.jpg", "After training at GTG Gym", "w2"],
+]);
+
+boot();
+</script>
+</body>
+</html>
