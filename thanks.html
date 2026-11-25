@@ -5,41 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Thank You | Ashanti Maurice</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0c0b0b">
+<meta name="theme-color" content="#f7fafb">
 <link rel="icon" href="img/logo-badge.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/v2.css">
+<style>
+.ty{min-height:calc(100lvh - 6rem);display:grid;grid-template-columns:1.1fr .9fr;gap:max(5cqw,32px);align-items:center;padding-top:max(3cqw,24px)}
+@media (max-width:899px){.ty{grid-template-columns:1fr;min-height:0}}
+.ty h1{font-size:max(9cqw,60px);margin:1rem 0 1.5rem}
+.ty .lede{max-width:30rem;margin-bottom:2.5rem}
+.check{position:relative;width:min(100%,24rem);aspect-ratio:1;justify-self:center;display:grid;place-items:center}
+.check svg{width:100%;height:100%;overflow:visible}
+.check .ring{fill:none;stroke:var(--foreground);stroke-width:1;vector-effect:non-scaling-stroke}
+.check .tick{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:square;stroke-dasharray:140;stroke-dashoffset:140}
+.check .ping{fill:none;stroke:var(--accent);vector-effect:non-scaling-stroke}
+.check .br{position:absolute;inset:-12px;color:var(--foreground);pointer-events:none}
+.check .br svg{position:absolute;width:14px;height:14px;fill:none;stroke:currentColor}
+.next{list-style:none;margin:0 0 2.5rem;padding:0}
+.next li{display:grid;grid-template-columns:3rem 1fr;padding:1rem 0;border-top:1px solid var(--foreground);text-transform:uppercase;font-size:max(1.1cqw,15px);line-height:1.2}
+.next li:last-child{border-bottom:1px solid var(--foreground)}
+.next b{font-family:var(--font-display);font-weight:500;color:var(--accent);font-size:1.3em}
+</style>
 </head>
 <body>
 
-<div id="site-header"></div>
-
-<main>
-  <section class="section">
-    <div class="wrap" style="max-width:760px;text-align:center">
-      <img src="img/logo-badge.png" alt="" width="140" height="131" style="margin:0 auto 28px">
-      <span class="eyebrow">Received</span>
-      <h1 id="title" style="font-size:clamp(2.6rem,8vw,4.6rem)">Application received</h1>
-      <p class="lede" id="msg" style="margin:20px auto 32px">Check your email. If you're serious about working with me, book your consultation now — spots are limited.</p>
-      <div class="btn-row" style="justify-content:center" id="actions">
-        <a class="btn ext" data-calendly href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener">Book your consultation</a>
-        <a class="btn ghost" href="index.html">Back home</a>
+<section class="block light" data-arm data-margin="0% 0% 0% 0%">
+  <canvas class="contours" data-contours="--surface-soft" aria-hidden="true"></canvas>
+  <div data-v2-header></div>
+  <div class="inner">
+    <div class="ty">
+      <div>
+        <span class="eyebrow" data-fade="0" id="eyebrow">Application received</span>
+        <h1 class="display" data-rise="120" id="title">You're in the queue<span class="stop">.</span></h1>
+        <p class="lede" data-rise="360" id="msg">I review every application personally. Check your email, then book your consultation — spots are limited.</p>
+        <ol class="next" data-rise="460" id="steps">
+          <li><b>01</b>Application received</li>
+          <li><b>02</b>Book your consultation call</li>
+          <li><b>03</b>Get your program and start</li>
+        </ol>
+        <div class="btn-row" data-rise="560" id="actions"></div>
+      </div>
+      <div class="check" data-rise="240" aria-hidden="true">
+        <span class="br"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
+        <svg viewBox="-60 -60 120 120">
+          <circle class="ping" id="ping" r="40"/>
+          <circle class="ring" r="40"/>
+          <path class="tick" id="tick" d="M-18 1L-5 14L20 -12"/>
+        </svg>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
-<div id="site-footer"></div>
+<div data-v2-footer data-head="Stay ready|stay hungry"></div>
 
-<script src="assets/site.js"></script>
-<script>
-  if (new URLSearchParams(location.search).get("from") === "contact") {
-    document.getElementById("title").textContent = "Message sent";
-    document.getElementById("msg").textContent = "Thanks for reaching out. I'll get back to you soon.";
-    document.getElementById("actions").innerHTML = '<a class="btn" href="index.html">Back home</a>';
-  }
+<script type="module">
+import { boot, ctaHTML, Spring, whileVisible, REDUCED } from "./assets/v2.js";
+const CAL = "https://calendly.com/fpconsultation/fighter-physique-consultation";
+const ext = ' target="_blank" rel="noopener"';
+const $ = (id) => document.getElementById(id);
+if (new URLSearchParams(location.search).get("from") === "contact") {
+  $("eyebrow").textContent = "Message sent";
+  $("title").innerHTML = 'Got it<span class="stop">.</span>';
+  $("msg").textContent = "Thanks for reaching out. I'll get back to you soon.";
+  $("steps").remove();
+  $("actions").innerHTML = ctaHTML("Back home", "index.html") + ctaHTML("See coaching", "coaching.html", { hollow: true });
+} else {
+  $("actions").innerHTML = ctaHTML("Book your consultation", CAL, { target: ext }) + ctaHTML("Back home", "index.html", { hollow: true });
+}
+boot();
+/* the tick draws itself, then a ring pings out every few seconds */
+new Spring(0, { tension: 90, friction: 26 }, (v) => ($("tick").style.strokeDashoffset = 140 * (1 - v))).to(1, 700);
+const ping = $("ping"), t0 = performance.now();
+whileVisible(ping, (now) => {
+  const v = REDUCED ? 1 : 1 - (1 - ((now - t0) % 3200) / 3200) ** 2;
+  ping.setAttribute("r", 40 + v * 22); ping.style.opacity = 0.5 * (1 - v) ** 2;
+});
 </script>
 </body>
 </html>
