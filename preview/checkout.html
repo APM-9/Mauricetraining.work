@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout | Ashanti Maurice — Preview</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f7fafb">
+<link rel="icon" href="../img/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v2.css">
+<style>
+.co{display:grid;grid-template-columns:1.2fr .8fr;gap:max(4cqw,28px);align-items:start;padding-top:max(3cqw,32px)}
+@media (max-width:899px){.co{grid-template-columns:1fr}.co aside{order:-1}}
+.back-link{font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-muted)}
+.back-link:hover{color:var(--accent)}
+h1{font-size:max(6.6667cqw,48px);margin:1rem 0 2rem}
+.step{display:flex;align-items:baseline;gap:.8rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.4rem;margin:0 0 1.4rem}
+.step b{color:var(--accent);font-weight:500}
+.form{position:relative;display:grid;gap:1.3rem;padding:max(2.5cqw,24px);background:#fff}
+.bpc{position:absolute;inset:-1px;color:var(--foreground);pointer-events:none}
+.bpc svg{position:absolute;width:12px;height:12px;fill:none;stroke:currentColor}
+.form label{display:grid;gap:.5rem;font-size:var(--type-eyebrow);text-transform:uppercase;letter-spacing:.14em;color:var(--foreground-muted)}
+.r3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1.3rem}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+@media (max-width:539px){.r3,.r2{grid-template-columns:1fr}}
+.form input,.form select{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--foreground);background:transparent;border:0;border-bottom:1px solid var(--foreground);padding:.6rem 0;border-radius:0;outline:none}
+.form input:focus,.form select:focus{border-bottom-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
+.form .cta{justify-self:start;margin-top:.4rem}
+aside{position:relative;padding:max(2.5cqw,24px);background:var(--surface-black);color:var(--foreground-on-dark)}
+aside .bpc{color:var(--accent)}
+aside dl{display:grid;grid-template-columns:1fr auto;gap:.9rem;margin:0 0 1.6rem;text-transform:uppercase}
+aside dt{color:var(--foreground-on-dark-muted);font-size:var(--type-body)}
+aside dd{margin:0;text-align:right}
+aside .grand{border-top:1px solid var(--border-on-dark);padding-top:1rem;font-family:var(--font-display);font-size:2.4rem;line-height:.9;color:#fff}
+aside p{text-transform:uppercase;font-size:var(--type-body);color:var(--foreground-on-dark-muted);line-height:1.35}
+.pay{display:grid;gap:.7rem;margin-top:1rem}
+.pay .cta{width:100%}
+.light aside .cta.hollow span{color:var(--accent)}
+.light aside .cta.hollow:hover span{color:var(--surface-black)}
+.light aside .cta.hollow svg.a{stroke:var(--accent)}
+.light aside .cta.hollow:hover svg.a{stroke:var(--surface-black)}
+</style>
+</head>
+<body>
+
+<section class="block light auto" data-arm data-margin="0% 0% 0% 0%">
+  <canvas class="contours" data-contours="--surface-soft" aria-hidden="true"></canvas>
+  <div data-v2-header></div>
+  <div class="inner">
+    <a class="back-link" href="merch.html">← Back to merch</a>
+    <h1 class="display"><span style="display:flex"><span class="split" data-split="words" data-delay="100">Checkout</span><span class="stop" data-fade="300">.</span></span></h1>
+    <div class="co">
+      <form class="form" id="orderForm" action="https://formspree.io/f/xpqyyend" method="POST" data-rise="300">
+        <span class="bpc" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
+        <p class="step"><b>01</b>Shipping details</p>
+        <input type="hidden" name="_subject" value="New merch order">
+        <label>Full name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Street address<input type="text" name="address" autocomplete="street-address" required></label>
+        <div class="r3">
+          <label>City<input type="text" name="city" autocomplete="address-level2" required></label>
+          <label>State<input type="text" name="state" autocomplete="address-level1" required></label>
+          <label>ZIP<input type="text" name="zip" autocomplete="postal-code" inputmode="numeric" required></label>
+        </div>
+        <div class="r2">
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+        </div>
+        <div class="r3">
+          <label>Shirt<input type="text" name="product" id="fProduct" required></label>
+          <label>Size<select name="size" id="fSize" required><option value="">Choose</option><option>M</option><option>L</option><option>XL</option></select></label>
+          <label>Quantity<input type="number" name="quantity" id="fQty" min="1" max="5" value="1" required></label>
+        </div>
+        <label>How will you pay?
+          <select name="payment_method" required><option value="">Choose one</option><option>Cash App</option><option>Venmo</option><option>Zelle</option></select>
+        </label>
+        <input type="hidden" name="order_total" id="fTotal">
+        <button class="cta" type="submit"><svg class="f" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true"><path class="body" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/><path class="flood" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/></svg><span>Submit order</span><svg class="a" viewBox="0 0 13.7071 10.7071" aria-hidden="true"><path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553"/></svg></button>
+      </form>
+      <aside data-rise="420">
+        <span class="bpc" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
+        <p class="step" style="color:#fff">Your order</p>
+        <dl><dt>Shirt</dt><dd id="sProduct">—</dd><dt>Size</dt><dd id="sSize">—</dd><dt>Quantity</dt><dd id="sQty">1</dd><dt class="grand">Total</dt><dd class="grand" id="sTotal">—</dd></dl>
+        <p class="step" style="color:#fff"><b>02</b>Send payment</p>
+        <p>After you submit, send the total with your name in the note. Your order ships once payment is confirmed.</p>
+        <div class="pay" id="pay"></div>
+        <p style="margin-top:1.2rem">Questions? <a href="mailto:AMaurice_94@yahoo.com" style="color:#fff">AMaurice_94@yahoo.com</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div data-v2-footer data-head="Rep the|gear"></div>
+
+<script src="../assets/shop.js"></script>
+<script type="module">
+import { boot, ctaHTML } from "./v2.js";
+const { PRICES } = window.SHOP;
+const ext = ' target="_blank" rel="noopener"';
+document.getElementById("pay").innerHTML = [["Pay with Cash App", "https://cash.app/$AshantiMaurice"], ["Pay with Venmo", "https://venmo.com/u/Ashanti-Maurice"], ["Pay with Zelle", "https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ=="]]
+  .map(([l, u]) => ctaHTML(l, u, { hollow: true, target: ext })).join("");
+const q = new URLSearchParams(location.search), $ = (id) => document.getElementById(id);
+const shirt = (q.get("shirt") || "").replace(/[^A-Za-z ]/g, "");
+const type = q.get("type") === "long" ? "long" : q.get("type") === "short" ? "short" : "";
+const size = (q.get("size") || "").toUpperCase();
+if (shirt) $("fProduct").value = shirt + (type ? " — " + (type === "long" ? "Long" : "Short") + " sleeve" : "");
+if (/^(M|L|XL)$/.test(size)) $("fSize").value = size;
+$("fQty").value = Math.max(1, Math.min(5, parseInt(q.get("qty"), 10) || 1));
+const update = () => {
+  const n = Math.max(1, parseInt($("fQty").value, 10) || 1);
+  $("sProduct").textContent = $("fProduct").value || "—";
+  $("sSize").textContent = $("fSize").value || "—";
+  $("sQty").textContent = n;
+  const total = type ? "$" + PRICES[type] * n : "—";
+  $("sTotal").textContent = total; $("fTotal").value = total;
+};
+["fProduct", "fSize", "fQty"].forEach((id) => $(id).addEventListener("input", update));
+update();
+boot();
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@ Live at https://ashantimaurice.com (GitHub Pages, served from `main`; custom dom
 | Fight record (MMA / BJJ) | `assets/site.js` → `record` |
 | Next fight + countdown | `assets/site.js` → `nextFight` (leave `date` empty to show "TBA") |
 | Email, Instagram, Calendly link | `assets/site.js` (top) |
-| Shirt stock / prices | `merch.html` → `SHIRTS` and `PRICES` near the bottom (0 = sold out) |
+| Shirt stock / prices | `assets/shop.js` → `SHIRTS` and `PRICES` (0 = sold out) |
 | Past fights | `fights.html` → "Past fights" section (copy the `<article class="card bout">` block) |
 | Coaching prices / features | `coaching.html` |
 | Business name, certifications, experience numbers | `assets/site.js` → `business`, `certifications`, `experience` |
