@@ -5,228 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Merch | Ashanti Maurice</title>
 <meta name="description" content="Chef Whippems fight camp shirts — five colors, short and long sleeve. Limited run.">
-<meta name="theme-color" content="#0c0b0b">
 <meta property="og:image" content="https://ashantimaurice.com/img/shirts-lineup.jpg">
+<meta name="theme-color" content="#f7fafb">
 <link rel="icon" href="img/logo-badge.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/v2.css">
 <style>
-  .shop{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,56px);align-items:start}
-  @media (max-width:900px){.shop{grid-template-columns:1fr}}
-  .viewer{position:sticky;top:88px}
-  @media (max-width:900px){.viewer{position:static}}
-  .viewer .main{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:var(--panel);border:1px solid var(--line)}
-  .viewer .main img{width:100%;height:100%;object-fit:cover}
-  .thumbs{display:flex;gap:10px;margin-top:12px}
-  .thumbs button{flex:0 0 84px;aspect-ratio:1;border-radius:10px;overflow:hidden;padding:0;border:2px solid transparent;background:var(--panel);cursor:pointer}
-  .thumbs button[aria-pressed="true"]{border-color:var(--red)}
-  .thumbs img{width:100%;height:100%;object-fit:cover}
-
-  .opt-label{display:block;font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
-  .swatches,.choices{display:flex;flex-wrap:wrap;gap:10px}
-  .swatch{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:600 .95rem var(--body);cursor:pointer}
-  .swatch i{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
-  .swatch[aria-pressed="true"]{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
-  .swatch.out{opacity:.45}
-  .choice{min-width:64px;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:600 1rem var(--body);cursor:pointer;text-align:center}
-  .choice small{display:block;font-weight:400;font-size:.75rem;color:var(--muted)}
-  .choice[aria-pressed="true"]{border-color:var(--red);background:rgba(232,50,43,.12)}
-  .choice:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
-  .qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  .qty button{width:46px;height:46px;background:var(--panel);border:0;color:var(--text);font-size:1.3rem;cursor:pointer}
-  .qty output{min-width:48px;text-align:center;font-weight:700}
-  .buy-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
-  .total{font-family:var(--display);font-size:2.2rem;color:var(--cream);line-height:1}
-  .status{min-height:1.5em;margin-top:12px;color:var(--muted)}
-  .support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:28px}
-  .band-cream .btn.ghost{color:#1b1715;border-color:rgba(27,23,21,.4)}
-  .band-cream .btn.ghost:hover{background:rgba(27,23,21,.06);border-color:#1b1715}
+.h2{font-size:max(3.8194cqw,40px);color:var(--accent)}
+.big{font-size:max(6.6667cqw,44px)}
+.shop{display:grid;grid-template-columns:1.1fr .9fr;gap:max(4cqw,28px);align-items:start;padding-top:max(4cqw,40px)}
+@media (max-width:899px){.shop{grid-template-columns:1fr}}
+.viewer{position:sticky;top:24px}
+@media (max-width:899px){.viewer{position:static}}
+.viewer .plate-img{aspect-ratio:4/5;width:100%}
+.viewer .plate-img img{transition:opacity 250ms}
+.thumbs{display:flex;gap:.6rem;margin-top:.9rem}
+.thumbs button{width:5rem;aspect-ratio:1;padding:0;border:1px solid var(--foreground-muted);background:none;cursor:pointer;overflow:hidden}
+.thumbs button[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.buy h1{font-size:max(5.5cqw,44px);margin:1rem 0 .8rem}
+.buy .prices{text-transform:uppercase;color:var(--foreground-muted);font-size:var(--type-body);letter-spacing:.06em}
+.opt{display:block;margin:2rem 0 .8rem;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-muted)}
+.opt b{color:var(--foreground);font-weight:500}
+.row{display:flex;flex-wrap:wrap;gap:.5rem}
+.sw{display:flex;align-items:center;gap:.6rem;padding:.5rem .9rem .5rem .5rem;border:1px solid var(--foreground);background:none;cursor:pointer;font:500 13px var(--font-sans);text-transform:uppercase;letter-spacing:.06em;color:var(--foreground)}
+.sw i{width:1.4rem;height:1.4rem;border:1px solid var(--foreground-muted)}
+.sw[aria-pressed="true"]{background:var(--surface-black);color:#fff;border-color:var(--surface-black)}
+.sw.out{opacity:.4}
+.ch{min-width:4.4rem;padding:.75rem 1rem;border:1px solid var(--foreground);background:none;cursor:pointer;text-align:center;font:500 14px var(--font-sans);text-transform:uppercase;color:var(--foreground)}
+.ch small{display:block;font-size:11px;color:var(--foreground-muted);margin-top:.25rem;letter-spacing:.06em}
+.ch[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.ch[aria-pressed="true"] small{color:rgb(255 255 255/.8)}
+.ch:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--foreground)}
+.qty button{width:3rem;height:3rem;background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--foreground)}
+.qty button:disabled{opacity:.3;cursor:not-allowed}
+.qty output{min-width:3rem;text-align:center;font-family:var(--font-display);font-size:1.4rem}
+.total-row{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--foreground)}
+.total{font-family:var(--font-display);font-weight:500;font-size:max(4cqw,48px);line-height:.85;letter-spacing:-.05em}
+.status{min-height:1.4em;margin:1rem 0 0;text-transform:uppercase;font-size:var(--type-body);color:var(--accent)}
+.how{position:relative;margin-top:2rem;padding:1.2rem 1.4rem;text-transform:uppercase;font-size:var(--type-body);line-height:1.35;color:var(--foreground-muted)}
+.how .bpc{position:absolute;inset:0;color:var(--foreground);pointer-events:none}
+.bpc svg{position:absolute;width:12px;height:12px;fill:none;stroke:currentColor}
+.cta:disabled{opacity:.35;cursor:not-allowed}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:max(1.4cqw,12px);margin-top:3rem}
+.gal>div{aspect-ratio:4/5}
+@media (max-width:767px){.gal{grid-template-columns:1fr}.gal>div{aspect-ratio:4/3}}
+.sup{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem}
+.sup .lede{margin-top:1.5rem;max-width:30rem}
 </style>
 </head>
 <body>
 
-<div id="site-header"></div>
-
-<main>
-
-  <section class="page-hero">
-    <div class="bg"><img src="img/merch/mocha-back.jpg" alt="" style="object-position:50% 30%"></div>
-    <div class="wrap">
-      <span class="eyebrow">Official merch</span>
-      <h1>Chef Whippems</h1>
-      <p class="lede">Limited fight camp release. Once a size sells out, it won't be restocked.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap shop">
-
-      <div class="viewer">
-        <div class="main"><img id="mainImg" src="img/shirt-mocha-short.jpg" alt="Mocha short sleeve Chef Whippems shirt"></div>
+<section class="block light auto" data-arm data-margin="0% 0% 0% 0%">
+  <canvas class="contours" data-contours="--surface-soft" aria-hidden="true"></canvas>
+  <div data-v2-header></div>
+  <div class="inner">
+    <div class="shop">
+      <div class="viewer" data-rise="300">
+        <div class="plate-img"><div class="fill"><img id="mainImg" alt=""></div><svg class="o" viewBox="0 0 710.995 462.995" preserveAspectRatio="none" aria-hidden="true"><use href="#plateOutline" vector-effect="non-scaling-stroke"/></svg></div>
         <div class="thumbs" id="thumbs"></div>
       </div>
+      <div class="buy">
+        <span class="eyebrow" data-fade="0">Chef Whippems · official merch</span>
+        <h1 class="display" data-rise="120" id="title">Fight Camp Shirt</h1>
+        <div class="prices" data-fade="420">Short sleeve <span id="pShort"></span> · Long sleeve <span id="pLong"></span> · Limited run</div>
+        <div data-rise="520">
+          <span class="opt">Color — <b id="colorName"></b></span><div class="row" id="swatches"></div>
+          <span class="opt">Sleeve</span><div class="row" id="types"></div>
+          <span class="opt">Size</span><div class="row" id="sizes"></div>
+          <span class="opt">Quantity</span>
+          <div class="qty"><button type="button" id="minus" aria-label="One fewer">−</button><output id="qty" aria-live="polite">1</output><button type="button" id="plus" aria-label="One more">+</button></div>
+          <div class="total-row">
+            <span class="total" id="total">$40</span>
+            <button class="cta" id="buy" type="button"><svg class="f" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true"><path class="body" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/><path class="flood" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/></svg><span>Continue to checkout</span><svg class="a" viewBox="0 0 13.7071 10.7071" aria-hidden="true"><path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553"/></svg></button>
+          </div>
+          <p class="status" id="status" role="status"></p>
+          <div class="how"><span class="bpc" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>Checkout takes your shipping details, then you pay with Cash App, Venmo or Zelle. Your order ships once payment is confirmed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="block dark on-dark auto" data-arm>
+  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <span class="eyebrow" data-fade="0">Repping the gear</span>
+    <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">In the wild</span><span class="stop" data-fade="240">.</span></span></h2>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<section class="block light auto" id="support" data-arm>
+  <canvas class="contours" data-contours="--paddock-contour" aria-hidden="true"></canvas>
+  <canvas class="chequer" data-carry="dark" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <div class="sup">
       <div>
-        <h2 id="productTitle">Fight Camp Shirt</h2>
-        <p class="muted" style="margin-top:10px">Short sleeve $40 · Long sleeve $50</p>
-
-        <span class="opt-label">Color — <span id="colorName"></span></span>
-        <div class="swatches" id="swatches"></div>
-
-        <span class="opt-label">Sleeve</span>
-        <div class="choices" id="types"></div>
-
-        <span class="opt-label">Size</span>
-        <div class="choices" id="sizes"></div>
-
-        <span class="opt-label">Quantity</span>
-        <div class="qty">
-          <button type="button" id="qtyMinus" aria-label="One fewer">−</button>
-          <output id="qty" aria-live="polite">1</output>
-          <button type="button" id="qtyPlus" aria-label="One more">+</button>
-        </div>
-
-        <div class="buy-row">
-          <span class="total" id="total">$40</span>
-          <button class="btn" id="buyBtn" type="button">Continue to checkout</button>
-        </div>
-        <p class="status" id="status" role="status"></p>
-
-        <div class="notice" style="margin-top:24px">
-          Checkout takes your shipping details, then you pay with Cash App, Venmo or Zelle. Your order ships once payment is confirmed.
-        </div>
+        <span class="eyebrow" data-fade="0">Fight camp</span>
+        <h2 class="display big" style="margin-top:1rem"><span class="split" data-split="words">Support my</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">fight camp</span><span class="stop" data-fade="240">.</span></span></h2>
+        <p class="lede" data-rise="380">Help support my training, travel and fight preparation.</p>
       </div>
-
+      <div class="btn-row" data-rise="460" id="payCtas"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section band-panel">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Repping the gear</span>
-        <h2>In the wild</h2>
-        <p class="lede">The Mocha Fight Camp Shirt on the street and in the corner on fight night.</p>
-      </div>
-      <div class="gallery g3 trio reveal">
-        <figure><img src="img/merch/mocha-back.jpg" alt="Back of the Mocha shirt with the full Chef Whippems logo" loading="lazy"></figure>
-        <figure><img src="img/merch/mocha-front-trees.jpg" alt="Wearing the Mocha shirt in front of trees" loading="lazy"></figure>
-        <figure><img src="img/fight/ds67-corner-chef-whippems.jpg" alt="Cornerman in a Chef Whippems shirt at the cage on fight night" loading="lazy"></figure>
-      </div>
-    </div>
-  </section>
+<div data-v2-footer data-head="Rep the|gear"></div>
 
-  <section class="section band-cream" id="support">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Fight camp</span>
-        <h2>Support my fight camp</h2>
-        <p class="lede">Help support my training, travel and fight preparation.</p>
-      </div>
-      <div class="support-grid">
-        <a class="btn ext" href="https://cash.app/$AshantiMaurice" target="_blank" rel="noopener">Cash App</a>
-        <a class="btn ext" href="https://venmo.com/u/Ashanti-Maurice" target="_blank" rel="noopener">Venmo</a>
-        <a class="btn ext" href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ==" target="_blank" rel="noopener">Zelle</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<div id="site-footer"></div>
-
-<script src="assets/site.js"></script>
 <script src="assets/shop.js"></script>
-<script>
-var PRICES = window.SHOP.PRICES;
-var SHIRTS = window.SHOP.SHIRTS;
+<script type="module">
+import { boot, ctaHTML, plateHTML, href, onView, rise } from "./assets/v2.js";
+const { PRICES, SHIRTS } = window.SHOP;
+const ext = ' target="_blank" rel="noopener"';
+const $ = (id) => document.getElementById(id);
+const TYPES = { short: "Short sleeve", long: "Long sleeve" };
+$("pShort").textContent = "$" + PRICES.short; $("pLong").textContent = "$" + PRICES.long;
+$("payCtas").innerHTML = [["Cash App", "https://cash.app/$AshantiMaurice"], ["Venmo", "https://venmo.com/u/Ashanti-Maurice"], ["Zelle", "https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiQVNIQU5USSIsImFjdGlvbiI6InBheW1lbnQiLCJ0b2tlbiI6IjczMjMwMDA2NzUifQ=="]]
+  .map(([l, u], i) => ctaHTML(l, u, { hollow: i > 0, target: ext })).join("");
+{
+  const g = $("gal");
+  g.innerHTML = [["merch/mocha-back.jpg", "Back of the Mocha shirt with the full Chef Whippems logo"], ["merch/mocha-front-trees.jpg", "Wearing the Mocha shirt in front of trees"], ["fight/ds67-corner-chef-whippems.jpg", "Cornerman in a Chef Whippems shirt at the cage"]]
+    .map(([s, a]) => `<div>${plateHTML("img/" + s, a, "width:100%;height:100%")}</div>`).join("");
+  [...g.children].forEach((c) => (c.style.opacity = 0));
+  onView(g, () => [...g.children].forEach((c, i) => rise(c, 200 + i * 100, "1rem", { tension: 170, friction: 24 })));
+}
 
-
-(function () {
-  var TYPES = { short: "Short sleeve", long: "Long sleeve" };
-  function left(c, t) { var s = SHIRTS[c].stock[t]; return Object.keys(s).reduce(function (n, k) { return n + s[k]; }, 0); }
-  function colorLeft(c) { return left(c, "short") + left(c, "long"); }
-
-  var keys = Object.keys(SHIRTS);
-  var hash = location.hash.replace("#", "").toLowerCase();
-  var state = { color: SHIRTS[hash] ? hash : (keys.filter(function (k) { return colorLeft(k) > 0; })[0] || keys[0]), type: null, size: null, qty: 1, photo: null };
-
-  var $ = function (id) { return document.getElementById(id); };
-
-  function pickDefaults() {
-    var c = state.color;
-    if (!state.type || left(c, state.type) === 0) state.type = left(c, "short") > 0 ? "short" : (left(c, "long") > 0 ? "long" : "short");
-    var stock = SHIRTS[c].stock[state.type];
-    if (!state.size || !stock[state.size]) state.size = Object.keys(stock).filter(function (k) { return stock[k] > 0; })[0] || null;
-    var max = state.size ? stock[state.size] : 0;
-    state.qty = Math.max(1, Math.min(state.qty, max || 1));
-    var photos = SHIRTS[c].photos;
-    state.photo = photos[state.type] ? state.type : Object.keys(photos)[0];
-  }
-
-  function render() {
-    pickDefaults();
-    var S = SHIRTS[state.color];
-    $("colorName").textContent = S.name;
-    $("productTitle").textContent = S.name + " Fight Camp Shirt";
-
-    $("swatches").innerHTML = keys.map(function (k) {
-      var out = colorLeft(k) === 0;
-      return '<button type="button" class="swatch' + (out ? " out" : "") + '" data-color="' + k + '" aria-pressed="' + (k === state.color) + '">' +
-        '<i style="background:' + SHIRTS[k].swatch + '"></i>' + SHIRTS[k].name + (out ? " · sold out" : "") + "</button>";
-    }).join("");
-
-    $("types").innerHTML = Object.keys(TYPES).map(function (t) {
-      var n = left(state.color, t);
-      return '<button type="button" class="choice" data-type="' + t + '" aria-pressed="' + (t === state.type) + '"' + (n === 0 ? " disabled" : "") + ">" +
-        TYPES[t] + "<small>$" + PRICES[t] + (n === 0 ? " · sold out" : "") + "</small></button>";
-    }).join("");
-
-    var stock = S.stock[state.type];
-    $("sizes").innerHTML = Object.keys(stock).map(function (sz) {
-      var n = stock[sz];
-      return '<button type="button" class="choice" data-size="' + sz + '" aria-pressed="' + (sz === state.size) + '"' + (n === 0 ? " disabled" : "") + ">" +
-        sz + "<small>" + (n === 0 ? "sold out" : n + " left") + "</small></button>";
-    }).join("");
-
-    var photos = S.photos;
-    $("mainImg").src = photos[state.photo];
-    $("mainImg").alt = S.name + " " + (TYPES[state.photo] || "").toLowerCase() + " Chef Whippems shirt";
-    $("thumbs").innerHTML = Object.keys(photos).length > 1 ? Object.keys(photos).map(function (p) {
-      return '<button type="button" data-photo="' + p + '" aria-pressed="' + (p === state.photo) + '" aria-label="' + TYPES[p] + ' photo"><img src="' + photos[p] + '" alt=""></button>';
-    }).join("") : "";
-
-    var available = state.size && stock[state.size] > 0;
-    $("qty").textContent = state.qty;
-    $("qtyMinus").disabled = state.qty <= 1;
-    $("qtyPlus").disabled = !available || state.qty >= stock[state.size];
-    $("total").textContent = "$" + (PRICES[state.type] * state.qty);
-    $("buyBtn").disabled = !available;
-    $("status").textContent = colorLeft(state.color) === 0 ? S.name + " is sold out. Pick another color." :
-      (available ? "" : "This sleeve is sold out in " + S.name + ".");
-  }
-
-  document.addEventListener("click", function (e) {
-    var b = e.target.closest("button");
-    if (!b || b.disabled) return;
-    if (b.dataset.color) { state.color = b.dataset.color; state.size = null; history.replaceState(null, "", "#" + state.color); }
-    else if (b.dataset.type) { state.type = b.dataset.type; state.size = null; }
-    else if (b.dataset.size) { state.size = b.dataset.size; }
-    else if (b.dataset.photo) { state.photo = b.dataset.photo; $("mainImg").src = SHIRTS[state.color].photos[b.dataset.photo];
-      document.querySelectorAll("#thumbs button").forEach(function (t) { t.setAttribute("aria-pressed", t === b); }); return; }
-    else if (b.id === "qtyMinus") { state.qty--; }
-    else if (b.id === "qtyPlus") { state.qty++; }
-    else if (b.id === "buyBtn") {
-      location.href = "checkout.html?shirt=" + encodeURIComponent(SHIRTS[state.color].name) + "&type=" + state.type +
-        "&size=" + state.size + "&qty=" + state.qty;
-      return;
-    } else return;
-    render();
-  });
-
+/* the shop: same rules as the live page, same stock file */
+const left = (c, t) => Object.values(SHIRTS[c].stock[t]).reduce((n, k) => n + k, 0);
+const colorLeft = (c) => left(c, "short") + left(c, "long");
+const keys = Object.keys(SHIRTS);
+const hash = location.hash.replace("#", "").toLowerCase();
+const st = { color: SHIRTS[hash] ? hash : keys.find((k) => colorLeft(k) > 0) || keys[0], type: null, size: null, qty: 1, photo: null };
+const defaults = () => {
+  const c = st.color;
+  if (!st.type || left(c, st.type) === 0) st.type = left(c, "short") > 0 ? "short" : left(c, "long") > 0 ? "long" : "short";
+  const stock = SHIRTS[c].stock[st.type];
+  if (!st.size || !stock[st.size]) st.size = Object.keys(stock).find((k) => stock[k] > 0) || null;
+  st.qty = Math.max(1, Math.min(st.qty, (st.size && stock[st.size]) || 1));
+  const ph = SHIRTS[c].photos;
+  if (!ph[st.photo]) st.photo = ph[st.type] ? st.type : Object.keys(ph)[0];
+};
+const setPhoto = () => { const img = $("mainImg"); img.style.opacity = 0; setTimeout(() => { img.src = "" + SHIRTS[st.color].photos[st.photo]; img.alt = `${SHIRTS[st.color].name} ${TYPES[st.photo].toLowerCase()} Chef Whippems shirt`; img.onload = () => (img.style.opacity = 1); }, 120); };
+const render = (photoChanged = true) => {
+  defaults();
+  const S = SHIRTS[st.color], stock = S.stock[st.type];
+  $("colorName").textContent = S.name;
+  $("title").textContent = S.name + " Fight Camp Shirt";
+  $("swatches").innerHTML = keys.map((k) => `<button type="button" class="sw${colorLeft(k) ? "" : " out"}" data-color="${k}" aria-pressed="${k === st.color}"><i style="background:${SHIRTS[k].swatch}"></i>${SHIRTS[k].name}${colorLeft(k) ? "" : " · sold out"}</button>`).join("");
+  $("types").innerHTML = Object.keys(TYPES).map((k) => { const n = left(st.color, k); return `<button type="button" class="ch" data-type="${k}" aria-pressed="${k === st.type}"${n ? "" : " disabled"}>${TYPES[k]}<small>$${PRICES[k]}${n ? "" : " · sold out"}</small></button>`; }).join("");
+  $("sizes").innerHTML = Object.keys(stock).map((sz) => `<button type="button" class="ch" data-size="${sz}" aria-pressed="${sz === st.size}"${stock[sz] ? "" : " disabled"}>${sz}<small>${stock[sz] ? stock[sz] + " left" : "sold out"}</small></button>`).join("");
+  const ph = S.photos;
+  $("thumbs").innerHTML = Object.keys(ph).length > 1 ? Object.keys(ph).map((p) => `<button type="button" data-photo="${p}" aria-pressed="${p === st.photo}" aria-label="${TYPES[p]} photo"><img src="${ph[p]}" alt=""></button>`).join("") : "";
+  if (photoChanged) setPhoto();
+  const ok = st.size && stock[st.size] > 0;
+  $("qty").textContent = st.qty;
+  $("minus").disabled = st.qty <= 1;
+  $("plus").disabled = !ok || st.qty >= stock[st.size];
+  $("total").textContent = "$" + PRICES[st.type] * st.qty;
+  $("buy").disabled = !ok;
+  $("status").textContent = !colorLeft(st.color) ? S.name + " is sold out. Pick another color." : ok ? "" : "This sleeve is sold out in " + S.name + ".";
+};
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b || b.disabled || !b.closest(".buy, .thumbs")) return;
+  if (b.dataset.color) { st.color = b.dataset.color; st.size = null; st.photo = null; history.replaceState(null, "", "#" + st.color); }
+  else if (b.dataset.type) { st.type = b.dataset.type; st.size = null; st.photo = b.dataset.type; }
+  else if (b.dataset.size) { st.size = b.dataset.size; return render(false); }
+  else if (b.dataset.photo) { st.photo = b.dataset.photo; }
+  else if (b.id === "minus") { st.qty--; return render(false); }
+  else if (b.id === "plus") { st.qty++; return render(false); }
+  else if (b.id === "buy") { location.href = `checkout.html?shirt=${encodeURIComponent(SHIRTS[st.color].name)}&type=${st.type}&size=${st.size}&qty=${st.qty}`; return; }
+  else return;
   render();
-})();
+});
+render();
+boot();
 </script>
 </body>
 </html>

@@ -1,8 +1,6 @@
-/* Shared engine for the new design (demo under /preview/).
- * Pages that exist in the demo link to each other; the rest link to the live site. */
-export const DEMO_PAGES = new Set(["index.html", "coaching.html", "web-design.html", "fights.html", "contact.html", "merch.html", "checkout.html"]);
+/* Shared engine for the site design: ticker, springs, text reveals, header, footer. */
 const LINKS = [["coaching.html", "Coaching"], ["fights.html", "Fights"], ["merch.html", "Merch"], ["web-design.html", "Web design"], ["contact.html", "Contact"]];
-export const href = (page) => (DEMO_PAGES.has(page.split("#")[0]) ? page : "../" + page);
+export const href = (page) => page;
 
 history.scrollRestoration = "manual";
 export const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -258,13 +256,13 @@ export const chrome = () => {
   const head = document.querySelector("[data-v2-header]");
   if (head) {
     head.outerHTML = `<header class="mast" id="mast">
-      <a class="logo" href="${href("index.html")}" aria-label="Ashanti Maurice, home"><img src="../img/logo-badge.png" alt=""><span>Ashanti Maurice</span></a>
+      <a class="logo" href="${href("index.html")}" aria-label="Ashanti Maurice, home"><img src="img/logo-badge.png" alt=""><span>Ashanti Maurice</span></a>
       <nav class="nav" aria-label="Primary"><ul>${LINKS.map(([p, l]) => `<li><a href="${href(p)}"${p === page ? ' aria-current="page"' : ""}>${l}</a></li>`).join("")}</ul></nav>
       <a class="mast-right" href="${href("coaching.html")}#apply"><span aria-hidden="true">[ </span>Apply<span aria-hidden="true"> → ]</span></a>
       <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i></button>
     </header>`;
     document.body.insertAdjacentHTML("beforeend", `<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="sheet-top"><a class="logo" href="${href("index.html")}"><img src="../img/logo-badge.png" alt=""><span>Ashanti Maurice</span></a><button class="close" id="close" aria-label="Close menu"><i></i><i></i></button></div>
+      <div class="sheet-top"><a class="logo" href="${href("index.html")}"><img src="img/logo-badge.png" alt=""><span>Ashanti Maurice</span></a><button class="close" id="close" aria-label="Close menu"><i></i><i></i></button></div>
       <nav>${LINKS.map(([p, l]) => `<a href="${href(p)}">${l}</a>`).join("")}<a href="${href("coaching.html")}#apply">Apply</a></nav></div>`);
     const sheet = document.getElementById("sheet"), close = document.getElementById("close");
     const set = (open) => {
@@ -283,8 +281,8 @@ export const chrome = () => {
     const [a, b] = (foot.dataset.head || "Stay ready|stay hungry").split("|");
     foot.outerHTML = `<section class="foot" id="foot">
       <div class="foot-panel"><canvas class="contours" data-contours="--footer-contour" aria-hidden="true"></canvas></div>
-      <div class="foot-fig"><div class="in" id="footFig"><img src="../img/logo-badge.png" alt=""></div></div>
-      <div class="foot-logo" data-rise="120"><img src="../img/logo-badge.png" alt=""><span>Chef Whippems</span></div>
+      <div class="foot-fig"><div class="in" id="footFig"><img src="img/logo-badge.png" alt=""></div></div>
+      <div class="foot-logo" data-rise="120"><img src="img/logo-badge.png" alt=""><span>Chef Whippems</span></div>
       <h2 class="display foot-head"><span class="split" data-split="words">${a}</span><span style="display:flex;justify-content:flex-end"><span class="split" data-split="words" data-delay="130">${b}</span><span class="stop" data-fade="240">.</span></span></h2>
       <nav class="foot-nav" aria-label="Footer">${LINKS.map(([p, l], i) => `<a href="${href(p)}" class="split" data-split="letters" data-stagger="22" data-cfg="170,24" data-delay="${260 + i * 80}">${l}</a>`).join("")}</nav>
       <div class="foot-row">
@@ -296,7 +294,6 @@ export const chrome = () => {
     const f = document.getElementById("foot"), fig = document.getElementById("footFig");
     subscribe(() => { const p = progressOf(f, "top_bottom", "bottom_bottom"); fig.style.top = `${4.1667 * (1 - p)}cqw`; }, () => 10);
   }
-  document.body.insertAdjacentHTML("beforeend", `<a class="back" href="../${page === "index.html" ? "" : page}">Design preview · <b>back to the current site</b></a>`);
 };
 
 /* wire up everything generic on the page */
