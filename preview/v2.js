@@ -1,6 +1,6 @@
 /* Shared engine for the new design (demo under /preview/).
  * Pages that exist in the demo link to each other; the rest link to the live site. */
-export const DEMO_PAGES = new Set(["index.html", "coaching.html"]);
+export const DEMO_PAGES = new Set(["index.html", "coaching.html", "web-design.html"]);
 const LINKS = [["coaching.html", "Coaching"], ["fights.html", "Fights"], ["merch.html", "Merch"], ["web-design.html", "Web design"], ["contact.html", "Contact"]];
 export const href = (page) => (DEMO_PAGES.has(page.split("#")[0]) ? page : "../" + page);
 
