@@ -24,7 +24,7 @@ Live at https://ashantimaurice.com (GitHub Pages, served from `main`; custom dom
 **Placeholders:** any empty item above is hidden on the live site. Add `?draft` to a page address
 (for example `coaching.html?draft` or `web-design.html?draft`) to see dashed yellow boxes where each one will go.
 
-Every page uses the design in `assets/v2.css` and `assets/v2.js` (header, menu, footer, animations). Settings (record, next fight, web prices, projects) are in `assets/site.js`; shirt stock is in `assets/shop.js`. The old design is tagged `pre-redesign-2026-11` in git. `thanks.html` still uses the old `assets/site.css`.
+Every page uses the design in `assets/v2.css` and `assets/v2.js` (header, menu, footer, animations). Settings (record, next fight, web prices, projects) are in `assets/site.js`; shirt stock is in `assets/shop.js`. The old design is saved in git at commit `f072671`. `thanks.html` still uses the old `assets/site.css`.
 Web-sized photos live in `img/`. The full-size originals in the repo root are no longer used by the pages.
 
 Old shirt links (`black-shirt.html` etc.) redirect to `merch.html#<color>`.
