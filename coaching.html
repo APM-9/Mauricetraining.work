@@ -101,8 +101,16 @@
 .chan i{font-style:normal;color:var(--accent)}
 .chan:hover{color:var(--accent);padding-left:.6rem}
 @media (max-width:539px){.chan{grid-template-columns:1fr auto}.chan small{grid-column:1/-1}}
-.include .eyebrow{margin:0}
-.include ol{margin:.8rem 0 0;padding-left:1.2rem;color:var(--foreground-muted);font-size:15px;line-height:1.5}
+.form .eyebrow{margin:0 0 .8rem;display:block}
+.topics{display:flex;flex-wrap:wrap;gap:.5rem}
+.topics button{font:inherit;padding:.55rem .9rem;border:1px solid var(--foreground);background:transparent;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--foreground);cursor:pointer;border-radius:0;transition:background 200ms,color 200ms}
+.topics button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.topics button:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.form .msg{gap:0}
+.form .msg textarea{border:1px solid var(--foreground);padding:.8rem;min-height:11.5rem;line-height:1.5}
+.copy{justify-self:start;font:inherit;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:.75rem 1.2rem;background:var(--foreground);color:#fff;border:0;border-radius:0;cursor:pointer;transition:background 200ms}
+.copy:hover,.copy.done{background:var(--accent)}
+.dm-note{margin:.8rem 0 0;font-size:13px;color:var(--foreground-muted)}
 
 /* wrestling program */
 .wp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:2rem}
@@ -255,7 +263,7 @@
         <span class="amt split" data-split="letters" data-delay="600">$2,400</span>
         <span class="per">Paid upfront</span>
         <p>Built for serious individuals ready to transform.</p>
-        <span class="pk-cta" data-cta="Apply for 6 months" data-pkg="6-month commitment ($2,400)"></span>
+        <span class="pk-cta" data-cta="Apply for 6 months" data-pkg="6mo"></span>
       </div>
       <div class="pk-card hot" data-rise="620">
         <svg class="f" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H399.5V285L385 299.5H0.5Z"/></svg>
@@ -265,7 +273,7 @@
         <span class="amt split" data-split="letters" data-delay="720">$4,200</span>
         <span class="per">Paid upfront</span>
         <p>For those committed to long-term elite results.</p>
-        <span class="pk-cta" data-cta="Apply for 12 months" data-pkg="12-month commitment ($4,200)"></span>
+        <span class="pk-cta" data-cta="Apply for 12 months" data-pkg="12mo"></span>
       </div>
     </div>
   </div>
@@ -329,19 +337,23 @@
       <div>
         <span class="eyebrow" data-fade="0">Apply</span>
         <h2 class="display" style="font-size:max(6.6667cqw,44px);margin-top:1rem"><span class="split" data-split="words">Apply for</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">coaching</span><span class="stop" data-fade="240">.</span></span></h2>
-        <p class="lede" data-rise="380">Email me or send me a DM on Instagram. I read every message personally and will reply with a link to book your consultation.</p>
+        <p class="lede" data-rise="380">Coaching or the wrestling program: pick one, fill in the message, then email it or DM it to me. I read every message personally.</p>
         <p data-rise="460" style="text-transform:uppercase;font-size:var(--type-body);color:var(--foreground-muted);margin:0 0 1rem">Rather talk first?</p>
         <span data-rise="520" id="callCta"></span>
       </div>
       <div class="form" data-rise="400">
         <span class="bp-c" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
-        <div>
-          <a class="chan" id="applyEmail" href="mailto:AMaurice_94@yahoo.com"><small>Email</small><b>AMaurice_94@yahoo.com</b><i>→</i></a>
-          <a class="chan" href="https://ig.me/m/Rx_Dolo" target="_blank" rel="noopener"><small>Instagram DM</small><b>@Rx_Dolo</b><i>↗</i></a>
+        <div class="pick">
+          <span class="eyebrow">1 · What are you applying for?</span>
+          <div class="topics" id="applyPick"></div>
         </div>
-        <div class="include">
-          <span class="eyebrow">Include in your message</span>
-          <ol><li>Your name and phone number</li><li>The package you want: 6 months ($2,400), 12 months ($4,200), or not sure yet</li><li>Your goals and where you're starting from</li></ol>
+        <label class="msg"><span class="eyebrow">2 · Fill in your message</span><textarea id="applyMsg" rows="7"></textarea></label>
+        <button type="button" class="copy" id="applyCopy">Copy message</button>
+        <div>
+          <span class="eyebrow">3 · Send it</span>
+          <a class="chan" id="applyEmail" href="mailto:AMaurice_94@yahoo.com"><small>Email</small><b>AMaurice_94@yahoo.com</b><i>→</i></a>
+          <a class="chan" id="applyDM" href="https://ig.me/m/Rx_Dolo" target="_blank" rel="noopener"><small>Instagram DM</small><b>@Rx_Dolo</b><i>↗</i></a>
+          <p class="dm-note">Tapping the DM copies your message. Just paste it into the chat.</p>
         </div>
       </div>
     </div>
@@ -364,15 +376,41 @@ document.getElementById("stkPlate").innerHTML = plateHTML("img/kitchen.jpg", "As
 document.getElementById("callCta").innerHTML = ctaHTML("Book a call directly", CAL, { hollow: true, target: ext });
 document.getElementById("shopCta").innerHTML = ctaHTML("Shop Bucked Up", STORE, { target: ext + ' id="buckedShop"' });
 document.querySelectorAll("[data-get]").forEach((el) => (el.innerHTML = ctaHTML("Get it", STORE, { hollow: true, target: ext })));
-/* the email link opens a ready-to-fill message; a package button pre-fills the package */
-const setMail = (pkg = "") => {
-  const body = `Name:\nPhone:\nPackage: ${pkg || "6 months / 12 months / not sure yet"}\nMy goals and where I'm starting from:\n`;
-  document.getElementById("applyEmail").href = "mailto:AMaurice_94@yahoo.com?subject=" + encodeURIComponent("Coaching application" + (pkg ? " · " + pkg : "")) + "&body=" + encodeURIComponent(body);
-};
-setMail();
+/* apply: pick what you're applying for, get a ready message, copy it, then email or DM it */
+const APPLY = (() => {
+  const coaching = (pkg) => `Hi Ashanti, I'd like to apply for coaching: ${pkg}.\n\nName: \nPhone: \nMy goals: \nWhere I'm starting from: `;
+  const opts = [
+    { id: "6mo", label: "Coaching · 6 months", text: coaching("6-month commitment ($2,400)") },
+    { id: "12mo", label: "Coaching · 12 months", text: coaching("12-month commitment ($4,200)") },
+    ...(window.SITE.wrestling?.prices || []).map((p) => ({ id: "wr-" + p.name.toLowerCase(), label: `Wrestling · ${p.name} ${p.price}`,
+      text: `Hi Ashanti, I'd like to sign up for the wrestling program: ${p.name} (${p.price} ${p.per}).\n\nWrestler's name: \nGrade and school: \nParent's name: \nParent's phone: ` })),
+    { id: "unsure", label: "Not sure yet", text: `Hi Ashanti, I'm interested in working with you but not sure which program fits yet.\n\nName: \nPhone: \nMy goals: ` }
+  ];
+  const pick = document.getElementById("applyPick"), msg = document.getElementById("applyMsg"), copyBtn = document.getElementById("applyCopy");
+  let cur;
+  const syncMail = () => (document.getElementById("applyEmail").href = "mailto:AMaurice_94@yahoo.com?subject=" + encodeURIComponent(cur.label.startsWith("Wrestling") ? "Wrestling program sign-up · " + cur.label.slice(12) : "Coaching application · " + cur.label) + "&body=" + encodeURIComponent(msg.value));
+  const select = (id) => {
+    cur = opts.find((o) => o.id === id) || opts[0];
+    pick.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.id === cur.id));
+    msg.value = cur.text; syncMail();
+  };
+  pick.innerHTML = opts.map((o) => `<button type="button" data-id="${o.id}" aria-pressed="false">${o.label}</button>`).join("");
+  pick.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) select(b.dataset.id); });
+  msg.addEventListener("input", syncMail);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(msg.value); }
+    catch { msg.select(); document.execCommand("copy"); }
+    copyBtn.textContent = "Copied ✓"; copyBtn.classList.add("done");
+    setTimeout(() => { copyBtn.textContent = "Copy message"; copyBtn.classList.remove("done"); }, 2000);
+  };
+  copyBtn.addEventListener("click", copy);
+  document.getElementById("applyDM").addEventListener("click", copy);
+  select(new URLSearchParams(location.search).get("apply"));
+  return { select };
+})();
 document.querySelectorAll(".pk-cta").forEach((el) => {
   el.innerHTML = ctaHTML(el.dataset.cta, "#apply", { hollow: !el.closest(".hot") });
-  el.querySelector("a").addEventListener("click", () => setMail(el.dataset.pkg));
+  el.querySelector("a").addEventListener("click", () => APPLY.select(el.dataset.pkg));
 });
 
 /* wrestling program: assets/site.js, or the Google Sheet if one is linked */
@@ -467,7 +505,8 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     ${p.featured ? '<span class="tag">Most popular</span>' : ""}
     <span class="nm">${esc(p.name)}</span><span class="amt">${esc(p.price)}</span><span class="per">${esc(p.per)}</span>
     <ul>${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
-    ${ctaHTML("Sign up", "contact.html?topic=wrestling", { hollow: !p.featured })}</div>`).join("");
+    <span class="wr-cta" data-pkg="wr-${esc(p.name.toLowerCase())}">${ctaHTML("Sign up", "#apply", { hollow: !p.featured })}</span></div>`).join("");
+  document.querySelectorAll(".wr-cta").forEach((el) => el.querySelector("a").addEventListener("click", () => APPLY.select(el.dataset.pkg)));
   document.getElementById("wpIncl").innerHTML = '<span class="lbl">Included</span>' + W.included.map((i) => `<span>${esc(i)}</span>`).join("");
   if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Recovery add-ons</h3><p>Paid on top of any class plan.</p>` +
     W.addons.map((a) => `<div class="ad"><b>${esc(a.name)}</b><span class="lead"></span><span class="v">${esc(a.price)}</span><small>${esc(a.per)}</small></div>`).join("");
