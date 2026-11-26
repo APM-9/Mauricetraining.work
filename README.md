@@ -12,7 +12,8 @@ Live at https://ashantimaurice.com (GitHub Pages, served from `main`; custom dom
 | Shirt stock / prices | `assets/shop.js` → `SHIRTS` and `PRICES` (0 = sold out) |
 | Past fights | `fights.html` → "Past fights" section (copy the `<article class="card bout">` block) |
 | Coaching prices / features | `coaching.html` |
-| Wrestling program schedule and prices (GTG) | `assets/site.js` → `wrestling` |
+| Wrestling program prices (GTG) | `assets/site.js` → `wrestling.prices` |
+| Wrestling schedule, holidays, cancellations | A Google Sheet (columns in `wrestling-schedule-template.csv`), linked in `assets/site.js` → `wrestling.sheetCsv`. Without a sheet, `wrestling.schedule` and `wrestling.changes` are used. |
 | Business name, certifications, experience numbers | `assets/site.js` → `business`, `certifications`, `experience` |
 | Client testimonials | `assets/site.js` → `testimonials` (only quotes clients agreed to share) |
 | Coaching policies / FAQ | `assets/site.js` → `policies` |

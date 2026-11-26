@@ -170,15 +170,25 @@ window.SITE = {
      prices here. kind: "practice" | "strength" | "recovery" | "rest". */
   wrestling: {
     where: "GTG",
+    /* Paste the Google Sheet's "Publish to web" CSV link here and the site
+       reads the schedule from the sheet instead of the list below. Leave ""
+       to use the list below. See wrestling-schedule-template.csv for columns. */
+    sheetCsv: "",
+    /* Weekly schedule. Starts at 8 PM so it never overlaps GTG's own classes
+       (filming 4–5, BJJ 5–6, MMA/Muay Thai 6–7, boxing 7–8). */
     schedule: [
-      { day: "Mon", kind: "practice", time: "6:00 – 7:30 PM", items: ["Folkstyle wrestling practice", "Drilling, live goes, conditioning"] },
-      { day: "Tue", kind: "strength", time: "6:00 – 7:00 PM", items: ["Strength training", "Nutrition check-in"] },
-      { day: "Wed", kind: "practice", time: "6:00 – 7:30 PM", items: ["Folkstyle wrestling practice", "Technique and situational wrestling"] },
-      { day: "Thu", kind: "recovery", time: "6:00 – 7:30 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] },
-      { day: "Fri", kind: "practice", time: "6:00 – 7:30 PM", items: ["Folkstyle wrestling practice", "Live wrestling and conditioning"] },
+      { day: "Mon", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Drilling, live goes, conditioning"] },
+      { day: "Tue", kind: "strength", time: "8:00 – 9:00 PM", items: ["Strength training", "Nutrition check-in"] },
+      { day: "Wed", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Technique and situational wrestling"] },
+      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] },
+      { day: "Fri", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Live wrestling and conditioning"] },
       { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Strength training", "Nutrition session"] },
       { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] }
     ],
+    /* One-off changes: holidays, cancellations, moved sessions.
+       date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
+       e.g. { date: "2026-12-24", kind: "cancelled", note: "Christmas Eve — no practice" } */
+    changes: [],
     prices: [
       { name: "Daily", price: "$35", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
       { name: "Weekly", price: "$150", per: "per week", featured: true, features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
