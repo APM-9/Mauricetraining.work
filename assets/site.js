@@ -191,21 +191,31 @@ window.SITE = {
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
        e.g. { date: "2026-12-24", kind: "cancelled", note: "Christmas Eve — no practice" } */
     changes: [],
-    /* Priced under GTG's all-access membership ($200–$250/mo for every class
-       and every amenity), since this covers wrestling only. */
+    /* A full athlete development program, not wrestling alone: wrestling,
+       personal training, nutrition, recovery and mentorship. Monthly sits at
+       the top of GTG's all-access rate ($200–$250) because it adds individual
+       programs a gym membership doesn't. */
     prices: [
-      { name: "Daily", price: "$25", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
-      { name: "Weekly", price: "$60", per: "per week", features: ["Every wrestling session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
-      { name: "Monthly", price: "$150", per: "per month", featured: true, features: ["Unlimited wrestling sessions all month", "Weekly mentoring and red light therapy", "Personal nutrition plan", "Best value"] }
+      { name: "Daily", price: "$30", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
+      { name: "Weekly", price: "$85", per: "per week", features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
+      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Your own personal training program", "Your own nutrition program", "Recovery program with red light therapy", "Weekly 1-on-1 mentorship"] }
     ],
-    included: ["Folkstyle wrestling practice", "Strength training", "Nutrition coaching", "Mentoring sessions", "Red light therapy"],
+    /* The five parts of the program, shown as cards. */
+    pillars: [
+      { name: "Wrestling", text: "Folkstyle practice three nights a week: drilling, live goes and situational wrestling." },
+      { name: "Personal training", text: "A strength and conditioning program built for each wrestler, not a group template." },
+      { name: "Nutrition", text: "A nutrition program for weight class, energy and recovery, with regular check-ins." },
+      { name: "Recovery", text: "Planned recovery days with red light therapy. Sauna and cold plunge as add-ons." },
+      { name: "Mentorship", text: "1-on-1 sessions on discipline, school, mindset and life outside the room." }
+    ],
+    included: ["Wrestling practice", "Personal training program", "Nutrition program", "Recovery program", "Mentorship", "Red light therapy"],
     /* Paid on top of any class plan. */
     addons: [
       { name: "Sauna", price: "$10", per: "per session" },
       { name: "Cold plunge", price: "$10", per: "per session" },
       { name: "Sauna + cold plunge", price: "$15", per: "per session" },
       { name: "Unlimited sauna + cold plunge", price: "$50", per: "per month" },
-      { name: "Monthly wrestling + unlimited recovery", price: "$200", per: "per month" }
+      { name: "Monthly program + unlimited sauna & cold plunge", price: "$300", per: "per month" }
     ]
   },
 
