@@ -170,6 +170,8 @@ window.SITE = {
      prices here. kind: "practice" | "strength" | "recovery" | "rest". */
   wrestling: {
     where: "GTG",
+    /* Who the program is for. */
+    ages: "High school wrestlers · grades 9–12",
     /* Paste the Google Sheet's "Publish to web" CSV link here and the site
        reads the schedule from the sheet instead of the list below. Leave ""
        to use the list below. See wrestling-schedule-template.csv for columns. */
