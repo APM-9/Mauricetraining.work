@@ -268,12 +268,12 @@
         <span class="eyebrow" data-fade="0" id="wpWhere">Wrestling program · GTG</span>
         <h2 class="display" style="font-size:max(3.8194cqw,40px);color:var(--accent);margin-top:1rem"><span class="split" data-split="words">Wrestler development</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">program</span><span class="stop" data-fade="240">.</span></span></h2>
       </div>
-      <p class="lede" data-rise="300">More than practice: wrestling, a personal training program, a nutrition program, a recovery program and 1-on-1 mentorship, built for high school wrestlers, freshmen through seniors.</p>
+      <p class="lede" data-rise="300">More than practice: wrestling, a personal training program, a nutrition program, a recovery program and a mentorship class, built for high school wrestlers, freshmen through seniors.</p>
     </div>
     <div class="who" id="wpWho" data-rise="330"></div>
     <div class="pillars" id="wpPillars"></div>
     <h3 class="wk-title" data-rise="300">Weekly schedule</h3>
-    <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentoring</span></div>
+    <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentorship</span></div>
     <div class="changes" id="wpChanges" role="status"></div>
     <div class="week" id="week"></div>
     <div class="wp-prices" id="wpPrices"></div>
@@ -372,7 +372,7 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
 /* wrestling program: assets/site.js, or the Google Sheet if one is linked */
 {
   const W = window.SITE.wrestling;
-  const KIND = { practice: "Practice", strength: "Strength & nutrition", recovery: "Recovery & mentoring", rest: "Rest", cancelled: "Cancelled" };
+  const KIND = { practice: "Practice", strength: "Strength & nutrition", recovery: "Recovery & mentorship", rest: "Rest", cancelled: "Cancelled" };
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const ORDER = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
