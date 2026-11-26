@@ -109,25 +109,6 @@
 .pillar h3{margin:0 0 .6rem;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(1.7cqw,22px);line-height:.95}
 .pillar p{margin:0;color:var(--foreground-on-dark-muted);text-transform:uppercase;font-size:12px;line-height:1.3}
 .wk-title{margin:3.5rem 0 0;font-family:var(--font-display);text-transform:uppercase;font-size:max(2cqw,24px)}
-.season{margin-top:3.5rem}
-.season:empty{display:none}
-.season-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.2rem}
-.season-head h3{margin:.6rem 0 0;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(2cqw,24px);line-height:.95}
-.season-count{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--foreground-on-dark-muted)}
-.next-match{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;padding:1rem 1.2rem;border:1px solid var(--accent);margin-bottom:1rem;text-transform:uppercase}
-.next-match .eyebrow{margin:0}
-.next-match b{font-family:var(--font-display);font-weight:500;font-size:1.3rem}
-.matches{border-top:1px solid var(--border-on-dark)}
-.m{display:grid;grid-template-columns:9rem 6rem 1fr auto;gap:1rem;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--border-on-dark);text-transform:uppercase;font-size:13px}
-.m .md{color:#fff}
-.m .mv{color:var(--foreground-on-dark-muted)}
-.m .mt{font-family:var(--font-display);font-size:1.05rem;color:#fff}
-.m.past{opacity:.35}
-.m.next{background:rgb(232 50 43/.08)}
-.ha{font-size:11px;letter-spacing:.12em;font-style:normal}
-.ha.home{color:#fff}.ha.away{color:var(--accent)}
-@media (max-width:639px){.m{grid-template-columns:1fr auto;gap:.3rem .8rem}.m .mv{grid-column:1/-1}.m .ha{justify-self:end}}
-.match-flag{margin-top:auto;padding:.4rem .5rem;border:1px solid var(--accent);color:var(--accent);font-size:11px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
 .starts{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.2rem;margin-top:2.5rem;padding:1.1rem 1.3rem;background:var(--accent);color:#fff;text-transform:uppercase}
 .starts .eyebrow{margin:0;color:#fff;opacity:.85}
 .starts b{font-family:var(--font-display);font-weight:700;font-size:max(1.8cqw,22px);line-height:1}
@@ -300,7 +281,6 @@
     <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentorship</span></div>
     <div class="changes" id="wpChanges" role="status"></div>
     <div class="week" id="week"></div>
-    <div class="season" id="wpSeason"></div>
     <div class="wp-prices" id="wpPrices"></div>
     <div class="incl" id="wpIncl" data-rise="300"></div>
     <div class="wp-addons" id="wpAddons" data-rise="360"></div>
@@ -443,6 +423,8 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     // which change lands on each weekday in the next 7 days
     const thisWeek = {};
     for (const c of soon) if (c.date - today < 7 * 864e5) thisWeek[DAYS[c.date.getDay()]] = c;
+    // plain off days (no reason shown), only within the next 7 days
+    for (const o of W.off || []) { const d = toDate(o); if (d && d >= today && d - today < 7 * 864e5 && !thisWeek[DAYS[d.getDay()]]) thisWeek[DAYS[d.getDay()]] = { date: d, kind: "off" }; }
     const fmt = (d) => d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
     document.getElementById("wpChanges").innerHTML = soon.length
       ? `<span class="eyebrow">Schedule changes</span><ul>${soon.map((c) => `<li><b>${fmt(c.date)}</b> ${c.kind === "cancelled" ? "No practice" : esc(KIND[c.kind] + (c.time ? " · " + c.time : ""))}${c.note ? " — " + esc(c.note) : ""}</li>`).join("")}</ul>` : "";
@@ -450,6 +432,7 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     document.getElementById("week").innerHTML = ORDER.map((name) => {
       const d = byDay[name], ch = thisWeek[name];
       if (ch && ch.kind === "cancelled") return `<div class="day k-cancelled"><span class="d">${name}</span><span class="kind">Cancelled · ${fmt(ch.date)}</span><span class="time">No practice</span>${ch.note ? `<ul><li>${esc(ch.note)}</li></ul>` : ""}</div>`;
+      if (ch && ch.kind === "off") return `<div class="day k-rest"><span class="d">${name}</span><span class="kind">${fmt(ch.date)}</span><span class="time">Off</span></div>`;
       const s = ch || d;
       if (!s) return `<div class="day k-rest"><span class="d">${name}</span><span class="kind">Rest</span><span class="time">Off</span></div>`;
       return `<div class="day k-${s.kind}${ch ? " moved" : ""}"><span class="d">${name}</span><span class="kind">${esc(KIND[s.kind] || s.kind)}${ch ? " · " + fmt(ch.date) : ""}</span><span class="time">${esc(s.time)}</span><ul>${(s.items || []).map((i) => `<li>${esc(i)}</li>`).join("")}${ch?.note ? `<li>${esc(ch.note)}</li>` : ""}</ul></div>`;
@@ -461,27 +444,6 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     pl.innerHTML = W.pillars.map((p, i) => `<div class="pillar"><b>${String(i + 1).padStart(2, "0")}</b><h3>${esc(p.name)}</h3><p>${esc(p.text)}</p></div>`).join("");
     [...pl.children].forEach((c) => (c.style.opacity = 0));
     onView(pl, () => [...pl.children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 200 + i * 80)));
-  }
-  /* the team's season */
-  if (W.team?.matches?.length) {
-    const T = W.team, today = new Date(); today.setHours(0, 0, 0, 0);
-    const ms = T.matches.map((m) => ({ ...m, d: new Date(m.date + "T00:00:00") }));
-    const next = ms.find((m) => m.d >= today);
-    const fmt = (d) => d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
-    const home = ms.filter((m) => !m.away).length;
-    document.getElementById("wpSeason").innerHTML = `
-      <div class="season-head"><div><span class="eyebrow">Starting with</span><h3>${esc(T.name)} wrestling · ${esc(T.season)} season</h3></div>
-      <span class="season-count">${ms.length} dates · ${home} home · ${ms.length - home} away</span></div>
-      ${next ? `<div class="next-match"><span class="eyebrow">Next match</span><b>${fmt(next.d)} · ${esc(next.time)}</b><span>${next.away ? "@ " : "vs "}${next.vs.map(esc).join(", ")}</span><i class="ha ${next.away ? "away" : "home"}">${next.away ? "Away" : "Home"}</i></div>` : ""}
-      <div class="matches">${ms.map((m) => `<div class="m${m.d < today ? " past" : ""}${m === next ? " next" : ""}"><span class="md">${fmt(m.d)}</span><span class="ha ${m.away ? "away" : "home"}">${m.away ? "@ Away" : "Home"}</span><span class="mv">${m.vs.map(esc).join(" · ")}</span><span class="mt">${esc(m.time)}</span></div>`).join("")}</div>`;
-    // flag match days on this week's schedule cards
-    const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const mark = () => document.querySelectorAll("#week .day").forEach((card) => {
-      const name = card.querySelector(".d").textContent;
-      const m = ms.find((x) => x.d >= today && x.d - today < 7 * 864e5 && DAYS[x.d.getDay()] === name);
-      if (m && !card.querySelector(".match-flag")) card.insertAdjacentHTML("beforeend", `<span class="match-flag">Team match ${m.away ? "@ " : "vs "}${esc(m.vs[0])} · ${esc(m.time)}</span>`);
-    });
-    mark(); new MutationObserver(mark).observe(document.getElementById("week"), { childList: true });
   }
   if (W.starts) {
     const d = new Date(W.starts + "T00:00:00"), now = new Date(); now.setHours(0, 0, 0, 0);
