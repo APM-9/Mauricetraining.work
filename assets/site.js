@@ -172,6 +172,8 @@ window.SITE = {
     where: "GTG",
     /* Who the program is for. */
     ages: "High school wrestlers · grades 9–12",
+    /* First day at the gym (YYYY-MM-DD). Until then the page shows a "starts" notice; after it, the notice goes away. */
+    starts: "2026-12-15",
     /* The team the program starts with, and its season. away: true = "@" (away match).
        Several opponents on one row = a multi-team meet. */
     team: {
