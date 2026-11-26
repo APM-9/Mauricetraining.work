@@ -114,6 +114,13 @@
 .day li{display:grid;grid-template-columns:.8rem 1fr;gap:.4rem}
 .day li::before{content:"";width:.35rem;height:.35rem;margin-top:.35em;background:var(--k);transform:rotate(45deg)}
 .k-practice{--k:var(--accent)}.k-strength{--k:#fff}.k-recovery{--k:#7fd1ff}.k-rest{--k:var(--foreground-on-dark-faint)}
+.k-cancelled{--k:var(--foreground-on-dark-faint)}
+.day.k-cancelled{opacity:.55}.day.k-cancelled .time{text-decoration:line-through}
+.day.moved{outline:1px dashed var(--accent);outline-offset:-1px}
+.changes:empty{display:none}
+.changes{position:relative;margin:0 0 1.2rem;padding:1rem 1.2rem;border:1px solid var(--accent)}
+.changes ul{list-style:none;margin:.7rem 0 0;padding:0;display:grid;gap:.45rem;text-transform:uppercase;font-size:13px}
+.changes b{color:var(--accent);font-weight:500;margin-right:.4rem}
 .wp-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:max(1.6cqw,16px);margin-top:3rem}
 @media (max-width:899px){.wp-prices{grid-template-columns:1fr}}
 .wp-card{position:relative;padding:max(2.2cqw,24px);display:flex;flex-direction:column;gap:.9rem;isolation:isolate;min-height:20rem}
@@ -245,6 +252,7 @@
       <p class="lede" data-rise="300">Folkstyle practice, strength training, nutrition and full recovery days with mentoring, red light therapy, sauna and cold plunge.</p>
     </div>
     <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentoring</span></div>
+    <div class="changes" id="wpChanges" role="status"></div>
     <div class="week" id="week"></div>
     <div class="wp-prices" id="wpPrices"></div>
     <div class="incl" id="wpIncl" data-rise="300"></div>
@@ -338,13 +346,75 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
   el.querySelector("a").addEventListener("click", () => (document.getElementById("pkg").value = el.dataset.pkg));
 });
 
-/* wrestling program, from assets/site.js */
+/* wrestling program: assets/site.js, or the Google Sheet if one is linked */
 {
-  const W = window.SITE.wrestling, KIND = { practice: "Practice", strength: "Strength & nutrition", recovery: "Recovery & mentoring", rest: "Rest" };
+  const W = window.SITE.wrestling;
+  const KIND = { practice: "Practice", strength: "Strength & nutrition", recovery: "Recovery & mentoring", rest: "Rest", cancelled: "Cancelled" };
+  const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const ORDER = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const parseCsv = (text) => {
+    const rows = []; let row = [], cell = "", q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+      else if (c === '"') q = true;
+      else if (c === ",") { row.push(cell); cell = ""; }
+      else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(cell); rows.push(row); row = []; cell = ""; }
+      else cell += c;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter((r) => r.some((x) => x.trim()));
+  };
+  const toDate = (v) => {
+    v = v.trim(); let m;
+    if ((m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/))) return new Date(+m[1], m[2] - 1, +m[3]);
+    if ((m = v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/))) return new Date(+m[3] < 100 ? 2000 + +m[3] : +m[3], m[1] - 1, +m[2]);
+    return null;
+  };
+  const dayKey = (v) => ORDER.find((d) => v.trim().toLowerCase().startsWith(d.toLowerCase()));
+  const kindOf = (v) => { v = (v || "").trim().toLowerCase(); return ["practice", "strength", "recovery", "rest", "cancelled"].find((k) => v.startsWith(k.slice(0, 4))) || "practice"; };
+  /* Sheet columns: Day, Type, Time, Details (separate with ;), Note */
+  const fromSheet = (rows) => {
+    const head = rows[0].map((h) => h.trim().toLowerCase());
+    const col = (n) => head.findIndex((h) => h.startsWith(n));
+    const [cD, cT, cTi, cDe, cN] = ["day", "type", "time", "detail", "note"].map(col);
+    const schedule = [], changes = [];
+    for (const r of rows.slice(1)) {
+      const day = r[cD] || "", date = toDate(day), kind = kindOf(r[cT]);
+      const item = { kind, time: (r[cTi] || "").trim(), items: (r[cDe] || "").split(";").map((x) => x.trim()).filter(Boolean), note: (r[cN] || "").trim() };
+      if (date) changes.push({ ...item, date });
+      else if (dayKey(day)) schedule.push({ ...item, day: dayKey(day) });
+    }
+    return { schedule, changes };
+  };
+  const render = ({ schedule, changes }) => {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const soon = changes.map((c) => ({ ...c, date: c.date instanceof Date ? c.date : toDate(String(c.date)) }))
+      .filter((c) => c.date && c.date >= today && c.date - today <= 45 * 864e5).sort((a, b) => a.date - b.date);
+    // which change lands on each weekday in the next 7 days
+    const thisWeek = {};
+    for (const c of soon) if (c.date - today < 7 * 864e5) thisWeek[DAYS[c.date.getDay()]] = c;
+    const fmt = (d) => d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+    document.getElementById("wpChanges").innerHTML = soon.length
+      ? `<span class="eyebrow">Schedule changes</span><ul>${soon.map((c) => `<li><b>${fmt(c.date)}</b> ${c.kind === "cancelled" ? "No practice" : esc(KIND[c.kind] + (c.time ? " · " + c.time : ""))}${c.note ? " — " + esc(c.note) : ""}</li>`).join("")}</ul>` : "";
+    const byDay = Object.fromEntries(schedule.map((d) => [d.day, d]));
+    document.getElementById("week").innerHTML = ORDER.map((name) => {
+      const d = byDay[name], ch = thisWeek[name];
+      if (ch && ch.kind === "cancelled") return `<div class="day k-cancelled"><span class="d">${name}</span><span class="kind">Cancelled · ${fmt(ch.date)}</span><span class="time">No practice</span>${ch.note ? `<ul><li>${esc(ch.note)}</li></ul>` : ""}</div>`;
+      const s = ch || d;
+      if (!s) return `<div class="day k-rest"><span class="d">${name}</span><span class="kind">Rest</span><span class="time">Off</span></div>`;
+      return `<div class="day k-${s.kind}${ch ? " moved" : ""}"><span class="d">${name}</span><span class="kind">${esc(KIND[s.kind] || s.kind)}${ch ? " · " + fmt(ch.date) : ""}</span><span class="time">${esc(s.time)}</span><ul>${(s.items || []).map((i) => `<li>${esc(i)}</li>`).join("")}${ch?.note ? `<li>${esc(ch.note)}</li>` : ""}</ul></div>`;
+    }).join("");
+  };
   document.getElementById("wpWhere").textContent = "Wrestling program · " + W.where;
-  const week = document.getElementById("week");
-  week.innerHTML = W.schedule.map((d) => `<div class="day k-${d.kind}"><span class="d">${esc(d.day)}</span><span class="kind">${KIND[d.kind] || esc(d.kind)}</span><span class="time">${esc(d.time)}</span><ul>${d.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");
+  render({ schedule: W.schedule, changes: W.changes || [] });
+  if (W.sheetCsv) {
+    fetch(W.sheetCsv + (W.sheetCsv.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" })
+      .then((r) => (r.ok ? r.text() : Promise.reject()))
+      .then((t) => { const d = fromSheet(parseCsv(t)); if (d.schedule.length || d.changes.length) render({ schedule: d.schedule.length ? d.schedule : W.schedule, changes: [...(W.changes || []), ...d.changes] }); })
+      .catch(() => {});
+  }
   document.getElementById("wpPrices").innerHTML = W.prices.map((p) => `<div class="wp-card${p.featured ? " hot" : ""}">
     <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H299.5V388L288 399.5H0.5Z"/></svg>
     ${p.featured ? '<span class="tag">Most popular</span>' : ""}
@@ -352,8 +422,8 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     <ul>${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     ${ctaHTML("Sign up", "contact.html?topic=wrestling", { hollow: !p.featured })}</div>`).join("");
   document.getElementById("wpIncl").innerHTML = W.included.map((i) => `<span>${esc(i)}</span>`).join("");
-  const stagger = (el, base) => { [...el.children].forEach((c) => (c.style.opacity = 0)); onView(el, () => [...el.children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, base + i * 70))); };
-  stagger(week, 200); stagger(document.getElementById("wpPrices"), 150);
+  onView(document.getElementById("wpPrices"), () => [...document.getElementById("wpPrices").children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 150 + i * 70)));
+  [...document.getElementById("wpPrices").children].forEach((c) => (c.style.opacity = 0));
 }
 
 boot();
