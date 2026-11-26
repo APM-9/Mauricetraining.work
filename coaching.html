@@ -128,6 +128,10 @@
 .ha.home{color:#fff}.ha.away{color:var(--accent)}
 @media (max-width:639px){.m{grid-template-columns:1fr auto;gap:.3rem .8rem}.m .mv{grid-column:1/-1}.m .ha{justify-self:end}}
 .match-flag{margin-top:auto;padding:.4rem .5rem;border:1px solid var(--accent);color:var(--accent);font-size:11px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
+.starts{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.2rem;margin-top:2.5rem;padding:1.1rem 1.3rem;background:var(--accent);color:#fff;text-transform:uppercase}
+.starts .eyebrow{margin:0;color:#fff;opacity:.85}
+.starts b{font-family:var(--font-display);font-weight:700;font-size:max(1.8cqw,22px);line-height:1}
+.starts span:last-child{font-size:12px;letter-spacing:.08em}
 .legend{display:flex;flex-wrap:wrap;gap:1.2rem;margin:2.5rem 0 1.2rem;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-on-dark-muted)}
 .legend span{display:inline-flex;align-items:center;gap:.5rem}
 .legend i{width:.7rem;height:.7rem;display:inline-block}
@@ -291,6 +295,7 @@
     </div>
     <div class="who" id="wpWho" data-rise="330"></div>
     <div class="pillars" id="wpPillars"></div>
+    <div class="starts" id="wpStarts" hidden></div>
     <h3 class="wk-title" data-rise="300">Weekly schedule</h3>
     <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentorship</span></div>
     <div class="changes" id="wpChanges" role="status"></div>
@@ -477,6 +482,14 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
       if (m && !card.querySelector(".match-flag")) card.insertAdjacentHTML("beforeend", `<span class="match-flag">Team match ${m.away ? "@ " : "vs "}${esc(m.vs[0])} · ${esc(m.time)}</span>`);
     });
     mark(); new MutationObserver(mark).observe(document.getElementById("week"), { childList: true });
+  }
+  if (W.starts) {
+    const d = new Date(W.starts + "T00:00:00"), now = new Date(); now.setHours(0, 0, 0, 0);
+    if (d > now) {
+      const box = document.getElementById("wpStarts");
+      box.innerHTML = `<span class="eyebrow">Program starts</span><b>${d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}</b><span>Doors open at GTG. Sign up now to hold a spot.</span>`;
+      box.hidden = false;
+    }
   }
   if (W.ages) document.getElementById("wpWho").innerHTML = `<span>${esc(W.ages)}</span>`;
   render({ schedule: W.schedule, changes: W.changes || [] });
