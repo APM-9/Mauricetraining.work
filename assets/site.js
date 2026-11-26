@@ -174,33 +174,6 @@ window.SITE = {
     ages: "High school wrestlers · grades 9–12",
     /* First day at the gym (YYYY-MM-DD). Until then the page shows a "starts" notice; after it, the notice goes away. */
     starts: "2026-12-15",
-    /* The team the program starts with, and its season. away: true = "@" (away match).
-       Several opponents on one row = a multi-team meet. */
-    team: {
-      name: "Perth Amboy High School",
-      season: "2026–27",
-      matches: [
-        { date: "2026-12-11", time: "6:15 PM", away: false, vs: ["New Brunswick"] },
-        { date: "2026-12-12", time: "9:00 AM", away: false, vs: ["Red Bank Regional", "Spotswood", "Sayreville"] },
-        { date: "2026-12-16", time: "6:00 PM", away: true,  vs: ["Hillsborough"] },
-        { date: "2026-12-18", time: "6:00 PM", away: true,  vs: ["Colonia"] },
-        { date: "2026-12-19", time: "9:00 AM", away: true,  vs: ["Princeton"] },
-        { date: "2026-12-19", time: "9:00 AM", away: false, vs: ["West Windsor-Plainsboro South"] },
-        { date: "2026-12-23", time: "5:00 PM", away: true,  vs: ["Linden"] },
-        { date: "2027-01-06", time: "6:00 PM", away: true,  vs: ["Woodbridge"] },
-        { date: "2027-01-08", time: "6:30 PM", away: true,  vs: ["Edison"] },
-        { date: "2027-01-09", time: "9:00 AM", away: false, vs: ["North Brunswick", "Iselin Kennedy", "South River"] },
-        { date: "2027-01-13", time: "5:30 PM", away: false, vs: ["Edison", "St. Thomas Aquinas (time TBA)"] },
-        { date: "2027-01-15", time: "5:30 PM", away: false, vs: ["Piscataway"] },
-        { date: "2027-01-16", time: "10:00 AM", away: false, vs: ["Nutley"] },
-        { date: "2027-01-26", time: "5:30 PM", away: true,  vs: ["Highland Park"] },
-        { date: "2027-01-27", time: "7:00 PM", away: false, vs: ["Marlboro"] },
-        { date: "2027-01-30", time: "9:00 AM", away: false, vs: ["St. Benedict's", "St. Joseph (Met.)"] },
-        { date: "2027-02-03", time: "5:30 PM", away: false, vs: ["North Plainfield"] },
-        { date: "2027-02-05", time: "6:00 PM", away: false, vs: ["Carteret"] },
-        { date: "2027-02-06", time: "9:00 AM", away: false, vs: ["Rahway", "Somerville", "Roselle Park"] }
-      ]
-    },
     /* Paste the Google Sheet's "Publish to web" CSV link here and the site
        reads the schedule from the sheet instead of the list below. Leave ""
        to use the list below. See wrestling-schedule-template.csv for columns. */
@@ -220,6 +193,14 @@ window.SITE = {
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
        e.g. { date: "2026-12-24", kind: "cancelled", note: "Christmas Eve — no practice" } */
     changes: [],
+    /* Days with no session (e.g. the team has a match). Plain dates, no reason
+       is shown on the site: that week's card just reads "Off". */
+    off: [
+      "2026-12-16", "2026-12-18", "2026-12-19", "2026-12-23",
+      "2027-01-06", "2027-01-08", "2027-01-09", "2027-01-13", "2027-01-15", "2027-01-16",
+      "2027-01-26", "2027-01-27", "2027-01-30",
+      "2027-02-03", "2027-02-05", "2027-02-06"
+    ],
     /* A full athlete development program, not wrestling alone: wrestling,
        personal training, nutrition, recovery and mentorship. Monthly sits at
        the top of GTG's all-access rate ($200–$250) because it adds individual
