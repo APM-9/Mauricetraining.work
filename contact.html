@@ -33,6 +33,8 @@
 .topics span{display:inline-block;padding:.55rem .9rem;border:1px solid var(--foreground);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--foreground);cursor:pointer;transition:background 200ms,color 200ms}
 .topics input:checked+span{background:var(--accent);border-color:var(--accent);color:#fff}
 .topics input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.tip{margin:0;color:var(--foreground-muted);font-size:15px;line-height:1.5}
 .form input[type=text],.form input[type=email],.form textarea{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--foreground);background:transparent;border:0;border-bottom:1px solid var(--foreground);padding:.6rem 0;border-radius:0;outline:none}
 .form textarea{min-height:8rem;resize:vertical}
 .form input:focus,.form textarea:focus{border-bottom-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
@@ -49,27 +51,20 @@
       <div>
         <span class="eyebrow" data-fade="0">Contact</span>
         <h1 class="display"><span style="display:flex"><span class="split" data-split="words" data-delay="120">Let's talk</span><span class="stop" data-fade="360">.</span></span></h1>
-        <p class="lede" data-rise="460">Coaching, web design projects, sponsorships or business.</p>
+        <p class="lede" data-rise="460">Coaching, web design projects, sponsorships or business. Email me or send a DM on Instagram.</p>
         <div data-rise="560">
           <a class="chan" id="chEmail" href="mailto:AMaurice_94@yahoo.com"><small>Email</small><b>AMaurice_94@yahoo.com</b><i>→</i></a>
-          <a class="chan" href="https://instagram.com/Rx_Dolo" target="_blank" rel="noopener"><small>Instagram</small><b>@Rx_Dolo</b><i>↗</i></a>
+          <a class="chan" href="https://ig.me/m/Rx_Dolo" target="_blank" rel="noopener"><small>Instagram DM</small><b>@Rx_Dolo</b><i>↗</i></a>
           <a class="chan" href="https://calendly.com/fpconsultation/fighter-physique-consultation" target="_blank" rel="noopener"><small>Coaching</small><b>Book a call</b><i>↗</i></a>
         </div>
       </div>
-      <form class="form" action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST" data-rise="400">
+      <div class="form" data-rise="400">
         <span class="bp-c" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
-        <h2 class="display">Send a message</h2>
-        <input type="hidden" name="_subject" value="New message from your website">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://ashantimaurice.com/thanks.html?from=contact">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <label>Name<input type="text" name="name" autocomplete="name" required></label>
-        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <h2 class="display">What's it about?</h2>
         <fieldset style="border:0;padding:0;margin:0">
-          <legend style="font-size:var(--type-eyebrow);text-transform:uppercase;letter-spacing:.14em;color:var(--foreground-muted);margin-bottom:.7rem">Topic</legend>
+          <legend class="sr">Topic</legend>
           <div class="topics">
-            <label><input type="radio" name="topic" value="coaching" required><span>Coaching</span></label>
+            <label><input type="radio" name="topic" value="coaching" checked><span>Coaching</span></label>
             <label><input type="radio" name="topic" value="web"><span>Web design</span></label>
             <label><input type="radio" name="topic" value="sponsorship"><span>Sponsorship</span></label>
             <label><input type="radio" name="topic" value="merch"><span>Merch order</span></label>
@@ -77,9 +72,9 @@
             <label><input type="radio" name="topic" value="business"><span>Business / other</span></label>
           </div>
         </fieldset>
-        <label>Message<textarea name="message" required></textarea></label>
-        <button class="cta" type="submit"><svg class="f" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true"><path class="body" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/><path class="flood" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/></svg><span>Send message</span><svg class="a" viewBox="0 0 13.7071 10.7071" aria-hidden="true"><path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553"/></svg></button>
-      </form>
+        <p class="tip" id="tip"></p>
+        <div class="btn-row" id="sendRow"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -87,10 +82,29 @@
 <div data-v2-footer data-head="Stay ready|stay hungry"></div>
 
 <script type="module">
-import { boot } from "./assets/v2.js";
+import { boot, ctaHTML } from "./assets/v2.js";
+/* picking a topic sets the email subject and a short note of what to include */
+const T = {
+  coaching: ["Coaching", "Your name, phone, the package you want and your goals."],
+  web: ["Web design project", "Your business, what the site needs and your timeline."],
+  sponsorship: ["Sponsorship", "Your brand and what you have in mind."],
+  merch: ["Merch order", "The shirt, size and quantity."],
+  wrestling: ["Wrestling program", "The wrestler's name, grade, school and a parent's phone number."],
+  business: ["Business inquiry", "What you'd like to talk about."]
+};
 const t = new URLSearchParams(location.search).get("topic");
 const pick = t && document.querySelector(`.topics input[value="${t.replace(/[^a-z]/g, "")}"]`);
 if (pick) pick.checked = true;
+const ext = ' target="_blank" rel="noopener"';
+const update = () => {
+  const [subject, tip] = T[document.querySelector(".topics input:checked").value];
+  const mail = "mailto:AMaurice_94@yahoo.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent("Name:\n\n");
+  document.getElementById("tip").textContent = "Include: " + tip;
+  document.getElementById("chEmail").href = mail;
+  document.getElementById("sendRow").innerHTML = ctaHTML("Email me", mail) + ctaHTML("DM on Instagram", "https://ig.me/m/Rx_Dolo", { hollow: true, target: ext });
+};
+document.querySelectorAll(".topics input").forEach((i) => i.addEventListener("change", update));
+update();
 boot();
 </script>
 </body>
