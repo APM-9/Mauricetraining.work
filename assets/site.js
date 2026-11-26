@@ -180,10 +180,10 @@ window.SITE = {
       { day: "Mon", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Drilling, live goes, conditioning"] },
       { day: "Tue", kind: "strength", time: "8:00 – 9:00 PM", items: ["Strength training", "Nutrition check-in"] },
       { day: "Wed", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Technique and situational wrestling"] },
-      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] },
+      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Mentoring session", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] },
       { day: "Fri", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Live wrestling and conditioning"] },
       { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Strength training", "Nutrition session"] },
-      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] }
+      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentoring session", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] }
     ],
     /* One-off changes: holidays, cancellations, moved sessions.
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
@@ -192,9 +192,16 @@ window.SITE = {
     prices: [
       { name: "Daily", price: "$35", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
       { name: "Weekly", price: "$150", per: "per week", featured: true, features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
-      { name: "Monthly", price: "$450", per: "per month", features: ["Unlimited sessions all month", "Weekly mentoring and recovery", "Personal nutrition plan", "Best value"] }
+      { name: "Monthly", price: "$450", per: "per month", features: ["Unlimited sessions all month", "Weekly mentoring and red light therapy", "Personal nutrition plan", "Best value"] }
     ],
-    included: ["Folkstyle wrestling practice", "Strength training", "Nutrition coaching", "Mentoring sessions", "Red light therapy", "Sauna", "Cold plunge"]
+    included: ["Folkstyle wrestling practice", "Strength training", "Nutrition coaching", "Mentoring sessions", "Red light therapy"],
+    /* Paid on top of any class plan. */
+    addons: [
+      { name: "Sauna", price: "$15", per: "per session" },
+      { name: "Cold plunge", price: "$15", per: "per session" },
+      { name: "Sauna + cold plunge", price: "$25", per: "per session" },
+      { name: "Unlimited sauna + cold plunge", price: "$100", per: "per month" }
+    ]
   },
 
   projects: [

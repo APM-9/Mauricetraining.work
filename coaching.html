@@ -136,6 +136,15 @@
 .wp-card .cta{margin-top:auto;align-self:flex-start}
 .wp-card .tag{position:absolute;top:max(2.2cqw,24px);right:max(2.2cqw,24px);background:var(--accent);color:#fff;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;padding:.4rem .6rem}
 .incl{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+.incl .lbl{border:0;padding-left:0;color:var(--accent)}
+.wp-addons{margin-top:3rem;max-width:44rem}
+.wp-addons h3{margin:0 0 .4rem;font-family:var(--font-display);text-transform:uppercase;font-size:max(2cqw,24px)}
+.wp-addons p{margin:0 0 1rem;text-transform:uppercase;font-size:13px;color:var(--foreground-on-dark-muted)}
+.wp-addons .ad{display:grid;grid-template-columns:auto 1fr auto auto;gap:1rem;align-items:baseline;padding:.9rem 0;border-top:1px solid var(--border-on-dark);text-transform:uppercase}
+.wp-addons .ad b{font-weight:500}
+.wp-addons .lead{border-bottom:1px dashed var(--border-on-dark);transform:translateY(-.3em)}
+.wp-addons .v{font-family:var(--font-display);font-weight:500;font-size:1.5rem}
+.wp-addons small{font-size:11px;letter-spacing:.1em;color:var(--foreground-on-dark-muted)}
 .incl span{border:1px solid var(--border-on-dark);padding:.6rem .9rem;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 </style>
 </head>
@@ -249,13 +258,14 @@
         <span class="eyebrow" data-fade="0" id="wpWhere">Wrestling program · GTG</span>
         <h2 class="display" style="font-size:max(3.8194cqw,40px);color:var(--accent);margin-top:1rem"><span class="split" data-split="words">Wrestling program</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">schedule</span><span class="stop" data-fade="240">.</span></span></h2>
       </div>
-      <p class="lede" data-rise="300">Folkstyle practice, strength training, nutrition and full recovery days with mentoring, red light therapy, sauna and cold plunge.</p>
+      <p class="lede" data-rise="300">Folkstyle practice, strength training, nutrition and recovery days with mentoring and red light therapy. Sauna and cold plunge available as add-ons.</p>
     </div>
     <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentoring</span></div>
     <div class="changes" id="wpChanges" role="status"></div>
     <div class="week" id="week"></div>
     <div class="wp-prices" id="wpPrices"></div>
     <div class="incl" id="wpIncl" data-rise="300"></div>
+    <div class="wp-addons" id="wpAddons" data-rise="360"></div>
   </div>
 </section>
 
@@ -421,7 +431,9 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     <span class="nm">${esc(p.name)}</span><span class="amt">${esc(p.price)}</span><span class="per">${esc(p.per)}</span>
     <ul>${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     ${ctaHTML("Sign up", "contact.html?topic=wrestling", { hollow: !p.featured })}</div>`).join("");
-  document.getElementById("wpIncl").innerHTML = W.included.map((i) => `<span>${esc(i)}</span>`).join("");
+  document.getElementById("wpIncl").innerHTML = '<span class="lbl">Included</span>' + W.included.map((i) => `<span>${esc(i)}</span>`).join("");
+  if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Recovery add-ons</h3><p>Paid on top of any class plan.</p>` +
+    W.addons.map((a) => `<div class="ad"><b>${esc(a.name)}</b><span class="lead"></span><span class="v">${esc(a.price)}</span><small>${esc(a.per)}</small></div>`).join("");
   onView(document.getElementById("wpPrices"), () => [...document.getElementById("wpPrices").children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 150 + i * 70)));
   [...document.getElementById("wpPrices").children].forEach((c) => (c.style.opacity = 0));
 }
