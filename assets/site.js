@@ -191,18 +191,21 @@ window.SITE = {
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
        e.g. { date: "2026-12-24", kind: "cancelled", note: "Christmas Eve — no practice" } */
     changes: [],
+    /* Priced under GTG's all-access membership ($200–$250/mo for every class
+       and every amenity), since this covers wrestling only. */
     prices: [
-      { name: "Daily", price: "$35", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
-      { name: "Weekly", price: "$150", per: "per week", featured: true, features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
-      { name: "Monthly", price: "$450", per: "per month", features: ["Unlimited sessions all month", "Weekly mentoring and red light therapy", "Personal nutrition plan", "Best value"] }
+      { name: "Daily", price: "$25", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
+      { name: "Weekly", price: "$60", per: "per week", features: ["Every wrestling session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
+      { name: "Monthly", price: "$150", per: "per month", featured: true, features: ["Unlimited wrestling sessions all month", "Weekly mentoring and red light therapy", "Personal nutrition plan", "Best value"] }
     ],
     included: ["Folkstyle wrestling practice", "Strength training", "Nutrition coaching", "Mentoring sessions", "Red light therapy"],
     /* Paid on top of any class plan. */
     addons: [
-      { name: "Sauna", price: "$15", per: "per session" },
-      { name: "Cold plunge", price: "$15", per: "per session" },
-      { name: "Sauna + cold plunge", price: "$25", per: "per session" },
-      { name: "Unlimited sauna + cold plunge", price: "$100", per: "per month" }
+      { name: "Sauna", price: "$10", per: "per session" },
+      { name: "Cold plunge", price: "$10", per: "per session" },
+      { name: "Sauna + cold plunge", price: "$15", per: "per session" },
+      { name: "Unlimited sauna + cold plunge", price: "$50", per: "per month" },
+      { name: "Monthly wrestling + unlimited recovery", price: "$200", per: "per month" }
     ]
   },
 
