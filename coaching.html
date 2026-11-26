@@ -95,6 +95,41 @@
 .form textarea{min-height:7rem;resize:vertical}
 .form input:focus,.form select:focus,.form textarea:focus{border-bottom-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
 .form .cta{justify-self:start;margin-top:.5rem}
+
+/* wrestling program */
+.wp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:2rem}
+.wp-head .lede{max-width:30rem;color:var(--foreground-on-dark-muted)}
+.legend{display:flex;flex-wrap:wrap;gap:1.2rem;margin:2.5rem 0 1.2rem;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-on-dark-muted)}
+.legend span{display:inline-flex;align-items:center;gap:.5rem}
+.legend i{width:.7rem;height:.7rem;display:inline-block}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark)}
+@media (max-width:1023px){.week{grid-template-columns:1fr 1fr}}
+@media (max-width:539px){.week{grid-template-columns:1fr}}
+.day{background:var(--surface-black);padding:1.2rem 1rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;min-height:15rem;position:relative}
+.day::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--k)}
+.day .d{font-family:var(--font-display);font-weight:700;font-size:max(2.2cqw,28px);line-height:.9;text-transform:uppercase}
+.day .kind{font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--k)}
+.day .time{font-size:var(--type-body);text-transform:uppercase;color:#fff}
+.day ul{list-style:none;margin:.2rem 0 0;padding:0;display:grid;gap:.45rem;text-transform:uppercase;font-size:12px;line-height:1.25;color:var(--foreground-on-dark-muted)}
+.day li{display:grid;grid-template-columns:.8rem 1fr;gap:.4rem}
+.day li::before{content:"";width:.35rem;height:.35rem;margin-top:.35em;background:var(--k);transform:rotate(45deg)}
+.k-practice{--k:var(--accent)}.k-strength{--k:#fff}.k-recovery{--k:#7fd1ff}.k-rest{--k:var(--foreground-on-dark-faint)}
+.wp-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:max(1.6cqw,16px);margin-top:3rem}
+@media (max-width:899px){.wp-prices{grid-template-columns:1fr}}
+.wp-card{position:relative;padding:max(2.2cqw,24px);display:flex;flex-direction:column;gap:.9rem;isolation:isolate;min-height:20rem}
+.wp-card>svg.f{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.wp-card>svg.f path{fill:var(--surface-dark);stroke:var(--border-on-dark);vector-effect:non-scaling-stroke}
+.wp-card.hot>svg.f path{stroke:var(--accent)}
+.wp-card .nm{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(1.6cqw,20px)}
+.wp-card .amt{font-family:var(--font-display);font-weight:500;font-size:max(4.4cqw,52px);line-height:.85;letter-spacing:-.05em}
+.wp-card .per{font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-on-dark-muted)}
+.wp-card ul{list-style:none;margin:.4rem 0 1rem;padding:0;display:grid;gap:.55rem;text-transform:uppercase;font-size:13px;line-height:1.25;color:var(--foreground-on-dark-muted)}
+.wp-card li{display:grid;grid-template-columns:.9rem 1fr;gap:.5rem}
+.wp-card li::before{content:"";width:.45rem;height:.45rem;margin-top:.3em;background:var(--accent);transform:rotate(45deg)}
+.wp-card .cta{margin-top:auto;align-self:flex-start}
+.wp-card .tag{position:absolute;top:max(2.2cqw,24px);right:max(2.2cqw,24px);background:var(--accent);color:#fff;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;padding:.4rem .6rem}
+.incl{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem}
+.incl span{border:1px solid var(--border-on-dark);padding:.6rem .9rem;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -198,9 +233,26 @@
   </div>
 </section>
 
+<!-- WRESTLING PROGRAM -->
+<section class="block dark on-dark auto" id="wrestling" data-arm>
+  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <div class="wp-head">
+      <div>
+        <span class="eyebrow" data-fade="0" id="wpWhere">Wrestling program · GTG</span>
+        <h2 class="display" style="font-size:max(3.8194cqw,40px);color:var(--accent);margin-top:1rem"><span class="split" data-split="words">Wrestling program</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">schedule</span><span class="stop" data-fade="240">.</span></span></h2>
+      </div>
+      <p class="lede" data-rise="300">Folkstyle practice, strength training, nutrition and full recovery days with mentoring, red light therapy, sauna and cold plunge.</p>
+    </div>
+    <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentoring</span></div>
+    <div class="week" id="week"></div>
+    <div class="wp-prices" id="wpPrices"></div>
+    <div class="incl" id="wpIncl" data-rise="300"></div>
+  </div>
+</section>
+
 <!-- FIGHTER STACK -->
 <section class="block dark on-dark auto" data-arm>
-  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
   <div class="inner" style="padding-top:max(9cqw,110px)">
     <div class="stk">
       <div>
@@ -265,6 +317,7 @@
   </div>
 </section>
 
+<script src="assets/site.js"></script>
 <div data-v2-footer data-head="Stay ready|stay hungry"></div>
 
 <script type="module">
@@ -273,7 +326,7 @@ const CAL = "https://calendly.com/fpconsultation/fighter-physique-consultation";
 const STORE = "https://bckd.co/qeoStY3";
 const ext = ' target="_blank" rel="noopener"';
 
-document.getElementById("heroCtas").innerHTML = ctaHTML("Apply now", "#apply") + ctaHTML("Book a consultation", CAL, { hollow: true, target: ext });
+document.getElementById("heroCtas").innerHTML = ctaHTML("Apply now", "#apply") + ctaHTML("Book a consultation", CAL, { hollow: true, target: ext }) + ctaHTML("Wrestling program", "#wrestling", { hollow: true });
 document.getElementById("heroPlate").innerHTML = plateHTML("img/red-room-1.jpg", "Ashanti Maurice under red light", "aspect-ratio:710/463");
 document.getElementById("wygPlate").innerHTML = plateHTML("img/gym-class-1.jpg", "Group training session on the mats", "aspect-ratio:4/5");
 document.getElementById("stkPlate").innerHTML = plateHTML("img/kitchen.jpg", "Ashanti Maurice in the kitchen", "aspect-ratio:4/5");
@@ -284,6 +337,24 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
   el.innerHTML = ctaHTML(el.dataset.cta, "#apply", { hollow: !el.closest(".hot") });
   el.querySelector("a").addEventListener("click", () => (document.getElementById("pkg").value = el.dataset.pkg));
 });
+
+/* wrestling program, from assets/site.js */
+{
+  const W = window.SITE.wrestling, KIND = { practice: "Practice", strength: "Strength & nutrition", recovery: "Recovery & mentoring", rest: "Rest" };
+  const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  document.getElementById("wpWhere").textContent = "Wrestling program · " + W.where;
+  const week = document.getElementById("week");
+  week.innerHTML = W.schedule.map((d) => `<div class="day k-${d.kind}"><span class="d">${esc(d.day)}</span><span class="kind">${KIND[d.kind] || esc(d.kind)}</span><span class="time">${esc(d.time)}</span><ul>${d.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");
+  document.getElementById("wpPrices").innerHTML = W.prices.map((p) => `<div class="wp-card${p.featured ? " hot" : ""}">
+    <svg class="f" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H299.5V388L288 399.5H0.5Z"/></svg>
+    ${p.featured ? '<span class="tag">Most popular</span>' : ""}
+    <span class="nm">${esc(p.name)}</span><span class="amt">${esc(p.price)}</span><span class="per">${esc(p.per)}</span>
+    <ul>${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
+    ${ctaHTML("Sign up", "contact.html?topic=wrestling", { hollow: !p.featured })}</div>`).join("");
+  document.getElementById("wpIncl").innerHTML = W.included.map((i) => `<span>${esc(i)}</span>`).join("");
+  const stagger = (el, base) => { [...el.children].forEach((c) => (c.style.opacity = 0)); onView(el, () => [...el.children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, base + i * 70))); };
+  stagger(week, 200); stagger(document.getElementById("wpPrices"), 150);
+}
 
 boot();
 

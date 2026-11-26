@@ -165,6 +165,28 @@ window.SITE = {
   ],
 
   /* Portfolio. image = screenshot in img/work/. link = "" for no link. */
+  /* ================= WRESTLING PROGRAM AT GTG =================
+     The schedule and prices on the Coaching page. Change times, days or
+     prices here. kind: "practice" | "strength" | "recovery" | "rest". */
+  wrestling: {
+    where: "GTG",
+    schedule: [
+      { day: "Mon", kind: "practice", time: "6:00 – 7:30 PM", items: ["Folkstyle wrestling practice", "Drilling, live goes, conditioning"] },
+      { day: "Tue", kind: "strength", time: "6:00 – 7:00 PM", items: ["Strength training", "Nutrition check-in"] },
+      { day: "Wed", kind: "practice", time: "6:00 – 7:30 PM", items: ["Folkstyle wrestling practice", "Technique and situational wrestling"] },
+      { day: "Thu", kind: "recovery", time: "6:00 – 7:30 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] },
+      { day: "Fri", kind: "practice", time: "6:00 – 7:30 PM", items: ["Folkstyle wrestling practice", "Live wrestling and conditioning"] },
+      { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Strength training", "Nutrition session"] },
+      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentoring session", "Red light therapy", "Sauna", "Cold plunge"] }
+    ],
+    prices: [
+      { name: "Daily", price: "$35", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
+      { name: "Weekly", price: "$150", per: "per week", featured: true, features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
+      { name: "Monthly", price: "$450", per: "per month", features: ["Unlimited sessions all month", "Weekly mentoring and recovery", "Personal nutrition plan", "Best value"] }
+    ],
+    included: ["Folkstyle wrestling practice", "Strength training", "Nutrition coaching", "Mentoring sessions", "Red light therapy", "Sauna", "Cold plunge"]
+  },
+
   projects: [
     { name: "Ashanti Maurice", type: "Personal brand · Redesign", image: "img/work/ashanti-maurice-desktop.jpg", phone: "img/work/ashanti-maurice-phone.jpg",
       text: "Fighter and coaching site with an online shop, coaching applications and fight updates.", link: "https://ashantimaurice.com/" },
