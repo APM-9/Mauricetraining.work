@@ -182,10 +182,10 @@ window.SITE = {
       { day: "Mon", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Drilling, live goes, conditioning"] },
       { day: "Tue", kind: "strength", time: "8:00 – 9:00 PM", items: ["Strength training", "Nutrition check-in"] },
       { day: "Wed", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Technique and situational wrestling"] },
-      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Mentoring session", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] },
+      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Mentorship class: planning your future, dream boards", "Film study", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] },
       { day: "Fri", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Live wrestling and conditioning"] },
       { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Strength training", "Nutrition session"] },
-      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentoring session", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] }
+      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentorship class: brotherhood, growth and development", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] }
     ],
     /* One-off changes: holidays, cancellations, moved sessions.
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
@@ -198,7 +198,7 @@ window.SITE = {
     prices: [
       { name: "Daily", price: "$30", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
       { name: "Weekly", price: "$85", per: "per week", features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
-      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Your own personal training program", "Your own nutrition program", "Recovery program with red light therapy", "Weekly 1-on-1 mentorship"] }
+      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Your own personal training program", "Your own nutrition program", "Recovery program with red light therapy", "Weekly mentorship class"] }
     ],
     /* The five parts of the program, shown as cards. */
     pillars: [
@@ -206,9 +206,9 @@ window.SITE = {
       { name: "Personal training", text: "A strength and conditioning program built for each wrestler, not a group template." },
       { name: "Nutrition", text: "A nutrition program for weight class, energy and recovery, with regular check-ins." },
       { name: "Recovery", text: "Planned recovery days with red light therapy. Sauna and cold plunge as add-ons." },
-      { name: "Mentorship", text: "1-on-1 sessions on discipline, school, mindset and life outside the room." }
+      { name: "Mentorship", text: "A weekly class: planning your future, building a dream board, studying film, and growing as a brotherhood on and off the mat." }
     ],
-    included: ["Wrestling practice", "Personal training program", "Nutrition program", "Recovery program", "Mentorship", "Red light therapy"],
+    included: ["Wrestling practice", "Personal training program", "Nutrition program", "Recovery program", "Mentorship class", "Film study", "Red light therapy"],
     /* Paid on top of any class plan. */
     addons: [
       { name: "Sauna", price: "$10", per: "per session" },
