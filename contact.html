@@ -34,6 +34,9 @@
 .topics input:checked+span{background:var(--accent);border-color:var(--accent);color:#fff}
 .topics input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.form .msg textarea{border:1px solid var(--foreground);padding:.8rem;min-height:11.5rem;line-height:1.5}
+.copy{justify-self:start;font:inherit;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:.75rem 1.2rem;background:var(--foreground);color:#fff;border:0;border-radius:0;cursor:pointer;transition:background 200ms}
+.copy:hover,.copy.done{background:var(--accent)}
 .tip{margin:0;color:var(--foreground-muted);font-size:15px;line-height:1.5}
 .form input[type=text],.form input[type=email],.form textarea{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--foreground);background:transparent;border:0;border-bottom:1px solid var(--foreground);padding:.6rem 0;border-radius:0;outline:none}
 .form textarea{min-height:8rem;resize:vertical}
@@ -72,8 +75,10 @@
             <label><input type="radio" name="topic" value="business"><span>Business / other</span></label>
           </div>
         </fieldset>
-        <p class="tip" id="tip"></p>
+        <label class="msg">Your message<textarea id="msg" rows="6"></textarea></label>
+        <button type="button" class="copy" id="copyBtn">Copy message</button>
         <div class="btn-row" id="sendRow"></div>
+        <p class="tip">Tapping "DM on Instagram" copies your message. Just paste it into the chat.</p>
       </div>
     </div>
   </div>
@@ -85,25 +90,35 @@
 import { boot, ctaHTML } from "./assets/v2.js";
 /* picking a topic sets the email subject and a short note of what to include */
 const T = {
-  coaching: ["Coaching", "Your name, phone, the package you want and your goals."],
-  web: ["Web design project", "Your business, what the site needs and your timeline."],
-  sponsorship: ["Sponsorship", "Your brand and what you have in mind."],
-  merch: ["Merch order", "The shirt, size and quantity."],
-  wrestling: ["Wrestling program", "The wrestler's name, grade, school and a parent's phone number."],
-  business: ["Business inquiry", "What you'd like to talk about."]
+  coaching: ["Coaching", "Hi Ashanti, I'm interested in coaching.\n\nName: \nPhone: \nPackage (6 months / 12 months / not sure): \nMy goals: "],
+  web: ["Web design project", "Hi Ashanti, I'd like a website.\n\nName: \nBusiness: \nWhat the site needs: \nTimeline: "],
+  sponsorship: ["Sponsorship", "Hi Ashanti, I'd like to talk about a sponsorship.\n\nName: \nBrand: \nWhat we have in mind: "],
+  merch: ["Merch order", "Hi Ashanti, I'd like to order merch.\n\nName: \nShirt: \nSize: \nQuantity: "],
+  wrestling: ["Wrestling program", "Hi Ashanti, I'd like to sign up for the wrestling program.\n\nPlan (daily / weekly / monthly): \nWrestler's name: \nGrade and school: \nParent's name: \nParent's phone: "],
+  business: ["Business inquiry", "Hi Ashanti,\n\nName: \nWhat I'd like to talk about: "]
 };
 const t = new URLSearchParams(location.search).get("topic");
 const pick = t && document.querySelector(`.topics input[value="${t.replace(/[^a-z]/g, "")}"]`);
 if (pick) pick.checked = true;
 const ext = ' target="_blank" rel="noopener"';
+const msg = document.getElementById("msg"), copyBtn = document.getElementById("copyBtn");
+const mail = () => "mailto:AMaurice_94@yahoo.com?subject=" + encodeURIComponent(T[document.querySelector(".topics input:checked").value][0]) + "&body=" + encodeURIComponent(msg.value);
+const sync = () => { document.getElementById("chEmail").href = mail(); const a = document.querySelector("#sendRow a"); if (a) a.href = mail(); };
+const copy = async () => {
+  try { await navigator.clipboard.writeText(msg.value); } catch { msg.select(); document.execCommand("copy"); }
+  copyBtn.textContent = "Copied ✓"; copyBtn.classList.add("done");
+  setTimeout(() => { copyBtn.textContent = "Copy message"; copyBtn.classList.remove("done"); }, 2000);
+};
 const update = () => {
-  const [subject, tip] = T[document.querySelector(".topics input:checked").value];
-  const mail = "mailto:AMaurice_94@yahoo.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent("Name:\n\n");
-  document.getElementById("tip").textContent = "Include: " + tip;
-  document.getElementById("chEmail").href = mail;
-  document.getElementById("sendRow").innerHTML = ctaHTML("Email me", mail) + ctaHTML("DM on Instagram", "https://ig.me/m/Rx_Dolo", { hollow: true, target: ext });
+  msg.value = T[document.querySelector(".topics input:checked").value][1];
+  document.getElementById("sendRow").innerHTML = ctaHTML("Email me", mail()) + ctaHTML("DM on Instagram", "https://ig.me/m/Rx_Dolo", { hollow: true, target: ext + ' id="dmBtn"' });
+  document.getElementById("dmBtn").addEventListener("click", copy);
+  sync();
 };
 document.querySelectorAll(".topics input").forEach((i) => i.addEventListener("change", update));
+msg.addEventListener("input", sync);
+copyBtn.addEventListener("click", copy);
+document.querySelectorAll('.chan[href*="ig.me"]').forEach((a) => a.addEventListener("click", copy));
 update();
 boot();
 </script>
