@@ -94,7 +94,15 @@
 .form input,.form select,.form textarea{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--foreground);background:transparent;border:0;border-bottom:1px solid var(--foreground);padding:.6rem 0;border-radius:0;outline:none}
 .form textarea{min-height:7rem;resize:vertical}
 .form input:focus,.form select:focus,.form textarea:focus{border-bottom-color:var(--accent);box-shadow:0 1px 0 var(--accent)}
-.form .cta{justify-self:start;margin-top:.5rem}
+.chan{display:grid;grid-template-columns:7.5rem 1fr auto;align-items:baseline;gap:1rem;padding:1.3rem 0;border-top:1px solid var(--foreground);color:var(--foreground);text-transform:uppercase;transition:color 200ms,padding 300ms var(--ease-plate)}
+.chan:last-child{border-bottom:1px solid var(--foreground)}
+.chan small{font-size:var(--type-eyebrow);letter-spacing:.14em;color:var(--foreground-muted)}
+.chan b{font-family:var(--font-display);font-weight:700;font-size:max(2cqw,22px);line-height:.95;word-break:break-word}
+.chan i{font-style:normal;color:var(--accent)}
+.chan:hover{color:var(--accent);padding-left:.6rem}
+@media (max-width:539px){.chan{grid-template-columns:1fr auto}.chan small{grid-column:1/-1}}
+.include .eyebrow{margin:0}
+.include ol{margin:.8rem 0 0;padding-left:1.2rem;color:var(--foreground-muted);font-size:15px;line-height:1.5}
 
 /* wrestling program */
 .wp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:2rem}
@@ -223,7 +231,7 @@
         <span class="eyebrow" data-fade="0">How it works</span>
         <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">Three steps in</span><span class="stop" data-fade="240">.</span></span></h2>
         <div class="steps" id="steps">
-          <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle class="pulse" r="5.5" fill="none" stroke="var(--accent)" vector-effect="non-scaling-stroke"/><circle r="5.5" fill="var(--accent)"/></svg></span><span class="link"></span><span class="k">Step 01</span><h3>Apply</h3><p>Tell me your goals and where you're starting from. Takes two minutes.</p></div>
+          <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle class="pulse" r="5.5" fill="none" stroke="var(--accent)" vector-effect="non-scaling-stroke"/><circle r="5.5" fill="var(--accent)"/></svg></span><span class="link"></span><span class="k">Step 01</span><h3>Apply</h3><p>Email or DM me your goals and where you're starting from.</p></div>
           <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle r="5" fill="none" stroke="#fff"/></svg></span><span class="link"></span><span class="k">Step 02</span><h3>Consultation call</h3><p>We talk through your training, schedule and what it'll take. If it's a fit, you're in.</p></div>
           <div class="step"><span class="n"><svg viewBox="-11 -11 22 22"><circle r="5" fill="none" stroke="#fff"/></svg></span><span class="k">Step 03</span><h3>Get to work</h3><p>Your program, nutrition plan and check-in schedule land, and we start.</p></div>
         </div>
@@ -321,34 +329,21 @@
       <div>
         <span class="eyebrow" data-fade="0">Apply</span>
         <h2 class="display" style="font-size:max(6.6667cqw,44px);margin-top:1rem"><span class="split" data-split="words">Apply for</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">coaching</span><span class="stop" data-fade="240">.</span></span></h2>
-        <p class="lede" data-rise="380">Fill this out and I'll review it personally. You'll get an email with a link to book your consultation.</p>
+        <p class="lede" data-rise="380">Email me or send me a DM on Instagram. I read every message personally and will reply with a link to book your consultation.</p>
         <p data-rise="460" style="text-transform:uppercase;font-size:var(--type-body);color:var(--foreground-muted);margin:0 0 1rem">Rather talk first?</p>
         <span data-rise="520" id="callCta"></span>
       </div>
-      <form class="form" action="https://formsubmit.co/AMaurice_94@yahoo.com" method="POST" data-rise="400">
+      <div class="form" data-rise="400">
         <span class="bp-c" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
-        <input type="hidden" name="_subject" value="New Coaching Application">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_autoresponse" value="Your application has been received. If you're serious about working with me, book your consultation now — spots are limited: https://calendly.com/fpconsultation/fighter-physique-consultation">
-        <input type="hidden" name="_next" value="https://ashantimaurice.com/thanks.html">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <label>Full name<input type="text" name="name" autocomplete="name" required></label>
-        <div class="row2">
-          <label>Email<input type="email" name="email" autocomplete="email" required></label>
-          <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+        <div>
+          <a class="chan" id="applyEmail" href="mailto:AMaurice_94@yahoo.com"><small>Email</small><b>AMaurice_94@yahoo.com</b><i>→</i></a>
+          <a class="chan" href="https://ig.me/m/Rx_Dolo" target="_blank" rel="noopener"><small>Instagram DM</small><b>@Rx_Dolo</b><i>↗</i></a>
         </div>
-        <label>Package
-          <select name="package" id="pkg" required>
-            <option value="">Choose one</option>
-            <option>6-month commitment ($2,400)</option>
-            <option>12-month commitment ($4,200)</option>
-            <option>Not sure yet — let's talk</option>
-          </select>
-        </label>
-        <label>What are your goals?<textarea name="goals" required></textarea></label>
-        <button class="cta" type="submit"><svg class="f" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true"><path class="body" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/><path class="flood" d="M0.5 0.5H219.5V42L212 49.5H0.5Z"/></svg><span>Submit application</span><svg class="a" viewBox="0 0 13.7071 10.7071" aria-hidden="true"><path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553"/></svg></button>
-      </form>
+        <div class="include">
+          <span class="eyebrow">Include in your message</span>
+          <ol><li>Your name and phone number</li><li>The package you want: 6 months ($2,400), 12 months ($4,200), or not sure yet</li><li>Your goals and where you're starting from</li></ol>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -369,9 +364,15 @@ document.getElementById("stkPlate").innerHTML = plateHTML("img/kitchen.jpg", "As
 document.getElementById("callCta").innerHTML = ctaHTML("Book a call directly", CAL, { hollow: true, target: ext });
 document.getElementById("shopCta").innerHTML = ctaHTML("Shop Bucked Up", STORE, { target: ext + ' id="buckedShop"' });
 document.querySelectorAll("[data-get]").forEach((el) => (el.innerHTML = ctaHTML("Get it", STORE, { hollow: true, target: ext })));
+/* the email link opens a ready-to-fill message; a package button pre-fills the package */
+const setMail = (pkg = "") => {
+  const body = `Name:\nPhone:\nPackage: ${pkg || "6 months / 12 months / not sure yet"}\nMy goals and where I'm starting from:\n`;
+  document.getElementById("applyEmail").href = "mailto:AMaurice_94@yahoo.com?subject=" + encodeURIComponent("Coaching application" + (pkg ? " · " + pkg : "")) + "&body=" + encodeURIComponent(body);
+};
+setMail();
 document.querySelectorAll(".pk-cta").forEach((el) => {
   el.innerHTML = ctaHTML(el.dataset.cta, "#apply", { hollow: !el.closest(".hot") });
-  el.querySelector("a").addEventListener("click", () => (document.getElementById("pkg").value = el.dataset.pkg));
+  el.querySelector("a").addEventListener("click", () => setMail(el.dataset.pkg));
 });
 
 /* wrestling program: assets/site.js, or the Google Sheet if one is linked */
