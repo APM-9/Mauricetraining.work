@@ -536,7 +536,7 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
   document.getElementById("wpIncl").innerHTML = '<span class="lbl">Included</span>' + W.included.map((i) => infoFor(i) ? `<span class="has-info" tabindex="0" data-info="${esc(infoFor(i))}">${esc(i)} <b class="i" aria-hidden="true">i</b></span>` : `<span>${esc(i)}</span>`).join("") + '<p class="incl-info" id="inclInfo" role="status">Tap or hover a box to see what it includes.</p>';
   const ii = document.getElementById("inclInfo"), show = (e) => { const c = e.target.closest?.("[data-info]"); if (c) ii.textContent = c.textContent.replace(/ i$/, "") + ": " + c.dataset.info; };
   ["mouseover", "focusin", "click"].forEach((ev) => document.getElementById("wpIncl").addEventListener(ev, show));
-  if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Recovery add-ons</h3><p>Paid on top of any class plan.</p>` +
+  if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Sauna add-on</h3><p>Paid on top of any plan. Cold plunge and red light therapy are already included.</p>` +
     W.addons.map((a) => `<div class="ad"><b>${esc(a.name)}</b><span class="lead"></span><span class="v">${esc(a.price)}</span><small>${esc(a.per)}</small></div>`).join("");
   onView(document.getElementById("wpPrices"), () => [...document.getElementById("wpPrices").children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 150 + i * 70)));
   [...document.getElementById("wpPrices").children].forEach((c) => (c.style.opacity = 0));
