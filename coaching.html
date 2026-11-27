@@ -103,6 +103,7 @@
 @media (max-width:539px){.chan{grid-template-columns:1fr auto}.chan small{grid-column:1/-1}}
 .form .eyebrow{margin:0 0 .8rem;display:block}
 .topics{display:flex;flex-wrap:wrap;gap:.5rem}
+.topics .grp{flex-basis:100%;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--foreground-muted);margin-top:.4rem}
 .topics button{font:inherit;padding:.55rem .9rem;border:1px solid var(--foreground);background:transparent;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--foreground);cursor:pointer;border-radius:0;transition:background 200ms,color 200ms}
 .topics button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
 .topics button:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -129,6 +130,19 @@
 .starts .eyebrow{margin:0;color:#fff;opacity:.85}
 .starts b{font-family:var(--font-display);font-weight:700;font-size:max(1.8cqw,22px);line-height:1}
 .starts span:last-child{font-size:12px;letter-spacing:.08em}
+.day.today{background:#16181b;box-shadow:inset 0 0 0 2px var(--k)}
+.today-tag{display:inline-block;margin-left:.5rem;vertical-align:middle;padding:.2rem .45rem;background:var(--k);color:#000;font:500 10px/1 var(--font-sans);letter-spacing:.12em;font-style:normal}
+.day.k-practice .today-tag{color:#fff}
+.has-info{position:relative;cursor:help}
+.has-info .i{display:inline-grid;place-items:center;width:1.1em;height:1.1em;margin-left:.15rem;border:1px solid currentColor;border-radius:50%;font:700 9px/1 var(--font-sans);text-transform:none;opacity:.7;vertical-align:1px}
+.day .pop{display:none;position:absolute;z-index:6;left:-.4rem;right:-.4rem;top:calc(100% + .4rem);padding:.7rem .8rem;background:#fff;color:#0a0b0c;font-size:12px;line-height:1.4;text-transform:none;letter-spacing:0;box-shadow:0 8px 24px rgb(0 0 0/.4)}
+.day li.has-info:hover .pop,.day li.has-info:focus .pop,.day li.has-info.open .pop{display:block}
+.day li.has-info:hover>span:first-child,.day li.has-info.open>span:first-child{color:#fff}
+.week .day:has(.open),.week .day:hover{z-index:5}
+.incl .has-info:hover,.incl .has-info:focus{border-color:var(--accent);outline:none}
+.incl-info{flex-basis:100%;margin:.4rem 0 0;font-size:14px;line-height:1.5;color:var(--foreground-on-dark-muted)}
+.starts-cta{margin-left:auto}
+.starts .starts-cta .cta{--cta-fill:#000}
 .legend{display:flex;flex-wrap:wrap;gap:1.2rem;margin:2.5rem 0 1.2rem;font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;color:var(--foreground-on-dark-muted)}
 .legend span{display:inline-flex;align-items:center;gap:.5rem}
 .legend i{width:.7rem;height:.7rem;display:inline-block}
@@ -279,42 +293,20 @@
   </div>
 </section>
 
-<!-- WRESTLING PROGRAM -->
-<section class="block dark on-dark auto" id="wrestling" data-arm>
-  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
-  <div class="inner" style="padding-top:max(9cqw,110px)">
-    <div class="wp-head">
-      <div>
-        <span class="eyebrow" data-fade="0" id="wpWhere">Wrestling program · GTG</span>
-        <h2 class="display" style="font-size:max(3.8194cqw,40px);color:var(--accent);margin-top:1rem"><span class="split" data-split="words">Wrestler development</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">program</span><span class="stop" data-fade="240">.</span></span></h2>
-      </div>
-      <p class="lede" data-rise="300">More than practice: wrestling, a personal training program, a nutrition program, a recovery program and a mentorship class, built for high school wrestlers, freshmen through seniors. Starting with Perth Amboy High School.</p>
-    </div>
-    <div class="who" id="wpWho" data-rise="330"></div>
-    <div class="pillars" id="wpPillars"></div>
-    <div class="starts" id="wpStarts" hidden></div>
-    <h3 class="wk-title" data-rise="300">Weekly schedule</h3>
-    <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentorship</span></div>
-    <div class="changes" id="wpChanges" role="status"></div>
-    <div class="week" id="week"></div>
-    <div class="wp-prices" id="wpPrices"></div>
-    <div class="incl" id="wpIncl" data-rise="300"></div>
-    <div class="wp-addons" id="wpAddons" data-rise="360"></div>
-  </div>
-</section>
-
 <!-- FIGHTER STACK -->
-<section class="block dark on-dark auto" data-arm>
+<section class="block dark on-dark auto" id="stack" data-arm>
+  <canvas class="chequer" data-carry="light" aria-hidden="true"></canvas>
   <div class="inner" style="padding-top:max(9cqw,110px)">
     <div class="stk">
       <div>
-        <span class="eyebrow" data-fade="0">My fighter stack</span>
+        <span class="eyebrow" data-fade="0">My fighter stack · personal coaching</span>
         <h2 class="display h2" style="margin-top:1rem"><span style="display:flex"><span class="split" data-split="words">What I take</span><span class="stop" data-fade="240">.</span></span></h2>
-        <p class="lede" data-rise="300" style="margin-top:1.5rem;color:var(--foreground-on-dark-muted)">Exactly what I use to stay ready for training, recovery and fight performance.</p>
+        <p class="lede" data-rise="300" style="margin-top:1.5rem;color:var(--foreground-on-dark-muted)">Exactly what I use to stay ready for training, recovery and fight performance. Supplement guidance and meal plans come with the 6 and 12-month coaching packages.</p>
         <div class="sup" id="sup">
           <div class="sup-row" data-rise="380"><div><h3>Pre-workout</h3><p>Energy, focus and intensity for training.</p></div><span data-get></span></div>
           <div class="sup-row" data-rise="460"><div><h3>Creatine</h3><p>Strength, power and performance output.</p></div><span data-get></span></div>
           <div class="sup-row" data-rise="540"><div><h3>BCAAs</h3><p>Recovery and less muscle fatigue.</p></div><span data-get></span></div>
+          <div class="sup-row" data-rise="620"><div><h3>Test booster</h3><p>Support for natural testosterone, strength and recovery.</p></div><span></span></div>
         </div>
         <div class="code-box" data-rise="640">
           <span class="bp-c" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
@@ -326,6 +318,29 @@
       </div>
       <div id="stkPlate" data-rise="300"></div>
     </div>
+  </div>
+</section>
+
+<!-- WRESTLING PROGRAM -->
+<section class="block dark on-dark auto" id="wrestling" data-arm>
+  <div class="inner" style="padding-top:max(9cqw,110px)">
+    <div class="wp-head">
+      <div>
+        <span class="eyebrow" data-fade="0" id="wpWhere">Wrestling program · GTG</span>
+        <h2 class="display" style="font-size:max(3.8194cqw,40px);color:var(--accent);margin-top:1rem"><span class="split" data-split="words">Wrestler development</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">program</span><span class="stop" data-fade="240">.</span></span></h2>
+      </div>
+      <p class="lede" data-rise="300">A team program, separate from personal coaching: team wrestling, a team training program, a team nutrition plan, a team recovery program and a team mentorship class with film study. Built for high school wrestlers, freshmen through seniors. Starting with Perth Amboy High School.</p>
+    </div>
+    <div class="who" id="wpWho" data-rise="330"></div>
+    <div class="pillars" id="wpPillars"></div>
+    <div class="starts" id="wpStarts" hidden></div>
+    <h3 class="wk-title" data-rise="300">Weekly schedule</h3>
+    <div class="legend" data-rise="360"><span><i class="k-practice" style="background:var(--k)"></i>Practice</span><span><i class="k-strength" style="background:var(--k)"></i>Strength &amp; nutrition</span><span><i class="k-recovery" style="background:var(--k)"></i>Recovery &amp; mentorship</span></div>
+    <div class="changes" id="wpChanges" role="status"></div>
+    <div class="week" id="week"></div>
+    <div class="wp-prices" id="wpPrices"></div>
+    <div class="incl" id="wpIncl" data-rise="300"></div>
+    <div class="wp-addons" id="wpAddons" data-rise="360"></div>
   </div>
 </section>
 
@@ -394,7 +409,8 @@ const APPLY = (() => {
     pick.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.id === cur.id));
     msg.value = cur.text; syncMail();
   };
-  pick.innerHTML = opts.map((o) => `<button type="button" data-id="${o.id}" aria-pressed="false">${o.label}</button>`).join("");
+  const btn = (o) => `<button type="button" data-id="${o.id}" aria-pressed="false">${o.label}</button>`;
+  pick.innerHTML = `<span class="grp">Personal coaching · 6 or 12 months</span>${opts.filter((o) => !o.id.startsWith("wr-")).map(btn).join("")}<span class="grp">Wrestler development program · starts Dec 15</span>${opts.filter((o) => o.id.startsWith("wr-")).map(btn).join("")}`;
   pick.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) select(b.dataset.id); });
   msg.addEventListener("input", syncMail);
   const copy = async () => {
@@ -455,6 +471,15 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     }
     return { schedule, changes };
   };
+  const TODAY = DAYS[new Date().getDay()];
+  /* info popups: hover on desktop, tap on phone */
+  const infoFor = (t) => { const k = Object.keys(W.info || {}).find((k) => t.toLowerCase().startsWith(k.toLowerCase())); return k ? W.info[k] : ""; };
+  const item = (t) => { const i = infoFor(t); return i ? `<li class="has-info" tabindex="0" aria-label="${esc(t)}: ${esc(i)}"><span>${esc(t)} <b class="i" aria-hidden="true">i</b></span><span class="pop" role="tooltip">${esc(i)}</span></li>` : `<li>${esc(t)}</li>`; };
+  document.addEventListener("click", (e) => {
+    const li = e.target.closest(".has-info");
+    document.querySelectorAll(".has-info.open").forEach((x) => x !== li && x.classList.remove("open"));
+    if (li) li.classList.toggle("open");
+  });
   const render = ({ schedule, changes }) => {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const soon = changes.map((c) => ({ ...c, date: c.date instanceof Date ? c.date : toDate(String(c.date)) }))
@@ -474,7 +499,7 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
       if (ch && ch.kind === "off") return `<div class="day k-rest"><span class="d">${name}</span><span class="kind">${fmt(ch.date)}</span><span class="time">Off</span></div>`;
       const s = ch || d;
       if (!s) return `<div class="day k-rest"><span class="d">${name}</span><span class="kind">Rest</span><span class="time">Off</span></div>`;
-      return `<div class="day k-${s.kind}${ch ? " moved" : ""}"><span class="d">${name}</span><span class="kind">${esc(KIND[s.kind] || s.kind)}${ch ? " · " + fmt(ch.date) : ""}</span><span class="time">${esc(s.time)}</span><ul>${(s.items || []).map((i) => `<li>${esc(i)}</li>`).join("")}${ch?.note ? `<li>${esc(ch.note)}</li>` : ""}</ul></div>`;
+      return `<div class="day k-${s.kind}${ch ? " moved" : ""}${name === TODAY ? " today" : ""}"><span class="d">${name}${name === TODAY ? '<em class="today-tag">Today</em>' : ""}</span><span class="kind">${esc(KIND[s.kind] || s.kind)}${ch ? " · " + fmt(ch.date) : ""}</span><span class="time">${esc(s.time)}</span><ul>${(s.items || []).map(item).join("")}${ch?.note ? `<li>${esc(ch.note)}</li>` : ""}</ul></div>`;
     }).join("");
   };
   document.getElementById("wpWhere").textContent = "Wrestling program · " + W.where;
@@ -488,7 +513,8 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     const d = new Date(W.starts + "T00:00:00"), now = new Date(); now.setHours(0, 0, 0, 0);
     if (d > now) {
       const box = document.getElementById("wpStarts");
-      box.innerHTML = `<span class="eyebrow">Program starts</span><b>${d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}</b><span>Doors open at GTG. Sign up now to hold a spot.</span>`;
+      box.innerHTML = `<span class="eyebrow">Program starts</span><b>${d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}</b><span>Doors open at GTG. Sign up now to hold a spot.</span><span class="starts-cta">${ctaHTML("Sign up now", "#apply")}</span>`;
+      box.querySelector(".starts-cta a").addEventListener("click", () => APPLY.select("wr-monthly"));
       box.hidden = false;
     }
   }
@@ -507,7 +533,9 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
     <ul>${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul>
     <span class="wr-cta" data-pkg="wr-${esc(p.name.toLowerCase())}">${ctaHTML("Sign up", "#apply", { hollow: !p.featured })}</span></div>`).join("");
   document.querySelectorAll(".wr-cta").forEach((el) => el.querySelector("a").addEventListener("click", () => APPLY.select(el.dataset.pkg)));
-  document.getElementById("wpIncl").innerHTML = '<span class="lbl">Included</span>' + W.included.map((i) => `<span>${esc(i)}</span>`).join("");
+  document.getElementById("wpIncl").innerHTML = '<span class="lbl">Included</span>' + W.included.map((i) => infoFor(i) ? `<span class="has-info" tabindex="0" data-info="${esc(infoFor(i))}">${esc(i)} <b class="i" aria-hidden="true">i</b></span>` : `<span>${esc(i)}</span>`).join("") + '<p class="incl-info" id="inclInfo" role="status">Tap or hover a box to see what it includes.</p>';
+  const ii = document.getElementById("inclInfo"), show = (e) => { const c = e.target.closest?.("[data-info]"); if (c) ii.textContent = c.textContent.replace(/ i$/, "") + ": " + c.dataset.info; };
+  ["mouseover", "focusin", "click"].forEach((ev) => document.getElementById("wpIncl").addEventListener(ev, show));
   if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Recovery add-ons</h3><p>Paid on top of any class plan.</p>` +
     W.addons.map((a) => `<div class="ad"><b>${esc(a.name)}</b><span class="lead"></span><span class="v">${esc(a.price)}</span><small>${esc(a.per)}</small></div>`).join("");
   onView(document.getElementById("wpPrices"), () => [...document.getElementById("wpPrices").children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 150 + i * 70)));
