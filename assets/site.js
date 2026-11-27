@@ -184,10 +184,10 @@ window.SITE = {
       { day: "Mon", kind: "practice", time: "8:00 – 9:30 PM", items: ["Team wrestling practice", "Drilling, live goes, conditioning"] },
       { day: "Tue", kind: "strength", time: "8:00 – 9:00 PM", items: ["Team training program", "Team nutrition plan check-in"] },
       { day: "Wed", kind: "practice", time: "8:00 – 9:30 PM", items: ["Team wrestling practice", "Technique and situational wrestling"] },
-      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Team mentorship class: planning your future, dream boards", "Team film study", "Red light therapy", "Cold plunge", "Sauna (add-on)"] },
+      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Team mentorship class: planning your future, dream boards", "Team film study", "Sauna with red light therapy", "Cold plunge"] },
       { day: "Fri", kind: "practice", time: "8:00 – 9:30 PM", items: ["Team wrestling practice", "Live wrestling and conditioning"] },
       { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Team training program", "Team nutrition plan session"] },
-      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Team mentorship class: brotherhood, growth and development", "Red light therapy", "Cold plunge", "Sauna (add-on)"] }
+      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Team mentorship class: brotherhood, growth and development", "Sauna with red light therapy", "Cold plunge"] }
     ],
     /* What each schedule item means: shown as a popup (hover on desktop, tap on phone).
        An item matches when its text starts with the name on the left. */
@@ -200,10 +200,9 @@ window.SITE = {
       "Team nutrition plan": "Eating for your weight class, energy and recovery, with regular team check-ins. Built around a school schedule.",
       "Team mentorship class": "A weekly class on and off the mat: planning your future, building a dream board, and growing as a brotherhood.",
       "Team film study": "Watching match film together, yours and your opponents', to fix mistakes and build a game plan.",
-      "Red light therapy": "Part of the team recovery program, with cold plunge. Time under red light panels on recovery days to help the body bounce back between practices.",
-      "Sauna": "Add-on: $10 a session, or unlimited sauna for $50 a month.",
+      "Sauna with red light therapy": "Part of the team recovery program. The sauna has two rock heaters and built-in red light panels, and you sit directly in front of the red light.",
       "Cold plunge": "Part of the team recovery program: cold water immersion on recovery days to cool down, reset and recover between practices.",
-      "Team recovery program": "Planned recovery days with red light therapy and cold plunge. Sauna is an add-on."
+      "Team recovery program": "Recovery days with the sauna (built-in red light therapy) and cold plunge, included in your plan."
     },
     /* One-off changes: holidays, cancellations, moved sessions.
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
@@ -224,22 +223,24 @@ window.SITE = {
     prices: [
       { name: "Daily", price: "$30", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
       { name: "Weekly", price: "$85", per: "per week", features: ["Every session for 7 days", "Practice, strength and recovery days", "Team nutrition plan"] },
-      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Team training program", "Team nutrition plan", "Team recovery program: red light therapy and cold plunge", "Weekly team mentorship class and film study"] }
+      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Team training program", "Team nutrition plan", "Team recovery program: sauna with red light and cold plunge", "Weekly team mentorship class and film study"] }
     ],
     /* The five parts of the program, shown as cards. */
     pillars: [
       { name: "Team wrestling", text: "Folkstyle practice three nights a week: drilling, live goes and situational wrestling." },
       { name: "Team training", text: "A strength and conditioning program built for wrestlers, done together as a team." },
       { name: "Team nutrition", text: "A team nutrition plan for weight class, energy and recovery, with regular check-ins." },
-      { name: "Team recovery", text: "Planned recovery days with red light therapy and cold plunge. Sauna as an add-on." },
+      { name: "Team recovery", text: "Recovery days in the sauna with built-in red light therapy, plus the cold plunge. Included in your plan." },
       { name: "Team mentorship", text: "A weekly class with film study: planning your future, building a dream board, and growing as a brotherhood on and off the mat." }
     ],
-    included: ["Team wrestling practice", "Team training program", "Team nutrition plan", "Team recovery program", "Team mentorship class", "Team film study", "Red light therapy", "Cold plunge"],
-    /* Paid on top of any class plan. */
+    included: ["Team wrestling practice", "Team training program", "Team nutrition plan", "Team recovery program", "Team mentorship class", "Team film study", "Sauna with red light therapy", "Cold plunge"],
+    /* Extra recovery outside the scheduled recovery days (those are included). */
     addons: [
       { name: "Sauna", price: "$10", per: "per session" },
-      { name: "Unlimited sauna", price: "$50", per: "per month" },
-      { name: "Monthly program + unlimited sauna", price: "$300", per: "per month" }
+      { name: "Cold plunge", price: "$10", per: "per session" },
+      { name: "Sauna + cold plunge", price: "$15", per: "per session" },
+      { name: "Unlimited sauna + cold plunge", price: "$50", per: "per month" },
+      { name: "Monthly program + unlimited sauna & cold plunge", price: "$300", per: "per month" }
     ]
   },
 
