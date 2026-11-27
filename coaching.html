@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Coaching | Ashanti Maurice</title>
-<meta name="description" content="The Fighter Physique System: online strength, conditioning and nutrition coaching from amateur MMA fighter Ashanti Maurice.">
+<meta name="description" content="The Fighter Physique System: personal training, conditioning and nutrition coaching at GTG from amateur MMA fighter Ashanti Maurice.">
 <meta name="theme-color" content="#f7fafb">
 <link rel="icon" href="img/logo-badge.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,15 +46,27 @@
 .step .k{font-size:var(--type-eyebrow);color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.8rem}
 
 /* packages */
-.pk{display:grid;grid-template-columns:1fr 1fr;gap:max(2.5cqw,20px);margin-top:3rem}
-@media (max-width:767px){.pk{grid-template-columns:1fr}}
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:max(2cqw,18px);margin-top:3rem}
+@media (max-width:1023px){.pk{grid-template-columns:1fr}}
+.amt-row{display:flex;align-items:baseline;gap:.5rem}
+.amt-row .mo{font-size:var(--type-eyebrow);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.save{align-self:flex-start;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:.35rem .55rem}
+.fac{display:grid;grid-template-columns:.8fr 1.2fr;gap:max(4cqw,28px);margin-top:max(7cqw,72px);padding-top:max(4cqw,40px);border-top:1px solid var(--foreground)}
+@media (max-width:899px){.fac{grid-template-columns:1fr}}
+.fac h3{font-size:max(3.6cqw,34px);margin:1rem 0}
+.fac p{margin:0;max-width:24rem;text-transform:uppercase;color:var(--foreground-muted);line-height:1.3}
+.fac-list{list-style:none;margin:0;padding:0}
+.fac-list li{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border,rgb(0 0 0/.15));line-height:1.35}
+.fac-list li:first-child{border-top:1px solid var(--border,rgb(0 0 0/.15))}
+.fac-list b{font-family:var(--font-display);font-weight:500;text-transform:uppercase;color:var(--accent)}
+@media (max-width:539px){.fac-list li{grid-template-columns:1fr;gap:.3rem}}
 .pk-card{position:relative;padding:max(2.8cqw,28px);display:flex;flex-direction:column;gap:1rem;min-height:22rem;isolation:isolate}
 .pk-card svg.f{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
 .pk-card svg.f path{fill:#fff;stroke:var(--foreground);vector-effect:non-scaling-stroke}
 .pk-card.hot svg.f path{fill:var(--surface-black);stroke:var(--accent)}
 .pk-card.hot{color:var(--foreground-on-dark)}
 .pk-card .term{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:max(1.8cqw,22px);line-height:.95}
-.pk-card .amt{font-family:var(--font-display);font-weight:500;font-size:max(6cqw,64px);line-height:.8;letter-spacing:-.06em}
+.pk-card .amt{font-family:var(--font-display);font-weight:500;font-size:max(5.2cqw,60px);line-height:.8;letter-spacing:-.06em}
 .pk-card .per{font-size:var(--type-eyebrow);text-transform:uppercase;letter-spacing:.14em;opacity:.6}
 .pk-card p{margin:0;text-transform:uppercase;line-height:1.15}
 .pk-note{margin:1.5rem 0 0;max-width:46rem;font-size:13px;line-height:1.5;text-transform:uppercase;color:var(--foreground-muted)}
@@ -208,7 +220,7 @@
       <div class="inner">
         <div class="c-hero">
           <div>
-            <span class="eyebrow" data-fade="0">Online coaching</span>
+            <span class="eyebrow" data-fade="0">Personal training</span>
             <h1 class="display split" data-split="words" data-delay="120">Fighter Physique System</h1>
             <p class="lede" data-rise="520">Personalized strength, conditioning, nutrition and recovery coaching for adults, built on the system I use to prepare for fights.</p>
             <div class="btn-row" data-rise="700" id="heroCtas"></div>
@@ -218,7 +230,7 @@
             <div class="bp">
               <svg class="c tl"><use href="#corner"/></svg><svg class="c tr"><use href="#corner"/></svg><svg class="c bl"><use href="#corner"/></svg><svg class="c br"><use href="#corner"/></svg>
               <span class="eyebrow" style="margin-bottom:1rem">Packages</span>
-              <dl><dt>6-month commitment</dt><dd>$2,700</dd><dt>12-month commitment</dt><dd>$4,800</dd></dl>
+              <dl><dt>3 months</dt><dd>$700/mo</dd><dt>6 months</dt><dd>$650/mo</dd><dt>12 months</dt><dd>$600/mo</dd></dl>
             </div>
           </div>
         </div>
@@ -236,10 +248,10 @@
             <span class="eyebrow" data-fade="0">What you get</span>
             <h2 class="display h2" style="margin-top:1rem"><span class="split" data-split="words">Everything I do,</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">built for you</span><span class="stop" data-fade="240">.</span></span></h2>
             <ol class="list" id="wyg">
-              <li><b>01</b>Custom strength &amp; conditioning program</li>
+              <li><b>01</b>One-on-one coaching &amp; a custom strength &amp; conditioning program</li>
               <li><b>02</b>Fighter-level conditioning system</li>
               <li><b>03</b>Personalized nutrition plan</li>
-              <li><b>04</b>Recovery program at GTG: sauna, cold plunge &amp; red light therapy (in-person clients)</li>
+              <li><b>04</b>Full gym access at all hours + sauna with red light therapy &amp; cold plunge (in-person clients)</li>
               <li><b>05</b>Weekly check-ins &amp; adjustments</li>
               <li><b>06</b>Direct access to me</li>
               <li><b>07</b>Accountability &amp; discipline coaching</li>
@@ -273,32 +285,61 @@
   <canvas class="contours" data-contours="--paddock-contour" aria-hidden="true"></canvas>
   <canvas class="chequer" data-carry="dark" aria-hidden="true"></canvas>
   <div class="inner" style="padding-top:max(9cqw,110px)">
-    <span class="eyebrow" data-fade="0">Packages</span>
-    <h2 class="display" style="font-size:max(6.6667cqw,44px);margin-top:1rem"><span class="split" data-split="words">Coaching</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">packages</span><span class="stop" data-fade="240">.</span></span></h2>
-    <p class="lede" data-rise="380" style="margin-top:1.5rem;max-width:34rem">For adults who want to lose weight, get in shape and perform better in life. Application required, so every client gets real attention and a plan built for them.</p>
+    <span class="eyebrow" data-fade="0">Personal training</span>
+    <h2 class="display" style="font-size:max(6.6667cqw,44px);margin-top:1rem"><span class="split" data-split="words">Personal training</span><span style="display:flex"><span class="split" data-split="words" data-delay="130">plans</span><span class="stop" data-fade="240">.</span></span></h2>
+    <p class="lede" data-rise="380" style="margin-top:1.5rem;max-width:36rem">For men who invest in themselves: lose weight, get in shape and perform better in life. Application required, so every client gets real attention and a plan built for them.</p>
     <div class="pk">
       <div class="pk-card" data-rise="500">
         <svg class="f" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H399.5V285L385 299.5H0.5Z"/></svg>
-        <span class="term">6-month commitment</span>
-        <span class="amt split" data-split="letters" data-delay="600">$2,700</span>
-        <span class="per">Paid upfront</span>
+        <span class="term">3 months</span>
+        <span class="amt-row"><span class="amt split" data-split="letters" data-delay="600">$700</span><span class="mo">/ month</span></span>
+        <span class="per">$2,100 total · paid upfront</span>
+        
+        <p>A focused start to build the habit.</p>
+        <ul class="pk-incl"><li>One-on-one coaching</li><li>Custom strength &amp; conditioning program</li><li>Personalized nutrition plan &amp; meal plans</li><li>Supplement guidance</li><li>Weekly check-ins</li><li>Full gym access, all hours*: a $200/mo value</li><li>Sauna with red light therapy &amp; cold plunge*</li></ul>
+        <span class="pk-cta" data-cta="Apply for 3 months" data-pkg="3mo"></span>
+      </div>
+      <div class="pk-card" data-rise="620">
+        <svg class="f" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H399.5V285L385 299.5H0.5Z"/></svg>
+        <span class="term">6 months</span>
+        <span class="amt-row"><span class="amt split" data-split="letters" data-delay="720">$650</span><span class="mo">/ month</span></span>
+        <span class="per">$3,900 total · paid upfront</span>
+        <span class="save">Save $300 vs the 3-month rate</span>
         <p>Built for serious individuals ready to transform.</p>
-        <ul class="pk-incl"><li>Personal training program</li><li>Nutrition &amp; meal plans</li><li>Recovery program: sauna, cold plunge, red light therapy*</li><li>Supplement guidance</li><li>Weekly check-ins</li></ul>
+        <ul class="pk-incl"><li>One-on-one coaching</li><li>Custom strength &amp; conditioning program</li><li>Personalized nutrition plan &amp; meal plans</li><li>Supplement guidance</li><li>Weekly check-ins</li><li>Full gym access, all hours*: a $200/mo value</li><li>Sauna with red light therapy &amp; cold plunge*</li></ul>
         <span class="pk-cta" data-cta="Apply for 6 months" data-pkg="6mo"></span>
       </div>
-      <div class="pk-card hot" data-rise="620">
+      <div class="pk-card hot" data-rise="740">
         <svg class="f" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0.5 0.5H399.5V285L385 299.5H0.5Z"/></svg>
         <span class="bp-frame" aria-hidden="true"><svg style="top:0;left:0;transform:scaleX(-1)"><use href="#corner"/></svg><svg style="top:0;right:0"><use href="#corner"/></svg><svg style="bottom:0;left:0;transform:scale(-1)"><use href="#corner"/></svg><svg style="bottom:0;right:0;transform:scaleY(-1)"><use href="#corner"/></svg></span>
         <span class="tag">Best value</span>
-        <span class="term">12-month commitment</span>
-        <span class="amt split" data-split="letters" data-delay="720">$4,800</span>
-        <span class="per">Paid upfront</span>
+        <span class="term">12 months</span>
+        <span class="amt-row"><span class="amt split" data-split="letters" data-delay="840">$600</span><span class="mo">/ month</span></span>
+        <span class="per">$7,200 total · paid upfront</span>
+        <span class="save">Save $1,200 vs the 3-month rate</span>
         <p>For those committed to long-term elite results.</p>
-        <ul class="pk-incl"><li>Everything in the 6-month package</li><li>A full year of the recovery program*</li><li>Best rate: $400 a month vs $450</li></ul>
+        <ul class="pk-incl"><li>One-on-one coaching</li><li>Custom strength &amp; conditioning program</li><li>Personalized nutrition plan &amp; meal plans</li><li>Supplement guidance</li><li>Weekly check-ins</li><li>Full gym access, all hours*: a $200/mo value</li><li>Sauna with red light therapy &amp; cold plunge*</li></ul>
         <span class="pk-cta" data-cta="Apply for 12 months" data-pkg="12mo"></span>
       </div>
     </div>
-    <p class="pk-note" data-rise="700">* The recovery program is for in-person clients who train with me at GTG. Online clients get the training, nutrition, supplement and check-in coaching.</p>
+    <p class="pk-note" data-rise="700">* Gym access and recovery are for in-person clients who train with me at GTG. Online clients get the coaching, programming, nutrition and check-ins.</p>
+
+    <div class="fac" id="facility">
+      <div>
+        <span class="eyebrow" data-fade="0">The facility</span>
+        <h3 class="display" data-rise="120">Train where fighters train<span class="stop">.</span></h3>
+        <p data-rise="200">Every plan comes with full access to GTG, at all hours instead of normal member hours.</p>
+      </div>
+      <ul class="fac-list" data-rise="260">
+        <li><b>Classes</b>Boxing, jiu-jitsu, Muay Thai, MMA and wrestling</li>
+        <li><b>Fight floor</b>Two MMA cages, a full-size karate combat mat, and a full-size boxing ring raised two feet off the ground</li>
+        <li><b>Conditioning</b>Cardio area next to the ring, hanging bags and speed bags</li>
+        <li><b>Open floor</b>Space for jump rope and bodyweight work</li>
+        <li><b>Weight room</b>A private weight room upstairs with all the machines, men only</li>
+        <li><b>Recovery</b>Cold plunge, and a sauna with two rock heaters and built-in red light therapy you sit directly in front of</li>
+        <li><b>Access</b>All hours for my clients, not just member hours</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -402,10 +443,11 @@ document.getElementById("shopCta").innerHTML = ctaHTML("Shop Bucked Up", STORE, 
 document.querySelectorAll("[data-get]").forEach((el) => (el.innerHTML = ctaHTML("Get it", STORE, { hollow: true, target: ext })));
 /* apply: pick what you're applying for, get a ready message, copy it, then email or DM it */
 const APPLY = (() => {
-  const coaching = (pkg) => `Hi Ashanti, I'd like to apply for coaching: ${pkg}.\n\nName: \nPhone: \nMy goals: \nWhere I'm starting from: `;
+  const coaching = (pkg) => `Hi Ashanti, I'd like to apply for personal training: ${pkg}.\n\nName: \nPhone: \nMy goals: \nWhere I'm starting from: `;
   const opts = [
-    { id: "6mo", label: "Coaching · 6 months", text: coaching("6-month commitment ($2,700)") },
-    { id: "12mo", label: "Coaching · 12 months", text: coaching("12-month commitment ($4,800)") },
+    { id: "3mo", label: "Training · 3 months", text: coaching("3 months ($700/mo, $2,100 total)") },
+    { id: "6mo", label: "Training · 6 months", text: coaching("6 months ($650/mo, $3,900 total)") },
+    { id: "12mo", label: "Training · 12 months", text: coaching("12 months ($600/mo, $7,200 total)") },
     ...(window.SITE.wrestling?.prices || []).map((p) => ({ id: "wr-" + p.name.toLowerCase(), label: `Wrestling · ${p.name} ${p.price}`,
       text: `Hi Ashanti, I'd like to sign up for the wrestling program: ${p.name} (${p.price} ${p.per}).\n\nWrestler's name: \nGrade and school: \nParent's name: \nParent's phone: ` })),
     { id: "unsure", label: "Not sure yet", text: `Hi Ashanti, I'm interested in working with you but not sure which program fits yet.\n\nName: \nPhone: \nMy goals: ` }
@@ -419,7 +461,7 @@ const APPLY = (() => {
     msg.value = cur.text; syncMail();
   };
   const btn = (o) => `<button type="button" data-id="${o.id}" aria-pressed="false">${o.label}</button>`;
-  pick.innerHTML = `<span class="grp">Personal coaching · 6 or 12 months</span>${opts.filter((o) => !o.id.startsWith("wr-")).map(btn).join("")}<span class="grp">Wrestler development program · starts Dec 15</span>${opts.filter((o) => o.id.startsWith("wr-")).map(btn).join("")}`;
+  pick.innerHTML = `<span class="grp">Personal training · 3, 6 or 12 months</span>${opts.filter((o) => !o.id.startsWith("wr-")).map(btn).join("")}<span class="grp">Wrestler development program · starts Dec 15</span>${opts.filter((o) => o.id.startsWith("wr-")).map(btn).join("")}`;
   pick.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) select(b.dataset.id); });
   msg.addEventListener("input", syncMail);
   const copy = async () => {
@@ -545,7 +587,7 @@ document.querySelectorAll(".pk-cta").forEach((el) => {
   document.getElementById("wpIncl").innerHTML = '<span class="lbl">Included</span>' + W.included.map((i) => infoFor(i) ? `<span class="has-info" tabindex="0" data-info="${esc(infoFor(i))}">${esc(i)} <b class="i" aria-hidden="true">i</b></span>` : `<span>${esc(i)}</span>`).join("") + '<p class="incl-info" id="inclInfo" role="status">Tap or hover a box to see what it includes.</p>';
   const ii = document.getElementById("inclInfo"), show = (e) => { const c = e.target.closest?.("[data-info]"); if (c) ii.textContent = c.textContent.replace(/ i$/, "") + ": " + c.dataset.info; };
   ["mouseover", "focusin", "click"].forEach((ev) => document.getElementById("wpIncl").addEventListener(ev, show));
-  if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Sauna add-on</h3><p>Paid on top of any plan. Cold plunge and red light therapy are already included.</p>` +
+  if (W.addons?.length) document.getElementById("wpAddons").innerHTML = `<h3>Extra recovery</h3><p>The sauna (with built-in red light) and cold plunge are included on recovery days. For extra sessions on other days:</p>` +
     W.addons.map((a) => `<div class="ad"><b>${esc(a.name)}</b><span class="lead"></span><span class="v">${esc(a.price)}</span><small>${esc(a.per)}</small></div>`).join("");
   onView(document.getElementById("wpPrices"), () => [...document.getElementById("wpPrices").children].forEach((c, i) => new Spring(0, { tension: 170, friction: 24 }, (v) => { c.style.opacity = v; c.style.transform = `translateY(${(1 - v) * 0.75}rem)`; }).to(1, 150 + i * 70)));
   [...document.getElementById("wpPrices").children].forEach((c) => (c.style.opacity = 0));
