@@ -181,14 +181,30 @@ window.SITE = {
     /* Weekly schedule. Starts at 8 PM so it never overlaps GTG's own classes
        (filming 4–5, BJJ 5–6, MMA/Muay Thai 6–7, boxing 7–8). */
     schedule: [
-      { day: "Mon", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Drilling, live goes, conditioning"] },
-      { day: "Tue", kind: "strength", time: "8:00 – 9:00 PM", items: ["Strength training", "Nutrition check-in"] },
-      { day: "Wed", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Technique and situational wrestling"] },
-      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Mentorship class: planning your future, dream boards", "Film study", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] },
-      { day: "Fri", kind: "practice", time: "8:00 – 9:30 PM", items: ["Folkstyle wrestling practice", "Live wrestling and conditioning"] },
-      { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Strength training", "Nutrition session"] },
-      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Mentorship class: brotherhood, growth and development", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] }
+      { day: "Mon", kind: "practice", time: "8:00 – 9:30 PM", items: ["Team wrestling practice", "Drilling, live goes, conditioning"] },
+      { day: "Tue", kind: "strength", time: "8:00 – 9:00 PM", items: ["Team training program", "Team nutrition plan check-in"] },
+      { day: "Wed", kind: "practice", time: "8:00 – 9:30 PM", items: ["Team wrestling practice", "Technique and situational wrestling"] },
+      { day: "Thu", kind: "recovery", time: "8:00 – 9:30 PM", items: ["Team mentorship class: planning your future, dream boards", "Team film study", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] },
+      { day: "Fri", kind: "practice", time: "8:00 – 9:30 PM", items: ["Team wrestling practice", "Live wrestling and conditioning"] },
+      { day: "Sat", kind: "strength", time: "10:00 – 11:30 AM", items: ["Team training program", "Team nutrition plan session"] },
+      { day: "Sun", kind: "recovery", time: "11:00 AM – 12:00 PM", items: ["Team mentorship class: brotherhood, growth and development", "Red light therapy", "Sauna (add-on)", "Cold plunge (add-on)"] }
     ],
+    /* What each schedule item means: shown as a popup (hover on desktop, tap on phone).
+       An item matches when its text starts with the name on the left. */
+    info: {
+      "Team wrestling practice": "Folkstyle wrestling practice as a team: drilling, live goes and conditioning.",
+      "Drilling, live goes": "Drilling: repeating moves until they're automatic. Live goes: full-speed wrestling against a partner. Conditioning: building the gas tank for the third period.",
+      "Technique and situational": "Learning and sharpening moves, then wrestling specific spots: bottom, top, riding time, last 30 seconds.",
+      "Live wrestling": "Full-speed live goes, then conditioning to finish the week strong.",
+      "Team training program": "Strength and conditioning built for wrestlers, done together as a team: lifting, power, speed and mat conditioning.",
+      "Team nutrition plan": "Eating for your weight class, energy and recovery, with regular team check-ins. Built around a school schedule.",
+      "Team mentorship class": "A weekly class on and off the mat: planning your future, building a dream board, and growing as a brotherhood.",
+      "Team film study": "Watching match film together, yours and your opponents', to fix mistakes and build a game plan.",
+      "Red light therapy": "Part of the team recovery program. Time under red light panels on recovery days to help the body bounce back between practices.",
+      "Sauna": "Add-on: $10 a session, or unlimited sauna and cold plunge for $50 a month.",
+      "Cold plunge": "Add-on: $10 a session, or unlimited sauna and cold plunge for $50 a month.",
+      "Team recovery program": "Planned recovery days with red light therapy. Sauna and cold plunge are add-ons."
+    },
     /* One-off changes: holidays, cancellations, moved sessions.
        date: "YYYY-MM-DD", kind: "cancelled" or a session kind, note shown on the site.
        e.g. { date: "2026-12-24", kind: "cancelled", note: "Christmas Eve — no practice" } */
@@ -207,18 +223,18 @@ window.SITE = {
        programs a gym membership doesn't. */
     prices: [
       { name: "Daily", price: "$30", per: "per session", features: ["Any one practice, strength or recovery day", "Drop in, no commitment"] },
-      { name: "Weekly", price: "$85", per: "per week", features: ["Every session for 7 days", "Practice, strength and recovery days", "Nutrition guidance"] },
-      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Your own personal training program", "Your own nutrition program", "Recovery program with red light therapy", "Weekly mentorship class"] }
+      { name: "Weekly", price: "$85", per: "per week", features: ["Every session for 7 days", "Practice, strength and recovery days", "Team nutrition plan"] },
+      { name: "Monthly", price: "$250", per: "per month", featured: true, features: ["Unlimited sessions all month", "Team training program", "Team nutrition plan", "Team recovery program with red light therapy", "Weekly team mentorship class and film study"] }
     ],
     /* The five parts of the program, shown as cards. */
     pillars: [
-      { name: "Wrestling", text: "Folkstyle practice three nights a week: drilling, live goes and situational wrestling." },
-      { name: "Personal training", text: "A strength and conditioning program built for each wrestler, not a group template." },
-      { name: "Nutrition", text: "A nutrition program for weight class, energy and recovery, with regular check-ins." },
-      { name: "Recovery", text: "Planned recovery days with red light therapy. Sauna and cold plunge as add-ons." },
-      { name: "Mentorship", text: "A weekly class: planning your future, building a dream board, studying film, and growing as a brotherhood on and off the mat." }
+      { name: "Team wrestling", text: "Folkstyle practice three nights a week: drilling, live goes and situational wrestling." },
+      { name: "Team training", text: "A strength and conditioning program built for wrestlers, done together as a team." },
+      { name: "Team nutrition", text: "A team nutrition plan for weight class, energy and recovery, with regular check-ins." },
+      { name: "Team recovery", text: "Planned recovery days with red light therapy. Sauna and cold plunge as add-ons." },
+      { name: "Team mentorship", text: "A weekly class with film study: planning your future, building a dream board, and growing as a brotherhood on and off the mat." }
     ],
-    included: ["Wrestling practice", "Personal training program", "Nutrition program", "Recovery program", "Mentorship class", "Film study", "Red light therapy"],
+    included: ["Team wrestling practice", "Team training program", "Team nutrition plan", "Team recovery program", "Team mentorship class", "Team film study", "Red light therapy"],
     /* Paid on top of any class plan. */
     addons: [
       { name: "Sauna", price: "$10", per: "per session" },
